@@ -1,0 +1,48 @@
+
+/* inicio */
+.divInicio
+{
+    /* background-color: rgba(0, 0, 0, 0.788); */
+    background-color:rgba(255, 255, 255, 0.671);
+    margin: auto;
+    margin-top: 12em;
+    display: flex;
+    justify-content: space-around;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    box-shadow: 13px 15px 11px #000000ad;
+}
+
+.botonDivInicio
+{
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    padding: 1em;
+}
+
+.botonDivInicio button{
+    margin-top: 4em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    background-color:transparent;
+    border: 1px solid rgba(143, 142, 218, 0.808);
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border-radius: 5px;
+}
+
+.textoDivInicio *
+{
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    padding: 1em;
+}
+.textoDivInicio p
+{
+    letter-spacing: 0.07em;
+    padding-left: 2em;
+    text-align: center;
+}

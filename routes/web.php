@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ocaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [ocaController::class, 'index']); 
+
+Route::get('juego', [ocaController::class, 'tablero']);
+
+Route::get('galeria', [ocaController::class, 'galeria']);
+
+Route::get('clasificacion', [ocaController::class, 'clasificacion']);
+
+
+// Route::get('/', function () {
+//     return view('oca.inicio');
+// });
+
+// Route::get('galeria', function () {
+//     return view('oca.galeria');
+// });
+
+// Route::get('clasificacion', function () {
+//     return view('oca.clasificacion');
+// });
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
