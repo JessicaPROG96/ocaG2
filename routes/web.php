@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ocaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +12,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [ocaController::class, 'index']); 
+// Route::get('/', 'Auth\ocaController@index')->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('juego', [ocaController::class, 'tablero']);
 
-Auth::routes();
+Route::get('galeria', [ocaController::class, 'galeria']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('clasificacion', [ocaController::class, 'clasificacion']);
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
