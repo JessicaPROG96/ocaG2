@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class ocaController extends Controller
 {
+
     public function  index(){
-        return view('login');
+        return view('oca.inicio');
     }
     public function tablero(){
         return view('oca.tablero');
