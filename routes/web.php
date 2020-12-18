@@ -21,6 +21,9 @@ Route::get('galeria', [ocaController::class, 'galeria']);
 
 Route::get('clasificacion', [ocaController::class, 'clasificacion']);
 
+Auth::routes();
+
+
 
 
 // Route::get('/', function () {

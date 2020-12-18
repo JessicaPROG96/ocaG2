@@ -488,6 +488,10 @@ CREATE TABLE `usuarios` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@email.com', 'eyJpdiI6IlEreG04MWFJN0V3YkFVZ3FmU3BQQ0E9PSIsInZhbHVlIjoiR1Fmakw5QmhuMzhkaFhXUVFvTGdDUT09IiwibWFjIjoiZjkyNzZmNDhkZGQ2MTFhZDhkODcwNzFkYTQ5ODgyNDMwNWZkNGQ5NmJmMjQ4YjQxMDgxNmNjNjhmYzVhYTM0MSJ9', '2020-12-18 11:54:04', '2020-12-18 11:54:04'),
+(2, 'admin2', 'admin2@email.com', 'eyJpdiI6IjNCb3pQYzRqNkNMejBGa21ScUpsU0E9PSIsInZhbHVlIjoiZnJ0eXR1TUN2SmxTZ01Xem12ODVkUT09IiwibWFjIjoiZDJlMzZjZTZhZWFiM2NjNDRjODM1M2U5ZjI0MWE4NmNjZWFiZmE1MjU0ZjdmYTY3MTZlNzA0ZjkyYjZlMDk2YiJ9', '2020-12-18 11:54:04', '2020-12-18 11:54:04');
 --
 -- Índices para tablas volcadas
 --
