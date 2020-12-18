@@ -15,8 +15,8 @@
 .divInicioJugadores{
     /* background-color: rgba(0, 0, 0, 0.788); */
     background-color:rgba(255, 255, 255, 0.671);
-    margin: auto;
-    margin-top: 12em;
+    margin: auto; 
+    margin-top: 5em; 
     display: flex;
     justify-content: space-around;
     backdrop-filter: blur(3px);
@@ -47,11 +47,11 @@
     cursor: pointer;
 }
 .botonDivInicioJugadores button{
-    margin-top: 4em;
+    /* margin-top: 4em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     padding-top: 0.3em;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.3em; */
     background-color:transparent;
     border: 1px solid rgba(143, 142, 218, 0.808);
     color: rgb(0, 0, 0);
@@ -79,9 +79,14 @@
     text-align: center;
 }
 .dificultad{
-margin: 0;
-padding: 0;
+margin-left:2em;
+padding: 10px;
 }
 .cajatexto{
     height: 10px;
+}
+#botonJugar{
+    padding: 0;
+    margin: 0;
+    
 }

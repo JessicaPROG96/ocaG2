@@ -1,6 +1,14 @@
+// $(document).ready(function(){
+//     $("#botonEmpezar").click(function(){
+//         $(".formularioDivInicioJugadores").slideDown(500);
+//     });
+// });
+
 $(document).ready(function(){
-    $("#botonEmpezar").click(function(){
-        alert("ha entrao en el scrin")
-        $(".formularioDivInicioJugadores").slideToggle("slow");
+    $("#botonEmpezar").on( "click", function(){
+        $(".formularioDivInicioJugadores").show();
+    });
+    $("#botonEmpezar").on( "click", function(){
+        $(".divInicio").hide();
     });
 });
