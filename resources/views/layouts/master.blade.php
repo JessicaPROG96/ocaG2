@@ -103,12 +103,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 <script>
-  $(document).ready(function() {
     $('#loginModal').modal('show');
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  });
+    // $(function() {
+    //   $('[data-toggle="tooltip"]').tooltip()
+    // })
 </script>
 
 </html>
