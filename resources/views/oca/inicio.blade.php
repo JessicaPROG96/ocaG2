@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-10 textoDivInicio">
             <p class="lead ">Con el objetivo de visibilizar a las mujeres de las ciencias sociales en este sitio web podrás conocerlas
-                 a través del clasico juego de la Oca. "Mientras juegas aprendes". 
+                 a través del clasico juego de la Oca. "Mientras juegas aprendes, no te lo pierdas". 
             </p>
         </div>  
   </div>
