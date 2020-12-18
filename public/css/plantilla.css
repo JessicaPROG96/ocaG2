@@ -1,0 +1,63 @@
+:root{
+    --color1: #e2ab3f;
+    --color2: #e277ad;
+    --color3: #89c0da;
+    --color4: #e15766;
+    --color5: #9d8cd4;
+    /* --color6: #9A78B3; */
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
+body
+{
+    /* background-position: center; */
+    background-size: cover;
+    /* background-color: var(--color5); */
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2012/10/09/18629/819098298c62109a6e24dc883f9e1cdb-700.jpg');
+}
+
+footer {
+    margin:0;
+    /* background-color: var(--color3); */
+    background-color: rgba(29, 29, 29, 0.842);
+    /* background: linear-gradient(to bottom, rgba(61, 61, 61, 0.548), rgba(29, 29, 29, 0.842)) ; */
+
+    display: table-row;
+    height: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+footer p
+{
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+.jessica *
+{
+    font-size: 20px!important;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.06em;
+}
+
+nav
+{
+    background-color: rgba(29, 29, 29, 0.842);
+    /* background-color: var(--color3); */
+}
+nav *
+{
+    color: white;
+}
+
+nav a:hover
+{
+    color:var(--color4);
+}
