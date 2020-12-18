@@ -61,3 +61,12 @@ nav a:hover
 {
     color:var(--color4);
 }
+
+/* login */
+#login {
+    margin-right: 10%;
+}
+.modal-content {
+    background-color: #e2ab3f;
+    width: 900px;
+}
