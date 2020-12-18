@@ -5,6 +5,7 @@
     text-transform: uppercase;
     letter-spacing: 0.07em;
     margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 .imagen
 {
@@ -21,16 +22,35 @@
 .nombre, .apellido
 {
     color: black;
-    /* letter-spacing: 0.07em; */
-    /* text-align: center; */
+    font-size:17px;
+    letter-spacing: 0.03em;
+    text-align: center;
 }
 
 .mujer
 {
-    background-color: rgba(211, 211, 211, 0.623);
-    border: 1px solid rgb(0, 0, 0);
+    background-color:rgba(231, 231, 231, 0.89);
+    border: 1px solid rgb(70, 70, 70);
     border-radius: 3px;
-    margin: 10px;
-    /* margin: 0.5em; */
+    /* margin: auto; */
+    margin-bottom: 0.5em;
+    height: 320px;
 }
 
+.divGaleria
+{
+    background-color: rgba(27, 27, 27, 0.63);
+    margin: auto;
+    border-radius: 3px 3px 0px 0px;
+}
+.espacio
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    align-content: space-around;
+    
+}
