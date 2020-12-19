@@ -8,13 +8,9 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-<<<<<<< HEAD
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-=======
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
->>>>>>> a9f334d45332d8b491266db4777663d2b4ff4575
   <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
 
   <!-- Scripts -->
@@ -187,19 +183,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 <script>
-<<<<<<< HEAD
-    $('#loginModal').modal('show');
-    // $(function() {
-    //   $('[data-toggle="tooltip"]').tooltip()
-    // })
-=======
  
     $('#loginModal').modal('show');
     /* $(function() {
       $('[data-toggle="tooltip"]').tooltip()
     }) */
   
->>>>>>> a9f334d45332d8b491266db4777663d2b4ff4575
 </script>
 
 </html>
