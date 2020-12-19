@@ -1,0 +1,10 @@
+
+Cuenta para enviar correos de verificación y recuperación de contraseñas.
+
+ocag2f@gmail.com    
+pass: OCAg2feminista
+
+Puertos para el archivo .env:
+25 or 465  or 2525
+587 para tls
+
