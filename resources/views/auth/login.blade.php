@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-@extends('layouts.master')
-=======
  @extends('layouts.app')
 
 
->>>>>>> a9f334d45332d8b491266db4777663d2b4ff4575
 @section('content')
 
 
