@@ -8,3 +8,14 @@ Puertos para el archivo .env:
 25 or 465  or 2525
 587 para tls
 
+
+ARCHIVO .ENV 
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=ocag2f@gmail.com 
+MAIL_PASSWORD=OCAg2feminista
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=ocag2f@gmail.com 
+MAIL_FROM_NAME="${APP_NAME}"
