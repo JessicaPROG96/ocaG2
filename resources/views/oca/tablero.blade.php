@@ -8,10 +8,4 @@
     <tablero-component></tablero-component>
 </div>
 
-<img src="./oca2/resources/img/logo.jpg" alt="lo sentimos">
-<img src="../resources/img/avatars/default.png" alt="lo sentimos">
-
-
-
-
 @stop

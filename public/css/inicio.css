@@ -55,6 +55,10 @@ div.contenedor {
     overflow: hidden;
     width: 100%;
 }
+.casillaBody{
+    background-color: crimson;
+}
+
 #tablero{
     background-color: #e15766;
     border:solid #C4EAF2 5px;
@@ -90,10 +94,6 @@ background-color: brown;
     background-color: cadetblue;
     height: 100px;
 } */
-.casillaBody{
-    background-color: crimson;
-}
-
 #casilla2{grid-area: c2; 
 background-color: grey;}
 #casilla3{grid-area: c3;
