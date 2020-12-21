@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2020 a las 19:32:03
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Tiempo de generación: 21-12-2020 a las 08:29:59
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -478,9 +478,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Jon', 'jonanderdecastro@gmail.com', '2020-12-19 16:44:23', '$2y$10$wSN7bzXLoFh35/gLElr24OxEW.lt/69JVXOtaznM6W4AXOQ8brcxC', NULL, NULL, 'ayWpUn1a7MN3X1CbtQ4ORo5fxf5OBA6dpmq3jRyx20N30xbGB74AisEVnPqa', NULL, NULL, '2020-12-19 14:45:41', '2020-12-19 16:45:26'),
-(2, 'admin', 'admin@email.com', NULL, 'eyJpdiI6IkNGUmU4SUgzL256TmtkRDRHNU1xL1E9PSIsInZhbHVlIjoidEZEWFdnQlNBTkNGa3VWZzFwNE44TGFxTVE4alRKSHRqYkpRNDBEaHNPUT0iLCJtYWMiOiI5MDA3MzNjMDg0YTRhMzU2ZjJiZjU4MzMzZWM3ODJlMWIyOTA4YjYyNDIxYWU0MThkY2Q3MzNlY2IwOTc3ZjAxIn0=', NULL, NULL, NULL, NULL, NULL, '2020-12-19 16:59:41', '2020-12-19 16:59:41'),
-(3, 'admin2', 'admin2@email.com', NULL, 'eyJpdiI6IjZIMFRCbXRnYWFsdjJyUWFORGdTWWc9PSIsInZhbHVlIjoiM2l6Zk1qK1FNNXMwc0xTbk14RGtqVE9hNWVVMTgzRWYwWXlXdjZteGgwdz0iLCJtYWMiOiJlZjYzNWQwODc1ZTdiYWMwYmY1YmY5ZjM0N2QzZGVjZmU4ZmMzYmVjYWMyYjhhODgwY2NkZTVhMGI0NDZlNTA1In0=', NULL, NULL, NULL, NULL, NULL, '2020-12-19 16:59:41', '2020-12-19 16:59:41');
+(1, 'Jon', 'jonanderdecastro@gmail.com', '2020-12-19 16:44:23', '$2y$10$wSN7bzXLoFh35/gLElr24OxEW.lt/69JVXOtaznM6W4AXOQ8brcxC', NULL, NULL, '3xz0tSqo75wuHRNsyWmaXQYucGpbaTaHVu7C29DA1KlQXSw0yY0iWZJ9qOQi', NULL, NULL, '2020-12-19 14:45:41', '2020-12-19 16:45:26'),
+(4, 'admin', 'admin@email.com', NULL, '$2y$10$.3/qvenfsIMX1G5HskDcn.fExPbeiG/RJ1Ex7sZfvHHlgV.oJYHP2', NULL, NULL, NULL, NULL, NULL, '2020-12-21 06:27:10', '2020-12-21 06:27:10'),
+(5, 'admin2', 'admin2@email.com', NULL, '$2y$10$8mLbVb8j4d5N.gpLCMMYpujaUoB0I/MlokF0qJ.boUTwSw3FGE.Y2', NULL, NULL, NULL, NULL, NULL, '2020-12-21 06:27:10', '2020-12-21 06:27:10');
 
 --
 -- Índices para tablas volcadas
@@ -603,7 +603,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
