@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        self::seedUsuarios();
+        /* self::seedUsuarios(); */
+        self::ClasificacionDatosPrueba();
         /* self::seedCategorias(); */
         $this->command->info('Tablas usuarios y categorias inicializadas con datos!');
         // \App\Models\User::factory(10)->create();
@@ -46,6 +47,30 @@ class DatabaseSeeder extends Seeder
         $u3->email = "jonanderdecastro@gmail.com";
         $u3->password = Hash::make("jon1234");
         $u3->save();  */
+
+    }
+
+    private function ClasificacionDatosPrueba(){
+       
+        DB::table('clasificacion')->insert([
+            [
+                'nombre' => "Jon",
+                'puntos' => 100,
+            ], 
+            [
+                'nombre' => "Jessica",
+                'puntos' => 200,
+            ],
+            [
+                'nombre' => "Eric",
+                'puntos' => 50,
+            ],
+            [
+                'nombre' => "Sendoa",
+                'puntos' => 150,
+            ]  
+        ]);
+
 
     }
 

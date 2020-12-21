@@ -11,6 +11,8 @@ use App\Models\Categoria;
 class ocaController extends Controller
 {
 
+    public $arrayClasificacion=[];
+
     public function  index(){
         return view('oca.inicio');
     }
@@ -21,7 +23,10 @@ class ocaController extends Controller
         return view('oca.galeria');
     }
     public function clasificacion(){
-        return view('oca.clasificacion');
+        $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get();
+        return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion );
+
     }
+    
  
 }
