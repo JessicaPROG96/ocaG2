@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Mujer;
 use App\Models\Usuario;
 use App\Models\Categoria;
+use App\Models\Clasificacion;
 
 class ocaController extends Controller
 {
+
+    public $arrayClasificacion=[];
 
     public function  index(){
         return view('oca.inicio');
@@ -21,7 +24,10 @@ class ocaController extends Controller
         return view('oca.galeria');
     }
     public function clasificacion(){
-        return view('oca.clasificacion');
+        $arrayClasificacion = DB::table('clasificacion')->get();
+        $arrayClasificacion = Clasificacion::all();
+        $arrayClasificacion =  DB::select('SELECT * FROM clasificacion');
+		return view('oca.clasificacion')->with('arrayClasificacion', $arrayClasificacion);
     }
  
 }
