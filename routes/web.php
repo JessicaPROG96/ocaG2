@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/', [ocaController::class, 'index']);
+Route::get('/', [ocaController::class, 'index']);
 
 
 Route::get('juego', [ocaController::class, 'tablero']);
@@ -29,11 +29,9 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('verified');
 
 
- /* Route::get('/', function () {
-     return view('welcome');
+/* Route::get('/', function () {
+return view('welcome');
  }); */
 
-
-
-
- 
+// RUTA PARA EL BUSCADOR EN TIEMPO REAL
+// Route::get('')
