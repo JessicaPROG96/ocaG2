@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2020 a las 09:18:56
+-- Tiempo de generación: 21-12-2020 a las 08:29:59
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -473,25 +473,15 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Volcado de datos para la tabla `users`
 --
 
-CREATE TABLE `usuarios` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Jon', 'jonanderdecastro@gmail.com', '2020-12-19 16:44:23', '$2y$10$wSN7bzXLoFh35/gLElr24OxEW.lt/69JVXOtaznM6W4AXOQ8brcxC', NULL, NULL, '3xz0tSqo75wuHRNsyWmaXQYucGpbaTaHVu7C29DA1KlQXSw0yY0iWZJ9qOQi', NULL, NULL, '2020-12-19 14:45:41', '2020-12-19 16:45:26'),
+(4, 'admin', 'admin@email.com', NULL, '$2y$10$.3/qvenfsIMX1G5HskDcn.fExPbeiG/RJ1Ex7sZfvHHlgV.oJYHP2', NULL, NULL, NULL, NULL, NULL, '2020-12-21 06:27:10', '2020-12-21 06:27:10'),
+(5, 'admin2', 'admin2@email.com', NULL, '$2y$10$8mLbVb8j4d5N.gpLCMMYpujaUoB0I/MlokF0qJ.boUTwSw3FGE.Y2', NULL, NULL, NULL, NULL, NULL, '2020-12-21 06:27:10', '2020-12-21 06:27:10');
 
-
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@email.com', 'eyJpdiI6IlEreG04MWFJN0V3YkFVZ3FmU3BQQ0E9PSIsInZhbHVlIjoiR1Fmakw5QmhuMzhkaFhXUVFvTGdDUT09IiwibWFjIjoiZjkyNzZmNDhkZGQ2MTFhZDhkODcwNzFkYTQ5ODgyNDMwNWZkNGQ5NmJmMjQ4YjQxMDgxNmNjNjhmYzVhYTM0MSJ9', '2020-12-18 11:54:04', '2020-12-18 11:54:04'),
-(2, 'admin2', 'admin2@email.com', 'eyJpdiI6IjNCb3pQYzRqNkNMejBGa21ScUpsU0E9PSIsInZhbHVlIjoiZnJ0eXR1TUN2SmxTZ01Xem12ODVkUT09IiwibWFjIjoiZDJlMzZjZTZhZWFiM2NjNDRjODM1M2U5ZjI0MWE4NmNjZWFiZmE1MjU0ZjdmYTY3MTZlNzA0ZjkyYjZlMDk2YiJ9', '2020-12-18 11:54:04', '2020-12-18 11:54:04');
 --
 -- Índices para tablas volcadas
 --
@@ -564,12 +554,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -619,13 +603,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

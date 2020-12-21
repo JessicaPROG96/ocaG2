@@ -16,7 +16,7 @@ class CreateClasificacionTable extends Migration
         Schema::create('clasificacion', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100);
-            $table->string('puntos', 100);
+            $table->bigInteger('puntos', 100);
             $table->timestamps();
         });
     }

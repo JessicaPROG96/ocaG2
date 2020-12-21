@@ -1,10 +1,14 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+ @extends('layouts.app')
 
-        <x-jet-validation-errors class="mb-4" />
+
+@section('content')
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
