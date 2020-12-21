@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Mujer;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Categoria;
 
 class DatabaseSeeder extends Seeder
@@ -20,25 +20,32 @@ class DatabaseSeeder extends Seeder
     {
 
         self::seedUsuarios();
-        // self::seedCategorias();
+        /* self::seedCategorias(); */
         $this->command->info('Tablas usuarios y categorias inicializadas con datos!');
         // \App\Models\User::factory(10)->create();
     }
 
 
     private function seedUsuarios(){
-        DB::table('usuarios')->delete();
-        $u1 = new Usuario;
-        $u1->nombre = "admin";
+        DB::table('users')->delete();
+        $u1 = new User;
+        $u1->name = "admin";
         $u1->email = "admin@email.com";
-        $u1->password = Crypt::encryptString("admin1234");
+        $u1->password = encrypt("admin1234");
         $u1->save();
 
-        $u2 = new Usuario;
-        $u2->nombre = "admin2";
+        $u2 = new User;
+        $u2->name = "admin2";
         $u2->email = "admin2@email.com";
-        $u2->password = Crypt::encryptString("admin1234");
+        $u2->password = encrypt("admin1234");
         $u2->save();
+
+        $u3 = new User;
+        $u3->name = "Jon Ander";
+        $u3->email = "jonanderdecastro@gmail.com";
+        $u3->password = encrypt("jon1234");
+        $u3->save(); 
+
     }
 
     private function seedCategorias(){
