@@ -1,4 +1,5 @@
 <template>
+    
        <div id="tablero">
            <!-- casilla inicio -->
         <div class="casilla p-2" id="casillaInicio">
@@ -60,3 +61,19 @@
 
     </div>
 </template>
+<script>
+export default {
+    data: {
+        personas: []
+    },
+    methods: {
+        cargarMujeres(){
+            axios.get('https://randomuser.me/api/?results=500')
+                .then((respuesta) => {
+                    console.log(respuesta);
+                    this.personas = respuesta.data.results; //la respuesta con vue-resource venia en body, AHORA VIENE EN data
+                });
+        }
+    }
+}
+</script>
