@@ -183,9 +183,9 @@
 <script>
  
     $('#loginModal').modal('show');
-    /* $(function() {
+     /* $(function() {
       $('[data-toggle="tooltip"]').tooltip()
-    }) */
+    })  */
   
 </script>
 
