@@ -58,7 +58,7 @@
         </div>
         <div class="modal-body">
           <div class="d-flex flex-column text-center">
-            <form>
+            <form  method="POST" action="{{ route('login') }}">
               <div class="form-group">
                 <input type="email" class="form-control" id="email1" placeholder="Correo">
               </div>

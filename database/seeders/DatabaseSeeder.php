@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
 
         self::seedUsuarios();
-        self::seedCategorias();
+        // self::seedCategorias();
         $this->command->info('Tablas usuarios y categorias inicializadas con datos!');
         // \App\Models\User::factory(10)->create();
     }
