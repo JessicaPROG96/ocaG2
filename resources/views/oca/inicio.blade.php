@@ -6,7 +6,7 @@
 
 <div class="col-md-3 divInicio">
         <div class="col-md-2 botonDivInicio">
-        <a href="{{url('tablero')}}">Jugar</a> 
+        <a href="{{url('juego')}}">Jugar</a> 
         </div>
         <div class="col-md-10 textoDivInicio">
             <p class="lead ">Con el objetivo de visibilizar a las mujeres de las ciencias sociales en este sitio web podrás conocerlas
