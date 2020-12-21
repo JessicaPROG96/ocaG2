@@ -27,7 +27,8 @@ class ocaController extends Controller
         $arrayClasificacion = DB::table('clasificacion')->get();
         $arrayClasificacion = Clasificacion::all();
         $arrayClasificacion =  DB::select('SELECT * FROM clasificacion');
-		return view('oca.clasificacion')->with('arrayClasificacion', $arrayClasificacion);
+		return view('oca.clasificacion')->with('clasificacion', Clasificacion::all());
     }
+    
  
 }

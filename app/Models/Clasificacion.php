@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Clasificacion extends Model
 {
     use HasFactory;
+
+    protected $table = 'clasificacion';
+    public $timestamps = false;
+
+    protected $fillable = ['id', 'nombre', 'puntos'];
 }

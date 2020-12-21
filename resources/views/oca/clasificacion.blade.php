@@ -3,17 +3,13 @@
 @section('content')
 <h1>Clasificación</h1>
 
-<div class="row">
-
-    @foreach( $arrayClasificacion as $key => $cl )
-    <div class="col-xs-6 col-sm-4 col-md-3 text-center">
-
+<div >
+    @foreach( $clasificacion as $key => $cl )
+    <div>
         <p>{{$cl->nombre}}</p>
         <p>{{$cl->puntos}}</p>
-        
-
     </div>
     @endforeach
-
 </div>
+
 @stop
