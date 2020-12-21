@@ -1,0 +1,26 @@
+#tablero{
+    background-color: #eb5d0b;
+    border:solid #C4EAF2 5px;
+    border-radius: 7%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: grid;
+    grid-template-areas:
+    "c25 c24 c23 c22 c21 c20 c19 c18 c17 "
+    "c26 c53 c52 c51 c50 c49 c48 c47 c16 "
+    "c27 c54 .   .   n   .   d   c46 c15 "
+    "c28 c55 .   c63 c63 c63 .   c45 c14 "
+    "c29 c56 .   c63 c63 c63 .   c44 c13 "
+    "c30 c57 .   c63 c63 c63 .   c43 c12 "
+    "c31 c58 .   c63 c63 c63 .   c42 c11 "
+    "c32 c59 c60 c61 c62 .   .   c41 c10 "
+    "c33 c34 c35 c36 c37 c38 c39 c40 c9  "
+    "c1  c1  c2  c3  c4  c5  c6  c7  c8  "
+    ;
+    grid-auto-flow: dense;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 1em;
+    width: 100%;
+}
