@@ -1,0 +1,56 @@
+.galeria
+{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+.imagen
+{
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: auto;
+    /* filter: grayscale(100%); */
+    border-radius: 3px;
+    margin: 1em;
+    margin-bottom: 1em;
+}
+
+.nombre, .apellido
+{
+    color: black;
+    font-size:17px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+.mujer
+{
+    background-color:rgba(231, 231, 231, 0.89);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 3px;
+    /* margin: auto; */
+    margin-bottom: 0.5em;
+    height: 320px;
+}
+
+.divGaleria
+{
+    background-color: rgba(27, 27, 27, 0.63);
+    margin: auto;
+    border-radius: 3px 3px 0px 0px;
+}
+.espacio
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    align-content: space-around;
+    
+}

@@ -1,20 +1,46 @@
-<link rel="stylesheet" href="<?php echo asset('css/inicio.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/galeria.css')?>" type="text/css">
 @extends('layouts.master')
 
 @section('content')
-<h1 style="color:white">Esto es la galeria</h1>
-@foreach( $arrayPeliculas as $key => $pelicula )
-<div class="col-xs-6 col-sm-4 col-md-3 text-center">
+<!-- El titulo de la galeria -->
+    <h1 class="galeria">Galeria</h1>
 
-    <a href="{{ url('/catalogo/show/' . $key ) }}">
-        <img src="{{$pelicula['poster']}}" style="height:200px"/>
-        <h4 style="min-height:45px;margin:5px 0 10px 0">
-            {{$pelicula['title']}}
-        </h4>
-    </a>
+    <!-- Search form -->
+<div class="col-md-10 md-form mb-4 mr-auto ml-auto">
+    <input class="form-control" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
+  </div>
 
-</div>
-@endforeach
+<!-- El div de la galeria -->
+    <div class="divGaleria col-md-10">
 
-<h1>Espacio de la galeria</h1>
+<!-- Por cada mujer que hay en la base de datos creamos un div con los datos -->
+<!-- $mujeres = todas las mujeres de la base de datos y la $a = cada mujer -->
+
+        {{-- @for($i=0;$i<=5;$i++) --}}
+
+            <div class="row espacio">
+
+                @php $contador = 0; @endphp <!-- Creamos la variable para romper el foreach -->
+                                
+                @foreach( $mujeres as $key => $a )
+                {{-- @for($i=0;$i<=5;$i++) --}}
+                    <div class="mujer">
+                        <img class="imagen" src="./../resources/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
+                        <h4 class="nombre">{{$a['nombre']}}</h4>
+                        <h4 class="Apellido">{{$a['apellido']}}</h4>
+                    </div>
+                
+                    {{-- @php $contador++ @endphp 
+                    @if ($contador == 5) <!-- Cada vez que se impriman 3 mujeres, salimos del foreach -->
+                        
+                        @php break; @endphp
+                    @endif --}}
+                @endforeach
+            </div>
+        {{-- @endfor --}}
+    
+    </div>
+    
+    
+
 @stop

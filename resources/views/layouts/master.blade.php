@@ -1,22 +1,19 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo asset('css/plantilla.css')?>" type="text/css">
 
-  <title>Hello, world!</title>
+    <title>Inicio</title>
 </head>
-
-
 <body>
-  <!-- menu -->
-  <nav class="navbar">
-    <a class="navbar-brand" href="{{url('/')}}">
+
+<nav class="navbar">
+    <a class="navbar-brand" href="#">
       <img src="https://images.vexels.com/media/users/3/156767/isolated/preview/229408895847d8dabf22167e049c88b7-icono-plano-de-la-taza-de-caf--caliente-by-vexels.png" width="30" height="30" alt="">
       Desayunos Feministas
     </a>
