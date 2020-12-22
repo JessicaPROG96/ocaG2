@@ -3,8 +3,11 @@
 @section('content')
 <h1>Clasificación</h1>
 
+<div id="app">
+<clasificacion></clasificacion>
+</div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-8 offset-md-2">
         <table class="table table-dark" >
             <thead>
@@ -23,5 +26,5 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
 @stop

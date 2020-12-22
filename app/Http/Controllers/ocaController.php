@@ -13,6 +13,7 @@ class ocaController extends Controller
 {
 
     public $arrayClasificacion=[];
+    public $arrayClasi=[];
 
     public function  index(){
         return view('oca.inicio');
@@ -28,6 +29,12 @@ class ocaController extends Controller
         return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion );
 
     }
-    
+
+    public function clasi(Request $request){
+        $arrayClasi=DB::table('clasificacion')->orderBy('puntos','desc')->get();
+        return $arrayClasi;  
+
+    }
+
  
 }

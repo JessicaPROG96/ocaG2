@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/', [ocaController::class, 'index']);
-
+ 
+Route::get('/', [ocaController::class, 'index']);
 
 Route::get('juego', [ocaController::class, 'tablero']);
 
 Route::get('galeria', [ocaController::class, 'galeria']);
 
 Route::get('clasificacion', [ocaController::class, 'clasificacion']);
+
+Route::get('clasi', [ocaController::class, 'clasi']);
 
 Route::post('/', [ocaController::class, 'postLogin']);
 
