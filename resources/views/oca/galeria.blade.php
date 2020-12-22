@@ -6,9 +6,15 @@
     <h1 class="galeria">Galeria</h1>
 
     <!-- Search form -->
-<div class="col-md-10 md-form mb-4 mr-auto ml-auto">
-    <input class="form-control" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
-  </div>
+<div>
+    <div class="col-md-10 md-form mb-4 mr-auto ml-auto">
+        <input class="form-control" type="text" id="texto" placeholder="Buscar en nuestra galeria">
+        <!-- <div class="input-group-append">
+            <span class="input-group-text">Buscar</span>
+        </div> -->
+    </div>
+    <div id="resultados"></div>
+</div>
 
 <!-- El div de la galeria -->
     <div class="divGaleria col-md-10">
@@ -40,7 +46,22 @@
         {{-- @endfor --}}
     
     </div>
+<!-- <script>
+    //keyuppp
+    window.addEventListener("load",function(){
+        document.getElementById("texto").addEventListener("keyup", function(){
+            if((document.getElementById("texto").value.lenght)>=3)
+                fetch(`/nombres/buscador?texto=${document.getElementById("texto").value}`,{
+                    method:'get'
+                })
+                .then(response => response.text() )
+                .then(html => {
+                    document.getElementById("resultados").innerHTML = html 
+                })
+            else    
+                document.getElementById("resultados").innerHTML = ""; 
+        })
+    })
     
-    
-
+</script> -->
 @stop

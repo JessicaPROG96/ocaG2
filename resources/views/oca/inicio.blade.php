@@ -30,43 +30,19 @@
             <br>
             <p>NOMBRE DEL JUGADOR 1:
                 <input class="cajatexto" type="text" name="P1" size="25" placeholder="Nombre J1">
-                <select class="selectavatar">
-                    <option hidden>SELECCIONAR AVATAR</option> 
-                    <option>Avatar 1</option> 
-                    <option>Avatar 2</option>
-                    <option>Avatar 3</option> 
-                    <option>Avatar 4</option>
-                </select>
+                <button id="botonAvatar">ELEGIR AVATAR</button>
             </p>   
             <p>NOMBRE DEL JUGADOR 2:
                 <input class="cajatexto" type="text" name="P1" size="25" placeholder="Nombre J2">
-                <select class="selectavatar">
-                    <option hidden>SELECCIONAR AVATAR</option> 
-                    <option>Avatar 1</option> 
-                    <option>Avatar 2</option>
-                    <option>Avatar 3</option> 
-                    <option>Avatar 4</option>
-                </select>
+                <button id="botonAvatar">ELEGIR AVATAR</button>
             </p>
             <p>NOMBRE DEL JUGADOR 3:
                 <input class="cajatexto" type="text" name="P1" size="25" placeholder="Nombre J3">
-                <select class="selectavatar">
-                    <option hidden>SELECCIONAR AVATAR</option> 
-                    <option>Avatar 1</option> 
-                    <option>Avatar 2</option>
-                    <option>Avatar 3</option> 
-                    <option>Avatar 4</option>
-                </select>
+                <button id="botonAvatar">ELEGIR AVATAR</button>
             </p>
             <p>NOMBRE DEL JUGADOR 4:
                 <input class="cajatexto" type="text" name="P1" size="25" placeholder="Nombre J4">
-                <select class="selectavatar">
-                    <option hidden>SELECCIONAR AVATAR</option> 
-                    <option>Avatar 1</option> 
-                    <option>Avatar 2</option>
-                    <option>Avatar 3</option> 
-                    <option>Avatar 4</option>
-                </select>
+                <button id="botonAvatar">ELEGIR AVATAR</button>
             </p>
             <br>
             <select class="dificultad">
@@ -79,6 +55,87 @@
                 <button id="botonJugar"><a href="{{url('juego')}}">Jugar</a></button>
             </div>
     </div>  
+
+
+<!-- formulario para el login -->
+<!-- <div class="modal fade" id="loginModal"> -->
+<!-- <div class="modal hide fade in" data-backdrop="static" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex flex-column text-center"> -->
+
+            <!-- Formulario -->
+            <!-- <form method="POST" action="{{ route('login') }}">
+                @csrf
+                    <div class="form-group row">
+                        <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Correo') }}</label>
+
+                        <div class="col-md-9">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+                    <div class="col-md-9">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-9">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Mantener sesión iniciada') }}
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Entrar') }}
+                        </button>
+
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Recuperar contraseña') }}
+                            </a>
+                        @endif
+                        </div>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
 </div>
 
 

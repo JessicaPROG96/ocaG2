@@ -29,9 +29,5 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('verified');
 
 
-/* Route::get('/', function () {
-return view('welcome');
- }); */
-
 // RUTA PARA EL BUSCADOR EN TIEMPO REAL
-// Route::get('')
+// Route::get('galeria/buscador','ScrollController@buscador');

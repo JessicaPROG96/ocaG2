@@ -40,7 +40,7 @@
           <a class="nav-link" href="{{url('/clasificacion')}}">Clasificación</a>
         </li>
       </ul>
- 
+
       <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
         @guest
