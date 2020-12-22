@@ -62,7 +62,7 @@ div.contenedor {
 #tablero{
     background-color: #e15766;
     border:solid #C4EAF2 5px;
-    border-radius: 7%;
+    border-radius: 35px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: grid;
     grid-template-areas:
@@ -84,7 +84,8 @@ div.contenedor {
     overflow: hidden;
     padding: 1em;
     width: 80%;
-    margin:6%;
+    margin-left:12%;
+    margin-bottom: 2%;
 }
 #casillaInicio{grid-area: c1; border-bottom-left-radius: 30%; 
     /* background-image: url(../resources/img/avatars/default.png) */
@@ -107,9 +108,10 @@ background-color: grey;}
 #casilla7{grid-area: c7;
 background-color: blueviolet; }
 #casilla8{grid-area: c8; 
-background-color: grey;}
+background-color: grey;
+border-radius: 0px 0px 27px 0px;}
 #casilla9{grid-area: c9;
-    background-color: rgb(83, 10, 219); }
+background-color: rgb(83, 10, 219); }
 #casilla10{grid-area: c10; 
 background-color: grey;}
 #casilla11{grid-area: c11;
@@ -125,9 +127,10 @@ background-color: blueviolet; }
 #casilla16{grid-area: c16; 
 background-color: grey;}
 #casilla17{grid-area: c17;
-background-color: blueviolet; }
+background-color: blueviolet;
+border-radius: 0px 27px 0px 0px; }
 #casilla18{grid-area: c18; 
-    background-color: rgb(83, 10, 219); }
+background-color: rgb(83, 10, 219); }
 #casilla19{grid-area: c19;
 background-color: blueviolet; }
 #casilla20{grid-area: c20; 
@@ -141,7 +144,8 @@ background-color: rgb(83, 10, 219); }
 #casilla24{grid-area: c24; 
 background-color: grey;}
 #casilla25{grid-area: c25;
-background-color: blueviolet; }
+background-color: blueviolet;
+border-radius: 27px 0px 0px 0px;}
 #casilla26{grid-area: c26; 
 background-color: grey;}
 #casilla27{grid-area: c27;

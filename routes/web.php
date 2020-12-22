@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ocaController;
+use App\Http\Controllers\TableroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('
      return view('welcome');
  }); */
 
+ //ruta para cargar el dato de las mujeres 
+ Route::get('/mujeres', [TableroController::class, 'indexMujer']);
 
 
 
