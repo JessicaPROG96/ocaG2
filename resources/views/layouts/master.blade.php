@@ -5,19 +5,19 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+  <title>Oca</title>
+ 
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
   <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  <title>Oca</title>
+  
 </head>
 
 
@@ -183,9 +183,9 @@
 <script>
  
     $('#loginModal').modal('show');
-    /* $(function() {
+     /* $(function() {
       $('[data-toggle="tooltip"]').tooltip()
-    }) */
+    })  */
   
 </script>
 

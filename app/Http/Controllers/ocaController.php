@@ -8,10 +8,12 @@ use App\Models\Mujer;
 use App\Models\Usuario;
 use App\Models\Categoria;
 
+
 class ocaController extends Controller
 {
 
     public $arrayClasificacion=[];
+    public $arrayClasi=[];
 
     public function  index(){
         return view('oca.inicio');
@@ -23,10 +25,15 @@ class ocaController extends Controller
         return view('oca.galeria');
     }
     public function clasificacion(){
-        $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get();
-        return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion );
+        /* $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get(); */
+        /* return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion ); */
+        return view('oca.clasificacion');
+    }
+
+    public function clasi(Request $request){
+        $arrayClasi=DB::table('clasificacion')->orderBy('puntos','desc')->get();
+        return $arrayClasi;  
 
     }
-    
- 
+
 }
