@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
 Route::get('/', [ocaController::class, 'index']);
 
 Route::get('juego', [ocaController::class, 'tablero']);
@@ -29,13 +28,3 @@ Route::post('/', [ocaController::class, 'postLogin']);
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('verified');
-
-
- /* Route::get('/', function () {
-     return view('welcome');
- }); */
-
-
-
-
- 

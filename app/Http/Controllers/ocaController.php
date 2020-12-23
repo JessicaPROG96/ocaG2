@@ -25,9 +25,9 @@ class ocaController extends Controller
         return view('oca.galeria');
     }
     public function clasificacion(){
-        $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get();
-        return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion );
-
+        /* $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get(); */
+        /* return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion ); */
+        return view('oca.clasificacion');
     }
 
     public function clasi(Request $request){
@@ -36,5 +36,4 @@ class ocaController extends Controller
 
     }
 
- 
 }

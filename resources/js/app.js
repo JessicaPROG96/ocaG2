@@ -31,10 +31,5 @@ Vue.component('clasificacion', require('./components/ClasificacionComponent.vue'
 
 const app = new Vue({
     el: '#app',
-    data() {
-        return {
-            message: 'hello, world!'
-        }
-    }
 });
 
