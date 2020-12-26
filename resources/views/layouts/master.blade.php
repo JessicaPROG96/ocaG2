@@ -4,7 +4,6 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <script src="{{ asset('js/app.js') }}" defer></script>
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
@@ -13,11 +12,6 @@
 
   <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
 
   <title>Oca</title>
 </head>
@@ -164,9 +158,8 @@
   </div>
 
 
-  <div>
+  <div id="app">
     @yield('content')
-
   </div>
 
 
@@ -174,17 +167,13 @@
     <p>Web creada por <b>Grupo 2</b></p>
     <p>Jon Ander, Jessica, Sendoa y Eric</b></p>
   </footer>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!--jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
+
 </body>
+
 <script>
  
-    $('#loginModal').modal('show');
+    // $('#loginModal').modal('show');
     /* $(function() {
       $('[data-toggle="tooltip"]').tooltip()
     }) */

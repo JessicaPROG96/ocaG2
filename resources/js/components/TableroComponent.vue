@@ -92,6 +92,7 @@
         </div>
       </div>
     </div>
+
     <h1>Muestra los datos de una mujer</h1>
     <table class="table text-center">
       <thead>
@@ -108,22 +109,22 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   data(){
       return{
+      id:"",  
       nombre:"",
       apellido:"",
-        arrayMujeres:[],
+      fechaNacimiento:"",
+      arrayMujeres:[],
     }
   },
   methods:{
     cargarMujeres(){
       let me = this;
       let url = 'mujeres';
-      axios
-        .get(url)
-        .then(function (response) {
+      axios.get(url).then(function (response) {
           me.arrayMujeres = response.data;
         })
         .catch(function (error) {

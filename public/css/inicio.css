@@ -88,7 +88,6 @@ div.contenedor {
     margin-bottom: 2%;
 }
 #casillaInicio{grid-area: c1; border-bottom-left-radius: 30%; 
-    /* background-image: url(../resources/img/avatars/default.png) */
 background-color: brown;
 }
 /* .pregunta{

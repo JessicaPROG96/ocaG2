@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.$ = require('jquery');
+window.JQuery = require('jquery');
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,7 +22,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('tablero-component', require('./components/tablero.vue').default);
+Vue.component('tablero-component', require('./components/TableroComponent.vue').default);
+Vue.component('mujer-component', require('./components/mujeres.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
