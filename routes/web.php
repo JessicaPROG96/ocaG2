@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ocaController;
+use App\Http\Controllers\TableroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,4 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('verified');
 
  //ruta para cargar el dato de las mujeres 
- Route::get('/mujeres', [TableroController::class, 'indexMujer']);
+ Route::get('mujeres', [TableroController::class, 'indexMujer']);

@@ -13,5 +13,5 @@
             :src="persona.picture.thumbnail" 
             :alt="persona.name.first">
         
-    </main>
+</main>
 @stop
