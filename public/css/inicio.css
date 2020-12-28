@@ -127,10 +127,23 @@ background-color: brown;
     width: 20px;
     height: 20px;
 }
-#casilla26, #casilla53, #casilla52, #casilla51, #casilla50, #casilla49, #casilla48,
-#casilla47, #casilla16{
-    margin-top: 10px;
+#casilla53, #casilla52, #casilla51, #casilla50, #casilla49, #casilla48,
+#casilla47{
+    margin-top: 25px;
 }
+#casilla33, #casilla34, #casilla35, #casilla36, #casilla37, #casilla38,
+#casilla39, #casilla40,#casilla59, #casilla60, #casilla61, #casilla62{
+    margin-bottom: 25px;
+}
+#casilla40, #casilla41, #casilla42, #casilla43, #casilla44, #casilla45,
+#casilla46, #casilla47{
+    margin-right: 25px;
+}
+#casilla53, #casilla54, #casilla55, #casilla56, #casilla57, #casilla58,
+#casilla59{
+    margin-left: 25px;
+}
+
 
 #casilla2{grid-area: c2;}
 #casilla3{grid-area: c3;}
