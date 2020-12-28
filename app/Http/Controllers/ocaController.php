@@ -10,9 +10,13 @@ use App\Models\Categoria;
 use App\Models\Galeria;
 
 
-class ocaController extends Controller
-{
-    public function index(){
+
+class ocaController extends Controller{
+
+    public $arrayClasificacion=[];
+    public $arrayClasi=[];
+
+    public function  index(){
         return view('oca.inicio');
     }
     public function tablero(){
@@ -22,7 +26,15 @@ class ocaController extends Controller
         return view('oca.galeria')->with('mujeres',Galeria::all());
     }
     public function clasificacion(){
+        /* $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get(); */
+        /* return view('oca.clasificacion')->with('clasificacion', $arrayClasificacion ); */
         return view('oca.clasificacion');
     }
  
+    public function clasi(Request $request){
+        $arrayClasi=DB::table('clasificacion')->orderBy('puntos','desc')->get();
+        return $arrayClasi;  
+
+    }
+
 }

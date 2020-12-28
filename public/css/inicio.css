@@ -88,12 +88,41 @@ div.contenedor {
     margin-bottom: 2%;
 }
 #casillaInicio{grid-area: c1; border-bottom-left-radius: 30%; 
+    /* background-image: url(../resources/img/avatars/default.png) */
 background-color: brown;
 }
 /* .pregunta{
     background-color: cadetblue;
     height: 100px;
 } */
+.casillaif{
+    height: 100%;
+    width: 100%;
+}
+.casillaJuego{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* background-size: contain; */
+    background-position: center;
+    display: flex;
+  flex-direction: column;
+}
+.casillaJuego img{
+    height: 0;
+    width: 100%;
+}
+.casillaFooter{
+    background-color: rgba(255, 255, 255, 0.329);
+    margin-top: auto;
+}
+.casillaHead{
+    background-color: rgba(255, 255, 255, 0.329);
+    text-align: left;
+    width: 20px;
+    height: 20px;
+}
 #casilla2{grid-area: c2; 
 background-color: grey;}
 #casilla3{grid-area: c3;

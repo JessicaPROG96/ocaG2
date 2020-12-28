@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Mujer;
 use App\Models\User;
 use App\Models\Categoria;
@@ -19,7 +20,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        self::seedUsuarios();
+        /* self::seedUsuarios(); */
+        self::ClasificacionDatosPrueba();
         /* self::seedCategorias(); */
         $this->command->info('Tablas usuarios y categorias inicializadas con datos!');
         // \App\Models\User::factory(10)->create();
@@ -27,24 +29,48 @@ class DatabaseSeeder extends Seeder
 
 
     private function seedUsuarios(){
-        DB::table('users')->delete();
+        DB::table('users');
         $u1 = new User;
         $u1->name = "admin";
         $u1->email = "admin@email.com";
-        $u1->password = encrypt("admin1234");
+        $u1->password = Hash::make("admin1234");
         $u1->save();
 
         $u2 = new User;
         $u2->name = "admin2";
         $u2->email = "admin2@email.com";
-        $u2->password = encrypt("admin1234");
+        $u2->password = Hash::make("admin1234");
         $u2->save();
 
-        $u3 = new User;
+        /* $u3 = new User;
         $u3->name = "Jon Ander";
         $u3->email = "jonanderdecastro@gmail.com";
-        $u3->password = encrypt("jon1234");
-        $u3->save(); 
+        $u3->password = Hash::make("jon1234");
+        $u3->save();  */
+
+    }
+
+    private function ClasificacionDatosPrueba(){
+       
+        DB::table('clasificacion')->insert([
+            [
+                'nombre' => "Jon",
+                'puntos' => 100,
+            ], 
+            [
+                'nombre' => "Jessica",
+                'puntos' => 200,
+            ],
+            [
+                'nombre' => "Eric",
+                'puntos' => 50,
+            ],
+            [
+                'nombre' => "Sendoa",
+                'puntos' => 150,
+            ]  
+        ]);
+
 
     }
 

@@ -4,16 +4,15 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <!-- Styles -->
+   <!-- CSRF Token -->
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+   <!-- estilos -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
   <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
 
-
   <title>Oca</title>
+
 </head>
 
 
@@ -167,16 +166,17 @@
     <p>Web creada por <b>Grupo 2</b></p>
     <p>Jon Ander, Jessica, Sendoa y Eric</b></p>
   </footer>
-  <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 
 <script>
  
-    // $('#loginModal').modal('show');
-    /* $(function() {
+    $('#loginModal').modal('show');
+     /* $(function() {
       $('[data-toggle="tooltip"]').tooltip()
-    }) */
+    })  */
   
 </script>
 

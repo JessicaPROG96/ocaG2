@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mujer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TableroController extends Controller
 {
@@ -14,8 +15,11 @@ class TableroController extends Controller
      */
     public function indexMujer()
     {
-        //
-        $mujer = Mujer::all();
+      
+        // $mujer = Mujer::all();
+        // return $mujer;
+
+        $mujer=DB::table('mujeres')->get();
         return $mujer;
     }
 
