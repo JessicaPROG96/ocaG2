@@ -168,16 +168,8 @@
   </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/tablero.js') }}" defer></script>
 
 </body>
-
-<script>
- 
-    $('#loginModal').modal('show');
-     /* $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })  */
-  
-</script>
 
 </html>

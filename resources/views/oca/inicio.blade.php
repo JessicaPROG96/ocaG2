@@ -13,8 +13,5 @@
             </p>
         </div>  
   </div>
-<div>
-  <mujer-component></mujer-component>
-</div>
 
 @stop
