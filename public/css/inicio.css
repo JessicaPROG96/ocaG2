@@ -58,7 +58,17 @@ div.contenedor {
     height:30px;
     /* padding: 30px; */
 }
-
+.jugador{
+    /* background-color: aqua; */
+    display: inline-block;
+    float: right;
+    width: 100px;
+    margin-right: 2px;
+}
+.container{
+    /* background-color: rgb(165, 108, 42); */
+    margin-left:0;
+}
 #tablero{
     background-color: #e15766;
     border:solid #C4EAF2 5px;
@@ -83,8 +93,8 @@ div.contenedor {
     min-height: 100vh;
     overflow: hidden;
     padding:1em;
-    margin-left:8%;
-    margin-right:-4%;
+    margin-left:0;
+    margin-right:0%;
     margin-bottom:2%;
     margin-top: 2%;
 }
