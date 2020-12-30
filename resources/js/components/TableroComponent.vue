@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+
     <div id="tablero">
       <!-- casilla inicio -->
       <div class="casilla p-2" id="casillaInicio">
@@ -170,7 +170,6 @@
     </div>
     
 
-  </div>
 </template>
 
 <script>

@@ -32,3 +32,6 @@ Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('
 
  //ruta para cargar el dato de las mujeres 
  Route::get('mujeres', [TableroController::class, 'indexMujer']);
+
+//ruta para cargar las categorias 
+Route::get('categorias', [TableroController::class, 'categorias']);

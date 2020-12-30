@@ -23,6 +23,16 @@ class TableroController extends Controller
         return $mujer;
     }
 
+    public function categorias()
+    {
+      
+        // $mujer = Mujer::all();
+        // return $mujer;
+
+        $categoria=DB::table('categorias')->get();
+        return $categoria;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
