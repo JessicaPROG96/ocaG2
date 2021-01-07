@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ocaController;
+use App\Http\Controllers\TableroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ Route::get('galeria', [ocaController::class, 'galeria']);
 
 Route::get('clasificacion', [ocaController::class, 'clasificacion']);
 
+Route::get('clasi', [ocaController::class, 'clasi']);
+
 Route::post('/', [ocaController::class, 'postLogin']);
 
 Auth::routes(['verify'=>true]);
@@ -31,3 +34,5 @@ Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('
 
 // RUTA PARA EL BUSCADOR EN TIEMPO REAL
 // Route::get('galeria/buscador','ScrollController@buscador');
+ //ruta para cargar el dato de las mujeres 
+ Route::get('mujeres', [TableroController::class, 'indexMujer']);
