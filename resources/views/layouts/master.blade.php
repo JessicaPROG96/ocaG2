@@ -1,19 +1,30 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo asset('css/plantilla.css')?>" type="text/css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+  <title>Oca</title>
+ 
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <title>Inicio</title>
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
+
+  
 </head>
-<body>
 
-<nav class="navbar">
-    <a class="navbar-brand" href="#">
+
+<body>
+  <!-- menu -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="{{url('/')}}">
       <img src="https://images.vexels.com/media/users/3/156767/isolated/preview/229408895847d8dabf22167e049c88b7-icono-plano-de-la-taza-de-caf--caliente-by-vexels.png" width="30" height="30" alt="">
       Desayunos Feministas
     </a>
@@ -28,30 +39,154 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('/galeria')}}">Galeria</a>
         </li>
-        <li class="nav-item"> 
+        <li class="nav-item">
           <a class="nav-link" href="{{url('/clasificacion')}}">Clasificación</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        Login
-      </span>
+ 
+      <ul class="navbar-nav ml-auto">
+        <!-- Authentication Links -->
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#loginModal" id="login" >{{ __('Login') }}</a>
+                </li>
+            @endif
+            
+            <!-- REGISTRO ESTA ACTIVADO PARA HACER PRUEBAS CON USUARIOS. MAS ADELANTE SE BORRARA -->
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registro') }}</a>
+                </li>
+            @endif
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesión') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+      </ul>
+
+
     </div>
   </nav>
 
-<div>
+  <!-- formulario para el login -->
+  <!-- <div class="modal fade" id="loginModal"> -->
+  <div class="modal hide fade in" data-backdrop="static" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column text-center">
+
+            <!-- Formulario -->
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+              <div class="form-group row">
+                <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Correo') }}</label>
+
+                <div class="col-md-9">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+                <div class="col-md-9">
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-9">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                    <label class="form-check-label" for="remember">
+                      {{ __('Mantener sesión iniciada') }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row mb-0">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary">
+                    {{ __('Entrar') }}
+                  </button>
+
+                  @if (Route::has('password.request'))
+                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                      {{ __('Recuperar contraseña') }}
+                    </a>
+                  @endif
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
     @yield('content')
-</div>
+
+  </div>
 
 
-<footer>
+  <footer>
     <p>Web creada por <b>Grupo 2</b></p>
     <p>Jon Ander, Jessica, Sendoa y Eric</b></p>
   </footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
-</html>
+<script>
+ 
+    $('#loginModal').modal('show');
+     /* $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
+    })  */
+  
+</script>
 
+</html>

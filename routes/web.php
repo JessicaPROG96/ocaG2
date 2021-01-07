@@ -1,6 +1,6 @@
 <?php
-
 use App\Http\Controllers\ocaController;
+use App\Http\Controllers\TableroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/', [ocaController::class, 'index']); 
+Route::get('/', [ocaController::class, 'index']);
 
 Route::get('juego', [ocaController::class, 'tablero']);
 
@@ -24,20 +22,13 @@ Route::get('galeria', [ocaController::class, 'galeria']);
 
 Route::get('clasificacion', [ocaController::class, 'clasificacion']);
 
+Route::get('clasi', [ocaController::class, 'clasi']);
 
-// Route::get('/', function () {
-//     return view('oca.inicio');
-// });
+Route::post('/', [ocaController::class, 'postLogin']);
 
-// Route::get('galeria', function () {
-//     return view('oca.galeria');
-// });
+Auth::routes(['verify'=>true]);
 
-// Route::get('clasificacion', function () {
-//     return view('oca.clasificacion');
-// });
+Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('verified');
 
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+ //ruta para cargar el dato de las mujeres 
+ Route::get('mujeres', [TableroController::class, 'indexMujer']);

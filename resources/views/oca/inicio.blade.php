@@ -5,14 +5,14 @@
 
 <div class="col-md-3 divInicio">
         <div class="col-md-2 botonDivInicio">
-            <button id="boton">Jugar </button>
+        <a href="{{url('juego')}}">Jugar</a> 
         </div>
         <div class="col-md-10 textoDivInicio">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nostrum sunt ut excepturi optio est assumenda voluptas quos deserunt impedit,
-                itaque accusantium architecto, soluta animi asperiores. Explicabo quod pariatur neque!</p>
+            <p class="lead ">Con el objetivo de visibilizar a las mujeres de las ciencias sociales en este sitio web podrás conocerlas
+                 a través del clasico juego de la Oca. "Mientras juegas aprendes". 
+            </p>
         </div>  
   </div>
 
 
 @stop
-<script src="js/javascript.js"></script>
