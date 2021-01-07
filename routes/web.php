@@ -35,4 +35,4 @@ Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('
 // RUTA PARA EL BUSCADOR EN TIEMPO REAL
 // Route::get('galeria/buscador','ScrollController@buscador');
  //ruta para cargar el dato de las mujeres 
- Route::get('mujeres', [TableroController::class, 'indexMujer']);
+Route::get('mujeres', [TableroController::class, 'indexMujer']);
