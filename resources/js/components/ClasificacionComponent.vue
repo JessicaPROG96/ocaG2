@@ -2,9 +2,9 @@
 
     <div class="container container-clasi">
         <div class="row">
-            <div class="col-md-6">
+            <div class="mx-auto mt-5 col-md-6">
                 <h2>Clasificación</h2>
-                <table class="table text-center"><!--Creamos una tabla que mostrará todas las tareas-->
+                <table class="table text-center table-dark"><!--Creamos una tabla que mostrará todas las tareas-->
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
