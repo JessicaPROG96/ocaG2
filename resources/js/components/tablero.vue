@@ -154,11 +154,18 @@
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
+             <div v-if="modoJuego == 'ambitos'">
+                <h1>Bienvenido a la categoria</h1>
+                
+    <h5> Ha seleccionado: {{ juego }}</h5>
+            </div>
           </div>
         </div>
       </div>
+     
     </div>
 
+ 
   </div>
 </template>
 <script>
@@ -166,9 +173,12 @@ import axios from 'axios';
 export default {
   data(){
       return{
+      juego:"",
       nombre:"",
       apellido:"",
-        arrayMujeres:[],
+      arrayMujeres:[],
+    ambitos:["normal"],
+    
     }
   },
   methods:{
@@ -204,6 +214,15 @@ export default {
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
     }
   },
+  mostrar(val) {      
+        for (var i = 0; i < this.options.length; i++) {
+          if (this.options[i].value === val){
+            this.selectedText = this.options[i].text;
+            return this.options[i].text;
+          }
+        }
+        return '';
+      },
   mounted(){
       this.cargarMujeres();
       console.log('Component mounted.')
