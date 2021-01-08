@@ -4,6 +4,7 @@
         <div class="row">
             <div class="mx-auto mt-5 col-md-6">
                 <h2>Clasificación</h2>
+                
                 <table class="table text-center table-dark"><!--Creamos una tabla que mostrará todas las tareas-->
                     <thead>
                         <tr>
