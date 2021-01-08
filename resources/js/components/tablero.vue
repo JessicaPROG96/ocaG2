@@ -158,21 +158,7 @@
         </div>
       </div>
     </div>
-    <h1>Muestra los datos de una mujer</h1>
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Foto</th>
-        </tr>
-      </thead>
-      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> <!--Recorremos el array y cargamos nuestra tabla-->
-            <td v-text="mujer.nombre"></td>
-            <td v-text="mujer.apellido"></td>
-            <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
-        </tr>
-    </table>
+
   </div>
 </template>
 <script>
