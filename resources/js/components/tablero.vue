@@ -2,28 +2,17 @@
   <div>
     <div id="tablero">
       <!-- casilla inicio -->
-      <div class="casilla p-2" id="casillaInicio">
+      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'1'"></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 casillaBody">
-            <h2>Hola mundo</h2>
-            <div
-              class="area d-flex align-items-center justify-content-around"
-              id="area1"
-            >
-              Hola otra vez
-            </div>
           </div>
         </div>
       </div>
       <!-- otras casillas -->
       
       
-      <div
+      <div class="casillaNum"
         :id="'casilla' + (n = n + 1)"
         v-for="n in 61" 
         :key="n"
@@ -138,13 +127,13 @@
     
 
       <!-- casilla normas -->
-      <div class="casillaNormas p-2" id="casillaNormas">
+      <!-- <div class="casillaNormas p-2" id="casillaNormas">
         <div class="row align-items-center justify-content-center h-100">
           <div class="col"></div>
         </div>
-      </div>
+      </div> -->
       <!-- casilla final -->
-      <div class="casilla p-2" id="casillaFinal">
+      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'63'"></p>
@@ -158,7 +147,7 @@
         </div>
       </div>
     </div>
-    <h1>Muestra los datos de una mujer</h1>
+    <!-- <h1>Muestra los datos de una mujer</h1>
     <table class="table text-center">
       <thead>
         <tr>
@@ -167,12 +156,12 @@
           <th scope="col">Foto</th>
         </tr>
       </thead>
-      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> <!--Recorremos el array y cargamos nuestra tabla-->
+      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> 
             <td v-text="mujer.nombre"></td>
             <td v-text="mujer.apellido"></td>
             <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
         </tr>
-    </table>
+    </table> -->
   </div>
 </template>
 <script>
@@ -182,7 +171,7 @@ export default {
       return{
       nombre:"",
       apellido:"",
-        arrayMujeres:[],
+      arrayMujeres:[],
     }
   },
   methods:{
