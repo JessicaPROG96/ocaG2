@@ -9,15 +9,15 @@
           </div>
         </div>
       </div>
-      <!-- otras casillas -->
       
       
+      <!-- Casillas Nº 2-62 -->
       <div class="casillaNum"
         :id="'casilla' + (n = n + 1)"
         v-for="n in 61" 
         :key="n"
       >
-
+        <!-- Casilla mujeres con foto -->
         <div class="casillaif" v-if="
                   n !== 5 &&
                   n !== 6 &&
@@ -27,14 +27,14 @@
                   n !== 18 &&
                   n !== 19 &&
                   n !== 23 &&
-                  n !== 27 &&
+                  n !== 26 &&
                   n !== 31 &&
                   n !== 32 &&
                   n !== 41 &&
                   n !== 42 &&
                   n !== 45 &&
                   n !== 50 &&
-                  n !== 52 &&
+                  n !== 53 &&
                   n !== 54 &&
                   n !== 58 &&
                   n !== 59 && 
@@ -42,36 +42,28 @@
                 ">
                 
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
-          
             <!-- encabezado de la casilla -->
-            
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)"></p>
               </div>
-          
-
             <!-- cuerpo de la casilla -->
-            
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
                   <!-- <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'" style="with:100px; height:100px"/> -->
                   </div>
               </div>
-
             <!-- pie de la casilla -->
-          
               <div class="casillaFooter" >
                 <p
                   class="m-0"
                   :id="'nombreMujer'"
-                  
                   v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                ></p>
-                
+                ></p>  
               </div>
-          
           </div>
         </div>
+
+        <!-- Si la la mujer no de la casilla no tiene foto -->
         <div class="casillaif" v-else-if=" n !== 5 &&
                   n !== 6 &&
                   n !== 9 &&
@@ -80,22 +72,19 @@
                   n !== 18 &&
                   n !== 19 &&
                   n !== 23 &&
-                  n !== 27 &&
+                  n !== 26 &&
                   n !== 31 &&
                   n !== 32 &&
                   n !== 41 &&
                   n !== 42 &&
                   n !== 45 &&
                   n !== 50 &&
-                  n !== 52 &&
+                  n !== 53 &&
                   n !== 54 &&
                   n !== 58 &&
                   n !== 59 &&
                   arrayMujeres[n-2].imagen===null">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/feminismo.jpg)' }">
-          
-            <!-- encabezado de la casilla -->
-            
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n" v-on:click="darInfo(n)"></p>
               </div>
@@ -103,42 +92,114 @@
                 <p
                   class="m-0"
                   :id="'nombreMujer'"
-                  
                   v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
                 ></p>
-                
               </div>
           </div>
         </div>
 
-        <div class="casillaif" v-else>
-
+        <!-- Casillas OCA -->
+        <div class="casillaif" v-else-if=" n == 5 ||
+        n == 9 ||
+        n == 14 ||
+        n == 18 ||
+        n == 23 ||
+        n == 27 ||
+        n == 32 ||
+        n == 36 ||
+        n == 41 ||
+        n == 45 ||
+        n == 50 ||
+        n == 54 ||
+        n == 59 
+        ">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/goose.png)' }">
-          
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
           </div>
-
         </div>
+
+        <!-- Casillas PUENTE -->
+        <div class="casillaif" v-else-if=" n == 6 || n == 12">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/puente.png)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casilla POSADA -->
+        <div class="casillaif" v-else-if=" n == 19">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/posada2.png)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casilla POZO -->
+        <div class="casillaif" v-else-if=" n == 31">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/pozo.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casilla LABERINTO -->
+        <div class="casillaif" v-else-if=" n == 42">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/laberinto.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casilla CÁRCEL -->
+        <div class="casillaif" v-else-if=" n == 56">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/carcel.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casillas DADO -->
+        <div class="casillaif" v-else-if=" n == 26 || n == 53">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/dadosFondo.png)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Casilla CALAVERA -->
+        <div class="casillaif" v-else-if=" n == 58">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/muerte.svg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+
 
       </div>
 
     
-
       <!-- casilla normas -->
       <!-- <div class="casillaNormas p-2" id="casillaNormas">
         <div class="row align-items-center justify-content-center h-100">
           <div class="col"></div>
         </div>
       </div> -->
+
       <!-- casilla final -->
       <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'63'"></p>
           </div>
-          <!-- <div class="col-sm-4 casillaHead"><button class="pregunta" v-text="'?'"></button></div> -->
         </div>
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
@@ -146,7 +207,10 @@
           </div>
         </div>
       </div>
+
+
     </div>
+
     <!-- <h1>Muestra los datos de una mujer</h1>
     <table class="table text-center">
       <thead>
