@@ -9,7 +9,7 @@
    <meta name="csrf-token" content="{{ csrf_token() }}">
    <!-- estilos -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo asset('css/plantilla.css') ?>" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/plantilla.css')}}" type="text/css">
 
   <title>Oca</title>
 
@@ -19,7 +19,7 @@
 <body>
   <!-- menu -->
   <nav class="navbar">
-    <a class="navbar-brand" href="{{url('/')}}">
+    <a class="navbar-brand" id="homePage" href="{{url('/')}}">
       <img src="https://images.vexels.com/media/users/3/156767/isolated/preview/229408895847d8dabf22167e049c88b7-icono-plano-de-la-taza-de-caf--caliente-by-vexels.png" width="30" height="30" alt="">
       Desayunos Feministas
     </a>
@@ -80,7 +80,6 @@
   </nav>
 
   <!-- formulario para el login -->
-  <!-- <div class="modal fade" id="loginModal"> -->
   <div class="modal hide fade in" data-backdrop="static" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -166,10 +165,15 @@
     <p>Web creada por <b>Grupo 2</b></p>
     <p>Jon Ander, Jessica, Sendoa y Eric</b></p>
   </footer>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/tablero.js') }}" defer></script>
+  
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/tablero.js') }}"></script>
+    
+  @if (\Request::is('/') || \Request::is('juego/*'))
+    <script src="{{ asset('js/jugadores.js') }}"></script>
+  @endif
 
 </body>
-
+  
 </html>

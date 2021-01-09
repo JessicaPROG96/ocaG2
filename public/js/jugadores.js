@@ -1,36 +1,19 @@
 
-
-
-// $(document).ready(function(){
-//     $("#botonEmpezar").click(function(){
-//         $(".formularioDivInicioJugadores").slideDown(500);
-//     });
-// });
-
-
 $(document).ready(function(){
+
     $("#botonEmpezar").on( "click", function(){
         $(".formularioDivInicioJugadores").show();
-    });
-    $("#botonEmpezar").on( "click", function(){
         $(".divInicio").hide();
     });
-});
 
+    $("#modoJuego").on("change", function(){
+        $("#juegoSeleccionado").text(this.value);
+        $("input[name=juegoSeleccionado]").val(this.value);
+    });
 
-document.getElementById("agregarTarea").addEventListener('click', cogerDatos, false);
+    $("#botonJugar").on("click",function(){
+        var localStore = $("input[name=juegoSeleccionado]").val();
+        localStorage.setItem("modoJuego", localStore);
+    });
 
-function cogerDatos(){
-    console.log("entra");
-    var cod = document.getElementById("modoJuego").value;
-    console.log(cod);
-    alert(cod);
-}
-
-var vm = new Vue({
-    el: '#juego',
-    data: {
-        modo:""
-    },
-    methods:{}
 });

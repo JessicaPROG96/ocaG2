@@ -176,8 +176,9 @@ export default {
       juego:"",
       nombre:"",
       apellido:"",
+      modoJuego:"",
       arrayMujeres:[],
-    ambitos:["normal"],
+      
     
     }
   },
@@ -196,14 +197,11 @@ export default {
     cargarMujeres(){
       let me = this;
       let url = 'mujeres';
-      axios
-        .get(url)
+      axios.get(url)
         .then(function (response) {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
-          console.log(me.arrayMujeres);
-          
-          /* console.log(me.arrayMujeres[0].nombre); */
+          me.modoJuego = localStorage.getItem("modoJuego");
         })
         .catch(function (error) {
           console.log(error);
