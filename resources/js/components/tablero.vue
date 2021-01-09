@@ -154,25 +154,18 @@
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
+             <div v-if="modoJuego == 'ambitos'">
+                <h1>Bienvenido a la categoria</h1>
+                
+    <h5> Ha seleccionado: {{ juego }}</h5>
+            </div>
           </div>
         </div>
       </div>
+     
     </div>
-    <h1>Muestra los datos de una mujer</h1>
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Foto</th>
-        </tr>
-      </thead>
-      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> <!--Recorremos el array y cargamos nuestra tabla-->
-            <td v-text="mujer.nombre"></td>
-            <td v-text="mujer.apellido"></td>
-            <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
-        </tr>
-    </table>
+
+ 
   </div>
 </template>
 <script>
@@ -180,9 +173,12 @@ import axios from 'axios';
 export default {
   data(){
       return{
+      juego:"",
       nombre:"",
       apellido:"",
-        arrayMujeres:[],
+      arrayMujeres:[],
+    ambitos:["normal"],
+    
     }
   },
   methods:{
@@ -218,6 +214,15 @@ export default {
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
     }
   },
+  mostrar(val) {      
+        for (var i = 0; i < this.options.length; i++) {
+          if (this.options[i].value === val){
+            this.selectedText = this.options[i].text;
+            return this.options[i].text;
+          }
+        }
+        return '';
+      },
   mounted(){
       this.cargarMujeres();
       console.log('Component mounted.')
