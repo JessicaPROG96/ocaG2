@@ -63,7 +63,7 @@
           </div>
         </div>
 
-        <!-- Si la la mujer no de la casilla no tiene foto -->
+        <!-- Si la mujer de la casilla no tiene foto -->
         <div class="casillaif" v-else-if=" n !== 5 &&
                   n !== 6 &&
                   n !== 9 &&
