@@ -5,10 +5,6 @@
 @extends('layouts.master')
 @section('content')
 
-<div id="jugadorCategoriaInicio">
-        <categoria-component></categoria-component>
-</div>
-
 <div>
     <tablero-component></tablero-component>
 </div>
