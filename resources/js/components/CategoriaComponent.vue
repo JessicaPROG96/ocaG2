@@ -41,11 +41,12 @@ export default {
             id: "", 
             nombreCategoria:"", 
             color:"",
+            categoria:"",
             arrayAmbitos: []
         }
     }, 
     methods:{
-        categoria(){
+        getCategoria(){
             let me = this;
             axios.get('categorias').then(function (response) {
                 me.arrayAmbitos = response.data;
@@ -55,7 +56,7 @@ export default {
         }
     }, 
     mounted() {
-        this.categoria();
+        this.getCategoria();
     }
 };
 </script>
