@@ -298,3 +298,7 @@ z-index: 1;}
 font-size: 60px;
 color: white;
 }
+.modalInfoC img{
+    width: 200px;
+    height: 200px;
+}
