@@ -17,7 +17,7 @@ function b() {
 
 
 function a() {          
-    $("#searchbar").change(b);           
+    $("#searchbar").on("input",b);           
 };
 
 $(document).ready(function(){
