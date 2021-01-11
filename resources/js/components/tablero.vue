@@ -233,15 +233,11 @@
         </div>
       </div>
 
-
-      
-
-      
     </div>
 
     
 
-    <h1>Muestra los datos de una mujer</h1>
+    <!-- <h1>Muestra los datos de una mujer</h1>
     <table class="table text-center">
       <thead>
         <tr>
@@ -255,7 +251,7 @@
             <td v-text="mujer.apellido"></td>
             <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
         </tr>
-    </table>
+    </table> -->
   </div>
 </template>
 <script>

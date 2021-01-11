@@ -84,7 +84,7 @@ div.contenedor {
     overflow: hidden;
     padding: 1em;
     margin-bottom: 2%;
-    width: 80%;
+    width: 1565px;
     margin: 0 auto;
 }
 #casillaInicio{
@@ -115,6 +115,11 @@ div.contenedor {
     background-position: center;
     display: flex;
     flex-direction: column;
+}
+.casillaNum{
+    width: 170px;
+    height: 100px;
+
 }
 
 /* Bordes exteriores */
