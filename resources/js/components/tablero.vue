@@ -1,5 +1,16 @@
 <template>
   <div>
+     <div v-if="modoJuego =='Categoria'" class="form-group" id="selecCategoria">
+      <select class="custom-select" id="secCategoria" name="categorias"  v-model="categoria">
+        <option disabled selected value="">Seleccione una categoría</option>
+        <option
+          v-for="ambito in arrayAmbitos"
+          :key="ambito.id"
+          v-text="ambito.nombreCategoria"
+        ></option>
+      </select>
+    
+    </div>
     <div id="tablero">
       <!-- casilla inicio -->
       <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)' }">
@@ -71,7 +82,7 @@
                   n !== 54 &&
                   n !== 58 &&
                   n !== 59 && 
-                  arrayMujeres[n-2].imagen !==null
+                  personasHM[n-2].imagen !==null
                 ">
                 
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
@@ -117,7 +128,7 @@
                   n !== 54 &&
                   n !== 58 &&
                   n !== 59 &&
-                  arrayMujeres[n-2].imagen===null">
+                  personasHM[n-2].imagen===null">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/feminismo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n" v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
@@ -126,7 +137,7 @@
                 <p
                   class="m-0"
                   :id="'nombreMujer'"
-                  v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
+                  v-text="personasHM[n-2].nombre+' '+personasHM[n-2].apellido "
                 ></p>
               </div>
           </div>
@@ -229,11 +240,6 @@
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
-             <div v-if="modoJuego == 'ambitos'">
-                <h1>Bienvenido a la categoria</h1>
-                
-    <h5> Ha seleccionado: {{ juego }}</h5>
-            </div>
           </div>
         </div>
       </div>
@@ -248,12 +254,17 @@ import axios from 'axios';
 export default {
   data(){
       return{
-      juego:"",
+      id: "", 
+      nombreCategoria:"", 
+      color:"",
+      arrayAmbitos:[],
+      categoria:"",
       nombre:"",
       apellido:"",
       modoJuego:"",    
       arrayMujeres:[],
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
+      opcionCategoria: ''
     }
   },
   methods:{
@@ -281,25 +292,34 @@ export default {
           console.log(error);
         });
     },
-    darInfo(n){
-      console.log("Numero casilla "+n);
-      console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
-    }
+    categoriaSelect(){
+            let ca = this;
+            let urls = 'categorias';
+            axios.get(urls).then(function (response) {
+                ca.arrayAmbitos = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
   },
-  mostrar(val) {      
-        for (var i = 0; i < this.options.length; i++) {
-          if (this.options[i].value === val){
-            this.selectedText = this.options[i].text;
-            return this.options[i].text;
-          }
-        }
-        return '';
-      },
-  mounted(){
-      this.cargarMujeres();
-      console.log('Component mounted.')
-      
+  darInfo(n){
+    console.log("Numero casilla "+n);
+    console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
   }
+   
+  },
+
+  mounted(){
+      this.categoriaSelect();
+      this.cargarMujeres();
+      
+      // console.log('Component mounted.')
+  },
+  computed:{
+        personasHM() {
+            return this.arrayMujeres.filter((sdg) => sdg.id_categoria == this.modoJuego);
+        }
+    }
+
 
 }
 </script>

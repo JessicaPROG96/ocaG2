@@ -97,6 +97,15 @@ div.contenedor {
     overflow: hidden;
     /* width: 100%; */
 }
+
+/* seleccion de categoria */
+/* #selecCategoria{
+    color: #C4EAF2;
+} */
+#secCategoria{
+    width: 300px;
+    float: inline-block;
+}
  .casillaBody{
     background-color: crimson;
 } 

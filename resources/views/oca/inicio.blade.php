@@ -53,20 +53,29 @@
             </div>
             <div class="col-6">
                 <!-- select para elegir el modo juego -->
-                <div class="form-group" ijuegoSeleccionadod="juego">
+                <div class="form-group" ijuegoSeleccionadod="juego" v-model="opcionCategoria">
                     <select class="dificultad" id="modoJuego">
                         <option hidden value="">Modo Juego</option>
-                        <option value="Normal">Normal</option> 
-                        <option value="Categoria">Categorías</option>
+                        <option value="Normal">Por defecto</option> 
+                        <option value="1">Historia</option>
+                        <option value="2">Derecho</option>
+                        <option value="3">Antropología</option>
+                        <option value="4">Geografía</option>
+                        <option value="Filosofia">Filosofía</option>
+                        <option value="Psicologia">Psicología</option>
+                        <option value="Economia">Economía</option>
+                        <option value="Psicologia">Psicología</option>
+                        <option value="Psicologia">Psicología</option>
                     </select>
                     <input type="hidden" name="juegoSeleccionado" value=""/>
                     <p id="juegoSeleccionado"></p>
                 </div>
+
             </div>
         </div>
         <br>
         <div class="col-md-2 botonDivInicioJugadores">
-            <button id="botonJugar" ><a href="{{url('juego')}}">Jugar</a></button>
+            <button id="botonJugar" ><a href="{{url('juego')}}" >Jugar</a></button>
         </div>
     </div> 
 </div>

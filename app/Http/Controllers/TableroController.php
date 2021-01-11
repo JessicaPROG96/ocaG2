@@ -21,6 +21,15 @@ class TableroController extends Controller
 
         $mujer=DB::table('mujeres')->get();
         return $mujer;
+
+
+        // $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
+        // $mujer = DB::select($sql);
+        // return $mujer;
+
+        // $sql = 'SELECT * FROM products';
+        // $products = DB::select($sql);
+        // return $products;
     }
 
     public function categorias()
@@ -29,8 +38,9 @@ class TableroController extends Controller
         // $mujer = Mujer::all();
         // return $mujer;
 
-        $categoria=DB::table('categorias')->get();
-        return $categoria;
+        $categorias=DB::table('categorias')->get();
+        return $categorias;
+       
     }
 
     /**
