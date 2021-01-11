@@ -235,7 +235,6 @@
         </div>
       </div>
 
-
       <svg height="60" width="60" class="ficha1">
         <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="red" />
       </svg>
@@ -245,6 +244,41 @@
 
     </div>
     <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+
+    <!-- Modal dado. -->
+    <div class="modal fade" id="modalDado" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modalDado" v-if="dado==1">
+              <img src="'../resources/img/otros/dados/dado1.svg" alt="1">
+            </div>
+            <div class="modalDado" v-else-if="dado==2">
+              <img src="'../resources/img/otros/dados/dado2.svg" alt="2">
+            </div>
+            <div class="modalDado" v-else-if="dado==3">
+              <img src="'../resources/img/otros/dados/dado3.svg" alt="3">
+            </div>
+            <div class="modalDado" v-else-if="dado==4">
+              <img src="'../resources/img/otros/dados/dado4.svg" alt="4">
+            </div>
+            <div class="modalDado" v-else-if="dado==5">
+              <img src="'../resources/img/otros/dados/dado5.svg" alt="5">
+            </div>
+            <div class="modalDado" v-else-if="dado==6">
+              <img src="'../resources/img/otros/dados/dado6.svg" alt="6">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
     
 
@@ -274,6 +308,7 @@ export default {
       apellido:"",
       arrayMujeres:[],
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
+      turnosJugadores:[],
       jugador1Posicion:1,
       jugador2Posicion:1,
       jugador3Posicion:null,
@@ -301,13 +336,12 @@ export default {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
           console.log(me.arrayMujeres);
-          
-          /* console.log(me.arrayMujeres[0].nombre); */
         })
         .catch(function (error) {
           console.log(error);
         });
     },
+    /* FUNCIÓN TEMPORAL. BORRAR CUANDO NO SEA NECESARIA. */
     darInfo(n){
       console.log("Numero casilla "+n);
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
@@ -315,7 +349,9 @@ export default {
     tirarDado(){
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
+      $("#modalDado").modal(dado);
       this.moverFicha(dado);
+
     },
     moverFicha(dado){
 
