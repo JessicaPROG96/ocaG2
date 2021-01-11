@@ -139,7 +139,7 @@ div.contenedor {
 #casilla53 .casillaJuego{
     border-radius: 40px 0px 0px 0px;
 }
-#casilla59 .casillaJuego{
+#casilla59 .casillaJuego, #casilla33 .casillaJuego{
     border-radius: 0px 0px 0px 40px;
 }
 #casilla40 .casillaJuego{
@@ -229,7 +229,7 @@ background-color: blueviolet; }
 #casilla32{grid-area: c32; 
 background-color: rgb(83, 10, 219); }
 #casilla33{grid-area: c33;
-background-color: blueviolet; }
+    background-color: #e15766; }
 #casilla34{grid-area: c34; 
 background-color: grey;}
 #casilla35{grid-area: c35;
@@ -306,4 +306,16 @@ color: white;
 .modalInfoC img{
     width: 200px;
     height: 200px;
+}
+
+.ficha1{
+    grid-area: c1;
+    z-index: 2;
+    margin-left: 50px;
+}
+.ficha2{
+    grid-area: c1;
+    z-index: 2;
+    margin-top: 40px;
+    margin-left: 50px;
 }

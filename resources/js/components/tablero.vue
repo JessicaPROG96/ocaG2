@@ -1,5 +1,7 @@
 <template>
+
   <div>
+
     <div id="tablero">
       <!-- casilla inicio -->
       <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)' }">
@@ -233,7 +235,16 @@
         </div>
       </div>
 
+
+      <svg height="60" width="60" class="ficha1">
+        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="red" />
+      </svg>
+      <svg height="60" width="60" class="ficha2">
+        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="yellow" />
+      </svg>
+
     </div>
+    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
 
     
 
@@ -263,6 +274,10 @@ export default {
       apellido:"",
       arrayMujeres:[],
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
+      jugador1Posicion:1,
+      jugador2Posicion:1,
+      jugador3Posicion:null,
+      jugador4Posicion:null,
     }
   },
   methods:{
@@ -296,12 +311,113 @@ export default {
     darInfo(n){
       console.log("Numero casilla "+n);
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
-    }
+    },
+    tirarDado(){
+      var dado=Math.floor(Math.random() * 6)+1;
+      console.log("Tiro el dado. Ha salido "+dado);
+      this.moverFicha(dado);
+    },
+    moverFicha(dado){
+
+      /* if numero de jugador */
+
+      this.jugador1Posicion=this.jugador1Posicion+dado; 
+      console.log("El jugador1 esta en la posicion "+this.jugador1Posicion);
+      const gridJugador1 = document.querySelector(".ficha1");
+      gridJugador1.style["grid-area"] = "c"+this.jugador1Posicion;
+
+      /* Comprueba si el jugador ha llegado correctamente a la casilla final */
+      var falta= 63-this.jugador1Posicion;
+      console.log("Te faltan "+falta+ " casillas");
+      if(falta==0){
+        console.log("Has acabado!!!!");
+      }
+      else if(falta<0){
+        console.log("Casi!!");
+        gridJugador1.style["grid-area"] = "c"+(falta+63);
+        this.jugador1Posicion=(falta+63);
+      }
+
+      /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, laberinto o calavera */
+      switch(this.jugador1Posicion){
+        case 5: 
+          gridJugador1.style["grid-area"] = "c9";
+          this.jugador1Posicion=9;
+          break;
+        case 9: 
+          gridJugador1.style["grid-area"] = "c14";
+          this.jugador1Posicion=14;
+          break;
+        case 12: 
+          gridJugador1.style["grid-area"] = "c6";
+          this.jugador1Posicion=6;
+          break;
+        case 14: 
+          gridJugador1.style["grid-area"] = "c18";
+          this.jugador1Posicion=18;
+          break;
+        case 18: 
+          gridJugador1.style["grid-area"] = "c23";
+          this.jugador1Posicion=23;
+          break;
+        case 19: 
+          /* POSADA */
+          break;
+        case 23: 
+          gridJugador1.style["grid-area"] = "c32";
+          this.jugador1Posicion=32;
+          break;
+        case 26: 
+          /* DADOS */
+          break;
+        case 31: 
+          /* POZO */
+          break;
+        case 32: 
+          gridJugador1.style["grid-area"] = "c41";
+          this.jugador1Posicion=41;
+          break;
+        case 41: 
+          gridJugador1.style["grid-area"] = "c45";
+          this.jugador1Posicion=45;
+          break;
+        case 42: 
+          /* LABERINTO */
+          break;
+        case 45: 
+          gridJugador1.style["grid-area"] = "c50";
+          this.jugador1Posicion=50;
+          break;
+        case 50: 
+          gridJugador1.style["grid-area"] = "c54";
+          this.jugador1Posicion=54;
+          break;
+        case 53: 
+          /* DADOS */
+          break;
+        case 54: 
+          gridJugador1.style["grid-area"] = "c59";
+          this.jugador1Posicion=59;
+          break;
+        case 58: 
+          /* CALAVERA */
+          gridJugador1.style["grid-area"] = "c1";
+          this.jugador1Posicion=1;
+          break;
+
+
+
+      }
+
+
+
+
+    },
   },
   mounted(){
-      this.cargarMujeres();
-      console.log('Component mounted.')
-      
+    
+    this.cargarMujeres();
+    console.log('Component mounted.');
   }
 
 }
