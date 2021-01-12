@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Mujer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,12 +16,12 @@ class TableroController extends Controller
      */
     public function indexMujer()
     {
-      
-        // $mujer = Mujer::all();
-        // return $mujer;
-
-        $mujer=DB::table('mujeres')->get();
+        $mujer = Mujer::all();
         return $mujer;
+
+
+        // $mujer=DB::table('mujeres')->get();
+        // return $mujer;
 
 
         // $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
@@ -32,14 +33,17 @@ class TableroController extends Controller
         // return $products;
     }
 
-    public function categorias()
+    public function categorias(Request $request)
     {
       
         // $mujer = Mujer::all();
         // return $mujer;
 
-        $categorias=DB::table('categorias')->get();
-        return $categorias;
+        // $categorias=DB::table('categorias')->get();
+        // return $categorias;
+
+        $modoCategoria = Categoria::with('categorias')->where('id',$request->id)->orderBy('nombreCategoria', 'asc')->get();
+        return $modoCategoria;
        
     }
 

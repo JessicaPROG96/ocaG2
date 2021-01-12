@@ -53,7 +53,7 @@
             </div>
             <div class="col-6">
                 <!-- select para elegir el modo juego -->
-                <div class="form-group" ijuegoSeleccionadod="juego" v-model="opcionCategoria">
+                <div class="form-group" ijuegoSeleccionadod="juego">
                     <select class="dificultad" id="modoJuego">
                         <option hidden value="">Modo Juego</option>
                         <option value="Normal">Por defecto</option> 

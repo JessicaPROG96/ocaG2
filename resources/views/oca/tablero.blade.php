@@ -7,4 +7,5 @@
     <tablero-component></tablero-component>
 </div>
 
+    
 @endsection
