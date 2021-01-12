@@ -394,6 +394,7 @@ export default {
           break;
         case 26: 
           /* DADOS */
+          this.turno=this.turno-1;
           break;
         case 31: 
           /* POZO */
@@ -419,6 +420,7 @@ export default {
           break;
         case 53: 
           /* DADOS */
+          this.turno=this.turno-1;
           break;
         case 54: 
           gridJugador1.style["grid-area"] = "c59";
