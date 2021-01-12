@@ -11,7 +11,7 @@ class Categoria extends Model
     protected $table = 'categorias';
     public $timestamps = false;
 
-    protected $fillable = ['nombreCategoria'];
+    protected $fillable = ['nombreCategoria','color'];
 
     // Funciones
     public function galeria() {

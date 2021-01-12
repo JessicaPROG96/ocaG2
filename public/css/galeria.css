@@ -71,6 +71,17 @@
 }
 
 
+/* Modal y todo su contenido */
+.modal-content
+{
+    background-color: rgb(233, 233, 233) !important;
+}
+
+.imagen-modal
+{
+    width: 220px;
+    height: 200px;
+}
 /* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
 body
 {

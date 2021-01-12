@@ -4,12 +4,43 @@
 @extends('layouts.master')
 
 @section('content')
+
+@php
+    session_start();
+@endphp
+<!-- Cuando la sesion este iniciada, aparecerá este div que te permitirá ir al modo administrador-->
+    <div class="icono">
+        <a href="#">Modo administrador (WIP)</a>
+    </div>
+             
+
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
 
-<!-- Search form -->
+<!-- Barra de busqueda -->
 <div class="col-md-10 md-form mb-4 mr-auto ml-auto">
     <input class="form-control" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
+  </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img class="imagen-modal" src="null" alt="">
+          <p class="Desc"><b>Descripción: </b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 <!-- El div de la galeria -->
@@ -17,8 +48,6 @@
 
 <!-- Por cada mujer que hay en la base de datos creamos un div con los datos -->
 <!-- $mujeres = todas las mujeres de la base de datos -->
-
-
 
         <div class="row espacio">
 
@@ -33,19 +62,14 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
-                    {{-- Categoria --}}                  
-                    <h5 class="Categoria">{{$a->categorias->nombreCategoria}}</h5>
+                    {{-- Categoria --}}
+                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>
                     
                 </div>
 
             @endforeach
         
         </div>
-
-            {{-- @foreach ($categorias as $c)
-                <h4 class="categoria">{{$c['nombreCategoria']}}</h4>
-            @endforeach --}}
-  
     
     </div>
     
