@@ -103,8 +103,8 @@
             n !== 54 &&
             n !== 58 &&
             n !== 59 &&
-            arrayMujeres[n - 2].imagen !== null ">
-              <div class="casilla casillaJuego px-2 py-2 text-center"  :style="{  backgroundImage: 'url(../resources/img/fotosMujeres/' + arrayMujeres[n - 2].imagen + ')', }" >
+            mujeresC[n - 2].imagen !== null ">
+              <div class="casilla casillaJuego px-2 py-2 text-center"  :style="{  backgroundImage: 'url(../resources/img/fotosMujeres/' + mujeresC[n - 2].imagen + ')', }" >
                 <!-- encabezado de la casilla -->
                 <div class="casillaHead">
                   <p  class="numCasilla"
