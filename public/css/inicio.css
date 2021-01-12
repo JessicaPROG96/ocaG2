@@ -308,14 +308,33 @@ color: white;
     height: 200px;
 }
 
-.ficha1{
+.jugador1{
     grid-area: c1;
     z-index: 2;
     margin-left: 50px;
 }
-.ficha2{
+.jugador2{
     grid-area: c1;
     z-index: 2;
     margin-top: 40px;
     margin-left: 50px;
+}
+.jugador3{
+    grid-area: c1;
+    z-index: 2;
+    margin-left: 80px;
+}
+.jugador4{
+    grid-area: c1;
+    z-index: 2;
+    margin-top: 40px;
+    margin-left: 80px;
+}
+#img_dado{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
 }

@@ -235,18 +235,24 @@
         </div>
       </div>
 
-      <svg height="60" width="60" class="ficha1">
+      <svg height="60" width="60" class="jugador1">
         <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="red" />
       </svg>
-      <svg height="60" width="60" class="ficha2">
+      <svg height="60" width="60" class="jugador2">
         <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="yellow" />
+      </svg>
+      <svg height="60" width="60" class="jugador3" v-if="numeroJugadores>=3">
+        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="blue" />
+      </svg>
+      <svg height="60" width="60" class="jugador4" v-if="numeroJugadores==4">
+        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="green" />
       </svg>
 
     </div>
-    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado" data-toggle="modal" data-target="#modalDado"></button>
 
     <!-- Modal dado. -->
-    <div class="modal fade" id="modalDado" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
+    <div class="modal fade modalDado" id="modalDado" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -256,47 +262,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="modalDado" v-if="dado==1">
-              <img src="'../resources/img/otros/dados/dado1.svg" alt="1">
-            </div>
-            <div class="modalDado" v-else-if="dado==2">
-              <img src="'../resources/img/otros/dados/dado2.svg" alt="2">
-            </div>
-            <div class="modalDado" v-else-if="dado==3">
-              <img src="'../resources/img/otros/dados/dado3.svg" alt="3">
-            </div>
-            <div class="modalDado" v-else-if="dado==4">
-              <img src="'../resources/img/otros/dados/dado4.svg" alt="4">
-            </div>
-            <div class="modalDado" v-else-if="dado==5">
-              <img src="'../resources/img/otros/dados/dado5.svg" alt="5">
-            </div>
-            <div class="modalDado" v-else-if="dado==6">
-              <img src="'../resources/img/otros/dados/dado6.svg" alt="6">
-            </div>
+            <img id="img_dado" />
           </div>
           
         </div>
       </div>
     </div>
 
-    
-
-    <!-- <h1>Muestra los datos de una mujer</h1>
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Foto</th>
-        </tr>
-      </thead>
-      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> 
-            <td v-text="mujer.nombre"></td>
-            <td v-text="mujer.apellido"></td>
-            <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
-        </tr>
-    </table> -->
   </div>
 </template>
 <script>
@@ -308,16 +280,32 @@ export default {
       apellido:"",
       arrayMujeres:[],
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
-      turnosJugadores:[],
-      jugador1Posicion:1,
-      jugador2Posicion:1,
-      jugador3Posicion:null,
-      jugador4Posicion:null,
+      turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
+      turno:0,
+      numeroJugadores:3,
+      jugadores:{
+        jugador1:{
+          posicion:1,
+          puntuacion:0
+        },
+        jugador2:{
+          posicion:1,
+          puntuacion:0
+        },
+        jugador3:{
+          posicion:1,
+          puntuacion:0
+        },
+        jugador4:{
+          posicion:1,
+          puntuacion:0
+        },
+      },
     }
   },
   methods:{
     shuffle(a) {
-      console.log("Me ejecuto");
+      console.log("Array aleatorizado");
       var j, x, i;
       for (i = a.length - 1; i > 0; i--) {
           j = Math.floor(Math.random() * (i + 1));
@@ -349,59 +337,60 @@ export default {
     tirarDado(){
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
-      $("#modalDado").modal(dado);
+      //Se envia la imagen al modal
+      var imgsrc = "../resources/img/otros/dados/dado"+dado+".svg";
+      var texto= "¡Has sacado un "+dado+"!"
+      $('#img_dado').attr('src',imgsrc);
       this.moverFicha(dado);
-
+      
     },
     moverFicha(dado){
-
-      /* if numero de jugador */
-
-      this.jugador1Posicion=this.jugador1Posicion+dado; 
-      console.log("El jugador1 esta en la posicion "+this.jugador1Posicion);
-      const gridJugador1 = document.querySelector(".ficha1");
-      gridJugador1.style["grid-area"] = "c"+this.jugador1Posicion;
+      
+      this.jugadores[this.turnosJugadores[this.turno]].posicion=this.jugadores[this.turnosJugadores[this.turno]].posicion+dado; 
+      console.log("El "+this.jugadores[this.turnosJugadores[this.turno]]+" esta en la posicion "+this.jugadores[this.turnosJugadores[this.turno]].posicion);
+      const gridJugador1 = document.querySelector("."+this.turnosJugadores[this.turno]);
+      gridJugador1.style["grid-area"] = "c"+this.jugadores[this.turnosJugadores[this.turno]].posicion;
 
       /* Comprueba si el jugador ha llegado correctamente a la casilla final */
-      var falta= 63-this.jugador1Posicion;
-      console.log("Te faltan "+falta+ " casillas");
+      var falta= 63-this.jugadores[this.turnosJugadores[this.turno]].posicion;
+      /* console.log("Te faltan "+falta+ " casillas"); */
       if(falta==0){
         console.log("Has acabado!!!!");
       }
       else if(falta<0){
-        console.log("Casi!!");
+        /* console.log("Casi!!"); */
         gridJugador1.style["grid-area"] = "c"+(falta+63);
-        this.jugador1Posicion=(falta+63);
+        this.jugadores[this.turnosJugadores[this.turno]].posicion=(falta+63);
       }
 
       /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, laberinto o calavera */
-      switch(this.jugador1Posicion){
+      switch(this.jugadores[this.turnosJugadores[this.turno]].posicion){
         case 5: 
           gridJugador1.style["grid-area"] = "c9";
-          this.jugador1Posicion=9;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=9;
           break;
         case 9: 
           gridJugador1.style["grid-area"] = "c14";
-          this.jugador1Posicion=14;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=14;
           break;
         case 12: 
           gridJugador1.style["grid-area"] = "c6";
-          this.jugador1Posicion=6;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=6;
           break;
         case 14: 
           gridJugador1.style["grid-area"] = "c18";
-          this.jugador1Posicion=18;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=18;
           break;
         case 18: 
           gridJugador1.style["grid-area"] = "c23";
-          this.jugador1Posicion=23;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=23;
           break;
         case 19: 
           /* POSADA */
           break;
         case 23: 
           gridJugador1.style["grid-area"] = "c32";
-          this.jugador1Posicion=32;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=32;
           break;
         case 26: 
           /* DADOS */
@@ -411,39 +400,46 @@ export default {
           break;
         case 32: 
           gridJugador1.style["grid-area"] = "c41";
-          this.jugador1Posicion=41;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=41;
           break;
         case 41: 
           gridJugador1.style["grid-area"] = "c45";
-          this.jugador1Posicion=45;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=45;
           break;
         case 42: 
           /* LABERINTO */
           break;
         case 45: 
           gridJugador1.style["grid-area"] = "c50";
-          this.jugador1Posicion=50;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=50;
           break;
         case 50: 
           gridJugador1.style["grid-area"] = "c54";
-          this.jugador1Posicion=54;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=54;
           break;
         case 53: 
           /* DADOS */
           break;
         case 54: 
           gridJugador1.style["grid-area"] = "c59";
-          this.jugador1Posicion=59;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=59;
           break;
         case 58: 
           /* CALAVERA */
           gridJugador1.style["grid-area"] = "c1";
-          this.jugador1Posicion=1;
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=1;
           break;
-
-
-
       }
+
+      /* console.log("El index es "+this.turnosJugadores.indexOf(this.turno)); */
+     /*  console.log("el turnooo es "+this.turno); */
+      /* Cambiar por el numero de jugadores de la variable que se reciba */
+      if(this.turno==this.numeroJugadores-1){
+        this.turno=0;
+      }else{
+        this.turno=this.turno+1;
+      }
+
 
 
 
@@ -451,9 +447,11 @@ export default {
     },
   },
   mounted(){
-    
-    this.cargarMujeres();
     console.log('Component mounted.');
+    this.cargarMujeres();
+    
+    
+    
   }
 
 }
