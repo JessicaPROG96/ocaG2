@@ -132,7 +132,7 @@
         </div>
 
         <!-- Si la mujer de la casilla no tiene foto -->
-        <div
+         <div
           class="casillaif"
           v-else-if="
             n !== 5 &&
@@ -156,6 +156,27 @@
             n !== 59 &&
             arrayMujeres[n - 2].imagen === null
           " >
+          <div
+            class="casilla casillaJuego px-2 py-2 text-center"
+            :style="{
+              backgroundImage: 'url(../resources/img/otros/feminismo.jpg)',}" >
+            <div class="casillaHead">
+              <p
+                class="numCasilla"
+                v-text="n"
+                v-on:click="darInfo(n)"
+                data-toggle="modal"
+                :data-target="'#modalInfo' + n"
+              ></p>
+            </div>
+            <!-- <div class="casillaFooter" >
+                <p
+                  class="m-0"
+                  :id="'nombreMujer'"
+                  v-text="personasHM[n-2].nombre+' '+personasHM[n-2].apellido "
+                ></p>
+              </div> -->
+          </div>
         </div>
 
         <!-- Casillas OCA -->
@@ -304,13 +325,13 @@ export default {
     return {
       id: "",
       nombre: "",
+      imagen: '',
       apellido: "",
-      imagen: "",
       arrayMujeres: [],
       nombreCategoria: "",
       color: "",
       arrayAmbitos: [],
-      mujeresC: [],
+      mujeresC:[],
       modoJuego: "",
       arrayCategorias: [
         "Historia",
@@ -327,7 +348,7 @@ export default {
   },
   methods: {
     shuffle(a) {
-      console.log("Me ejecuto");
+      //console.log("Me ejecuto");
       var j, x, i;
       for (i = a.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
@@ -344,11 +365,12 @@ export default {
       axios
         .get(url)
         .then(function (response) {
-          console.log(response)
+          // console.log(response)
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
           me.modoJuego = localStorage.getItem("modoJuego");
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          // console.log(me.mujeresC);
 
         })
         .catch(function (error) {
