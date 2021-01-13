@@ -286,6 +286,10 @@ export default {
       turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
       turno:0,
       numeroJugadores:3,
+      posJugador1:1,
+      posJugador2:1,
+      posJugador3:1,
+      posJugador4:1,
       jugadores:{
         jugador1:{
           posicion:1,
@@ -295,10 +299,10 @@ export default {
           pozo:false
         },
         jugador2:{
-          posicion:11,
+          posicion:1,
           puntuacion:0,
           nombre:"",
-          turnosPerdidos:4,
+          turnosPerdidos:0,
           pozo:true
         },
         jugador3:{
@@ -365,41 +369,45 @@ export default {
         this.turno=0;
         console.log("AHORA EL turnooo es "+this.turno);
         this.comprobarTurnoPerdido();
-        this.comprobarPozo();
         
       }else{
         this.turno=this.turno+1;
         console.log("AHORA EL turnooo es "+this.turno);
         this.comprobarTurnoPerdido();
-        this.comprobarPozo();
+        
       }
     },
     /* Comprueba si el siguiente jugador tiene turnos perdidos (debido a las casillas posada y carcel) 
     y de ser asi cambia de turno */
     comprobarTurnoPerdido(){
       if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos>0){
-        /* console.log("tiene "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos"); */
+        console.log("tiene "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos");
         this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos--;
-        /* console.log("quedan "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos"); */
-        this.cambiarTurno();       
+        console.log("quedan "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos");
+        this.comprobarPozo();
+         
+        this.cambiarTurno();     
+      }
+      else if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos==0){
+        this.jugadores[this.turnosJugadores[this.turno]].pozo==false;
       }
     },
     comprobarPozo(){
       if(this.jugadores[this.turnosJugadores[this.turno]].pozo==true){
-        console.log("hay alguien en el pozo");
-        if(posJugador1<this.jugadores[this.turnosJugadores[0]].posicion || 
-        posJugador2<this.jugadores[this.turnosJugadores[1]].posicion ||
-        posJugador3<this.jugadores[this.turnosJugadores[2]].posicion ||
-        posJugador4<this.jugadores[this.turnosJugadores[3]].posicion){
-          
-          this.jugadores[this.turnosJugadores[this.turno]].pozo==false;
+        if(this.posJugador1<this.jugadores[this.turnosJugadores[0]].posicion && this.jugadores[this.turnosJugadores[0]].posicion>11 || 
+        this.posJugador2<this.jugadores[this.turnosJugadores[1]].posicion && this.jugadores[this.turnosJugadores[1]].posicion>11 ||
+        this.posJugador3<this.jugadores[this.turnosJugadores[2]].posicion && this.jugadores[this.turnosJugadores[2]].posicion>11 ||
+        this.posJugador4<this.jugadores[this.turnosJugadores[3]].posicion && this.jugadores[this.turnosJugadores[3]].posicion>11 ){
 
+          this.jugadores[this.turnosJugadores[this.turno]].pozo==false;
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=0;
+
+          console.log("usuario liberado!!");
           
-        }else{
-          this.cambiarTurno();
         }
 
       }
+
     },
     moverFicha(dado){
       
@@ -463,18 +471,18 @@ export default {
           this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=4;
           this.jugadores[this.turnosJugadores[this.turno]].pozo=true;
           if(this.jugadores[this.turnosJugadores[0]].posicion<31){
-            var posJugador1=this.jugadores[this.turnosJugadores[0]].posicion;
+            this.posJugador1=this.jugadores[this.turnosJugadores[0]].posicion;
           }
           if(this.jugadores[this.turnosJugadores[1]].posicion<31){
-            var posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
+            this.posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
             
           }
           if(this.jugadores[this.turnosJugadores[2]].posicion<31){
-            var posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
+            this.posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
             
           }
           if(this.jugadores[this.turnosJugadores[3]].posicion<31){
-            var posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
+            this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
             
           }
       

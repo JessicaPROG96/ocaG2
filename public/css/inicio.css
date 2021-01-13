@@ -314,7 +314,7 @@ color: white;
     margin-left: 50px;
 }
 .jugador2{
-    grid-area: c11;
+    grid-area: c1;
     z-index: 2;
     margin-top: 40px;
     margin-left: 50px;
