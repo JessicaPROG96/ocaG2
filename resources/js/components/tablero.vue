@@ -2,7 +2,7 @@
   <div>
     
 
-    <!-- <table class="table text-center">
+     <table class="table text-center">
       <thead>
         <tr>
           <th scope="col">id</th>
@@ -11,14 +11,15 @@
           <th scope="col">Foto</th>
         </tr>
       </thead>
-      <tr v-for="mujer in mujeresC" :key="mujer.id"> Recorremos el array y cargamos nuestra tabla
+      <!-- Recorremos el array y cargamos nuestra tabla -->
+      <tr v-for="mujer in mujeresC" :key="mujer.id"> 
             <td v-text="mujer.id"></td>
             <td v-text="mujer.nombre"></td>
             <td v-text="mujer.apellido"></td>
              <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
            
         </tr>
-    </table> -->
+    </table>
 
     <div id="tablero">
       <!-- casilla inicio -->
