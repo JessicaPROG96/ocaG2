@@ -285,7 +285,7 @@ export default {
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
       turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
       turno:0,
-      numeroJugadores:3,
+      numeroJugadores:4,
       posJugador1:1,
       posJugador2:1,
       posJugador3:1,
@@ -389,7 +389,7 @@ export default {
         this.cambiarTurno();     
       }
       else if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos==0){
-        this.jugadores[this.turnosJugadores[this.turno]].pozo==false;
+        this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
       }
     },
     comprobarPozo(){
@@ -399,7 +399,7 @@ export default {
         this.posJugador3<this.jugadores[this.turnosJugadores[2]].posicion && this.jugadores[this.turnosJugadores[2]].posicion>11 ||
         this.posJugador4<this.jugadores[this.turnosJugadores[3]].posicion && this.jugadores[this.turnosJugadores[3]].posicion>11 ){
 
-          this.jugadores[this.turnosJugadores[this.turno]].pozo==false;
+          this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
           this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=0;
 
           console.log("usuario liberado!!");
@@ -421,6 +421,7 @@ export default {
       /* console.log("Te faltan "+falta+ " casillas"); */
       if(falta==0){
         console.log("Has acabado!!!!");
+        this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
       }
       else if(falta<0){
         /* console.log("Casi!!"); */
