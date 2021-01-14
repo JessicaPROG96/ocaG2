@@ -4,20 +4,30 @@
 $(document).ready(function(){
     cargarCategorias();
     saberMujer();
+    seleccionarCategoria();
     $("#searchbar").on("input",buscar);
 });
+
+function seleccionarCategoria() {
+    $('#ambito').on("change",function() {
+        // localStorage.setItem("categoria", $('#ambito').find(":selected").text());
+        document.cookie = "ambito="+$('#ambito').find(":selected").text();
+        console.log($('#ambito').find(":selected").text());
+    })
+}
 
 // Funcion para saber en que mujer estas clickando
 function saberMujer() {
     $('.mujer').click(function() {
         nombre = $(this).find('.nombre').text();            // Cogemos el nombre y lo guardamos
         apellido = $(this).find('.apellido').text();        // Cogemos el apellido y lo guardamos
-        categoria = $(this).find('.categoria').text();     // Cogemos la categoria y la guardamos
-        imagen = $(this).find('.imagen').attr('src');     // Cogemos la categoria y la guardamos
-        console.log(imagen);
-        $(".modal-title").text(nombre +" "+ apellido);
-        $(".imagen-modal").attr('src', imagen);
-        $("modal-body").text(nombre);
+        categoria = $(this).find('.categoria').text();      // Cogemos la categoria y la guardamos
+        imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen y la guardamos
+
+        // Modal
+        $(".modal-title").text(nombre +" "+ apellido);      // Titulo del modal
+        $(".imagen-modal").attr('src', imagen);             // Imagen
+        $(".desc-modal").text("Lorem Ipsum Dolor");         // La descripción
         $("#myModal").modal("show");
         
     });
@@ -32,8 +42,8 @@ function buscar() {
     let ape = document.getElementsByClassName('Apellido');  // Apellido de la mujer
     for (i = 0; i < div.length; i++) 
     {
-        // Convertimos todos los nombres y la busqueda en mayusculas, para que no tengamos problemas encontrando los nombres
-        // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
+        // Convertimos todos los nombres y la busqueda en mayusculas, para que no tengamos problemas con las mayusc. y minus.
+        // Si tiene el string que tiene la barra de busqueda, lo mostramos...
         if (nom[i].innerHTML.toUpperCase().includes(input.toUpperCase()) || ape[i].innerHTML.toUpperCase().includes(input.toUpperCase())) 
         {
             div[i].style.display="block";                  
@@ -41,7 +51,7 @@ function buscar() {
             div[i].style.marginRight="16.5px";
             div[i].style.marginLeft="16.5px";
         } 
-        // Si tiene el string que tiene la barra de busqueda, lo mostramos...
+        // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
         else 
         { 
             div[i].style.display="none"; 

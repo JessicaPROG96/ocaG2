@@ -22,6 +22,15 @@
     <input class="form-control" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
   </div>
 
+<!-- Select -->
+<form action="" method="post">
+  <select id="ambito" class="form-select" aria-label="Default select example">
+    <option selected>Todas</option>
+    <option value="Historia">Historia</option>
+    <option value="Antropología">Antropología</option>
+    <option value="Pedagogía">Pedagogía</option>
+  </select>
+</form>
 <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -34,7 +43,7 @@
         </div>
         <div class="modal-body">
           <img class="imagen-modal" src="null" alt="">
-          <p class="Desc"><b>Descripción: </b></p>
+          <p class="desc-modal"><b>Descripción: </b></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
@@ -54,7 +63,10 @@
             @php $contador = 0; @endphp 
                             
             @foreach( $mujeres as $key => $a)
-
+            
+              @if ($a->categorias->nombreCategoria == $_COOKIE['ambito']) 
+                  {{-- aqui ocultar todos los que no tengas esa categoria --}}
+              @endif
                 <div class="mujer">
                     {{-- Ruta de la imagen --}}
                     <img class="imagen" src="./../resources/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
@@ -63,14 +75,15 @@
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
                     {{-- Categoria --}}
-                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>
-                    
+                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                    
                 </div>
 
+              
+            
             @endforeach
         
         </div>
-    
+<!-- Cerrar galeria -->
     </div>
     
     

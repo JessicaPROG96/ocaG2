@@ -81,6 +81,8 @@
 {
     width: 220px;
     height: 200px;
+    border-radius: 3px;
+    border: 0.2px solid rgba(0, 0, 0, 0.445);
 }
 /* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
 body
