@@ -71,3 +71,22 @@ nav a:hover
     background-color: #e2ab3f;
     width: 900px;
 }
+
+
+/* formulario */
+form{
+    color: white;
+    background-color: teal;
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 30%;
+}
+.cajas{
+    padding: 4%;
+    padding-top: 1%;
+    background-color: tomato;
+}
+.box{
+    /* background-color: violet; */
+    margin-top:  10px;
+}
