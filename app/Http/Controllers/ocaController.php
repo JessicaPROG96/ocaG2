@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mujer;
 use App\Models\Usuario;
+use App\Models\galeria;
 use App\Models\Categoria;
 
 
@@ -22,7 +23,7 @@ class ocaController extends Controller
         return view('oca.tablero');
     }
     public function galeria(){
-        return view('oca.galeria');
+        return view('oca.galeria')->with('mujeres',Galeria::all());
     }
     public function clasificacion(){
         /* $arrayClasificacion=DB::table('clasificacion')->orderBy('puntos','desc')->get(); */

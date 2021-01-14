@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    use HasFactory;
+    // Parametros iniciales
+    protected $table = 'categorias';
+    public $timestamps = false;
+
+    protected $fillable = ['nombreCategoria','color'];
+
+    // Funciones
+    public function galeria() {
+        return $this->hasMany('App\Models\Galeria');
+    }
+
 }
