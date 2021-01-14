@@ -17,6 +17,7 @@
     border-radius: 3px;
     margin: 1em;
     margin-bottom: 1em;
+    border: 0.2px solid rgba(0, 0, 0, 0.445);
 }
 
 .nombre, .apellido
@@ -27,6 +28,17 @@
     text-align: center;
 }
 
+.categoria
+{
+    text-align: center;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    background-color: pink;
+    /* outline: 1px solid rgba(177, 63, 29, 0.473); */
+    box-shadow: -2px 0px 0px 0px rgb(41, 41, 41), 2px 0px 0px 0px rgb(41, 41, 41);
+    
+    /* border-bottom: 30px solid green; */
+}
 .mujer
 {
     background-color:rgba(231, 231, 231, 0.89);
@@ -35,6 +47,10 @@
     /* margin: auto; */
     margin-bottom: 0.5em;
     height: 320px;
+    margin-left: 16.5px;
+    margin-right: 16.5px;
+    background-size: cover;
+    backdrop-filter: blur(10px);
 }
 
 .divGaleria
@@ -50,7 +66,26 @@
     display: flex;
     flex-direction: row;
     /* flex-wrap: wrap; */
-    justify-content: space-around;
-    align-content: space-around;
-    
+    justify-content: flex-start;
+    margin-bottom: 3em;
+}
+
+
+/* Modal y todo su contenido */
+.modal-content
+{
+    background-color: rgb(233, 233, 233) !important;
+}
+
+.imagen-modal
+{
+    width: 220px;
+    height: 200px;
+    border-radius: 3px;
+    border: 0.2px solid rgba(0, 0, 0, 0.445);
+}
+/* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
+body
+{
+    background-attachment: fixed;
 }
