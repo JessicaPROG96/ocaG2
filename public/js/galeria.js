@@ -11,7 +11,7 @@ $(document).ready(function(){
 function seleccionarCategoria() {
     $('#ambito').on("change",function() {
         // localStorage.setItem("categoria", $('#ambito').find(":selected").text());
-        document.cookie = "ambito="+$('#ambito').find(":selected").text();
+        // document.cookie = "ambito="+$('#ambito').find(":selected").text();
         console.log($('#ambito').find(":selected").text());
     })
 }

@@ -64,9 +64,9 @@
                             
             @foreach( $mujeres as $key => $a)
             
-              @if ($a->categorias->nombreCategoria == $_COOKIE['ambito']) 
+              {{-- @if ($a->categorias->nombreCategoria == $_COOKIE['ambito']) --}}
                   {{-- aqui ocultar todos los que no tengas esa categoria --}}
-              @endif
+              {{--@endif --}}
                 <div class="mujer">
                     {{-- Ruta de la imagen --}}
                     <img class="imagen" src="./../resources/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
@@ -75,7 +75,7 @@
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
                     {{-- Categoria --}}
-                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                    
+                    <h5 class="Categoria" style="background:'{{$a->categorias->color}}'">{{$a->categorias->nombreCategoria}}</h5>                    
                 </div>
 
               

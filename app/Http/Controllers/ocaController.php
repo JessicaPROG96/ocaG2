@@ -52,12 +52,34 @@ class ocaController extends Controller{
         $notaMujer->fechaNacimiento = $request->fechaNacimiento;
         $notaMujer->fechaFallecimiento = $request->fechaFallecimiento;
         $notaMujer->imagen = $request->imagen;
+        
+       
+        // $carpeta ='../resources/img/fotosMujeres/';
+        $ruta = public_path().'../resources/img/fotosMujeres/'; 
+        // $nombre_img = $_FILES['imagen']['name'];
+        move_uploaded_file($notaMujer->imagen,$ruta.$notaMujer->imagen);
+        
+        if(isset($notaMujer->imagen)){
+            // echo ($notaMujer->imagen);
+            print_r($notaMujer->imagen);
+        }else
+        {
+            echo ("lol");
+        }
+        //  obtenemos el nombre del archivo
+        //  $imagen =  time()."_".$file->getClientOriginalName();
+         
+        //  $notaMujer->imagen = $imagen;
+        // $_FILES['imagen'];
+        // $notaMujer = $_FILES['imagen']['name'];
+
+        // $notaMujer->$nombre_img = $request->imagen;
         $notaMujer->enlace = $request->enlace;
         $notaMujer->descripcion = $request->descripcion;
         $notaMujer->zonaGeografica = $request->zonaGeografica;
         $notaMujer->id_categoria = $request->id_categoria;
         $notaMujer->save();
 
-        return back()->with('mensaje', 'Mujer agregada correctamente');
+        // return back()->with('mensaje', 'Mujer agregada correctamente');
     }
 }

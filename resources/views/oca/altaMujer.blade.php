@@ -24,7 +24,7 @@
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10">
-                <input type="file" name="imagen" class="form-control-file" id="">
+                <input type="file" name="imagen" class="form-control-file" id="" accept=".jpg, .png, .gif, .jpeg">
             </div>
          </div>
 
