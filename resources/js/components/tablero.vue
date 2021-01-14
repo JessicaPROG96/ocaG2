@@ -272,6 +272,29 @@
       </div>
     </div>
 
+
+    <!-- Modal orden turnos. -->
+    <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Orden de los turnos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          
+            <p v-text="this.jugadores[this.turnosJugadores[0]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[1]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[2]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[3]].nombre" ></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -294,28 +317,28 @@ export default {
         jugador1:{
           posicion:1,
           puntuacion:0,
-          nombre:"",
+          nombre:"nombre1",
           turnosPerdidos:0,
           pozo:false
         },
         jugador2:{
           posicion:1,
           puntuacion:0,
-          nombre:"",
+          nombre:"nombre2",
           turnosPerdidos:0,
           pozo:true
         },
         jugador3:{
           posicion:1,
           puntuacion:0,
-          nombre:"",
+          nombre:"nombre3",
           turnosPerdidos:0,
           pozo:false
         },
         jugador4:{
           posicion:1,
           puntuacion:0,
-          nombre:"",
+          nombre:"nombre4",
           turnosPerdidos:0,
           pozo:false
         },
@@ -392,6 +415,7 @@ export default {
         this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
       }
     },
+    /* Si hay alguien en el pozo comprobamos si algun jugador ha pasado por esa casilla y de ser asi se libera */
     comprobarPozo(){
       if(this.jugadores[this.turnosJugadores[this.turno]].pozo==true){
         if(this.posJugador1<this.jugadores[this.turnosJugadores[0]].posicion && this.jugadores[this.turnosJugadores[0]].posicion>11 || 
@@ -401,9 +425,7 @@ export default {
 
           this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
           this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=0;
-
-          console.log("usuario liberado!!");
-          
+          console.log("usuario liberado!!");    
         }
 
       }
@@ -476,17 +498,13 @@ export default {
           }
           if(this.jugadores[this.turnosJugadores[1]].posicion<31){
             this.posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
-            
           }
           if(this.jugadores[this.turnosJugadores[2]].posicion<31){
             this.posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
-            
           }
           if(this.jugadores[this.turnosJugadores[3]].posicion<31){
             this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
-            
           }
-      
           break;
         case 32: 
           gridJugador.style["grid-area"] = "c41";
@@ -537,6 +555,11 @@ export default {
   mounted(){
     console.log('Component mounted.');
     this.cargarMujeres();
+    /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
+    this.shuffle(this.turnosJugadores);
+    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);
+    
+  
     
   }
 
