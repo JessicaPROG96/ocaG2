@@ -1,27 +1,6 @@
 <template>
-
   <div>
-    
-
-     <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Foto</th>
-        </tr>
-      </thead>
-      <!-- Recorremos el array y cargamos nuestra tabla -->
-      <tr v-for="mujer in mujeresC" :key="mujer.id"> 
-            <td v-text="mujer.id"></td>
-            <td v-text="mujer.nombre"></td>
-            <td v-text="mujer.apellido"></td>
-             <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
-           
-        </tr>
-    </table>
-
+    <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
       <div
@@ -33,265 +12,252 @@
           </div>
         </div>
       </div>
-
-
       <!-- Casillas Nº 2-62 -->
       <div
         class="casillaNum" :id="'casilla' + (n = n + 1)"
         v-for="n in 61"
         :key="n"
       >
-     
-        <!-- Modal con info de las mujeres -->
-        <div
-          class="modal fade modalInfoC" :id="'modalInfo' + n" tabindex="-1" role="dialog" aria-labelledby="modalInfo"  aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" :id="n" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                  {{ arrayMujeres[n - 2].nombre + " " + arrayMujeres[n - 2].apellido  }}
-                </h5> 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-6" v-if="arrayMujeres[n - 2].imagen !== null">
-                    <img :src=" '../resources/img/fotosMujeres/' + arrayMujeres[n - 2].imagen" :alt="'mujer'"/>
-                  </div>
-                  <div class="col-6" v-else>
-                    <img
-                      :src="'../resources/img/otros/feminismo.jpg'"
-                      :alt="'mujer'"/>
-                  </div>
-                  <div class="col-3">
-                    <label for="nacimiento">Nacimiento:</label>
-                    <p>{{ arrayMujeres[n - 2].fechaNacimiento }}</p>
-                  </div>
-                  <div class="col-3">
-                    <label for="nacimiento">Campo:</label>
-                    <p>{{ arrayCategorias[arrayMujeres[n - 2].id_categoria - 1]}}</p>
-                  </div>
+          <!-- Modal con info de las mujeres -->
+          <div
+            class="modal fade modalInfoC" :id="'modalInfo' + n" tabindex="-1" role="dialog" aria-labelledby="modalInfo"  aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" :id="n" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{ mujeresC[n - 2].nombre + " " + mujeresC[n - 2].apellido  }}
+                  </h5> 
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-6" v-if="mujeresC[n - 2].imagen !== null">
+                      <img :src=" '../resources/img/fotosMujeres/' + mujeresC[n - 2].imagen" :alt="'mujer'"/>
+                    </div>
+                    <div class="col-6" v-else>
+                      <img
+                        :src="'../resources/img/otros/feminismo.jpg'"
+                        :alt="'mujer'"/>
+                    </div>
+                    <div class="col-3">
+                      <label for="nacimiento">Nacimiento:</label>
+                      <p>{{ mujeresC[n - 2].fechaNacimiento }}</p>
+                    </div>
+                    <div class="col-3">
+                      <label for="nacimiento">Campo:</label>
+                      <p>{{ arrayCategorias[mujeresC[n - 2].id_categoria - 1]}}</p>
+                    </div>
+                  </div>
 
-                <label for="descripcion">Descripción:</label>
-                <p>{{ arrayMujeres[n - 2].descripcion }}</p>
+                  <label for="descripcion">Descripción:</label>
+                  <p>{{ mujeresC[n - 2].descripcion }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla mujeres con foto -->
-        <div
-          class="casillaif"
-          v-if="
-            n !== 5 &&
-            n !== 6 &&
-            n !== 9 &&
-            n !== 12 &&
-            n !== 14 &&
-            n !== 18 &&
-            n !== 19 &&
-            n !== 23 &&
-            n !== 26 &&
-            n !== 31 &&
-            n !== 32 &&
-            n !== 41 &&
-            n !== 42 &&
-            n !== 45 &&
-            n !== 50 &&
-            n !== 53 &&
-            n !== 54 &&
-            n !== 58 &&
-            n !== 59 &&
-            mujeresC[n - 2].imagen !== null ">
-              <div class="casilla casillaJuego px-2 py-2 text-center"  :style="{  backgroundImage: 'url(../resources/img/fotosMujeres/' + mujeresC[n - 2].imagen + ')', }" >
-                <!-- encabezado de la casilla -->
-                <div class="casillaHead">
-                  <p  class="numCasilla"
-                    v-text="n"
-                    v-on:click="darInfo(n)"
-                    data-toggle="modal"
-                    :data-target="'#modalInfo' + n"
-                  ></p>
-                </div>
-                <!-- cuerpo de la casilla -->
-                <div class="casillaBody">
-                  <div class="area" :id="'area' + n">
-                    <!-- <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'" style="with:100px; height:100px"/> -->
-                  </div>
-                </div>
-                <!-- pie de la casilla -->
-                <!-- <div class="casillaFooter" >
-                    <p
-                      class="m-0"
-                      :id="'nombreMujer'"
-                      v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                    ></p>  
-                  </div> -->
-              </div>
-        </div>
-
-        <!-- Si la mujer de la casilla no tiene foto -->
-         <div
-          class="casillaif"
-          v-else-if="
-            n !== 5 &&
-            n !== 6 &&
-            n !== 9 &&
-            n !== 12 &&
-            n !== 14 &&
-            n !== 18 &&
-            n !== 19 &&
-            n !== 23 &&
-            n !== 26 &&
-            n !== 31 &&
-            n !== 32 &&
-            n !== 41 &&
-            n !== 42 &&
-            n !== 45 &&
-            n !== 50 &&
-            n !== 53 &&
-            n !== 54 &&
-            n !== 58 &&
-            n !== 59 &&
-            arrayMujeres[n - 2].imagen === null
-          " >
+          <!-- Casilla mujeres con foto -->
           <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/feminismo.jpg)',}" >
-            <div class="casillaHead">
-              <p
-                class="numCasilla"
-                v-text="n"
-                v-on:click="darInfo(n)"
-                data-toggle="modal"
-                :data-target="'#modalInfo' + n"
-              ></p>
-            </div>
-            <!-- <div class="casillaFooter" >
+            class="casillaif"
+            v-if="
+              n !== 5 &&
+              n !== 6 &&
+              n !== 9 &&
+              n !== 12 &&
+              n !== 14 &&
+              n !== 18 &&
+              n !== 19 &&
+              n !== 23 &&
+              n !== 26 &&
+              n !== 31 &&
+              n !== 32 &&
+              n !== 41 &&
+              n !== 42 &&
+              n !== 45 &&
+              n !== 50 &&
+              n !== 53 &&
+              n !== 54 &&
+              n !== 58 &&
+              n !== 59 &&
+              mujeresC[n - 2].imagen !== null ">
+                <div class="casilla casillaJuego px-2 py-2 text-center"  :style="{  backgroundImage: 'url(../resources/img/fotosMujeres/' + mujeresC[n - 2].imagen + ')', }" >
+                  <!-- encabezado de la casilla -->
+                  <div class="casillaHead">
+                    <p  class="numCasilla"
+                      v-text="n"
+                      v-on:click="darInfo(n)"
+                      data-toggle="modal"
+                      :data-target="'#modalInfo' + n"
+                    ></p>
+                  </div>
+                  <!-- cuerpo de la casilla -->
+                  <div class="casillaBody">
+                    <div class="area" :id="'area' + n">
+                      <!-- <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'" style="with:100px; height:100px"/> -->
+                    </div>
+                  </div>
+                  <!-- pie de la casilla -->
+                  <!-- <div class="casillaFooter" >
+                      <p
+                        class="m-0"
+                        :id="'nombreMujer'"
+                        v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
+                      ></p>  
+                    </div> -->
+                </div>
+          </div>
+          <!-- Si la mujer de la casilla no tiene foto -->
+          <div
+            class="casillaif"
+            v-else-if="
+              n !== 5 &&
+              n !== 6 &&
+              n !== 9 &&
+              n !== 12 &&
+              n !== 14 &&
+              n !== 18 &&
+              n !== 19 &&
+              n !== 23 &&
+              n !== 26 &&
+              n !== 31 &&
+              n !== 32 &&
+              n !== 41 &&
+              n !== 42 &&
+              n !== 45 &&
+              n !== 50 &&
+              n !== 53 &&
+              n !== 54 &&
+              n !== 58 &&
+              n !== 59 &&
+              mujeresC[n - 2].imagen === null
+            " >
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/feminismo.jpg)',}" >
+              <div class="casillaHead">
                 <p
-                  class="m-0"
-                  :id="'nombreMujer'"
-                  v-text="personasHM[n-2].nombre+' '+personasHM[n-2].apellido "
+                  class="numCasilla"
+                  v-text="n"
+                  v-on:click="darInfo(n)"
+                  data-toggle="modal"
+                  :data-target="'#modalInfo' + n"
                 ></p>
-              </div> -->
-          </div>
-        </div>
-
-        <!-- Casillas OCA -->
-        <div
-          class="casillaif"
-          v-else-if="
-            n == 5 ||
-            n == 9 ||
-            n == 14 ||
-            n == 18 ||
-            n == 23 ||
-            n == 27 ||
-            n == 32 ||
-            n == 36 ||
-            n == 41 ||
-            n == 45 ||
-            n == 50 ||
-            n == 54 ||
-            n == 59
-          "
-        >
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/goose.png)', }">
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+              </div>
+              <!-- <div class="casillaFooter" >
+                  <p
+                    class="m-0"
+                    :id="'nombreMujer'"
+                    v-text="personasHM[n-2].nombre+' '+personasHM[n-2].apellido "
+                  ></p>
+                </div> -->
             </div>
           </div>
-
-        </div> <!-- ? -->
-
-        <!-- Casillas PUENTE -->
-        <div class="casillaif" v-else-if="n == 6 || n == 12">
+          <!-- Casillas OCA -->
           <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/puente.png)', }" >
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+            class="casillaif"
+            v-else-if="
+              n == 5 ||
+              n == 9 ||
+              n == 14 ||
+              n == 18 ||
+              n == 23 ||
+              n == 27 ||
+              n == 32 ||
+              n == 36 ||
+              n == 41 ||
+              n == 45 ||
+              n == 50 ||
+              n == 54 ||
+              n == 59
+            "
+          >
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/goose.png)', }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+            </div>
+
+          </div> <!-- ? -->
+          <!-- Casillas PUENTE -->
+          <div class="casillaif" v-else-if="n == 6 || n == 12">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/puente.png)', }" >
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla POSADA -->
-        <div class="casillaif" v-else-if="n == 19">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{ backgroundImage: 'url(../resources/img/otros/posada2.png)', }" >
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casilla POSADA -->
+          <div class="casillaif" v-else-if="n == 19">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{ backgroundImage: 'url(../resources/img/otros/posada2.png)', }" >
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla POZO -->
-        <div class="casillaif" v-else-if="n == 31">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{ backgroundImage: 'url(../resources/img/otros/pozo.jpg)' }">
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casilla POZO -->
+          <div class="casillaif" v-else-if="n == 31">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{ backgroundImage: 'url(../resources/img/otros/pozo.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla LABERINTO -->
-        <div class="casillaif" v-else-if="n == 42">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/laberinto.jpg)', }" >
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casilla LABERINTO -->
+          <div class="casillaif" v-else-if="n == 42">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/laberinto.jpg)', }" >
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla CÁRCEL -->
-        <div class="casillaif" v-else-if="n == 56">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/carcel.jpg)', }">
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casilla CÁRCEL -->
+          <div class="casillaif" v-else-if="n == 56">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/carcel.jpg)', }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casillas DADO -->
-        <div class="casillaif" v-else-if="n == 26 || n == 53">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/dadosFondo.png)', }">
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casillas DADO -->
+          <div class="casillaif" v-else-if="n == 26 || n == 53">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/dadosFondo.png)', }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Casilla CALAVERA -->
-        <div class="casillaif" v-else-if="n == 58">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/muerte.svg)', }">
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
+          <!-- Casilla CALAVERA -->
+          <div class="casillaif" v-else-if="n == 58">
+            <div
+              class="casilla casillaJuego px-2 py-2 text-center"
+              :style="{
+                backgroundImage: 'url(../resources/img/otros/muerte.svg)', }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
             </div>
           </div>
-        </div>
 
       </div> <!-- Final de Casillas Nº 2 -->
 
@@ -371,8 +337,16 @@ export default {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
           me.modoJuego = localStorage.getItem("modoJuego");
+          //condiciones
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
-          // console.log(me.mujeresC);
+          console.log(me.mujeresC);
+          if (me.modoJuego == 0){
+            // cargar arrayMujeres
+            console.log('entra');
+            me.mujeresC = me.arrayMujeres; 
+            localStorage.removeItem('modoJuego');
+          }
+
 
         })
         .catch(function (error) {
@@ -394,22 +368,22 @@ export default {
     darInfo(n) {
       console.log("Numero casilla " + n);
       console.log(
-        this.arrayMujeres[n - 2].nombre +
+        this.mujeresC[n - 2].nombre +
           " " +
-          this.arrayMujeres[n - 2].apellido +
+          this.mujeresC[n - 2].apellido +
           " " +
-          this.arrayMujeres[n - 2].imagen
+          this.mujeresC[n - 2].imagen
       );
     },
 
       
   },
-  computed: {
-      mujeresCategoria() {
-        return this.arrayMujeres.filter((mujer) => mujer.id_categoria == this.modoJuego);
+  // computed: {
+  //     mujeresCategoria() {
+  //       return this.arrayMujeres.filter((mujer) => mujer.id_categoria == this.modoJuego);
         
-      }
-  },
+  //     }
+  // },
   mounted() {
     this.cargarMujeres();
     this.categoriaSelect();

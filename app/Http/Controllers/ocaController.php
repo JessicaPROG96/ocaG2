@@ -15,7 +15,9 @@ class ocaController extends Controller{
     public $arrayClasi=[];
 
     public function  index(){
-        return view('oca.inicio');
+        // return view('oca.inicio');
+        $categorias = Categoria::get();
+        return view('oca.inicio')->with('categorias', $categorias);
     }
 
     public function tablero(){
@@ -40,6 +42,7 @@ class ocaController extends Controller{
     public function altaMujer(){
         $categorias = Categoria::get();
         return view('oca.altaMujer')->with('categorias', $categorias);
+        // return view('oca.inicio')->with('categorias', $categorias);
         // return view('oca.altaMujer');
     }
 
