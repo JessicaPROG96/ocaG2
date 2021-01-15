@@ -1,8 +1,8 @@
 // Este script es para la pagina de la galeria de las mujeres
-// ----------------------------------------------------------
+// ----------------------------------------------------------|
 // Cuando cargue la pagina, que ejecute las funciones
 $(document).ready(function(){
-    cargarCategorias();
+    // fondosCategorias();
     saberMujer();
     seleccionarCategoria();
     $("#searchbar").on("input",buscar);
@@ -10,13 +10,37 @@ $(document).ready(function(){
 
 function seleccionarCategoria() {
     $('#ambito').on("change",function() {
-        // localStorage.setItem("categoria", $('#ambito').find(":selected").text());
-        document.cookie = "ambito="+$('#ambito').find(":selected").text();
-        console.log($('#ambito').find(":selected").text());
-    })
+        // document.cookie = "ambito="+$('#ambito').find(":selected").text();
+        // console.log($('#ambito').find(":selected").text());
+
+        div = document.getElementsByClassName('mujer');                 // Tarjeta de la mujer
+        cat = document.getElementsByClassName('categoria');
+        categoriaSeleccionada = $('#ambito').find(":selected").text();
+        console.log(categoriaSeleccionada);
+        
+        for (i = 0; i < div.length; i++) 
+        {
+            // Convertimos todos los nombres y la busqueda en mayusculas, para que no tengamos problemas con las mayusc. y minus.
+            // Si tiene el string que tiene la barra de busqueda, lo mostramos...
+            if (cat[i].innerHTML.includes(categoriaSeleccionada))
+            {
+                div[i].style.display="block";                  
+                document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";  
+                div[i].style.marginRight="16.5px";
+                div[i].style.marginLeft="16.5px";
+            } 
+            // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
+            else 
+            { 
+                div[i].style.display="none"; 
+                
+            } 
+            
+        } 
+    });
 }
 
-// Funcion para saber en que mujer estas clickando
+// Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function saberMujer() {
     $('.mujer').click(function() {
         nombre = $(this).find('.nombre').text();            // Cogemos el nombre y lo guardamos
@@ -60,8 +84,8 @@ function buscar() {
     } 
 }
 
-// Funcion para poner fondo y color a las categorías 
-function cargarCategorias() {
+// Funcion para poner FONDO y COLOR a las categorías 
+function fondosCategorias() {
     tarjeta = document.getElementsByClassName('mujer');
     categoria = document.getElementsByClassName('Categoria');
     for ( i = 0; i < tarjeta.length; i++)

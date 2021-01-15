@@ -23,14 +23,13 @@
   </div>
 
 <!-- Select -->
-<form action="" method="post">
-  <select id="ambito" class="form-select" aria-label="Default select example">
-    <option selected>Todas</option>
-    <option value="Historia">Historia</option>
-    <option value="Antropología">Antropología</option>
-    <option value="Pedagogía">Pedagogía</option>
-  </select>
-</form>
+<select id="ambito" class="form-select" aria-label="Default select example">
+  <option selected>Todas</option>
+  <option value="Historia">Historia</option>
+  <option value="Antropología">Antropología</option>
+  <option value="Pedagogía">Pedagogía</option>
+</select>
+
 <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
