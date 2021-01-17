@@ -4,7 +4,7 @@
 @section('content')
 
 <div>
-    <tablero-component></tablero-component>
+      <tablero-component></tablero-component>
 </div>
 
     

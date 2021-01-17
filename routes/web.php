@@ -35,3 +35,7 @@ Route::get('/home', [ocaController::class, 'index'])->name('home')->middleware('
 
 //ruta para cargar las categorias 
 Route::get('categorias', [TableroController::class, 'categorias']);
+//formualrio para dar de alta a una mujer
+Route::get('alta', [ocaController::class, 'altaMujer']);
+//guardar los datos en la BDD
+Route::get('crearMujer', [ocaController::class, 'crearMujer']);

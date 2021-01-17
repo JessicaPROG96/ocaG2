@@ -24,7 +24,8 @@ Vue.config.devtools = true;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('clasificacion', require('./components/ClasificacionComponent.vue').default);
-Vue.component('tablero-component', require('./components/Tablero.vue').default);
+Vue.component('tablero-component', require('./components/tablero.vue').default);
+
 
  
 /**

@@ -42,8 +42,13 @@ class TableroController extends Controller
         // $categorias=DB::table('categorias')->get();
         // return $categorias;
 
-        $modoCategoria = Categoria::with('categorias')->where('id',$request->id)->orderBy('nombreCategoria', 'asc')->get();
-        return $modoCategoria;
+        //  $categorias = Categoria::get();
+        // return view('oca.altaMujer')->with('categorias', $categorias);
+        
+        // $categorias = Categoria::get();
+        // return view('oca.altaMujer')->with('categorias', $categorias);
+        // $modoCategoria = Categoria::with('categorias')->where('id',$request->id)->orderBy('nombreCategoria', 'asc')->get();
+        // return $modoCategoria;
        
     }
 

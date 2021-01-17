@@ -135,7 +135,7 @@ div.contenedor {
     overflow: hidden;
     padding: 1em;
     margin-bottom: 2%;
-    width: 80%;
+    width: 1565px;
     margin: 0 auto;
 }
 #casillaInicio{
@@ -167,6 +167,11 @@ div.contenedor {
     display: flex;
     flex-direction: column;
 }
+.casillaNum{
+    width: 170px;
+    height: 100px;
+
+}
 
 /* Bordes exteriores */
 #casilla25 .casillaJuego{
@@ -185,7 +190,7 @@ div.contenedor {
 #casilla53 .casillaJuego{
     border-radius: 40px 0px 0px 0px;
 }
-#casilla59 .casillaJuego{
+#casilla59 .casillaJuego, #casilla33 .casillaJuego{
     border-radius: 0px 0px 0px 40px;
 }
 #casilla40 .casillaJuego{
@@ -275,7 +280,7 @@ background-color: blueviolet; }
 #casilla32{grid-area: c32; 
 background-color: rgb(83, 10, 219); }
 #casilla33{grid-area: c33;
-background-color: blueviolet; }
+    background-color: #e15766; }
 #casilla34{grid-area: c34; 
 background-color: grey;}
 #casilla35{grid-area: c35;
@@ -352,4 +357,39 @@ color: white;
 .modalInfoC img{
     width: 200px;
     height: 200px;
+}
+
+.jugador1{
+    grid-area: c1;
+    z-index: 2;
+    margin-left: 50px;
+}
+.jugador2{
+    grid-area: c1;
+    z-index: 2;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+.jugador3{
+    grid-area: c1;
+    z-index: 2;
+    margin-left: 80px;
+}
+.jugador4{
+    grid-area: c1;
+    z-index: 2;
+    margin-top: 40px;
+    margin-left: 80px;
+}
+/* boton elegir avatar */
+#botonAvatar{
+    margin-left:10px;
+}
+#img_dado{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
 }
