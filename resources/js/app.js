@@ -37,3 +37,9 @@ Vue.component('tablero-component', require('./components/tablero.vue').default)
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function(){
+    $("#homePage").on("click",function(){
+        localStorage.removeItem("modoJuego");
+    });
+});
