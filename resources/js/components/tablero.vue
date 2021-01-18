@@ -4,7 +4,7 @@
 
     <div id="tablero">
       <!-- casilla inicio -->
-      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)' }">
+      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'1'"></p>
@@ -33,10 +33,10 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-6" v-if="arrayMujeres[n-2].imagen !==null">
-                      <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'"/>
+                      <img :src="'img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'"/>
                     </div>
                     <div class="col-6" v-else>
-                      <img :src="'../resources/img/otros/feminismo.jpg'" :alt="'mujer'"/>
+                      <img :src="'img/otros/feminismo.jpg'" :alt="'mujer'"/>
                     </div>
                     <div class="col-3">
                       <label for="nacimiento">Nacimiento:</label> <p>{{arrayMujeres[n-2].fechaNacimiento}}</p>
@@ -77,7 +77,7 @@
                   arrayMujeres[n-2].imagen !==null
                 ">
                 
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
@@ -122,7 +122,7 @@
                   n !== 58 &&
                   n !== 59 &&
                   arrayMujeres[n-2].imagen===null">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/feminismo.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/feminismo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n" v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
               </div>
@@ -151,7 +151,7 @@
         n == 54 ||
         n == 59 
         ">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/goose.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -160,7 +160,7 @@
 
         <!-- Casillas PUENTE -->
         <div class="casillaif" v-else-if=" n == 6 || n == 12">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/puente.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -169,7 +169,7 @@
 
         <!-- Casilla POSADA -->
         <div class="casillaif" v-else-if=" n == 19">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/posada2.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -178,7 +178,7 @@
 
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/pozo.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -187,7 +187,7 @@
 
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/laberinto.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -196,7 +196,7 @@
 
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/carcel.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -205,7 +205,7 @@
 
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/dadosFondo.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -214,7 +214,7 @@
 
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/muerte.svg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -225,7 +225,7 @@
       </div>
 
       <!-- casilla final -->
-      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }">
+      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(img/otros/desayuno.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'63'"></p>
@@ -380,7 +380,7 @@ export default {
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
       //Se envia la imagen al modal
-      var imgsrc = "../resources/img/otros/dados/dado"+dado+".svg";
+      var imgsrc = "img/otros/dados/dado"+dado+".svg";
       var texto= "¡Has sacado un "+dado+"!"
       $('#img_dado').attr('src',imgsrc);
       this.moverFicha(dado);
