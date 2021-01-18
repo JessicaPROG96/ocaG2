@@ -57,8 +57,8 @@
             <div class="col-6">
                 <div class="form-group" ijuegoSeleccionadod="juego">
                     <select class="dificultad" id="modoJuego">
-                        <option hidden value="">Modo Juego</option>
-                        <option value="0">Por defecto</option> 
+                        <option hidden value="0">Por defecto</option>
+                        {{-- <option value="0"></option>  --}}
                         @foreach ($categorias as $categoria)
                         <option value="{{$categoria['id']}}">{{$categoria['nombreCategoria']}}</option>
                         @endforeach
