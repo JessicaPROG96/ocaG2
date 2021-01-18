@@ -25,14 +25,14 @@
 <!-- Select -->
 <select id="ambito" class="form-select" aria-label="Default select example">
   @php
-      foreach ($mujeres.['id_categoria'] as $key => $b) {
+      foreach ($mujeres as $key => $b) {
         print_r( '<option>'.$b->categorias->nombreCategoria.'</option>');
       }
   @endphp
-  {{-- <option selected>Todas</option>
+  <option selected>Todas</option>
   <option value="Historia">Historia</option>
   <option value="Antropología">Antropología</option>
-  <option value="Pedagogía">Pedagogía</option> --}}
+  <option value="Pedagogía">Pedagogía</option>
 </select>
 
 <!-- Modal -->
