@@ -18,44 +18,45 @@
     <h1 class="galeria">Galeria</h1>
 
 <!-- Barra de busqueda -->
-<div class="col-md-10 md-form mb-4 mr-auto ml-auto">
-    <input class="form-control" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
+<div class="col-md-10 md-form mb-4 ml-auto">
+    <input class="form-control col-md-7 d-inline" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
+    <select id="ambito" class="form-control col-md-3 d-inline" aria-label="Default select example">
+
+      
+      @php
+        // Esta función guarda los "id_categorias" diferentes y los guarda en otro array
+        function unique_multidim_array($array, $key) {
+            $temp_array = array();
+            $i = 0;
+            $key_array = array();
+          
+            foreach($array as $val) {
+                if (!in_array($val[$key], $key_array)) {
+                    $key_array[$i] = $val[$key];
+                    $temp_array[$i] = $val;
+                }
+                $i++;
+            }
+            return $temp_array;
+        }
+        // Guardamos en el array "Filtrado" las categorias diferentes del array mujeres
+        $filtrado = unique_multidim_array($mujeres,'id_categoria');
+    
+        // La opción seleccionada por defecto
+        echo '<option selected value>Todas</option>';
+    
+        // Cargamos las demas opciones cogiendolas del array filtrado
+        foreach ($filtrado as $key => $value) {
+            echo '<option>'.$value->categorias->nombreCategoria.'</option>';
+        }
+        
+      @endphp
+    
+    </select>
   </div>
 
 <!-- Select -->
-<select id="ambito" class="form-select" aria-label="Default select example">
 
-      
-  @php
-    // Esta función guarda los "id_categorias" diferentes y los guarda en otro array
-    function unique_multidim_array($array, $key) {
-        $temp_array = array();
-        $i = 0;
-        $key_array = array();
-      
-        foreach($array as $val) {
-            if (!in_array($val[$key], $key_array)) {
-                $key_array[$i] = $val[$key];
-                $temp_array[$i] = $val;
-            }
-            $i++;
-        }
-        return $temp_array;
-    }
-    // Guardamos en el array "Filtrado" las categorias diferentes del array mujeres
-    $filtrado = unique_multidim_array($mujeres,'id_categoria');
-
-    // La opción seleccionada por defecto
-    echo '<option selected value>Todas</option>';
-
-    // Cargamos las demas opciones cogiendolas del array filtrado
-    foreach ($filtrado as $key => $value) {
-        echo '<option>'.$value->categorias->nombreCategoria.'</option>';
-    }
-    
-  @endphp
-
-</select>
 
 <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
