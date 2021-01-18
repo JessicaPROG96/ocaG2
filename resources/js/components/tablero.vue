@@ -339,6 +339,10 @@ export default {
           //condiciones
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
           console.log(me.mujeresC);
+          for (let index = 0; index < mujeresC.length; index++) {
+            mujeresC.length =+ 0;
+            
+          }
           if (me.modoJuego == 0){
             // cargar arrayMujeres
             console.log('entra');

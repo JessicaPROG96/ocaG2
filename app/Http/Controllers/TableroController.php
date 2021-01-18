@@ -24,9 +24,9 @@ class TableroController extends Controller
         // return $mujer;
 
 
-        // $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
-        // $mujer = DB::select($sql);
-        // return $mujer;
+        $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
+        $mujer = DB::select($sql);
+        return $mujer;
 
         // $sql = 'SELECT * FROM products';
         // $products = DB::select($sql);
