@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mujer;
 use App\Models\Usuario;
-use App\Models\galeria;
+use App\Models\Galeria;
 use App\Models\Categoria;
 
 
