@@ -52,12 +52,17 @@ function ModalMujer() {
         apellido = $(this).find('.apellido').text();        // Cogemos el apellido y lo guardamos
         categoria = $(this).find('.categoria').text();      // Cogemos la categoria y la guardamos
         imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen y la guardamos
+        fecha = $(this).find('.fecha').text();              // Cogemos la fecha
+        zona = $(this).find('.zona').text();                // Cogemos la zona
+        descr = $(this).find('.descripcion').text();        // Cogemos la descripción
 
         // Modal
         $(".modal-title").text(nombre +" "+ apellido);      // Titulo del modal
         $(".imagen-modal").attr('src', imagen);             // Imagen
-        $(".desc-modal").text("Lorem Ipsum Dolor");         // La descripción
-        $("#myModal").modal("show");
+        $(".fecha-modal").text("Fecha: "+fecha);            // Fecha de nacimiento
+        $(".zona-modal").text("Zona: "+zona);               // Zona 
+        $(".desc-modal").text("Descripción: "+descr);       // Descripción
+        $("#myModal").modal("show");                        // Mostrar el modal
         
     });
     

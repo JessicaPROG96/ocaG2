@@ -39,6 +39,7 @@
             }
             return $temp_array;
         }
+
         // Guardamos en el array "Filtrado" las categorias diferentes del array mujeres
         $filtrado = unique_multidim_array($mujeres,'id_categoria');
     
@@ -60,7 +61,7 @@
 
 <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -69,10 +70,17 @@
           </button>
         </div>
         <div class="modal-body">
+          {{-- Imagen --}}
           <img class="imagen-modal" src="null" alt="">
+          {{-- Descripcion --}}
+          <p class="fecha-modal"><b>Fecha nacimiento: </b></p>
+          {{-- Descripcion --}}
+          <p class="zona-modal"><b>Zona: </b></p>
+          {{-- Descripcion --}}
           <p class="desc-modal"><b>Descripción: </b></p>
         </div>
         <div class="modal-footer">
+          {{-- Link a la wiki --}}
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
         </div>
       </div>
@@ -83,7 +91,7 @@
     <div class="divGaleria col-md-10">
 
 <!-- Por cada mujer que hay en la base de datos creamos un div con los datos -->
-<!-- $mujeres = todas las mujeres de la base de datos -->
+<!-- $mujeres = todas las mujeres de la base de datos que nos pasa el controlador-->
 
         <div class="row espacio">
 
@@ -99,6 +107,12 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="fecha">{{$a['fechaNacimiento']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="zona">{{$a['zonaGeografica']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>
@@ -108,6 +122,7 @@
             @endforeach
         
         </div>
+
 <!-- Cerrar galeria -->
     </div>
     
