@@ -70,18 +70,37 @@
           </button>
         </div>
         <div class="modal-body">
-          {{-- Imagen --}}
-          <img class="imagen-modal" src="null" alt="">
-          {{-- Descripcion --}}
-          <p class="fecha-modal"><b>Fecha nacimiento: </b></p>
-          {{-- Descripcion --}}
-          <p class="zona-modal"><b>Zona: </b></p>
-          {{-- Descripcion --}}
-          <p class="desc-modal"><b>Descripción: </b></p>
-        </div>
+
+          {{-- Empieza el grid --}}
+            <div class="container-fluid">
+                <div class="row">
+                    {{-- Div con la imagen --}}
+                    <div class="col-md-6">
+                        <img class="imagen-modal" src="null" alt="">
+                    </div>
+                    {{-- Div con la fecha y la zona --}}
+                    <div class="col-md-3 m-auto">
+                      <div class="row"><b>Fecha nacimiento:&nbsp;</b>
+                        <p class="fecha-modal"></p>
+                      </div>
+                      <div class="row"><b>Zona:&nbsp;</b>
+                        <p class="zona-modal"></p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {{-- Div con la descripción --}}
+                    <div class="col-md-12 ml-auto"><b>Descripción: </b>
+                        <p class="desc-modal"></p>
+                    </div>
+                </div>
+            </div>
+      </div>
+
         <div class="modal-footer">
           {{-- Link a la wiki --}}
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
+          <button type="button" class="btn mx-auto btn-ambito" data-dismiss="modal"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
         </div>
       </div>
     </div>
@@ -107,10 +126,12 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
-                    {{-- Descripción --}}
+                    {{-- Fecha de nacimiento --}}
                     <h4 style="display:none;" class="fecha">{{$a['fechaNacimiento']}}</h4>
-                    {{-- Descripción --}}
+                    {{-- Zona --}}
                     <h4 style="display:none;" class="zona">{{$a['zonaGeografica']}}</h4>
+                    {{-- Link --}}
+                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Categoria --}}
