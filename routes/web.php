@@ -18,7 +18,7 @@ Route::get('/', [ocaController::class, 'index']);
 
 Route::get('juego', [ocaController::class, 'tablero']);
 
-Route::get('galeria', [ocaController::class, 'galeria']);
+Route::get('galeria', [ocaController::class, 'galeria'])->name('galeria');
 
 Route::get('clasificacion', [ocaController::class, 'clasificacion']);
 

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mujer;
 use App\Models\Usuario;
 use App\Models\Categoria;
 use App\Models\Galeria;
+use Illuminate\Support\Facades\Storage;
 
 class ocaController extends Controller{
 
@@ -48,41 +50,22 @@ class ocaController extends Controller{
 
     //añadir una mujer a la base de datos
     public function crearMujer(Request $request){
-        // return view('oca.altaMujer');
-        $notaMujer = new Mujer;
-        $notaMujer->nombre = $request->nombre;
-        $notaMujer->apellido = $request->apellido;
-        $notaMujer->fechaNacimiento = $request->fechaNacimiento;
-        $notaMujer->fechaFallecimiento = $request->fechaFallecimiento;
-        $notaMujer->imagen = $request->imagen;
-        
        
-        // $carpeta ='../resources/img/fotosMujeres/';
-        $ruta = public_path().'../resources/img/fotosMujeres/'; 
-        // $nombre_img = $_FILES['imagen']['name'];
-        move_uploaded_file($notaMujer->imagen,$ruta.$notaMujer->imagen);
-        
-        if(isset($notaMujer->imagen)){
-            // echo ($notaMujer->imagen);
-            print_r($notaMujer->imagen);
-        }else
-        {
-            echo ("lol");
-        }
-        //  obtenemos el nombre del archivo
-        //  $imagen =  time()."_".$file->getClientOriginalName();
-         
-        //  $notaMujer->imagen = $imagen;
-        // $_FILES['imagen'];
-        // $notaMujer = $_FILES['imagen']['name'];
+    $data = $request->all();
+        //coger imagen 
+      if($request->hasfile('imagen')){
+            $image =$request->file('imagen');
+            $nombre = $image->getClientOriginalName(); 
+            $path = $request->imagen->storeAs($image, $nombre); 
+            $data['imagen']=$path;
 
-        // $notaMujer->$nombre_img = $request->imagen;
-        $notaMujer->enlace = $request->enlace;
-        $notaMujer->descripcion = $request->descripcion;
-        $notaMujer->zonaGeografica = $request->zonaGeografica;
-        $notaMujer->id_categoria = $request->id_categoria;
-        $notaMujer->save();
+            // $path=Storage::disk('public')->put($nombre, $image);
+            // $data['imagen']=$path;
 
-        // return back()->with('mensaje', 'Mujer agregada correctamente');
+        // $image->move(public_path().'/img/', $image, $nombre);
+       
+      }
+    Mujer::create($data); 
+    return redirect()->route('galeria')->with('success', 'Mujer agregada correctamente');
     }
 }

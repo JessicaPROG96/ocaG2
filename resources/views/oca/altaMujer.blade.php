@@ -4,31 +4,31 @@
 <form enctype="multipart/form-data" method="GET" action="{{url('crearMujer')}}">
     @csrf 
     <div class="form-group cajas">
-        <input type="text" name="nombre" class="form-control box" id="" placeholder="Nombre">
-        <input type="text" name="apellido" class="form-control box" id="" placeholder="Apellido">
+        <input type="text" name="nombre" class="form-control box"  placeholder="Nombre">
+        <input type="text" name="apellido" class="form-control box"  placeholder="Apellido">
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Nacimiento</label>
             <div class="col-sm-10">
-            <input type="date" name="fechaNacimiento" class="form-control box" id="">
+            <input type="text" name="fechaNacimiento" class="form-control box">
             </div>
          </div>
         
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Fallecimiento</label>
             <div class="col-sm-10">
-            <input type="date" name="fechaFallecimiento"  class="form-control box" id="">
+            <input type="text" name="fechaFallecimiento"  class="form-control box">
             </div>
          </div>
 
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10">
-                <input type="file" name="imagen" class="form-control-file" id="" accept=".jpg, .png, .gif, .jpeg">
+                <input type="file" name="imagen" class="form-control-file" accept=".jpg, .png, .gif, .jpeg">
             </div>
          </div>
 
-        <input type="text" name="enlace"  class="form-control box" id="" placeholder="Enlace">
+        <input type="text" name="enlace"  class="form-control box"  placeholder="Enlace">
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
@@ -36,15 +36,14 @@
             <textarea name="descripcion" class="form-control box" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
          </div>
-         <input type="text" name="zonaGeografica" class="form-control box" id="" placeholder="Zona Geográfica">
+         <input type="text" name="zonaGeografica" class="form-control box"  placeholder="Zona Geográfica">
 
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Categoría</label>
             <div class="col-sm-10">
-           
                 <select name="id_categoria" class="form-control form-control-lg box">
                 @foreach($categorias as $categoria)
-                <option value="{{$categoria['id']}}">{{$categoria['nombreCategoria']}}</option>
+                <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
                 @endforeach
                 </select>
             </div>
