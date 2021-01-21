@@ -70,6 +70,7 @@
           </button>
         </div>
         <div class="modal-body">
+<<<<<<< HEAD
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-7">
@@ -111,6 +112,39 @@
           {{-- <b>Descripción: </b> --}}
           {{-- <textarea readonly class="desc-modal text"></textarea> --}}
           
+=======
+
+          {{-- Empieza el grid --}}
+            <div class="container-fluid">
+                <div class="row">
+                    {{-- Div con la imagen --}}
+                    <div class="col-md-6">
+                        <img class="imagen-modal" src="null" alt="">
+                    </div>
+                    {{-- Div con la fecha y la zona --}}
+                    <div class="col-md-3 m-auto">
+                      <div class="row"><b>Fecha nacimiento:&nbsp;</b>
+                        <p class="fecha-modal"></p>
+                      </div>
+                      <div class="row"><b>Zona:&nbsp;</b>
+                        <p class="zona-modal"></p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {{-- Div con la descripción --}}
+                    <div class="col-md-12 ml-auto"><b>Descripción: </b>
+                        <p class="desc-modal"></p>
+                    </div>
+                </div>
+            </div>
+      </div>
+
+        <div class="modal-footer">
+          {{-- Link a la wiki --}}
+          <button type="button" class="btn mx-auto btn-ambito" data-dismiss="modal"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
+>>>>>>> 74825074ed07e4e5e6222f2007230e5e87315e87
         </div>
         
         @php
@@ -144,10 +178,16 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
+<<<<<<< HEAD
                     {{-- Fecha --}}
+=======
+                    {{-- Fecha de nacimiento --}}
+>>>>>>> 74825074ed07e4e5e6222f2007230e5e87315e87
                     <h4 style="display:none;" class="fecha">{{$a['fechaNacimiento']}}</h4>
-                    {{-- Descripción --}}
+                    {{-- Zona --}}
                     <h4 style="display:none;" class="zona">{{$a['zonaGeografica']}}</h4>
+                    {{-- Link --}}
+                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Descripción --}}
