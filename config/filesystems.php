@@ -37,7 +37,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path().'\\img\\fotosMujeres',
+            'root' => public_path(),
         ],
 
         's3' => [

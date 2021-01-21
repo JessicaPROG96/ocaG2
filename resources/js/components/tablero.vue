@@ -29,29 +29,29 @@
             <div class="modal-dialog modal-dialog-centered" :id="n"  role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">{{arrayMujeres[n-2].nombre+ ' '+arrayMujeres[n-2].apellido}}</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">{{mujeresC[n-2].nombre+ ' '+mujeresC[n-2].apellido}}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                    <div class="col-6" v-if="arrayMujeres[n-2].imagen !==null">
-                      <img :src="'img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'"/>
+                    <div class="col-6" v-if="mujeresC[n-2].imagen !==null">
+                      <img :src="'img/fotosMujeres/'+mujeresC[n-2].imagen" :alt="'mujer'"/>
                     </div>
                     <div class="col-6" v-else>
                       <img :src="'img/otros/feminismo.jpg'" :alt="'mujer'"/>
                     </div>
                     <div class="col-3">
-                      <label for="nacimiento">Nacimiento:</label> <p>{{arrayMujeres[n-2].fechaNacimiento}}</p>
+                      <label for="nacimiento">Nacimiento:</label> <p>{{mujeresC[n-2].fechaNacimiento}}</p>
                     </div>
                     <div class="col-3">
                       <label for="nacimiento">Campo:</label>
-                      <p>{{arrayCategorias[arrayMujeres[n-2].id_categoria-1]}}</p>
+                      <p>{{arrayCategorias[mujeresC[n-2].id_categoria-1]}}</p>
                     </div>
                   </div>
 
-                    <label for="descripcion">Descripción:</label><p>{{arrayMujeres[n-2].descripcion}}</p>
+                    <label for="descripcion">Descripción:</label><p>{{mujeresC[n-2].descripcion}}</p>
                 </div>
               </div>
             </div>
@@ -78,10 +78,10 @@
                   n !== 56 &&
                   n !== 58 &&
                   n !== 59 && 
-                  arrayMujeres[n-2].imagen !==null
+                  mujeresC[n-2].imagen !==null
                 ">
                 
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
@@ -105,7 +105,8 @@
         </div>
 
         <!-- Si la mujer de la casilla no tiene foto -->
-        <div class="casillaif" v-else-if=" n !== 5 &&
+        <div class="casillaif" v-else-if=" 
+                  n !== 5 &&
                   n !== 6 &&
                   n !== 9 &&
                   n !== 12 &&
@@ -125,7 +126,7 @@
                   n !== 56 &&
                   n !== 58 &&
                   n !== 59 &&
-                  arrayMujeres[n-2].imagen===null">
+                  mujeresC[n-2].imagen===null">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/feminismo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n" v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
@@ -134,7 +135,7 @@
                 <p
                   class="m-0"
                   :id="'nombreMujer'"
-                  v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
+                  v-text="mujeresC[n-2].nombre+' '+mujeresC[n-2].apellido "
                 ></p>
               </div>
           </div>
@@ -232,71 +233,6 @@
                         </div> -->
           </div>
         </div>
-        <!-- Si la mujer de la casilla no tiene foto -->
-
-        <!-- Modal con info de las mujeres -->
-        <div
-          class="modal fade modalInfoC"
-          :id="'modalInfo' + n"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="modalInfo"
-          aria-hidden="true"
-        >
-          <div
-            class="modal-dialog modal-dialog-centered"
-            :id="n"
-            role="document"
-          >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                  {{ mujeresC[n - 2].nombre + " " + mujeresC[n - 2].apellido }}
-                </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-6" v-if="mujeresC[n - 2].imagen !== null">
-                    <img
-                      :src="
-                        '../resources/img/fotosMujeres/' +
-                        mujeresC[n - 2].imagen
-                      "
-                      :alt="'mujer'"
-                    />
-                  </div>
-                  <div class="col-6" v-else>
-                    <img
-                      :src="'../resources/img/otros/feminismo.jpg'"
-                      :alt="'mujer'"
-                    />
-                  </div>
-                  <div class="col-3">
-                    <label for="nacimiento">Nacimiento:</label>
-                    <p>{{ mujeresC[n - 2].fechaNacimiento }}</p>
-                  </div>
-                  <div class="col-3">
-                    <label for="nacimiento">Campo:</label>
-                    <p>
-                      {{ arrayCategorias[mujeresC[n - 2].id_categoria - 1] }}
-                    </p>
-                  </div>
-                </div>
-
-                <label for="descripcion">Descripción:</label>
-                <p>{{ mujeresC[n - 2].descripcion }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
           <!-- casilla final -->
       <div
         class="casilla p-2"
@@ -313,15 +249,11 @@
             <div class="area" id="area63"></div>
           </div>
         </div>
-      </div>
-
-      
-      <!-- Final de Casillas Nº 2 -->
+      </div> <!-- Final de Casillas Nº 2 -->
 
     </div>
-    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
-
-    <!-- Modal dado. -->
+     <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+      <!-- Modal dado. -->
     <div class="modal fade modalDado" id="modalDado" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -339,7 +271,7 @@
       </div>
     </div>
 
-    <!-- Modal orden turnos. -->
+       <!-- Modal orden turnos. -->
     <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -360,8 +292,8 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal casilla caida -->
+  
+  <!-- Modal casilla caida -->
     <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -381,7 +313,9 @@
         </div>
       </div>
     </div>
-    
+
+
+
   </div>
 </template>
 
@@ -510,22 +444,20 @@ export default {
         .then(function (response) {
           // console.log(response)
           me.arrayMujeres = response.data;
-          // me.shuffle(me.arrayMujeres);
+          me.shuffle(me.arrayMujeres);
           me.modoJuego = localStorage.getItem("modoJuego");
           //datos filtrados
-          me.mujeresC = me.arrayMujeres.filter(
-            (mujer) => mujer.id_categoria == me.modoJuego
-          );
+          me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
           // console.log(me.mujeresC);
-        if (me.mujeresC.length<=40) {
-          me.mujeresC = me.arrayMujeres;
-        }
           if (me.modoJuego == 0) {
             // cargar arrayMujeres
             console.log("entra");
             me.mujeresC = me.arrayMujeres;
             // localStorage.removeItem('modoJuego');
           }
+          if (me.mujeresC.length>=40) {
+          me.mujeresC = me.arrayMujeres;
+        }
         })
         .catch(function (error) {
           console.log(error);

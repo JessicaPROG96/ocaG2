@@ -56,6 +56,7 @@ class ocaController extends Controller{
       if($request->hasfile('imagen')){
             $image =$request->file('imagen');
             $nombre = $image->getClientOriginalName(); 
+            
             $path = $request->imagen->storeAs($image, $nombre); 
             $data['imagen']=$path;
 

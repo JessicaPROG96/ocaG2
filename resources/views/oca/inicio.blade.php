@@ -64,7 +64,7 @@
                         @endforeach
                     </select>
                     <input type="hidden" name="juegoSeleccionado" value=""/>
-                    {{-- <p id="juegoSeleccionado"></p> --}}
+                    <p id="juegoSeleccionado"></p>
                 </div>
             </div>
         </div>
