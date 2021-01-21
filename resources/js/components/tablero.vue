@@ -446,7 +446,7 @@ export default {
           me.modoJuego = localStorage.getItem("modoJuego");
           //datos filtrados
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
-          if (me.mujeresC.length<=61) {
+          if (me.mujeresC.length<41) {
           me.mujeresC = me.arrayMujeres;
           }
           if (me.modoJuego == 0) {
