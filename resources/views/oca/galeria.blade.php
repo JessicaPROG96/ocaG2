@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="<?php echo asset('css/galeria.css')?>" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js></script>
 @extends('layouts.master')
 
 @section('content')
@@ -8,11 +7,12 @@
 @php
     session_start();
 @endphp
-<!-- Cuando la sesion este iniciada, aparecerá este div que te permitirá ir al modo administrador-->
-    <div class="icono">
-        <a href="#">Modo administrador (WIP)</a>
-    </div>
-             
+
+<!-- script para saber si hay un usuario logueado y poder usarlo en JS -->
+<script>
+  var loggedIn = {{ auth()->check() ? 'true' : 'false' }};
+</script>
+
 
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
@@ -64,25 +64,64 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title col-11" id="exampleModalLongTitle">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                {{-- Imagen --}}
+                <img class="imagen-modal text" src="null" alt="">
+              </div>
+              <div class="col-md-4 m-auto">
+                {{-- Fecha --}}
+                <label>Fecha: </label>
+                <input readonly class="fecha-modal text"></input>
+                {{-- Zona --}}
+                <label>Zona: </label>
+                <input readonly class="zona-modal text"></input>
+
+                <label>Ambito: </label>
+                <input readonly class="ambito-modal text"></input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+                Descripción: <br>
+                <textarea readonly maxlength="10000" rows="10" cols="100" class="desc-modal text"></textarea>
+              </div>
+              <div class="modal-footer col-10 mx-auto">
+                {{-- Link a la wiki --}}
+                <button type="button" class="btn btn-outline-dark mx-auto" data-dismiss="modal">Saber mas 🔗</button>
+              </div>
+            </div>
+          </div>
           {{-- Imagen --}}
-          <img class="imagen-modal" src="null" alt="">
+          {{-- <img class="imagen-modal text" src="null" alt=""> --}}
           {{-- Descripcion --}}
-          <p class="fecha-modal"><b>Fecha nacimiento: </b></p>
+          {{-- <b>Fecha: </b> --}}
+          {{-- <input readonly class="fecha-modal text"></input> --}}
           {{-- Descripcion --}}
-          <p class="zona-modal"><b>Zona: </b></p>
+          {{-- <b>Zona: </b> --}}
+          {{-- <input readonly class="zona-modal text"></input> --}}
           {{-- Descripcion --}}
-          <p class="desc-modal"><b>Descripción: </b></p>
+          {{-- <b>Descripción: </b> --}}
+          {{-- <textarea readonly class="desc-modal text"></textarea> --}}
+          
         </div>
-        <div class="modal-footer">
-          {{-- Link a la wiki --}}
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
-        </div>
+        
+        @php
+            // Si el usuario ha iniciado sesión sale el boton guardar
+            if(isset(Auth::user()->name)){
+              echo '<div class="modal-footer">';
+                echo '<button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>';
+              echo '</div>';
+            }
+        @endphp 
+          
       </div>
     </div>
   </div>
@@ -94,8 +133,6 @@
 <!-- $mujeres = todas las mujeres de la base de datos que nos pasa el controlador-->
 
         <div class="row espacio">
-
-            @php $contador = 0; @endphp 
                             
             @foreach( $mujeres as $key => $a)
             
@@ -107,12 +144,14 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
-                    {{-- Descripción --}}
+                    {{-- Fecha --}}
                     <h4 style="display:none;" class="fecha">{{$a['fechaNacimiento']}}</h4>
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="zona">{{$a['zonaGeografica']}}</h4>
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>

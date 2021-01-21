@@ -6,13 +6,14 @@ $(document).ready(function(){
     ModalMujer();
     seleccionarCategoria();
     $("#searchbar").on("input",buscar);
+    modoAdmin();
 });
 
 function seleccionarCategoria() {
     $('#ambito').on("change",function() {
         div = document.getElementsByClassName('mujer');                 // Tarjeta de la mujer
-        cat = document.getElementsByClassName('categoria');             // categoria
-        categoriaSeleccionada = $('#ambito').find(":selected").text();  //Categoria seleccionada en el select
+        cat = document.getElementsByClassName('categoria');             // Categoria
+        categoriaSeleccionada = $('#ambito').find(":selected").text();  // Categoria seleccionada en el select
 
         //Si la categoria seleccionada es "Todas" mostramos todos directamente
         if (categoriaSeleccionada=="Todas") {
@@ -48,20 +49,22 @@ function seleccionarCategoria() {
 // Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function ModalMujer() {
     $('.mujer').click(function() {
-        nombre = $(this).find('.nombre').text();            // Cogemos el nombre y lo guardamos
-        apellido = $(this).find('.apellido').text();        // Cogemos el apellido y lo guardamos
-        categoria = $(this).find('.categoria').text();      // Cogemos la categoria y la guardamos
-        imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen y la guardamos
+        nombre = $(this).find('.nombre').text();            // Cogemos el nombre 
+        apellido = $(this).find('.apellido').text();        // Cogemos el apellido 
+        categoria = $(this).find('.categoria').text();      // Cogemos la categoria 
+        imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen
         fecha = $(this).find('.fecha').text();              // Cogemos la fecha
         zona = $(this).find('.zona').text();                // Cogemos la zona
+        enlace = $(this).find('.enlace').text();            // Cogemos el enlace
         descr = $(this).find('.descripcion').text();        // Cogemos la descripción
 
         // Modal
         $(".modal-title").text(nombre +" "+ apellido);      // Titulo del modal
         $(".imagen-modal").attr('src', imagen);             // Imagen
-        $(".fecha-modal").text("Fecha: "+fecha);            // Fecha de nacimiento
-        $(".zona-modal").text("Zona: "+zona);               // Zona 
-        $(".desc-modal").text("Descripción: "+descr);       // Descripción
+        $(".fecha-modal").val(fecha);                       // Fecha de nacimiento
+        $(".zona-modal").val(zona);                         // Zona 
+        $(".ambito-modal").val(categoria);                  // Ambito/Categoria
+        $(".desc-modal").val(descr);                        // Descripción
         $("#myModal").modal("show");                        // Mostrar el modal
         
     });
@@ -122,5 +125,19 @@ function fondosCategorias() {
             tarjeta[i].style.background="linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),url('https://i.pinimg.com/originals/dc/52/a1/dc52a1670b930c54f09038e1c653b436.png')";
         }
 
+    }
+}
+
+function modoAdmin() {
+    if (loggedIn){                                          // Esto viene de "galeria.blade.php"
+        $(".text").dblclick(function(event){
+            console.log("ja");
+                $(event.target).attr('readonly',false);  
+                $(event.target).focus();
+        });
+        $(".text").focusout(function(event) {
+        $(event.target).attr('readonly',true);
+            
+        });
     }
 }

@@ -72,9 +72,22 @@
 
 
 /* Modal y todo su contenido */
+
+.modal-header
+{
+    border-bottom: none!important;
+}
+
+.modal-title
+{
+    text-align: center;
+    
+}
 .modal-content
 {
-    background-color: rgb(233, 233, 233) !important;
+    background-color: rgba(255, 255, 255, 0.753) !important;
+    -webkit-backdrop-filter: blur(10px)!important;
+    
 }
 
 .fecha-modal, .zona-modal
@@ -95,8 +108,33 @@
     border-radius: 3px;
     border: 0.2px solid rgba(0, 0, 0, 0.445);
 }
+
+.modal-footer
+{
+    border: none!important;
+}
+/* Los inputs que estan dento del modal */
+.text
+{
+    background-color: transparent!important;
+    border: none!important;
+    display: inline-block!important;
+}
+textarea
+{
+    background-color: transparent;
+    border: none;
+    resize: none!important;
+}
+label
+{
+    display: inline-block!important;
+}
+/* Final del modal */
+
 /* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
 body
 {
     background-attachment: fixed;
+    color: black;
 }
