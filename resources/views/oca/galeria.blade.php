@@ -38,6 +38,7 @@
             }
             return $temp_array;
         }
+
         // Guardamos en el array "Filtrado" las categorias diferentes del array mujeres
         $filtrado = unique_multidim_array($mujeres,'id_categoria');
     
@@ -59,7 +60,7 @@
 
 <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -68,11 +69,37 @@
           </button>
         </div>
         <div class="modal-body">
-          <img class="imagen-modal" src="null" alt="">
-          <p class="desc-modal"><b>Descripción: </b></p>
-        </div>
+
+          {{-- Empieza el grid --}}
+            <div class="container-fluid">
+                <div class="row">
+                    {{-- Div con la imagen --}}
+                    <div class="col-md-6">
+                        <img class="imagen-modal" src="null" alt="">
+                    </div>
+                    {{-- Div con la fecha y la zona --}}
+                    <div class="col-md-3 m-auto">
+                      <div class="row"><b>Fecha nacimiento:&nbsp;</b>
+                        <p class="fecha-modal"></p>
+                      </div>
+                      <div class="row"><b>Zona:&nbsp;</b>
+                        <p class="zona-modal"></p>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {{-- Div con la descripción --}}
+                    <div class="col-md-12 ml-auto"><b>Descripción: </b>
+                        <p class="desc-modal"></p>
+                    </div>
+                </div>
+            </div>
+      </div>
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Saber mas</button>
+          {{-- Link a la wiki --}}
+          <button type="button" class="btn mx-auto btn-ambito" data-dismiss="modal"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
         </div>
       </div>
     </div>
@@ -82,7 +109,7 @@
     <div class="divGaleria col-md-10">
 
 <!-- Por cada mujer que hay en la base de datos creamos un div con los datos -->
-<!-- $mujeres = todas las mujeres de la base de datos -->
+<!-- $mujeres = todas las mujeres de la base de datos que nos pasa el controlador-->
 
         <div class="row espacio">
 
@@ -98,6 +125,14 @@
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
                     <h4 class="Apellido">{{$a['apellido']}}</h4>
+                    {{-- Fecha de nacimiento --}}
+                    <h4 style="display:none;" class="fecha">{{$a['fechaNacimiento']}}</h4>
+                    {{-- Zona --}}
+                    <h4 style="display:none;" class="zona">{{$a['zonaGeografica']}}</h4>
+                    {{-- Link --}}
+                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>
@@ -107,6 +142,7 @@
             @endforeach
         
         </div>
+
 <!-- Cerrar galeria -->
     </div>
     

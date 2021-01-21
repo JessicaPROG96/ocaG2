@@ -77,12 +77,48 @@
     background-color: rgb(233, 233, 233) !important;
 }
 
+.fecha-modal, .zona-modal
+{
+    color: black;
+    text-align: right;
+    display: inline-block;
+}
+.desc-modal
+{
+    text-align: justify;
+    color: black;
+}
 .imagen-modal
 {
-    width: 220px;
-    height: 200px;
+    display: inline-block;
+    margin-right: 3em;
+    width: 320px;
+    height: 300px;
+    margin-left: 0.7em;
+    margin-bottom: 3em;
     border-radius: 3px;
     border: 0.2px solid rgba(0, 0, 0, 0.445);
+}
+
+.modal-footer, .modal-header
+{
+    border: none!important;
+}
+.btn-ambito:hover
+{
+    box-shadow:10px 10px 10px yellow;
+}
+
+.enlace-btn
+{
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.enlace-btn:hover
+{
+    color: black;
+    text-decoration: none;
 }
 /* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
 body

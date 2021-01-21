@@ -48,16 +48,29 @@ function seleccionarCategoria() {
 // Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function ModalMujer() {
     $('.mujer').click(function() {
-        nombre = $(this).find('.nombre').text();            // Cogemos el nombre y lo guardamos
-        apellido = $(this).find('.apellido').text();        // Cogemos el apellido y lo guardamos
-        categoria = $(this).find('.categoria').text();      // Cogemos la categoria y la guardamos
-        imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen y la guardamos
-
+        nombre = $(this).find('.nombre').text();                    // Cogemos el NOMBRE y lo guardamos
+        apellido = $(this).find('.apellido').text();                // Cogemos el APELLIDO y lo guardamos
+        categoria = $(this).find('.categoria').text();              // Cogemos la CATEGORIA y la guardamos
+        imagen = $(this).find('.imagen').attr('src');               // Cogemos la ruta de la IMAGEN y la guardamos
+        fecha = $(this).find('.fecha').text();                      // Cogemos la FECHA
+        zona = $(this).find('.zona').text();                        // Cogemos la ZONA
+        enlace = $(this).find(".enlace").text();                      // Cogemos el LINK
+        descr = $(this).find('.descripcion').text();                // Cogemos la DESCRIPCION
+        color = $(this).find('.categoria').css("background-color")  // COLOR del ambito/categoria
         // Modal
-        $(".modal-title").text(nombre +" "+ apellido);      // Titulo del modal
-        $(".imagen-modal").attr('src', imagen);             // Imagen
-        $(".desc-modal").text("Lorem Ipsum Dolor");         // La descripción
-        $("#myModal").modal("show");
+        $(".modal-title").text(nombre +" "+ apellido);              // Titulo del modal
+        $(".imagen-modal").attr('src', imagen);                     // Imagen
+        $(".fecha-modal").text(fecha);                              // Fecha de nacimiento
+        $(".zona-modal").text(zona);                                // Zona 
+        $(".desc-modal").text(descr);                               // Descripción
+        console.log(enlace.substr(0, enlace.indexOf(' ')));
+
+        $(".enlace-btn").attr("href", enlace);
+        console.log(enlace);
+        
+        $(".btn-ambito").css("border","solid 2px "+color);          // Color del ambito/categoria en el boton
+        $(".modal-content").css("border","solid 1px "+color);       // Color del borde del modal
+        $("#myModal").modal("show");                                // Mostrar el modal
         
     });
     
