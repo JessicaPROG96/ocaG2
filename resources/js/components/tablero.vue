@@ -247,11 +247,11 @@
     </div>
 
     <!-- Modal pregunta -->
-    <div class="modal fade modalPregunta" id="modalPregunta" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
+    <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle">{{this.arrayPreguntas[this.randPregunta].pregunta}}</h3>
+            <h3 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
           </div>
           <div class="modal-body">
             <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
@@ -264,7 +264,7 @@
     </div>
 
     <!-- Modal con info de las mujeres -->
-      <div class="modal fade modalInfoC" :id="'modalInfo'+this.numeroMujer" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -304,6 +304,7 @@ export default {
       return{
       nombre:"",
       apellido:"",
+      loading:false,
       arrayMujeres:[],
       arrayPreguntas:[],
       arrayOpciones:[],
@@ -421,6 +422,7 @@ export default {
         });
     },
     cargarPreguntas(){
+      this.loading = false;
       let me = this;
       let url = 'preguntas';
       axios
@@ -429,6 +431,7 @@ export default {
           me.arrayPreguntas = response.data;
           /* me.shuffle(me.arrayPreguntas); */
           console.log(me.arrayPreguntas);
+          
         })
         .catch(function (error) {
           console.log(error);
@@ -440,7 +443,7 @@ export default {
       console.log("Numero casilla "+n);
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
       this.numeroMujer=n-2;
-      $('#modalInfo'+this.numeroMujer).modal('show');
+      $('#modalInfo').modal('show');
     },
     tirarDado(){
       var dado=Math.floor(Math.random() * 6)+1;
@@ -760,13 +763,56 @@ export default {
           break;
         default:
           var me=this;
-          setTimeout(function(){me.pregunta();  }, 500);      
+          setTimeout(function(){$('#modalInfo').modal('show'); }, 500);
+          setTimeout(function(){$('#modalInfo').modal('hide'); me.pregunta();    }, 5000);    
           break;
       }
       /* Finaliza el turno y pasa al siguiente jugador */
       var me=this;
       setTimeout(function(){me.cambiarTurno();  }, 4500); 
     
+    },
+    opcionNacimiento(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionNacimiento();
+      }
+    },
+    opcionGeografica(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionGeografica();
+      }
+    },
+    opcionCategoria(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
+      var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
+      this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]], respuestaRandom1, respuestaRandom2];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionCategoria();
+      }
+    },
+    opcionApellido(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionApellido();
+      }
     },
     pregunta(){
       this.randPregunta=Math.floor(Math.random() * 4);
@@ -778,61 +824,117 @@ export default {
       
       if(this.arrayMujeres[this.numeroMujer][repuesta]!=null){
         if(respuestaCampo=="fechaNacimiento"){
-          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
-          this.shuffle(this.arrayOpciones);
+          this.opcionNacimiento();  
         }
         else if (respuestaCampo=="zonaGeografica"){
-          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
-          this.shuffle(this.arrayOpciones);
+          this.opcionGeografica();
         }
         else if (respuestaCampo=="id_categoria"){
-          var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
-          var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
-          this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]], respuestaRandom1, respuestaRandom2];
-          this.shuffle(this.arrayOpciones);
+          this.opcionCategoria();          
         } 
         else if (respuestaCampo=="apellido"){
-          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
-          this.shuffle(this.arrayOpciones);
+          this.opcionApellido();          
         }
         $('#modalPregunta').modal('show');
       }
       else{
         this.pregunta();
       }
-      
-      
     },
     corregirPregunta(respuesta, btn){
       var repuestaBD= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuestaBD]);
       console.log("Respuesta "+respuesta);
       console.log(btn);
       console.log("Respuesta correctar = "+this.arrayMujeres[this.numeroMujer][repuestaBD]);
-      if(respuesta==this.arrayMujeres[this.numeroMujer][repuestaBD]){
-        console.log("Respuesta correcta");
-        //PONER BOTON DE COLOR VERDE
-        var boton=document.querySelector("#btn"+btn);
-        boton.style["background-color"]="green";
-        this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=10;
 
-        //ocultar modal
+      if(respuestaCampo!="id_categoria"){
 
+        if(respuesta==this.arrayMujeres[this.numeroMujer][repuestaBD]){
+          console.log("Respuesta correcta");
+          //BOTON  VERDE
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="green";
+          if(this.turno==0){
+            this.turnoP=this.numeroJugadores-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;            
+          }
+          else{
+            this.turnoP=this.turno-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+            
+          }
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
+        else{
+          //BOTON DE COLOR ROJO
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="red";
+          //cerrar modal
+          this.cerrarModalPregunta();
+
+        }
       }
-      else{
-        //PONER BOTON DE COLOR ROJO
-        var boton=document.querySelector("#btn"+btn);
-        boton.style["background-color"]="green";
+      else if(respuestaCampo=="id_categoria"){
 
-        //ocultar modal
-
+        console.log("parte 1 "+respuesta);
+        console.log("parte 2 "+this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]);
+        if(respuesta == this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]){
+          console.log("Respuesta correcta");
+          //BOTON DE COLOR VERDE
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="green";
+          if(this.turno==0){
+            this.turnoP=this.numeroJugadores-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+          }
+          else{
+            this.turnoP=this.turno-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+          }
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
+        else{
+          //BOTON DE COLOR ROJO
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="red";
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
       }
-
     },
+    cerrarModalPregunta(){
+      var boton1=document.querySelector("#btn1");
+      var boton2=document.querySelector("#btn2");
+      var boton3=document.querySelector("#btn3");
+      boton1.disabled = true;
+      boton2.disabled = true;
+      boton3.disabled = true;
+      setTimeout(function(){
+        $('#modalPregunta').modal('hide'); 
+      }, 3000);
+      setTimeout(function(){
+        boton1.style["background-color"]="#428bca";
+        boton2.style["background-color"]="#428bca";
+        boton3.style["background-color"]="#428bca";
+        boton1.disabled = false;
+        boton2.disabled = false;
+        boton3.disabled = false;
+      }, 4000);
+    }
+  },
+  created(){
+    console.log('Component created.');
+    this.loading = true;
+    this.cargarPreguntas();
+    this.cargarMujeres();
+
   },
   mounted(){
     console.log('Component mounted.');
-    this.cargarMujeres();
-    this.cargarPreguntas();
+        
     /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
     this.shuffle(this.turnosJugadores);
     setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);  
