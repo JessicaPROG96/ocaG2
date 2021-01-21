@@ -247,17 +247,16 @@
     </div>
 
     <!-- Modal pregunta -->
-    <div class="modal fade modalPregunta" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
+    <div class="modal fade modalPregunta" id="modalPregunta" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Pregunta</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h3 class="modal-title" id="exampleModalLongTitle">{{this.arrayPreguntas[this.randPregunta].pregunta}}</h3>
           </div>
           <div class="modal-body">
-            <p>Pregunta!!</p>
+            <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
+            <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
+            <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
           </div>
           
         </div>
@@ -306,7 +305,10 @@ export default {
       nombre:"",
       apellido:"",
       arrayMujeres:[],
+      arrayPreguntas:[],
+      arrayOpciones:[],
       numeroMujer:0,
+      randPregunta:0,
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
       numeroCasillaCaida:0,
       arrayCasillasModal:{
@@ -388,6 +390,7 @@ export default {
     }
   },
   methods:{
+    //Función para aleatorizar arrays
     shuffle(a) {
       console.log("Array aleatorizado");
       var j, x, i;
@@ -398,6 +401,10 @@ export default {
           a[j] = x;
       }
       return a;
+    },
+    //Función para obtener el nombre de un objeto en un array
+    getKeyByValue(object, value) {
+      return Object.keys(object).find(key => object[key] === value);
     },
     cargarMujeres(){
       let me = this;
@@ -413,7 +420,21 @@ export default {
           console.log(error);
         });
     },
-    /* FUNCIÓN TEMPORAL. BORRAR CUANDO NO SEA NECESARIA. */
+    cargarPreguntas(){
+      let me = this;
+      let url = 'preguntas';
+      axios
+        .get(url)
+        .then(function (response) {
+          me.arrayPreguntas = response.data;
+          /* me.shuffle(me.arrayPreguntas); */
+          console.log(me.arrayPreguntas);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    },
     darInfo(n){
 
       console.log("Numero casilla "+n);
@@ -493,6 +514,7 @@ export default {
       this.jugadores[this.turnosJugadores[this.turno]].posicion=this.jugadores[this.turnosJugadores[this.turno]].posicion+dado; 
       console.log("estamos en turno "+this.turno);
       console.log("El "+this.jugadores[this.turnosJugadores[this.turno]]+" esta en la posicion "+this.jugadores[this.turnosJugadores[this.turno]].posicion);
+      this.numeroMujer=this.jugadores[this.turnosJugadores[this.turno]].posicion-2;
       
       const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
       gridJugador.style["grid-area"] = "c"+this.jugadores[this.turnosJugadores[this.turno]].posicion;
@@ -747,18 +769,73 @@ export default {
     
     },
     pregunta(){
-      $('#modalPregunta').modal('show');
+      this.randPregunta=Math.floor(Math.random() * 4);
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      console.log(this.arrayMujeres[this.numeroMujer][repuesta]); 
+      console.log(this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]));
+      var respuestaCorrecta=this.arrayMujeres[this.numeroMujer][repuesta];
+      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]);
+      
+      if(this.arrayMujeres[this.numeroMujer][repuesta]!=null){
+        if(respuestaCampo=="fechaNacimiento"){
+          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
+          this.shuffle(this.arrayOpciones);
+        }
+        else if (respuestaCampo=="zonaGeografica"){
+          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+          this.shuffle(this.arrayOpciones);
+        }
+        else if (respuestaCampo=="id_categoria"){
+          var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
+          var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
+          this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]], respuestaRandom1, respuestaRandom2];
+          this.shuffle(this.arrayOpciones);
+        } 
+        else if (respuestaCampo=="apellido"){
+          this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+          this.shuffle(this.arrayOpciones);
+        }
+        $('#modalPregunta').modal('show');
+      }
+      else{
+        this.pregunta();
+      }
+      
+      
+    },
+    corregirPregunta(respuesta, btn){
+      var repuestaBD= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      console.log("Respuesta "+respuesta);
+      console.log(btn);
+      console.log("Respuesta correctar = "+this.arrayMujeres[this.numeroMujer][repuestaBD]);
+      if(respuesta==this.arrayMujeres[this.numeroMujer][repuestaBD]){
+        console.log("Respuesta correcta");
+        //PONER BOTON DE COLOR VERDE
+        var boton=document.querySelector("#btn"+btn);
+        boton.style["background-color"]="green";
+        this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=10;
+
+        //ocultar modal
+
+      }
+      else{
+        //PONER BOTON DE COLOR ROJO
+        var boton=document.querySelector("#btn"+btn);
+        boton.style["background-color"]="green";
+
+        //ocultar modal
+
+      }
+
     },
   },
   mounted(){
     console.log('Component mounted.');
     this.cargarMujeres();
+    this.cargarPreguntas();
     /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
     this.shuffle(this.turnosJugadores);
-    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);
-    
-  
-    
+    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);  
   }
 
 }
