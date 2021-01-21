@@ -12,7 +12,7 @@
     <div class="icono">
         <a href="#">Modo administrador (WIP)</a>
     </div>
-             
+
 
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
@@ -21,7 +21,6 @@
 <div class="col-md-10 md-form mb-4 ml-auto">
     <input class="form-control col-md-7 d-inline" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
     <select id="ambito" class="form-control col-md-3 d-inline" aria-label="Default select example">
-
       
       @php
         // Esta función guarda los "id_categorias" diferentes y los guarda en otro array
