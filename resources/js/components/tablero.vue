@@ -331,8 +331,6 @@ export default {
       color: "",
       arrayAmbitos: [],
       mujeresC: [],
-      mujeresExtra:[],
-      mujeresTablero:[],
       modoJuego: "",
       arrayCategorias: [
         "Historia",
@@ -448,34 +446,14 @@ export default {
           me.modoJuego = localStorage.getItem("modoJuego");
           //datos filtrados
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
-
-          for (let i = 0; i == me.mujeresC.length -1; i++) {
-            i = 0; 
+          if (me.mujeresC.length<=61) {
+          me.mujeresC = me.arrayMujeres;
           }
-
-        //   me.mujeresExtra = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
-
-        //  me.mujeresTablero.push(me.mujeresExtra);
-        //   me.mujeresTablero.push(me.mujeresC);
-          
-          // for (let i = 0; i < me.mujeresTablero.length; i++) {
-          //    me.mujeresTablero[i].push(me.mujeresExtra);
-          //     me.mujeresTablero[i].push(me.mujeresC);
-            
-          // }
-          console.log(me.mujeresTablero);
           if (me.modoJuego == 0) {
-            // cargar arrayMujeres
-            console.log("entra");
-            me.mujeresC = me.arrayMujeres;
+            me.mujeresC = me.arrayMujeres;  // vuelve a cargar arrayMujeres
             // localStorage.removeItem('modoJuego');
           }
           
-
-          
-        //   if (me.mujeresC.length>=40) {
-        //   me.mujeresC = me.arrayMujeres;
-        // }
         })
         .catch(function (error) {
           console.log(error);
