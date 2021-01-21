@@ -4,7 +4,7 @@
 
     <div id="tablero">
       <!-- casilla inicio -->
-      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)' }">
+      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'1'"></p>
@@ -33,10 +33,10 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-6" v-if="arrayMujeres[n-2].imagen !==null">
-                      <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'"/>
+                      <img :src="'img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'"/>
                     </div>
                     <div class="col-6" v-else>
-                      <img :src="'../resources/img/otros/feminismo.jpg'" :alt="'mujer'"/>
+                      <img :src="'img/otros/feminismo.jpg'" :alt="'mujer'"/>
                     </div>
                     <div class="col-3">
                       <label for="nacimiento">Nacimiento:</label> <p>{{arrayMujeres[n-2].fechaNacimiento}}</p>
@@ -77,7 +77,7 @@
                   arrayMujeres[n-2].imagen !==null
                 ">
                 
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
@@ -122,7 +122,7 @@
                   n !== 58 &&
                   n !== 59 &&
                   arrayMujeres[n-2].imagen===null">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/feminismo.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/feminismo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n" v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
               </div>
@@ -151,7 +151,7 @@
         n == 54 ||
         n == 59 
         ">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/goose.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -160,7 +160,7 @@
 
         <!-- Casillas PUENTE -->
         <div class="casillaif" v-else-if=" n == 6 || n == 12">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/puente.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -169,7 +169,7 @@
 
         <!-- Casilla POSADA -->
         <div class="casillaif" v-else-if=" n == 19">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/posada2.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -178,7 +178,7 @@
 
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/pozo.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -187,7 +187,7 @@
 
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/laberinto.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -196,7 +196,7 @@
 
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/carcel.jpg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -205,7 +205,7 @@
 
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/dadosFondo.png)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -214,7 +214,7 @@
 
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/muerte.svg)' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
@@ -225,7 +225,7 @@
       </div>
 
       <!-- casilla final -->
-      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }">
+      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(img/otros/desayuno.jpg)' }">
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'63'"></p>
@@ -252,7 +252,7 @@
       </svg>
 
     </div>
-    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado" data-toggle="modal" data-target="#modalDado"></button>
+    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
 
     <!-- Modal dado. -->
     <div class="modal fade modalDado" id="modalDado" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
@@ -295,6 +295,28 @@
       </div>
     </div>
 
+
+    <!-- Modal casilla caida -->
+    <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+            <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
+            <p v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></p>
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -306,7 +328,47 @@ export default {
       apellido:"",
       arrayMujeres:[],
       arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
+      numeroCasillaCaida:0,
+      arrayCasillasModal:{
+        oca:{
+          texto:"¡De oca a oca y tiro porque me toca!",
+          img:"img/otros/goose.png"
+        },
+        puente:{
+          texto:"De puente a puente porque me lleva la corriente",
+          img:"img/otros/puente.png"
+        },
+        posada:{
+          texto:"Pierdes un turno",
+          img:"img/otros/posada2.png"
+        },
+        carcel:{
+          texto:"Pierdes dos turnos",
+          img:"img/otros/carcel.jpg"
+        },
+        pozo:{
+          texto:"Atrapado hasta que pase otro jugador o pasen 4 turnos",
+          img:"img/otros/pozo.jpg"
+        },
+        dados:{
+          texto:"¡Vuelves a tirar!",
+          img:"img/otros/dadosFondo.png"
+        },
+        laberinto:{
+          texto:"Vuelves a la casilla 30",
+          img:"img/otros/laberinto.jpg"
+        },
+        calavera:{
+          texto:"Vuelves al principio",
+          img:"img/otros/muerte.svg"
+        },
+        final:{
+          texto:"¡Enhorabuena, has acabado!",
+          img:"img"
+        },
+      },
       turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
+      tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
       turno:0,
       numeroJugadores:4,
       posJugador1:1,
@@ -380,10 +442,13 @@ export default {
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
       //Se envia la imagen al modal
-      var imgsrc = "../resources/img/otros/dados/dado"+dado+".svg";
+      var imgsrc = "img/otros/dados/dado"+dado+".svg";
       var texto= "¡Has sacado un "+dado+"!"
       $('#img_dado').attr('src',imgsrc);
       this.moverFicha(dado);
+      $('#modalDado').modal('show');
+      
+      setTimeout(function(){$('#modalDado').modal('hide');  }, 3000);
       
     },
     cambiarTurno(){
@@ -399,6 +464,13 @@ export default {
         this.comprobarTurnoPerdido();
         
       }
+    },
+    volverATirar(){
+      this.turno=this.turno-1;
+      if(this.turno==-1){
+        this.turno=this.numeroJugadores;
+      }
+
     },
     /* Comprueba si el siguiente jugador tiene turnos perdidos (debido a las casillas posada y carcel) 
     y de ser asi cambia de turno */
@@ -456,38 +528,56 @@ export default {
         case 5: 
           gridJugador.style["grid-area"] = "c9";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=9;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 9: 
           gridJugador.style["grid-area"] = "c14";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=14;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 12: 
           /* PUENTE */
           gridJugador.style["grid-area"] = "c6";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=6;
+          this.numeroCasillaCaida=1;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 14: 
           gridJugador.style["grid-area"] = "c18";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=18;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 18: 
           gridJugador.style["grid-area"] = "c23";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=23;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 19: 
           /* POSADA */
           this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=1;
+          this.numeroCasillaCaida=2;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 23: 
           gridJugador.style["grid-area"] = "c32";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=32;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 26: 
           /* DADOS */
-          this.turno=this.turno-1;
-          if(this.turno==-1){
-            this.turno=this.numeroJugadores;
-          }
+          this.volverATirar();
+          this.numeroCasillaCaida=5;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 31: 
           /* POZO */
@@ -505,47 +595,69 @@ export default {
           if(this.jugadores[this.turnosJugadores[3]].posicion<31){
             this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
           }
+          this.numeroCasillaCaida=4;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 32: 
           gridJugador.style["grid-area"] = "c41";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=41;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 41: 
           gridJugador.style["grid-area"] = "c45";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=45;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 42: 
           /* LABERINTO */
           gridJugador.style["grid-area"] = "c30";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=30;
+          this.numeroCasillaCaida=6;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 45: 
           gridJugador.style["grid-area"] = "c50";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=50;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 50: 
           gridJugador.style["grid-area"] = "c54";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=54;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 53: 
           /* DADOS */
-          this.turno=this.turno-1;
-          if(this.turno==-1){
-            this.turno=this.numeroJugadores;
-          }
+          this.volverATirar();
+          this.numeroCasillaCaida=5;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 54: 
           gridJugador.style["grid-area"] = "c59";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=59;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 56: 
           /* CARCEL */
           this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=2;
+          this.numeroCasillaCaida=3;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
         case 58: 
           /* CALAVERA */
           gridJugador.style["grid-area"] = "c1";
           this.jugadores[this.turnosJugadores[this.turno]].posicion=1;
+          this.numeroCasillaCaida=7;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
           break;
       }
       /* Finaliza el turno y pasa al siguiente jugador */

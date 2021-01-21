@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="<?php echo asset('css/galeria.css')?>" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js></script>
 @extends('layouts.master')
 
 @section('content')
@@ -8,10 +7,11 @@
 @php
     session_start();
 @endphp
-<!-- Cuando la sesion este iniciada, aparecerá este div que te permitirá ir al modo administrador-->
-    <div class="icono">
-        <a href="#">Modo administrador (WIP)</a>
-    </div>
+
+<!-- script para saber si hay un usuario logueado y poder usarlo en JS -->
+<script>
+  var loggedIn = {{ auth()->check() ? 'true' : 'false' }};
+</script>
 
 
 <!-- El titulo de la galeria -->
@@ -63,44 +63,64 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title col-11" id="exampleModalLongTitle">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                {{-- Imagen --}}
+                <img class="imagen-modal text" src="null" alt="">
+              </div>
+              <div class="col-md-4 m-auto">
+                {{-- Fecha --}}
+                <label>Fecha: </label>
+                <input readonly class="fecha-modal text"></input>
+                {{-- Zona --}}
+                <label>Zona: </label>
+                <input readonly class="zona-modal text"></input>
 
-          {{-- Empieza el grid --}}
-            <div class="container-fluid">
-                <div class="row">
-                    {{-- Div con la imagen --}}
-                    <div class="col-md-6">
-                        <img class="imagen-modal" src="null" alt="">
-                    </div>
-                    {{-- Div con la fecha y la zona --}}
-                    <div class="col-md-3 m-auto">
-                      <div class="row"><b>Fecha nacimiento:&nbsp;</b>
-                        <p class="fecha-modal"></p>
-                      </div>
-                      <div class="row"><b>Zona:&nbsp;</b>
-                        <p class="zona-modal"></p>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    {{-- Div con la descripción --}}
-                    <div class="col-md-12 ml-auto"><b>Descripción: </b>
-                        <p class="desc-modal"></p>
-                    </div>
-                </div>
+                <label>Ambito: </label>
+                <input readonly class="ambito-modal text"></input>
+              </div>
             </div>
-      </div>
-
-        <div class="modal-footer">
-          {{-- Link a la wiki --}}
-          <button type="button" class="btn mx-auto btn-ambito" data-dismiss="modal"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
+            <div class="row">
+              <div class="col-10">
+                Descripción: <br>
+                <textarea readonly maxlength="10000" rows="10" cols="100" class="desc-modal text"></textarea>
+              </div>
+              <div class="modal-footer col-10 mx-auto">
+                {{-- Link a la wiki --}}
+                <button type="button" class="btn btn-outline-dark mx-auto" data-dismiss="modal">Saber mas 🔗</button>
+              </div>
+            </div>
+          </div>
+          {{-- Imagen --}}
+          {{-- <img class="imagen-modal text" src="null" alt=""> --}}
+          {{-- Descripcion --}}
+          {{-- <b>Fecha: </b> --}}
+          {{-- <input readonly class="fecha-modal text"></input> --}}
+          {{-- Descripcion --}}
+          {{-- <b>Zona: </b> --}}
+          {{-- <input readonly class="zona-modal text"></input> --}}
+          {{-- Descripcion --}}
+          {{-- <b>Descripción: </b> --}}
+          {{-- <textarea readonly class="desc-modal text"></textarea> --}}
+          
         </div>
+        
+        @php
+            // Si el usuario ha iniciado sesión sale el boton guardar
+            if(isset(Auth::user()->name)){
+              echo '<div class="modal-footer">';
+                echo '<button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>';
+              echo '</div>';
+            }
+        @endphp 
+          
       </div>
     </div>
   </div>
@@ -112,8 +132,6 @@
 <!-- $mujeres = todas las mujeres de la base de datos que nos pasa el controlador-->
 
         <div class="row espacio">
-
-            @php $contador = 0; @endphp 
                             
             @foreach( $mujeres as $key => $a)
             
@@ -133,6 +151,8 @@
                     <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
+                    {{-- Descripción --}}
+                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>
