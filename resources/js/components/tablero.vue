@@ -446,7 +446,7 @@ export default {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
           me.modoJuego = localStorage.getItem("modoJuego");
-          //datos filtrados
+          //datos filtrados por categorías
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
           me.mujeresDuplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
           me.mujeresTriplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
