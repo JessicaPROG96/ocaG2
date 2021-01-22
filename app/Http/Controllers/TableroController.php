@@ -117,4 +117,10 @@ class TableroController extends Controller
     {
         //
     }
+
+    public function indexPregunta(Request $request){
+        $pregunta=DB::table('preguntas')->get();
+        return $pregunta;  
+     }
+
 }
