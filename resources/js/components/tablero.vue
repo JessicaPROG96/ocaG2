@@ -327,6 +327,8 @@ export default {
       imagen: "",
       apellido: "",
       arrayMujeres: [],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
       nombreCategoria: "",
       color: "",
       arrayAmbitos: [],
@@ -446,9 +448,20 @@ export default {
           me.modoJuego = localStorage.getItem("modoJuego");
           //datos filtrados
           me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
-          if (me.mujeresC.length<41) {
-          me.mujeresC = me.arrayMujeres;
+          me.mujeresDuplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresTriplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+
+          if (me.mujeresC.length>=31) {
+          me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
           }
+          else if (me.mujeresC.length>=25) {
+            me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+            me.mujeresC = me.mujeresC.concat(me.mujeresTriplicado);
+            
+          } else {
+            me.mujeresC = me.arrayMujeres;
+          }
+
           if (me.modoJuego == 0) {
             me.mujeresC = me.arrayMujeres;  // vuelve a cargar arrayMujeres
             // localStorage.removeItem('modoJuego');
