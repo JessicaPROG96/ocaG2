@@ -18,11 +18,13 @@ class ocaController extends Controller{
 
     public function  index(){
         // return view('oca.inicio');
+       
         $categorias = Categoria::get();
         return view('oca.inicio')->with('categorias', $categorias);
     }
 
     public function tablero(){
+        
         return view('oca.tablero');
     }
 
