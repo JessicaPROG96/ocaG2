@@ -233,14 +233,19 @@ background-color: rgb(83, 10, 219); }
 #casilla34{grid-area: c34; 
 background-color: grey;}
 #casilla35{grid-area: c35;
+    z-index: 1;
 background-color: blueviolet; }
 #casilla36{grid-area: c36; 
+    z-index: 1;
 background-color: rgb(83, 10, 219); }
 #casilla37{grid-area: c37;
+    z-index: 1;
 background-color: blueviolet; }
 #casilla38{grid-area: c38; 
+    z-index: 1;
 background-color: grey;}
 #casilla39{grid-area: c39;
+    z-index: 1;
 background-color: blueviolet; }
 #casilla40{grid-area: c40; 
     background-color: #e15766;}
@@ -284,13 +289,16 @@ background-color: grey;}
     background-color: #e15766; }
 #casilla60{grid-area: c60; 
 background-color: grey;
-z-index: 1;}
+z-index: 1;
+}
 #casilla61{grid-area: c61;
 background-color: blueviolet;
-z-index: 1; }
+z-index: 1;
+}
 #casilla62{grid-area: c62; 
 background-color: grey;
-z-index: 1;}
+z-index: 1;
+}
 #casilla63{grid-column-start: c63;
   grid-column-end: c63;
   grid-row-start: c63;
@@ -298,10 +306,18 @@ z-index: 1;}
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
+  z-index: 0;
+ 
 }
 #casilla63 .numCasilla{
 font-size: 60px;
 color: white;
+}
+.modal-dialog{
+    z-index: 21;
+}
+.modal-backdrop{
+    z-index: -1;
 }
 .modalInfoC img{
     width: 200px;
