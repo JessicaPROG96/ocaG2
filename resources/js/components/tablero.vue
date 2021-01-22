@@ -258,42 +258,62 @@
             <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
             <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
           </div>
-          
         </div>
       </div>
     </div>
 
     <!-- Modal con info de las mujeres -->
-      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">{{this.arrayMujeres[this.numeroMujer].nombre+ ' '+this.arrayMujeres[this.numeroMujer].apellido}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-6">
-                  <img :src="'img/fotosMujeres/'+this.arrayMujeres[this.numeroMujer].imagen" :alt="'mujer'"/>
-                </div>
-          
-                <div class="col-3">
-                  <label for="nacimiento">Nacimiento:</label> <p>{{this.arrayMujeres[this.numeroMujer].fechaNacimiento}}</p>
-                </div>
-                <div class="col-3">
-                  <label for="nacimiento">Campo:</label>
-                  <p>{{this.arrayCategorias[this.arrayMujeres[this.numeroMujer].id_categoria-1]}}</p>
-                </div>
+    <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{this.arrayMujeres[this.numeroMujer].nombre+ ' '+this.arrayMujeres[this.numeroMujer].apellido}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-6">
+                <img :src="'img/fotosMujeres/'+this.arrayMujeres[this.numeroMujer].imagen" :alt="'mujer'"/>
               </div>
-              <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
-
-              
+              <div class="col-3">
+                <label for="nacimiento">Nacimiento:</label> <p>{{this.arrayMujeres[this.numeroMujer].fechaNacimiento}}</p>
+              </div>
+              <div class="col-3">
+                <label for="nacimiento">Campo:</label>
+                <p>{{this.arrayCategorias[this.arrayMujeres[this.numeroMujer].id_categoria-1]}}</p>
+              </div>
             </div>
+            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Modal juego acabado -->
+    <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle"> ¡Juego finalizado!</h3>
+          </div>
+          <div class="modal-body">
+            <h2>Resultados</h2>
+            <p v-text="this.resultadosOca[0].puntuacion+' - '+this.resultadosOca[0].nombre"></p>
+            <p v-text="this.resultadosOca[1].puntuacion+' - '+this.resultadosOca[1].nombre"></p>
+            
+            <p v-text="this.resultadosOca[2].puntuacion+' - '+this.resultadosOca[2].nombre"></p>
+            <p v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
+
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Volver a inicio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
   </div>
 </template>
@@ -354,6 +374,7 @@ export default {
       tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
       turno:0,
       numeroJugadores:4,
+      jugadoresEnFinal:0,
       posJugador1:1,
       posJugador2:1,
       posJugador3:1,
@@ -361,33 +382,34 @@ export default {
       jugadores:{
         jugador1:{
           posicion:1,
-          puntuacion:0,
+          puntuacion:100,
           nombre:"nombre1",
           turnosPerdidos:0,
           pozo:false
         },
         jugador2:{
           posicion:1,
-          puntuacion:0,
+          puntuacion:500,
           nombre:"nombre2",
           turnosPerdidos:0,
           pozo:true
         },
         jugador3:{
           posicion:1,
-          puntuacion:0,
+          puntuacion:200,
           nombre:"nombre3",
           turnosPerdidos:0,
           pozo:false
         },
         jugador4:{
           posicion:1,
-          puntuacion:0,
+          puntuacion:1,
           nombre:"nombre4",
           turnosPerdidos:0,
           pozo:false
         },
       },
+      resultadosOca:[],
     }
   },
   methods:{
@@ -512,6 +534,60 @@ export default {
       }
 
     },
+    comprobarFinal(){
+      /* Comprueba si el jugador ha llegado correctamente a la casilla final */
+      var falta= 63-this.jugadores[this.turnosJugadores[this.turno]].posicion;
+      /* console.log("Te faltan "+falta+ " casillas"); */
+      if(falta==0){
+        if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos>10){
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
+
+        }
+        else{
+          console.log("Has acabado!!!!");
+          this.jugadoresEnFinal+=1;
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
+          if(this.jugadoresEnFinal==1){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=50;
+          }
+          else if(this.jugadoresEnFinal==2){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=30;
+          }
+          else if(this.jugadoresEnFinal==3){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=15;
+          }
+          else if(this.jugadoresEnFinal==4){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=10;
+            this.modalFinalResultado();
+            
+          }  
+        }
+      }
+      else if(falta<0){
+        /* console.log("Casi!!"); */
+        gridJugador.style["grid-area"] = "c"+(falta+63);
+        this.jugadores[this.turnosJugadores[this.turno]].posicion=(falta+63);
+
+      }
+    },
+    modalFinalResultado(){
+      this.resultadosOca=[];
+      for(var i=0; i<this.numeroJugadores;i++){
+        this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
+      }
+      this.resultadosOca.sort(function(a, b){return b.puntuacion-a.puntuacion})
+      console.log(this.resultadosOca); 
+      setTimeout(function(){$('#modalJuegoAcabado').modal('show'); }, 1000);
+      
+    },
+    finalRedireccionar(valor){
+      if(valor==0){
+        location.reload();
+      }
+      else{
+        window.location.replace("https://localhost/OcaG2/public");
+      }
+    },
     moverFicha(dado){
       
       this.jugadores[this.turnosJugadores[this.turno]].posicion=this.jugadores[this.turnosJugadores[this.turno]].posicion+dado; 
@@ -522,18 +598,7 @@ export default {
       const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
       gridJugador.style["grid-area"] = "c"+this.jugadores[this.turnosJugadores[this.turno]].posicion;
 
-      /* Comprueba si el jugador ha llegado correctamente a la casilla final */
-      var falta= 63-this.jugadores[this.turnosJugadores[this.turno]].posicion;
-      /* console.log("Te faltan "+falta+ " casillas"); */
-      if(falta==0){
-        console.log("Has acabado!!!!");
-        this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
-      }
-      else if(falta<0){
-        /* console.log("Casi!!"); */
-        gridJugador.style["grid-area"] = "c"+(falta+63);
-        this.jugadores[this.turnosJugadores[this.turno]].posicion=(falta+63);
-      }
+      this.comprobarFinal();
 
       /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, carcel, laberinto o calavera */
       switch(this.jugadores[this.turnosJugadores[this.turno]].posicion){
@@ -558,13 +623,8 @@ export default {
           setTimeout(function(){
             $('#modalCasillaCaida').modal('hide');
             gridJugador.style["grid-area"] = "c12";
-            me.jugadores[me.turnosJugadores[me.turno]].posicion=12;
-            console.log("posicion del jugadorrrr "+me.jugadores[me.turnosJugadores[me.turno]].posicion);
-            
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=12;            
           }, 3500);
-          
-          
-          /* $('#myModal').on('hide.bs.modal', function (e) {}) */
           break;
         case 9: 
           var me=this;
@@ -759,6 +819,7 @@ export default {
             $('#modalCasillaCaida').modal('hide');  
             gridJugador.style["grid-area"] = "c1";
             me.jugadores[me.turnosJugadores[me.turno]].posicion=1;
+            me.jugadores[me.turnosJugadores[me.turno]].puntuacion=0;
             }, 3500);
           break;
         default:
@@ -927,6 +988,7 @@ export default {
   },
   created(){
     console.log('Component created.');
+    this.modalFinalResultado();
     this.loading = true;
     this.cargarPreguntas();
     this.cargarMujeres();
