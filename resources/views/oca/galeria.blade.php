@@ -71,26 +71,26 @@
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-7">
+              <div class="col-md-6">
                 {{-- Imagen --}}
-                <img class="imagen-modal text" src="null" alt="">
+                <img class="imagen-modal" src="null" alt="">
               </div>
-              <div class="col-md-4 m-auto">
+              <div class="col-md-5 m-auto">
                 {{-- Fecha --}}
                 <label>Fecha: </label>
-                <input readonly class="fecha-modal text"></input>
+                <input disabled tabindex="-1" class="fecha-modal text"></input>
                 {{-- Zona --}}
                 <label>Zona: </label>
-                <input readonly class="zona-modal text"></input>
+                <input disabled class="zona-modal text"></input>
 
                 <label>Ambito: </label>
-                <input readonly class="ambito-modal text"></input>
+                <input disabled class="ambito-modal text"></input>
               </div>
             </div>
             <div class="row">
-              <div class="col-10">
+              <div class="col-12">
                 Descripción: <br>
-                <textarea readonly maxlength="10000" rows="10" cols="100" class="desc-modal text"></textarea>
+                <textarea disabled maxlength="10000" rows="10"  class="desc-modal text px-2"></textarea>
               </div>
               <div class="modal-footer col-10 mx-auto">
                 {{-- Link a la wiki --}}
@@ -98,6 +98,7 @@
               </div>
             </div>
           </div>
+
           {{-- Imagen --}}
           {{-- <img class="imagen-modal text" src="null" alt=""> --}}
           {{-- Descripcion --}}
@@ -116,7 +117,8 @@
             // Si el usuario ha iniciado sesión sale el boton guardar
             if(isset(Auth::user()->name)){
               echo '<div class="modal-footer">';
-                echo '<button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>';
+                echo '<button type="button" class="btn btn-editar btn-primary">Editar</button>';
+                echo '<button type="button" class="btn btn-guardar btn-success">Guardar</button>';
               echo '</div>';
             }
         @endphp 

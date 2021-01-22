@@ -86,11 +86,12 @@
 .modal-content
 {
     background-color: rgba(255, 255, 255, 0.753) !important;
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px)!important;
     
 }
 
-.fecha-modal, .zona-modal
+.fecha-modal, .zona-modal , .ambito-modal
 {
     color: black;
     text-align: right;
@@ -120,19 +121,25 @@
 /* Los inputs que estan dento del modal */
 .text
 {
-    background-color: transparent!important;
-    border: none!important;
+    background-color: transparent;
+    border: none;
     display: inline-block!important;
+    border-radius: 5px!important;
+    text-align: left;
 }
 textarea
 {
     background-color: transparent;
     border: none;
     resize: none!important;
+    text-align: justify!important;
+    width: 100%;
 }
 label
 {
     display: inline-block!important;
+    text-align: right;
+    width: 20%;
 }
 /* Final del modal */
  
