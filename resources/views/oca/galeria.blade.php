@@ -4,7 +4,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+ 
 @php
     session_start();
 @endphp
