@@ -48,7 +48,7 @@
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <div class="casillaHead">
-                <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)"></p>
+                <p class="numCasilla" v-text="n"></p>
               </div>
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
@@ -186,14 +186,11 @@
     <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
 
     <!-- Modal dado. -->
-    <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalDado" aria-hidden="true">
+    <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" data-keyboard="false" aria-labelledby="modalDado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <img id="img_dado" />
@@ -228,14 +225,11 @@
 
 
     <!-- Modal casilla caida -->
-    <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
+    <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
@@ -247,7 +241,7 @@
     </div>
 
     <!-- Modal pregunta -->
-    <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
+    <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -263,14 +257,11 @@
     </div>
 
     <!-- Modal con info de las mujeres -->
-    <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+    <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" data-backdrop="static" data-keyboard="false"  role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">{{this.arrayMujeres[this.numeroMujer].nombre+ ' '+this.arrayMujeres[this.numeroMujer].apellido}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -285,6 +276,7 @@
                 <p>{{this.arrayCategorias[this.arrayMujeres[this.numeroMujer].id_categoria-1]}}</p>
               </div>
             </div>
+            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
             <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
           </div>
         </div>
@@ -292,7 +284,7 @@
     </div>
 
     <!-- Modal juego acabado -->
-    <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
+    <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -307,7 +299,8 @@
             <p v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
 
             <button class="btn btn-primary" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
-            <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Volver a inicio</button>
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Inicio</button>
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(2)">Clasificación</button>
           </div>
         </div>
       </div>
@@ -382,28 +375,28 @@ export default {
       jugadores:{
         jugador1:{
           posicion:1,
-          puntuacion:100,
+          puntuacion:0,
           nombre:"nombre1",
           turnosPerdidos:0,
           pozo:false
         },
         jugador2:{
           posicion:1,
-          puntuacion:500,
+          puntuacion:0,
           nombre:"nombre2",
           turnosPerdidos:0,
           pozo:true
         },
         jugador3:{
           posicion:1,
-          puntuacion:200,
+          puntuacion:0,
           nombre:"nombre3",
           turnosPerdidos:0,
           pozo:false
         },
         jugador4:{
           posicion:1,
-          puntuacion:1,
+          puntuacion:0,
           nombre:"nombre4",
           turnosPerdidos:0,
           pozo:false
@@ -461,13 +454,14 @@ export default {
 
     },
     darInfo(n){
-
       console.log("Numero casilla "+n);
       console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
       this.numeroMujer=n-2;
       $('#modalInfo').modal('show');
     },
     tirarDado(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = true;
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
       //Se envia la imagen al modal.
@@ -482,6 +476,8 @@ export default {
       setTimeout(function(){$('#modalDado').modal('hide'); me.moverFicha(dado);  }, 3000); 
     },
     cambiarTurno(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = false;
       console.log("el turnooo era "+this.turno);
       if(this.turno>=this.numeroJugadores-1){
         this.turno=0;
@@ -496,6 +492,8 @@ export default {
       }
     },
     volverATirar(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = false;
       this.turno=this.turno-1;
       if(this.turno==-1){
         this.turno=this.numeroJugadores-1;
@@ -535,6 +533,7 @@ export default {
 
     },
     comprobarFinal(){
+      const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
       /* Comprueba si el jugador ha llegado correctamente a la casilla final */
       var falta= 63-this.jugadores[this.turnosJugadores[this.turno]].posicion;
       /* console.log("Te faltan "+falta+ " casillas"); */
@@ -576,16 +575,33 @@ export default {
         this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
       }
       this.resultadosOca.sort(function(a, b){return b.puntuacion-a.puntuacion})
-      console.log(this.resultadosOca); 
+      console.log(this.resultadosOca);
+      this.guardarPuntuacion();
       setTimeout(function(){$('#modalJuegoAcabado').modal('show'); }, 1000);
       
+    },
+    guardarPuntuacion(){
+      let me =this;
+      let url = 'gpuntuacion' 
+      axios.post(url,{ 
+          'nombre':this.resultadosOca[0].nombre,
+          'puntos':this.resultadosOca[0].puntuacion,
+      }).then(function (response) {
+      })
+      .catch(function (error) {
+          console.log(error);
+      }); 
+
     },
     finalRedireccionar(valor){
       if(valor==0){
         location.reload();
       }
-      else{
+      else if (valor==1) {
         window.location.replace("https://localhost/OcaG2/public");
+      }
+      else if (valor==2) {
+        window.location.replace("https://localhost/OcaG2/public/clasificacion");
       }
     },
     moverFicha(dado){
@@ -594,6 +610,7 @@ export default {
       console.log("estamos en turno "+this.turno);
       console.log("El "+this.jugadores[this.turnosJugadores[this.turno]]+" esta en la posicion "+this.jugadores[this.turnosJugadores[this.turno]].posicion);
       this.numeroMujer=this.jugadores[this.turnosJugadores[this.turno]].posicion-2;
+      this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=1;
       
       const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
       gridJugador.style["grid-area"] = "c"+this.jugadores[this.turnosJugadores[this.turno]].posicion;
@@ -822,6 +839,10 @@ export default {
             me.jugadores[me.turnosJugadores[me.turno]].puntuacion=0;
             }, 3500);
           break;
+        case 63:
+          /* Casilla final */
+          console.log("finalizado");
+          break;
         default:
           var me=this;
           setTimeout(function(){$('#modalInfo').modal('show'); }, 500);
@@ -857,7 +878,7 @@ export default {
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
       var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
       var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
-      this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]], respuestaRandom1, respuestaRandom2];
+      this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]-1], respuestaRandom1, respuestaRandom2];
       this.shuffle(this.arrayOpciones);
       if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
       this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
@@ -941,7 +962,7 @@ export default {
 
         console.log("parte 1 "+respuesta);
         console.log("parte 2 "+this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]);
-        if(respuesta == this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]){
+        if(respuesta == this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]-1]){
           console.log("Respuesta correcta");
           //BOTON DE COLOR VERDE
           var boton=document.querySelector("#btn"+btn);
@@ -988,7 +1009,10 @@ export default {
   },
   created(){
     console.log('Component created.');
-    this.modalFinalResultado();
+    //Para que no salgan errores de render
+    for(var i=0; i<this.numeroJugadores;i++){
+        this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
+    }
     this.loading = true;
     this.cargarPreguntas();
     this.cargarMujeres();
