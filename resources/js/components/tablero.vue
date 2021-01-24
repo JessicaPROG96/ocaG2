@@ -169,17 +169,17 @@
         </div>
       </div>
 
-      <svg height="60" width="60" class="jugador1">
-        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="red" />
+      <svg height="50" width="50" class="jugador1">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="red" />
       </svg>
-      <svg height="60" width="60" class="jugador2">
-        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="yellow" />
+      <svg height="50" width="50" class="jugador2">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="yellow" />
       </svg>
-      <svg height="60" width="60" class="jugador3" v-if="numeroJugadores>=3">
-        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="blue" />
+      <svg height="50" width="50" class="jugador3" v-if="numeroJugadores>=3">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="blue" />
       </svg>
-      <svg height="60" width="60" class="jugador4" v-if="numeroJugadores==4">
-        <circle cx="30" cy="30" r="20" stroke="black" stroke-width="3" fill="green" />
+      <svg height="50" width="50" class="jugador4" v-if="numeroJugadores==4">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="green" />
       </svg>
 
     </div>
