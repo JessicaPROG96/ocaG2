@@ -1,34 +1,30 @@
 <template>
   <div>
+    <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
-      <div class="casilla p-2" id="casillaInicio">
+      <div
+        class="casilla p-2"
+        id="casillaInicio"
+        :style="{
+          backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)',
+        }"
+      >
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'1'"></p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12 casillaBody">
-            <h2>Hola mundo</h2>
-            <div
-              class="area d-flex align-items-center justify-content-around"
-              id="area1"
-            >
-              Hola otra vez
-            </div>
-          </div>
-        </div>
       </div>
-      <!-- otras casillas -->
-      
-      
+      <!-- Casillas Nº 2-62 -->
       <div
+        class="casillaNum"
         :id="'casilla' + (n = n + 1)"
-        v-for="n in 61" 
+        v-for="n in 61"
         :key="n"
       >
 
+        <!-- Casilla mujeres -->
         <div class="casillaif" v-if="
                   n !== 5 &&
                   n !== 6 &&
@@ -38,118 +34,144 @@
                   n !== 18 &&
                   n !== 19 &&
                   n !== 23 &&
-                  n !== 27 &&
+                  n !== 26 &&
                   n !== 31 &&
                   n !== 32 &&
                   n !== 41 &&
                   n !== 42 &&
                   n !== 45 &&
                   n !== 50 &&
-                  n !== 52 &&
+                  n !== 53 &&
                   n !== 54 &&
+                  n !== 56 &&
                   n !== 58 &&
                   n !== 59 && 
-                  arrayMujeres[n-2].imagen !==null
-                ">
-                
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
-          
+                  mujeresC[n-2].imagen !==null">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
-            
               <div class="casillaHead">
-                <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)"></p>
+                <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
               </div>
-          
-
             <!-- cuerpo de la casilla -->
-            
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
                   <!-- <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'" style="with:100px; height:100px"/> -->
                   </div>
               </div>
-
             <!-- pie de la casilla -->
-          
-              <div class="casillaFooter" >
+              <!-- <div class="casillaFooter" >
                 <p
                   class="m-0"
                   :id="'nombreMujer'"
-                  
                   v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                ></p>
-                
-              </div>
-          
+                ></p>  
+              </div> -->
           </div>
-        </div>
-        <div class="casillaif" v-else-if=" n !== 5 &&
-                  n !== 6 &&
-                  n !== 9 &&
-                  n !== 12 &&
-                  n !== 14 &&
-                  n !== 18 &&
-                  n !== 19 &&
-                  n !== 23 &&
-                  n !== 27 &&
-                  n !== 31 &&
-                  n !== 32 &&
-                  n !== 41 &&
-                  n !== 42 &&
-                  n !== 45 &&
-                  n !== 50 &&
-                  n !== 52 &&
-                  n !== 54 &&
-                  n !== 58 &&
-                  n !== 59 &&
-                  arrayMujeres[n-2].imagen===null">
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/feminismo.jpg)' }">
-          
-            <!-- encabezado de la casilla -->
-            
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n" v-on:click="darInfo(n)"></p>
-              </div>
-              <div class="casillaFooter" >
-                <p
-                  class="m-0"
-                  :id="'nombreMujer'"
-                  
-                  v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                ></p>
-                
-              </div>
-          </div>
+
         </div>
 
-        <div class="casillaif" v-else>
-
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(../resources/img/otros/goose.png)' }">
-          
+        <!-- Casillas OCA -->
+        <div class="casillaif" v-else-if=" n == 5 ||
+        n == 9 ||
+        n == 14 ||
+        n == 18 ||
+        n == 23 ||
+        n == 27 ||
+        n == 32 ||
+        n == 36 ||
+        n == 41 ||
+        n == 45 ||
+        n == 50 ||
+        n == 54 ||
+        n == 59 
+        ">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
               <div class="casillaHead">
                 <p class="numCasilla" v-text="n"></p>
               </div>
           </div>
-
         </div>
 
-      </div>
-
-    
-
-      <!-- casilla normas -->
-      <div class="casillaNormas p-2" id="casillaNormas">
-        <div class="row align-items-center justify-content-center h-100">
-          <div class="col"></div>
+        <!-- Casillas PUENTE -->
+        <div class="casillaif" v-else-if=" n == 6 || n == 12">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
         </div>
-      </div>
-      <!-- casilla final -->
-      <div class="casilla p-2" id="casillaFinal">
+        <!-- Casilla POSADA -->
+        <div class="casillaif" v-else-if="n == 19">
+          <div
+            class="casilla casillaJuego px-2 py-2 text-center"
+            :style="{
+              backgroundImage: 'url(../resources/img/otros/posada2.png)',
+            }"
+          >
+            <div class="casillaHead">
+              <p class="numCasilla" v-text="n"></p>
+            </div>
+          </div>
+        </div>
+        <!-- Casilla POZO -->
+        <div class="casillaif" v-else-if=" n == 31">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+        <!-- Casilla LABERINTO -->
+        <div class="casillaif" v-else-if=" n == 42">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+        <!-- Casilla CÁRCEL -->
+        <div class="casillaif" v-else-if=" n == 56">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+        <!-- Casillas DADO -->
+        <div class="casillaif" v-else-if=" n == 26 || n == 53">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+          </div>
+        </div>
+        <!-- Casilla CALAVERA -->
+        <div class="casillaif" v-else-if=" n == 58">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
+              <div class="casillaHead">
+                <p class="numCasilla" v-text="n"></p>
+              </div>
+            </div>
+            <!-- pie de la casilla -->
+            <!-- <div class="casillaFooter" >
+                          <p
+                            class="m-0"
+                            :id="'nombreMujer'"
+                            v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
+                          ></p>  
+                        </div> -->
+          </div>
+        </div>
+          <!-- casilla final -->
+      <div
+        class="casilla p-2"
+        id="casilla63"
+        :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }"
+      >
         <div class="row">
           <div class="col-sm-8 casillaHead">
             <p class="numCasilla" v-text="'63'"></p>
           </div>
-          <!-- <div class="col-sm-4 casillaHead"><button class="pregunta" v-text="'?'"></button></div> -->
         </div>
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
@@ -157,72 +179,827 @@
           </div>
         </div>
       </div>
+
+      <svg height="50" width="50" class="jugador1">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="red" />
+      </svg>
+      <svg height="50" width="50" class="jugador2">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="yellow" />
+      </svg>
+      <svg height="50" width="50" class="jugador3" v-if="numeroJugadores>=3">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="blue" />
+      </svg>
+      <svg height="50" width="50" class="jugador4" v-if="numeroJugadores==4">
+        <circle cx="25" cy="25" r="17" stroke="black" stroke-width="3" fill="green" />
+      </svg>
+
     </div>
-    <h1>Muestra los datos de una mujer</h1>
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Foto</th>
-        </tr>
-      </thead>
-      <tr v-for="mujer in arrayMujeres" :key="mujer.id"> <!--Recorremos el array y cargamos nuestra tabla-->
-            <td v-text="mujer.nombre"></td>
-            <td v-text="mujer.apellido"></td>
-            <td><img :src="'../resources/img/fotosMujeres/'+mujer.imagen" :alt="'mujer'" style="with:100px; height:100px"/></td>
-        </tr>
-    </table>
+
+    <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+
+    <!-- Modal dado. -->
+    <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" data-keyboard="false" aria-labelledby="modalDado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
+          </div>
+          <div class="modal-body">
+            <img id="img_dado"/>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+       <!-- Modal orden turnos. -->
+    <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Orden de los turnos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p v-text="this.jugadores[this.turnosJugadores[0]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[1]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[2]].nombre" ></p>
+            <p v-text="this.jugadores[this.turnosJugadores[3]].nombre" ></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal casilla caida -->
+    <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          </div>
+          <div class="modal-body">
+            
+            <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
+            <p v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></p>
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal pregunta -->
+    <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
+          </div>
+          <div class="modal-body">
+            <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
+            <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
+            <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal con info de las mujeres -->
+      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-6">
+                  <img :src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" :alt="'mujer'"/>
+                </div>
+          
+                <div class="col-3">
+                  <label for="nacimiento">Nacimiento:</label> <p>{{this.mujeresC[this.numeroMujer].fechaNacimiento}}</p>
+                </div>
+                <div class="col-3">
+                  <label for="nacimiento">Campo:</label>
+                  <p>{{this.arrayCategorias[this.mujeresC[this.numeroMujer].id_categoria-1]}}</p>
+                </div>
+              </div>
+              <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
+
+              
+            </div>
+            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
+            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
+          </div>
+        </div>
+      </div>
+    
+
+    <!-- Modal juego acabado -->
+    <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle"> ¡Juego finalizado!</h3>
+          </div>
+          <div class="modal-body">
+            <h2>Resultados</h2>
+            <p v-text="this.resultadosOca[0].puntuacion+' - '+this.resultadosOca[0].nombre"></p>
+            <p v-text="this.resultadosOca[1].puntuacion+' - '+this.resultadosOca[1].nombre"></p>
+            
+            <p v-text="this.resultadosOca[2].puntuacion+' - '+this.resultadosOca[2].nombre"></p>
+            <p v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
+
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Inicio</button>
+            <button class="btn btn-primary" v-on:click="finalRedireccionar(2)">Clasificación</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
+
 <script>
-import axios from 'axios';
 export default {
-  data(){
-      return{
-      nombre:"",
-      apellido:"",
-        arrayMujeres:[],
+  data() {
+    return {
+      id: "",
+      nombre: "",
+      imagen: "",
+      apellido: "",
+      arrayMujeres: [],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
+      nombreCategoria: "",
+      color: "",
+      arrayAmbitos: [],
+      mujeresC: [],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
+      modoJuego: "",
+      arrayCategorias: [
+        "Historia",
+        "Derecho",
+        "Antropología",
+        "Geografía",
+        "Filosofía",
+        "Psicología",
+        "Economía",
+        "Sociología",
+        "Pedagogía",
+      ],
+      loading:false,
+      arrayPreguntas:[],
+      arrayOpciones:[],
+      numeroMujer:0,
+      randPregunta:0,
+      numeroCasillaCaida:0,
+      arrayCasillasModal:{
+        oca:{
+          texto:"¡De oca a oca y tiro porque me toca!",
+          img:"img/otros/goose.png"
+        },
+        puente:{
+          texto:"De puente a puente porque me lleva la corriente",
+          img:"img/otros/puente.png"
+        },
+        posada:{
+          texto:"Pierdes un turno",
+          img:"img/otros/posada2.png"
+        },
+        carcel:{
+          texto:"Pierdes dos turnos",
+          img:"img/otros/carcel.jpg"
+        },
+        pozo:{
+          texto:"Atrapado hasta que pase otro jugador o pasen 4 turnos",
+          img:"img/otros/pozo.jpg"
+        },
+        dados:{
+          texto:"¡Vuelves a tirar!",
+          img:"img/otros/dadosFondo.png"
+        },
+        laberinto:{
+          texto:"Vuelves a la casilla 30",
+          img:"img/otros/laberinto.jpg"
+        },
+        calavera:{
+          texto:"Vuelves al principio",
+          img:"img/otros/muerte.svg"
+        },
+        final:{
+          texto:"¡Enhorabuena, has acabado!",
+          img:"img"
+        },
+      },
+      turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
+      tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
+      turno:0,
+      numeroJugadores:4,
+      jugadoresEnFinal:0,
+      posJugador1:1,
+      posJugador2:1,
+      posJugador3:1,
+      posJugador4:1,
+      jugadores:{
+        jugador1:{
+          posicion:1,
+          puntuacion:0,
+          nombre:"nombre1",
+          turnosPerdidos:0,
+          pozo:false
+        },
+        jugador2:{
+          posicion:1,
+          puntuacion:0,
+          nombre:"nombre2",
+          turnosPerdidos:0,
+          pozo:true
+        },
+        jugador3:{
+          posicion:1,
+          puntuacion:0,
+          nombre:"nombre3",
+          turnosPerdidos:0,
+          pozo:false
+        },
+        jugador4:{
+          posicion:1,
+          puntuacion:0,
+          nombre:"nombre4",
+          turnosPerdidos:0,
+          pozo:false
+        },
+      },
+      resultadosOca:[],
     }
   },
-  methods:{
+  methods: {
+    //cargar casillas aletarorias
     shuffle(a) {
-      console.log("Me ejecuto");
       var j, x, i;
       for (i = a.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          x = a[i];
-          a[i] = a[j];
-          a[j] = x;
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
       }
       return a;
     },
+    //Función para obtener el nombre de un objeto en un array
+    getKeyByValue(object, value) {
+      return Object.keys(object).find(key => object[key] === value);
+    },
     cargarMujeres(){
       let me = this;
-      let url = 'mujeres';
+      let url = "mujeres";
       axios
         .get(url)
         .then(function (response) {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
-          console.log(me.arrayMujeres);
-          
-          /* console.log(me.arrayMujeres[0].nombre); */
+          me.modoJuego = localStorage.getItem("modoJuego");
+         
+          //modo categorías
+          //datos filtrados
+          me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresDuplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresTriplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+       
+           //modo juego normal 
+           if (me.modoJuego == 0) {
+            me.mujeresC = me.arrayMujeres;  // vuelve a cargar arrayMujeres
+            // localStorage.removeItem('modoJuego');
+          }
+
+          else if (me.modoJuego == 2 || me.modoJuego == 4 || me.modoJuego == 6){
+            // me.mujeresC = me.arrayMujeres;
+            alert('Pocas mujeres no se puede jugar'); 
+            window.location = '/laravel/ocaG2/public/';
+          }
+
+          else{
+                 //duplica, triplica o carga los datos del array general dependiendo del tamaño del array filtrado mujeresC
+              if (me.mujeresC.length>=31) {
+              me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+              }
+              else if (me.mujeresC.length>=25) {
+                me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+                me.mujeresC = me.mujeresC.concat(me.mujeresTriplicado);
+              } 
+
+          }
+
         })
         .catch(function (error) {
           console.log(error);
         });
     },
+    cargarPreguntas(){
+      this.loading = false;
+      let me = this;
+      let url = 'preguntas';
+      axios
+        .get(url)
+        .then(function (response) {
+          me.arrayPreguntas = response.data;
+          /* me.shuffle(me.arrayPreguntas); */
+          console.log(me.arrayPreguntas);
+          
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    /* FUNCIÓN TEMPORAL. BORRAR CUANDO NO SEA NECESARIA. */
     darInfo(n){
       console.log("Numero casilla "+n);
-      console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
+      console.log(this.mujeresC[n-2].nombre+ " "+this.mujeresC[n-2].apellido+" "+this.mujeresC[n-2].imagen);
+      this.numeroMujer=n-2;
+      $('#modalInfo').modal('show');
+    },
+    tirarDado(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = true;
+      var dado=Math.floor(Math.random() * 6)+1;
+      console.log("Tiro el dado. Ha salido "+dado);
+      //Se envia la imagen al modal
+      var imgsrc = "img/otros/dados/dado"+dado+".svg";
+      var texto= "¡Has sacado un "+dado+"!"
+      $('#img_dado').attr('src',imgsrc);
+      this.moverFicha(dado);
+      $('#modalDado').modal('show');
+      
+      setTimeout(function(){$('#modalDado').modal('hide');  }, 3000);
+      
+    },
+    cambiarTurno(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = false;
+      console.log("el turnooo era "+this.turno);
+      if(this.turno>=this.numeroJugadores-1){
+        this.turno=0;
+        console.log("AHORA EL turnooo es "+this.turno);
+        this.comprobarTurnoPerdido();
+        
+      }else{
+        this.turno=this.turno+1;
+        console.log("AHORA EL turnooo es "+this.turno);
+        this.comprobarTurnoPerdido();
+        
+      }
+    },
+    volverATirar(){
+      var botonTirar=document.querySelector(".tirar");
+      botonTirar.disabled = false;
+      this.turno=this.turno-1;
+      if(this.turno==-1){
+        this.turno=this.numeroJugadores;
+      }
+
+    },
+    /* Comprueba si el siguiente jugador tiene turnos perdidos (debido a las casillas posada y carcel) 
+    y de ser asi cambia de turno */
+    comprobarTurnoPerdido(){
+      if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos>0){
+        console.log("tiene "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos");
+        this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos--;
+        console.log("quedan "+this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos+"turnos perdidos");
+        this.comprobarPozo();
+         
+        this.cambiarTurno();     
+      }
+      else if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos==0){
+        this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
+      }
+    },
+    /* Si hay alguien en el pozo comprobamos si algun jugador ha pasado por esa casilla y de ser asi se libera */
+    comprobarPozo(){
+      if(this.jugadores[this.turnosJugadores[this.turno]].pozo==true){
+        if(this.posJugador1<this.jugadores[this.turnosJugadores[0]].posicion && this.jugadores[this.turnosJugadores[0]].posicion>11 || 
+        this.posJugador2<this.jugadores[this.turnosJugadores[1]].posicion && this.jugadores[this.turnosJugadores[1]].posicion>11 ||
+        this.posJugador3<this.jugadores[this.turnosJugadores[2]].posicion && this.jugadores[this.turnosJugadores[2]].posicion>11 ||
+        this.posJugador4<this.jugadores[this.turnosJugadores[3]].posicion && this.jugadores[this.turnosJugadores[3]].posicion>11 ){
+
+          this.jugadores[this.turnosJugadores[this.turno]].pozo=false;
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=0;
+          console.log("usuario liberado!!");    
+        }
+
+      }
+
+    },
+    comprobarFinal(){
+      const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
+      /* Comprueba si el jugador ha llegado correctamente a la casilla final */
+      var falta= 63-this.jugadores[this.turnosJugadores[this.turno]].posicion;
+      /* console.log("Te faltan "+falta+ " casillas"); */
+      if(falta==0){
+        if(this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos>10){
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
+
+        }
+        else{
+          console.log("Has acabado!!!!");
+          this.jugadoresEnFinal+=1;
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=9999;
+          if(this.jugadoresEnFinal==1){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=50;
+          }
+          else if(this.jugadoresEnFinal==2){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=30;
+          }
+          else if(this.jugadoresEnFinal==3){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=15;
+          }
+          else if(this.jugadoresEnFinal==4){
+            this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=10;
+            this.modalFinalResultado();
+            
+          }  
+        }
+      }
+      else if(falta<0){
+        /* console.log("Casi!!"); */
+        gridJugador.style["grid-area"] = "c"+(falta+63);
+        this.jugadores[this.turnosJugadores[this.turno]].posicion=(falta+63);
+
+      }
+    },
+    modalFinalResultado(){
+      this.resultadosOca=[];
+      for(var i=0; i<this.numeroJugadores;i++){
+        this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
+      }
+      this.resultadosOca.sort(function(a, b){return b.puntuacion-a.puntuacion})
+      console.log(this.resultadosOca);
+      this.guardarPuntuacion();
+      setTimeout(function(){$('#modalJuegoAcabado').modal('show'); }, 1000);
+      
+    },
+    guardarPuntuacion(){
+      let me =this;
+      let url = 'gpuntuacion' 
+      axios.post(url,{ 
+          'nombre':this.resultadosOca[0].nombre,
+          'puntos':this.resultadosOca[0].puntuacion,
+      }).then(function (response) {
+      })
+      .catch(function (error) {
+          console.log(error);
+      }); 
+
+    },
+    finalRedireccionar(valor){
+      if(valor==0){
+        location.reload();
+      }
+      else if (valor==1) {
+        window.location.replace("https://localhost/OcaG2/public");
+      }
+      else if (valor==2) {
+        window.location.replace("https://localhost/OcaG2/public/clasificacion");
+      }
+    },
+    moverFicha(dado){
+      
+      this.jugadores[this.turnosJugadores[this.turno]].posicion=this.jugadores[this.turnosJugadores[this.turno]].posicion+dado; 
+      console.log("estamos en turno "+this.turno);
+      console.log("El "+this.jugadores[this.turnosJugadores[this.turno]]+" esta en la posicion "+this.jugadores[this.turnosJugadores[this.turno]].posicion);
+      this.numeroMujer=this.jugadores[this.turnosJugadores[this.turno]].posicion-2;
+      this.jugadores[this.turnosJugadores[this.turno]].puntuacion+=1;
+      
+      const gridJugador = document.querySelector("."+this.turnosJugadores[this.turno]);
+      gridJugador.style["grid-area"] = "c"+this.jugadores[this.turnosJugadores[this.turno]].posicion;
+
+      this.comprobarFinal();
+
+      /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, carcel, laberinto o calavera */
+      switch(this.jugadores[this.turnosJugadores[this.turno]].posicion){
+        case 5: 
+          gridJugador.style["grid-area"] = "c9";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=9;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 9: 
+          gridJugador.style["grid-area"] = "c14";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=14;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 12: 
+          /* PUENTE */
+          gridJugador.style["grid-area"] = "c6";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=6;
+          this.numeroCasillaCaida=1;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 14: 
+          gridJugador.style["grid-area"] = "c18";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=18;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 18: 
+          gridJugador.style["grid-area"] = "c23";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=23;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 19: 
+          /* POSADA */
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=1;
+          this.numeroCasillaCaida=2;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 23: 
+          gridJugador.style["grid-area"] = "c32";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=32;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 26: 
+          /* DADOS */
+          this.volverATirar();
+          this.numeroCasillaCaida=5;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 31: 
+          /* POZO */
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=4;
+          this.jugadores[this.turnosJugadores[this.turno]].pozo=true;
+          if(this.jugadores[this.turnosJugadores[0]].posicion<31){
+            this.posJugador1=this.jugadores[this.turnosJugadores[0]].posicion;
+          }
+          if(this.jugadores[this.turnosJugadores[1]].posicion<31){
+            this.posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
+          }
+          if(this.jugadores[this.turnosJugadores[2]].posicion<31){
+            this.posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
+          }
+          if(this.jugadores[this.turnosJugadores[3]].posicion<31){
+            this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
+          }
+          this.numeroCasillaCaida=4;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 32: 
+          gridJugador.style["grid-area"] = "c41";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=41;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 41: 
+          gridJugador.style["grid-area"] = "c45";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=45;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 42: 
+          /* LABERINTO */
+          gridJugador.style["grid-area"] = "c30";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=30;
+          this.numeroCasillaCaida=6;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 45: 
+          gridJugador.style["grid-area"] = "c50";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=50;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 50: 
+          gridJugador.style["grid-area"] = "c54";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=54;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 53: 
+          /* DADOS */
+          this.volverATirar();
+          this.numeroCasillaCaida=5;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 54: 
+          gridJugador.style["grid-area"] = "c59";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=59;
+          this.volverATirar();
+          this.numeroCasillaCaida=0;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 56: 
+          /* CARCEL */
+          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=2;
+          this.numeroCasillaCaida=3;
+          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          break;
+        case 58: 
+          /* CALAVERA */
+          gridJugador.style["grid-area"] = "c1";
+          this.jugadores[this.turnosJugadores[this.turno]].posicion=1;
+          this.numeroCasillaCaida=7;
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c1";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=1;
+            me.jugadores[me.turnosJugadores[me.turno]].puntuacion=0;
+            }, 3500);
+          break;
+        case 63:
+          /* Casilla final */
+          console.log("finalizado");
+          break;
+        default:
+          var me=this;
+          setTimeout(function(){$('#modalInfo').modal('show'); }, 500);
+          setTimeout(function(){$('#modalInfo').modal('hide'); me.pregunta();    }, 5000);    
+          break;
+      }
+      /* Finaliza el turno y pasa al siguiente jugador */
+      this.cambiarTurno();
+    },
+    opcionGeografica(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionGeografica();
+      }
+    },
+    opcionCategoria(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
+      var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
+      this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]-1], respuestaRandom1, respuestaRandom2];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionCategoria();
+      }
+    },
+    opcionApellido(){
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.shuffle(this.arrayOpciones);
+      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
+      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
+      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
+        this.opcionApellido();
+      }
+    },
+    pregunta(){
+      this.randPregunta=Math.floor(Math.random() * 4);
+      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      console.log(this.arrayMujeres[this.numeroMujer][repuesta]); 
+      console.log(this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]));
+      var respuestaCorrecta=this.arrayMujeres[this.numeroMujer][repuesta];
+      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]);
+      
+      if(this.arrayMujeres[this.numeroMujer][repuesta]!=null){
+        if(respuestaCampo=="fechaNacimiento"){
+          this.opcionNacimiento();  
+        }
+        else if (respuestaCampo=="zonaGeografica"){
+          this.opcionGeografica();
+        }
+        else if (respuestaCampo=="id_categoria"){
+          this.opcionCategoria();          
+        } 
+        else if (respuestaCampo=="apellido"){
+          this.opcionApellido();          
+        }
+        $('#modalPregunta').modal('show');
+      }
+      else{
+        this.pregunta();
+      }
+    },
+    corregirPregunta(respuesta, btn){
+      var repuestaBD= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
+      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuestaBD]);
+      console.log("Respuesta "+respuesta);
+      console.log(btn);
+      console.log("Respuesta correctar = "+this.arrayMujeres[this.numeroMujer][repuestaBD]);
+
+      if(respuestaCampo!="id_categoria"){
+
+        if(respuesta==this.arrayMujeres[this.numeroMujer][repuestaBD]){
+          console.log("Respuesta correcta");
+          //BOTON  VERDE
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="green";
+          if(this.turno==0){
+            this.turnoP=this.numeroJugadores-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;            
+          }
+          else{
+            this.turnoP=this.turno-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+            
+          }
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
+        else{
+          //BOTON DE COLOR ROJO
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="red";
+          //cerrar modal
+          this.cerrarModalPregunta();
+
+        }
+      }
+      else if(respuestaCampo=="id_categoria"){
+
+        console.log("parte 1 "+respuesta);
+        console.log("parte 2 "+this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]);
+        if(respuesta == this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]-1]){
+          console.log("Respuesta correcta");
+          //BOTON DE COLOR VERDE
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="green";
+          if(this.turno==0){
+            this.turnoP=this.numeroJugadores-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+          }
+          else{
+            this.turnoP=this.turno-1;
+            this.jugadores[this.turnosJugadores[this.turnoP]].puntuacion+=10;
+          }
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
+        else{
+          //BOTON DE COLOR ROJO
+          var boton=document.querySelector("#btn"+btn);
+          boton.style["background-color"]="red";
+          //cerrar modal
+          this.cerrarModalPregunta();
+        }
+      }
+    },
+    cerrarModalPregunta(){
+      var boton1=document.querySelector("#btn1");
+      var boton2=document.querySelector("#btn2");
+      var boton3=document.querySelector("#btn3");
+      boton1.disabled = true;
+      boton2.disabled = true;
+      boton3.disabled = true;
+      setTimeout(function(){
+        $('#modalPregunta').modal('hide'); 
+      }, 3000);
+      setTimeout(function(){
+        boton1.style["background-color"]="#428bca";
+        boton2.style["background-color"]="#428bca";
+        boton3.style["background-color"]="#428bca";
+        boton1.disabled = false;
+        boton2.disabled = false;
+        boton3.disabled = false;
+      }, 4000);
     }
   },
+  created(){
+    console.log('Component created.');
+    //Para que no salgan errores de render
+    for(var i=0; i<this.numeroJugadores;i++){
+        this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
+    }
+    this.loading = true;
+    this.cargarPreguntas();
+    this.cargarMujeres();
+
+  },
   mounted(){
-      this.cargarMujeres();
-      console.log('Component mounted.')
-      
+    console.log('Component mounted.');  
+    /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
+    this.shuffle(this.turnosJugadores);
+    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);  
   }
 
 }
+  
 </script>
