@@ -274,9 +274,6 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
             <div class="modal-body">
               <div class="row">
@@ -537,10 +534,10 @@ export default {
       var imgsrc = "img/otros/dados/dado"+dado+".svg";
       var texto= "¡Has sacado un "+dado+"!"
       $('#img_dado').attr('src',imgsrc);
-      this.moverFicha(dado);
-      $('#modalDado').modal('show');
       
-      setTimeout(function(){$('#modalDado').modal('hide');  }, 3000);
+      $('#modalDado').modal('show');
+      var me=this;
+      setTimeout(function(){$('#modalDado').modal('hide'); me.moverFicha(dado);  }, 3000);
       
     },
     cambiarTurno(){
@@ -687,136 +684,216 @@ export default {
       /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, carcel, laberinto o calavera */
       switch(this.jugadores[this.turnosJugadores[this.turno]].posicion){
         case 5: 
+        var me=this;
+        this.numeroCasillaCaida=0;
+        setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+        setTimeout(function(){
+          $('#modalCasillaCaida').modal('hide'); 
           gridJugador.style["grid-area"] = "c9";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=9;
-          this.volverATirar();
-          this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          me.jugadores[me.turnosJugadores[me.turno]].posicion=9;
+          console.log("posicion del jugadorrrr "+me.jugadores[me.turnosJugadores[me.turno]].posicion);
+          me.volverATirar();
+          
+        }, 3500);
+          break;
+        case 6: 
+          /* PUENTE */
+          var me=this;
+          this.numeroCasillaCaida=1;
+          setTimeout(function(){$('#modalCasillaCaida').modal('show');}, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');
+            gridJugador.style["grid-area"] = "c12";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=12;            
+          }, 3500);
           break;
         case 9: 
-          gridJugador.style["grid-area"] = "c14";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=14;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c14";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=14;
+            me.volverATirar();
+            }, 3500);
           break;
         case 12: 
           /* PUENTE */
-          gridJugador.style["grid-area"] = "c6";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=6;
+          var me=this;
           this.numeroCasillaCaida=1;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');
+            gridJugador.style["grid-area"] = "c6";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=6; 
+             }, 3500);
           break;
         case 14: 
-          gridJugador.style["grid-area"] = "c18";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=18;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c18";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=18;
+            me.volverATirar();
+            }, 3500);
           break;
         case 18: 
-          gridJugador.style["grid-area"] = "c23";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=23;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);   
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c23";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=23;
+            me.volverATirar();
+            }, 3500);
           break;
         case 19: 
           /* POSADA */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=1;
+          var me=this;
           this.numeroCasillaCaida=2;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){ 
+            $('#modalCasillaCaida').modal('hide');  
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=1;
+            }, 3500);
           break;
         case 23: 
-          gridJugador.style["grid-area"] = "c32";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=32;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c32";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=32;
+            me.volverATirar();
+          }, 3500);
           break;
         case 26: 
           /* DADOS */
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=5;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            me.volverATirar();
+            }, 3500);
           break;
         case 31: 
           /* POZO */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=4;
-          this.jugadores[this.turnosJugadores[this.turno]].pozo=true;
-          if(this.jugadores[this.turnosJugadores[0]].posicion<31){
-            this.posJugador1=this.jugadores[this.turnosJugadores[0]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[1]].posicion<31){
-            this.posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[2]].posicion<31){
-            this.posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[3]].posicion<31){
-            this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
-          }
+          var me=this;
           this.numeroCasillaCaida=4;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=4;
+            me.jugadores[me.turnosJugadores[me.turno]].pozo=true;
+            if(me.jugadores[me.turnosJugadores[0]].posicion<31){
+              me.posJugador1=me.jugadores[me.turnosJugadores[0]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[1]].posicion<31){
+              me.posJugador2=me.jugadores[me.turnosJugadores[1]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[2]].posicion<31){
+              me.posJugador3=me.jugadores[me.turnosJugadores[2]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[3]].posicion<31){
+              me.posJugador4=me.jugadores[me.turnosJugadores[3]].posicion;
+            }
+          }, 3500);
           break;
         case 32: 
-          gridJugador.style["grid-area"] = "c41";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=41;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){ 
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c41";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=41;
+            me.volverATirar();
+          }, 3500);
           break;
         case 41: 
-          gridJugador.style["grid-area"] = "c45";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=45;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c45";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=45;
+            me.volverATirar();
+            }, 3500);
           break;
         case 42: 
           /* LABERINTO */
-          gridJugador.style["grid-area"] = "c30";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=30;
+          var me=this;
           this.numeroCasillaCaida=6;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c30";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=30;
+            }, 3500);
           break;
         case 45: 
-          gridJugador.style["grid-area"] = "c50";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=50;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c50";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=50;
+            me.volverATirar();
+          }, 3500);
           break;
         case 50: 
-          gridJugador.style["grid-area"] = "c54";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=54;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c54";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=54;
+            me.volverATirar();
+            }, 3500);
           break;
         case 53: 
           /* DADOS */
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=5;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+            me.volverATirar();
+            }, 3500);
           break;
         case 54: 
-          gridJugador.style["grid-area"] = "c59";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=59;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c59";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=59;
+            me.volverATirar();
+            }, 3500);
           break;
         case 56: 
           /* CARCEL */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=2;
+          var me=this;
           this.numeroCasillaCaida=3;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=2;
+            }, 3500);
           break;
         case 58: 
           /* CALAVERA */
-          gridJugador.style["grid-area"] = "c1";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=1;
+          var me=this;
           this.numeroCasillaCaida=7;
           setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
           setTimeout(function(){
@@ -837,7 +914,9 @@ export default {
           break;
       }
       /* Finaliza el turno y pasa al siguiente jugador */
-      this.cambiarTurno();
+      var me=this;
+      setTimeout(function(){me.cambiarTurno();  }, 4500); 
+    
     },
     opcionGeografica(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
