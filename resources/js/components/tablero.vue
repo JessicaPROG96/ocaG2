@@ -994,7 +994,6 @@ export default {
 
   },
   mounted(){
-    //  this.cargarMujeres();
     console.log('Component mounted.');  
     /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
     this.shuffle(this.turnosJugadores);
