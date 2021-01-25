@@ -19,6 +19,7 @@ body
     /* background-position: center; */
     background-size: cover;
     /* background-color: var(--color5); */
+    background-attachment: fixed;
     background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2012/10/09/18629/819098298c62109a6e24dc883f9e1cdb-700.jpg');
 }
 
@@ -69,4 +70,23 @@ nav a:hover
 .modal-content {
     background-color: #e2ab3f;
     width: 900px;
+}
+
+
+/* formulario */
+form{
+    color: white;
+    background-color: teal;
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 30%;
+}
+.cajas{
+    padding: 4%;
+    padding-top: 1%;
+    background-color: tomato;
+}
+.box{
+    /* background-color: violet; */
+    margin-top:  10px;
 }
