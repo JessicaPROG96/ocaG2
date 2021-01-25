@@ -3,10 +3,11 @@
 @extends('layouts.master')
 @section('content')
 
-<div>
+<div class="content tableroVue">
       <h1>Bienvenido al juego de la oca</h1>
       <tablero-component></tablero-component>
 </div>
 
     
 @endsection
+

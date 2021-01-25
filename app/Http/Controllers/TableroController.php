@@ -9,15 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class TableroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexMujer()
-    {
-        $mujer = Mujer::all();
-        return $mujer;
+    //Carga las mujeres
+    public function indexMujer(Request $request){
+       /*  $mujer = Mujer::all();
+        return $mujer; */
 
 
         // $mujer=DB::table('mujeres')->get();
@@ -84,43 +79,20 @@ class TableroController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    //Carga las preguntas para el tablero
     public function indexPregunta(Request $request){
         $pregunta=DB::table('preguntas')->get();
         return $pregunta;  
-     }
+    }
+
+    //Inserta la puntuación del ganadaor al finalizar la oca
+    public function puntuacion(Request $request){
+        DB::table('clasificacion')->insert([
+            'nombre' => $request->nombre,
+            'puntos' => $request->puntos
+        ]);
+    }
+
 }
     
 
