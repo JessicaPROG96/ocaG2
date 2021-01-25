@@ -4,6 +4,7 @@
 @section('content')
 
 <div>
+      <h1>Bienvenido al juego de la oca</h1>
       <tablero-component></tablero-component>
 </div>
 
