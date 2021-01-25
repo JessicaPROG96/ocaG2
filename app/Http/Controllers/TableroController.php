@@ -11,17 +11,16 @@ class TableroController extends Controller
 {
     //Carga las mujeres
     public function indexMujer(Request $request){
-       /*  $mujer = Mujer::all();
-        return $mujer; */
+        $mujer = Mujer::all();
+        return $mujer; 
 
 
         // $mujer=DB::table('mujeres')->get();
         // return $mujer;
 
-
-        $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
-        $mujer = DB::select($sql);
-        return $mujer;
+        // $sql = 'SELECT * FROM mujeres where id_categoria="8" AND id_categoria="7"';
+        // $mujer = DB::select($sql);
+        // return $mujer;
 
         // $sql = 'SELECT * FROM products';
         // $products = DB::select($sql);

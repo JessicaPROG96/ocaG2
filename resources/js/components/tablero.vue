@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2> categoría seleccionada es: {{modoJuego}}</h2>
     <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
@@ -326,8 +325,6 @@
         </div>
       </div>
     </div>
-
-
 
   </div>
 </template>
