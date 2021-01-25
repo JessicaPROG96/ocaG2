@@ -1,16 +1,16 @@
 @extends('layouts.master')
 @section('content')
 
-<form enctype="multipart/form-data" method="GET" action="{{url('crearMujer')}}">
+<form enctype="multipart/form-data" method="POST" action="{{url('crearMujer')}}">
     @csrf 
     <div class="form-group cajas">
-        <input type="text" name="nombre" class="form-control box"  placeholder="Nombre">
-        <input type="text" name="apellido" class="form-control box"  placeholder="Apellido">
+        <input type="text" name="nombre" class="form-control box"  placeholder="Nombre" required>
+        <input type="text" name="apellido" class="form-control box"  placeholder="Apellido" required>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Nacimiento</label>
             <div class="col-sm-10">
-            <input type="text" name="fechaNacimiento" class="form-control box">
+            <input type="text" name="fechaNacimiento" class="form-control box" required>
             </div>
          </div>
         
@@ -24,7 +24,7 @@
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10">
-                <input type="file" name="imagen" class="form-control-file" accept=".jpg, .png, .gif, .jpeg">
+                <input type="file" name="imagen" class="form-control-file" required>
             </div>
          </div>
 
@@ -33,10 +33,10 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
-            <textarea name="descripcion" class="form-control box" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="descripcion" class="form-control box" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
          </div>
-         <input type="text" name="zonaGeografica" class="form-control box"  placeholder="Zona Geográfica">
+         <input type="text" name="zonaGeografica" class="form-control box"  placeholder="Zona Geográfica" required>
 
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Categoría</label>

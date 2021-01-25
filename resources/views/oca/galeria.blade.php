@@ -102,7 +102,7 @@
               
                 <div class="mujer">
                     {{-- Ruta de la imagen --}}
-                    <img class="imagen" src="./../resources/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
+                    <img class="imagen" src="{{asset("img/fotosMujeres/".$a['imagen'])}}" style="height:200px"/>
                     {{-- Nombre --}}
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
