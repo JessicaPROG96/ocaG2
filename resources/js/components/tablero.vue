@@ -50,7 +50,7 @@
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <div class="casillaHead">
-                <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
+                <p class="numCasilla" v-text="n" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
               </div>
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
@@ -269,7 +269,7 @@
     </div>
 
     <!-- Modal con info de las mujeres -->
-      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" data-keyboard="false" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -293,11 +293,11 @@
                 </div>
               </div>
               <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
-
+              <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
               
             </div>
-            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
-            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
+            
+          
           </div>
         </div>
       </div>
