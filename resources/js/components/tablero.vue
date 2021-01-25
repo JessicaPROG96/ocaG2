@@ -5,11 +5,11 @@
     <div id="tablero">
       <!-- casilla inicio -->
       <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'1'"></p>
-          </div>
-        </div>
+        <svg height="50" width="50" class="casillaCircle" >
+          <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="'1'" ></text>
+        </svg>
+        
       </div>
       
       
@@ -47,9 +47,10 @@
                 
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
@@ -83,72 +84,80 @@
         n == 59 
         ">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="12" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casillas PUENTE -->
         <div class="casillaif" v-else-if=" n == 6 || n == 12">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casilla POSADA -->
         <div class="casillaif" v-else-if=" n == 19">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2"  fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
@@ -157,11 +166,11 @@
 
       <!-- casilla final -->
       <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(img/otros/desayuno.jpg)' }">
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'63'"></p>
-          </div>
-        </div>
+        <svg height="100" width="100" class="casillaCircleFinal" >
+          <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1" dy=".3em" class="numCasilla" v-text="'63'" ></text>
+        </svg>
+        
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
@@ -187,15 +196,12 @@
 
     <!-- Modal dado. -->
     <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" data-keyboard="false" aria-labelledby="modalDado" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
-          </div>
           <div class="modal-body">
+            <h3 class="modal-title modalTitulo" id="exampleModalLongTitle">¡Dado lanzado!</h3>
             <img id="img_dado" />
           </div>
-          
         </div>
       </div>
     </div>
@@ -228,12 +234,9 @@
     <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          </div>
           <div class="modal-body">
-            <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
-            <p v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></p>
+            <h4 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
+            <img id="img_dado" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
           </div>
           
         </div>

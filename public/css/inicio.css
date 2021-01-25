@@ -161,11 +161,17 @@ div.contenedor {
     margin-top: auto;
 }
 .casillaJuego .casillaHead{
-    background-color: rgba(255, 255, 255, 0.329);
-    text-align: left;
+    background-color: rgba(255, 255, 255, 0.753);
+    text-align: center;
+    border: 1px solid black;
     width: 20px;
     height: 20px;
 }
+.casillaCircle{
+    margin-left: -15px;
+    margin-top: -10px;
+}
+
 #casilla2{grid-area: c2; 
 background-color: grey;}
 #casilla3{grid-area: c3;
@@ -318,6 +324,12 @@ z-index: 1;
 font-size: 60px;
 color: white;
 }
+
+.numCasilla{
+font-size: 12px;
+color: white;
+
+}
 .modal-dialog{
     z-index: 21;
 }
@@ -360,4 +372,8 @@ color: white;
     margin-left: auto;
     margin-right: auto;
   
+}
+
+.modalTitulo{
+    text-align: center;
 }
