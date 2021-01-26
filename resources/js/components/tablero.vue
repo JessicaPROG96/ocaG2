@@ -46,7 +46,7 @@
               <svg height="50" width="50" class="casillaCircle" >
                 <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
                 <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
-              </svg>
+              </svg> 
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
