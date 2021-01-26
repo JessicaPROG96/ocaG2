@@ -7,7 +7,7 @@ $(document).ready(function(){
     seleccionarCategoria();
     $("#searchbar").on("input",buscar);
     modoAdmin();
-    $('.btn-guardar').on("click", ajaxMujer);
+    $('.btn-guardar').click(ajaxMujer);
 });
 
 function seleccionarCategoria() {
@@ -50,18 +50,38 @@ function seleccionarCategoria() {
 // Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function ModalMujer() {
     $('.mujer').click(function() {
+
+        id = $(this).find('.id').text();                    // Cogemos el id
+
+        if (localStorage.getItem("fechaUpd"+id)==null) {
+            fecha = $(this).find('.fecha').text();            // Cogemos la fecha
+        } else {
+            fecha = localStorage.getItem("fechaUpd"+id);
+        }
+
+        if (localStorage.getItem("zonaUpd"+id)==null) {
+            zona = $(this).find('.zona').text();              // Cogemos la desc
+        } else {
+            zona = localStorage.getItem("zonaUpd"+id);
+        }
+
+        if (localStorage.getItem("descUpd"+id)==null) {
+            descr = $(this).find('.descripcion').text();              // Cogemos la zona
+        } else {
+            descr = localStorage.getItem("descUpd"+id);
+        }
+
         nombre = $(this).find('.nombre').text();            // Cogemos el nombre
         apellido = $(this).find('.apellido').text();        // Cogemos el apellido
         categoria = $(this).find('.categoria').text();      // Cogemos la categoria
         imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen
-        fecha = $(this).find('.fecha').text();              // Cogemos la fecha
-        zona = $(this).find('.zona').text();                // Cogemos la zona
+        //fecha = $(this).find('.fecha').text();              // Cogemos la fecha
+        //zona = $(this).find('.zona').text();                // Cogemos la zona
         enlace = $(this).find('.enlace').text();            // Cogemos el enlace
-        descr = $(this).find('.descripcion').text();        // Cogemos la descripción
+        //descr = $(this).find('.descripcion').text();        // Cogemos la descripción
+        // id = $(this).find('.id').text();                    // Cogemos el id
 
-        // console.log(enlace.substr(0, enlace.indexOf(" ")));
-        // console.log(enlace);
-
+        localStorage.setItem("idMujer", id);
 
         if (enlace.substr(0, enlace.indexOf(" "))!= "") {
             $('.enlace-btn').attr("href", enlace.substr(0, enlace.indexOf(" ")));
@@ -160,28 +180,41 @@ function modoAdmin() {
     }
 }
 
-// function ajaxMujer() {
+function ajaxMujer() {
 
-//     fecha = $(".fecha-modal").val();                        // Fecha de nacimiento
-//     zona = $(".zona-modal").val();                          // Zona
-//     // $(".ambito-modal").val(categoria);                   // Ambito/Categoria
-//     desc= $(".desc-modal").val();                           // Descripción
+    fecha = $(".fecha-modal").val();                        // Fecha de nacimiento
+    zona = $(".zona-modal").val();                          // Zona
+    // $(".ambito-modal").val(categoria);                   // Ambito/Categoria
+    desc = $(".desc-modal").val();                           // Descripción
+    id = localStorage.getItem("idMujer");
+    console.log(id);
 
-//     $.ajaxSetup({
-//         headers: {
-//             "_token": $("meta[name='csrf-token']").attr("content")
-//         }
-//     });
-//     jQuery.ajax({
-//         url: '{{ route("ajax") }}',
-//         method: 'post',
-//         data: {
-//            fecha: fecha,
-//            zona: zona,
-//            desc: desc
-//         },
-//         success: function(result){
-//            jQuery('.alert').show();
-//            jQuery('.alert').html(result.success);
-//         }});
-// }
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+        url: 'ajax',
+        method: 'get',
+        data: {
+            // _token: $("meta[name='csrf-token']").attr("content"),
+           'fecha': fecha,
+           'zona': zona,
+           'desc': desc,
+           'id':id
+        },        
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        },
+        success:function(response){
+            var arrayMujer = (response);
+            console.log(arrayMujer);
+            console.log(arrayMujer[0]['fechaNacimiento']);
+            localStorage.setItem("fechaUpd"+arrayMujer[0]['id'],arrayMujer[0]['fechaNacimiento']);                         // Fecha de nacimiento
+            localStorage.setItem("zonaUpd"+arrayMujer[0]['id'],arrayMujer[0]["zonaGeografica"]);                           // Zona
+            localStorage.setItem("descUpd"+arrayMujer[0]['id'],arrayMujer[0]["descripcion"]);       
+
+        }
+
+        });
+}

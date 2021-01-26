@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::post('ajax', ['ocaController@ajaxMujer']);
+Route::get('ajax', [ocaController::class , 'ajax']);
+
+// Route::get('ajax',['as' => 'ajax', 'uses' => 'ocaController@ajax']);
 
 Route::get('/', [ocaController::class, 'index']);
 

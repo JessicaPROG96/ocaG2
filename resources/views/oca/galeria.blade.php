@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="<?php echo asset('css/galeria.css')?>" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('layouts.master')
 
 @section('content')
@@ -141,7 +140,7 @@
               
                 <div class="mujer">
                     {{-- Ruta de la imagen --}}
-                    <img class="imagen" src="./../resources/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
+                    <img class="imagen" src="/img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
                     {{-- Nombre --}}
                     <h4 class="nombre">{{$a['nombre']}}</h4>
                     {{-- Apellido --}}
@@ -155,7 +154,7 @@
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Descripción --}}
-                    {{-- <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4> --}}
+                    <h4 style="display:none;" class="id">{{$a['id']}}</h4>
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>
