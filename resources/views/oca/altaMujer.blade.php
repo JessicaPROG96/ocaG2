@@ -1,11 +1,16 @@
+<link rel="stylesheet" href="{{ asset('css/inicio.css') }} " type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 @extends('layouts.master')
 @section('content')
 
-<form enctype="multipart/form-data" method="POST" action="{{url('crearMujer')}}">
+<form enctype="multipart/form-data" method="POST" action="{{url('crearMujer')}}" id="formInsertMujer">
     @csrf 
     <div class="form-group cajas">
-        <input type="text" name="nombre" class="form-control box"  placeholder="Nombre" required>
-        <input type="text" name="apellido" class="form-control box"  placeholder="Apellido" required>
+        <input type="text" name="nombre"  class="form-control box" id="nombre"  placeholder="Nombre">
+        <p id="mensajeError"></p>
+        <input type="text" name="apellido" class="form-control box"  id="apellido" placeholder="Apellido" required>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Nacimiento</label>
@@ -24,14 +29,14 @@
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10">
-                <input type="file" name="imagen" class="form-control-file" required>
+                <input type="file" name="imagen" class="form-control-file">
             </div>
          </div>
 
         <input type="text" name="enlace"  class="form-control box"  placeholder="Enlace">
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Descripción</label>
+            <label class="col-sm-2 col-form-label">Descripción</label><span>(required, at least 3 characters)</span>
             <div class="col-sm-10">
             <textarea name="descripcion" class="form-control box" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
@@ -57,9 +62,22 @@
             <button type="button" class="btn btn-primary">Volver</button>
             </div>
         </div>
-  <button class="btn btn-primary box" type="submit">Enviar</button>    
+  <button class="btn btn-primary box" type="submit" id="submit">Enviar</button>    
     </div>
+    <p id="mensajeError"></p>
 </form>
 
     
 @endsection
+<script>
+    // function enviar() { 
+    //    console.log("entra correctamente"); 
+    // }
+//     function myFunction() {
+//   alert("Bienvenido");
+// }
+
+   
+</script>
+
+<script src="js/jugadores.js"></script>
