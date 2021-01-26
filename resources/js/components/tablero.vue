@@ -162,11 +162,11 @@
           <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1" dy=".3em" class="numCasilla" v-text="'63'" ></text>
         </svg>
         
-        <div class="row align-items-center justify-center-around h-100">
+        <!-- <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <svg height="50" width="50" class="jugador1">
@@ -198,21 +198,21 @@
       </div>
     </div>
 
-       <!-- Modal orden turnos. -->
+    <!-- Modal orden turnos. -->
     <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Orden de los turnos</h5>
+            <h4 class="modal-title modalTitulo" id="exampleModalLongTitle">Orden de los jugadores</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <p v-text="this.jugadores[this.turnosJugadores[0]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[1]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[2]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[3]].nombre" ></p>
+          <div class="modal-body modalTitulo">
+            <p v-text="'1º '+this.jugadores[this.turnosJugadores[0]].nombre" ></p>
+            <p v-text="'2º '+this.jugadores[this.turnosJugadores[1]].nombre" ></p>
+            <p v-if="numeroJugadores>=3" v-text="'3º '+this.jugadores[this.turnosJugadores[2]].nombre" ></p>
+            <p v-if="numeroJugadores==4" v-text="'4º '+this.jugadores[this.turnosJugadores[3]].nombre" ></p>
           </div>
           
         </div>
@@ -290,8 +290,8 @@
             <p v-text="this.resultadosOca[0].puntuacion+' - '+this.resultadosOca[0].nombre"></p>
             <p v-text="this.resultadosOca[1].puntuacion+' - '+this.resultadosOca[1].nombre"></p>
             
-            <p v-text="this.resultadosOca[2].puntuacion+' - '+this.resultadosOca[2].nombre"></p>
-            <p v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
+            <p v-if="numeroJugadores>=3" v-text="this.resultadosOca[2].puntuacion+' - '+this.resultadosOca[2].nombre"></p>
+            <p v-if="numeroJugadores==4" v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
 
             <button class="btn btn-primary" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
             <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Inicio</button>
@@ -377,7 +377,7 @@ export default {
           img:"img"
         },
       },
-      turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
+      turnosJugadores:["jugador1", "jugador2"],
       tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
       turno:0,
       numeroJugadores:4,
@@ -1041,10 +1041,19 @@ export default {
   },
   created(){
     console.log('Component created.');
+    if(this.numeroJugadores>=3){
+      this.turnosJugadores=["jugador1", "jugador2", "jugador3"];
+      if(this.numeroJugadores==4){
+        this.turnosJugadores=["jugador1", "jugador2", "jugador3", "jugador4"];
+      }
+
+
+    }
     //Para que no salgan errores de render
     for(var i=0; i<this.numeroJugadores;i++){
         this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
     }
+
     this.loading = true;
     this.cargarPreguntas();
     this.cargarMujeres();
