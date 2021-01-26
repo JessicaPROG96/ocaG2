@@ -70,3 +70,11 @@ nav a:hover
     background-color: #e2ab3f;
     width: 900px;
 }
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}

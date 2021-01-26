@@ -235,8 +235,8 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <h4 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
-            <img id="img_dado" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
+            <h4 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
+            <img id="img_casillaCaida" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
           </div>
           
         </div>
@@ -247,13 +247,11 @@
     <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
-          </div>
-          <div class="modal-body">
-            <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
-            <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
-            <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
+          <h3 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
+          <div class="modal-body modalTitulo">
+            <button id="btn1" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
+            <button id="btn2" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
+            <button id="btn3" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
           </div>
         </div>
       </div>
@@ -334,7 +332,7 @@ export default {
           img:"img/otros/goose.png"
         },
         puente:{
-          texto:"De puente a puente porque me lleva la corriente",
+          texto:"¡De puente a puente porque me lleva la corriente!",
           img:"img/otros/puente.png"
         },
         posada:{

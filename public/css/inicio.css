@@ -373,7 +373,21 @@ color: white;
     margin-right: auto;
   
 }
+#img_casillaCaida{
+    margin-top: 10px;
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 
 .modalTitulo{
     text-align: center;
+}
+.modalPreguntaBoton{
+    min-width: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
