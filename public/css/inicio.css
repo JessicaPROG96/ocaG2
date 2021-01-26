@@ -109,6 +109,8 @@ div.contenedor {
     background-color: crimson;
 } 
 
+
+/* Tablero de la oca */
 .tableroVue{
     margin-top: 50px;
 }
@@ -362,6 +364,7 @@ z-index: 1;
 background-color: grey;
 z-index: 1;
 }
+/* Casilla final */
 #casilla63{
     /* margin-left: -1.5px; */
     grid-column-start: c63;
@@ -395,6 +398,7 @@ color: white;
     height: 200px;
 }
 
+/* Fichas jugadores */
 .jugador1{
     grid-area: c1;
     z-index: 2;
@@ -423,6 +427,8 @@ color: white;
 #botonAvatar{
     margin-left:10px;
 }
+
+/* Modal tirar dado */
 #img_dado{
     width: 200px;
     height: 200px;
@@ -431,6 +437,7 @@ color: white;
     margin-right: auto;
   
 }
+/* Modal casilla oca, puente, posada... */
 #img_casillaCaida{
     margin-top: 10px;
     width: 400px;
@@ -441,11 +448,34 @@ color: white;
 
 }
 
+/* Centrar los titulos de los modales */
 .modalTitulo{
     text-align: center;
 }
+/*  Modal pregunta */
 .modalPreguntaBoton{
     min-width: 80px;
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.modalResultados{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+/* Modal juego finalizado */
+/* #resultado1{
+    font-size: 25px;
+}
+#resultado2{
+    font-size: 15px;
+}
+#resultado3{
+    font-size: 10px;
+}
+#resultado4{
+    font-size: 5px;
+}
+ */
