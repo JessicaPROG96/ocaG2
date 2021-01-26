@@ -37,4 +37,15 @@ class ocaController extends Controller
 
     }
 
+    // public function ajaxMujer(Request $request)
+    // {
+    //     $app = Galeria::find(1);
+    //     $app->fecha = $request->fecha;
+    //     $app->zona = $request->zona;
+    //     $app->desc = $request->desc;
+    //     $app->save();
+
+    //     return response()->json(['success'=>'Data is successfully added']);
+    // }
+
 }

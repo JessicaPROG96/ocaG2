@@ -7,6 +7,7 @@ $(document).ready(function(){
     seleccionarCategoria();
     $("#searchbar").on("input",buscar);
     modoAdmin();
+    $('.btn-guardar').on("click", ajaxMujer);
 });
 
 function seleccionarCategoria() {
@@ -58,7 +59,17 @@ function ModalMujer() {
         enlace = $(this).find('.enlace').text();            // Cogemos el enlace
         descr = $(this).find('.descripcion').text();        // Cogemos la descripción
 
-        console.log(enlace.substr(0, enlace.indexOf(' ')));
+        // console.log(enlace.substr(0, enlace.indexOf(" ")));
+        // console.log(enlace);
+
+
+        if (enlace.substr(0, enlace.indexOf(" "))!= "") {
+            $('.enlace-btn').attr("href", enlace.substr(0, enlace.indexOf(" ")));
+            console.log("1");
+        }else{
+            $('.enlace-btn').attr("href", enlace);
+            console.log("2");
+        }
         //
         // Modal
         $(".modal-title").text(nombre +" "+ apellido);      // Titulo del modal
@@ -148,3 +159,29 @@ function modoAdmin() {
         });
     }
 }
+
+// function ajaxMujer() {
+
+//     fecha = $(".fecha-modal").val();                        // Fecha de nacimiento
+//     zona = $(".zona-modal").val();                          // Zona
+//     // $(".ambito-modal").val(categoria);                   // Ambito/Categoria
+//     desc= $(".desc-modal").val();                           // Descripción
+
+//     $.ajaxSetup({
+//         headers: {
+//             "_token": $("meta[name='csrf-token']").attr("content")
+//         }
+//     });
+//     jQuery.ajax({
+//         url: '{{ route("ajax") }}',
+//         method: 'post',
+//         data: {
+//            fecha: fecha,
+//            zona: zona,
+//            desc: desc
+//         },
+//         success: function(result){
+//            jQuery('.alert').show();
+//            jQuery('.alert').html(result.success);
+//         }});
+// }

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?php echo asset('css/galeria.css')?>" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('layouts.master')
 
 @section('content')
@@ -94,7 +95,7 @@
               </div>
               <div class="modal-footer col-10 mx-auto">
                 {{-- Link a la wiki --}}
-                <button type="button" class="btn btn-outline-dark mx-auto" data-dismiss="modal">Saber mas 🔗</button>
+                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
               </div>
             </div>
           </div>
@@ -154,7 +155,7 @@
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="descripcion">{{$a['descripcion']}}</h4>
                     {{-- Descripción --}}
-                    <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4>
+                    {{-- <h4 style="display:none;" class="enlace">{{$a['enlace']}}</h4> --}}
                     {{-- Categoria --}}
                     <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
                 </div>

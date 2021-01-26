@@ -127,6 +127,17 @@
     border-radius: 5px!important;
     text-align: left;
 }
+
+.enlace-btn
+{
+    text-decoration: none;
+    color: black;
+}
+.enlace-btn:hover
+{
+    color: white;
+    text-decoration: none;
+}
 textarea
 {
     background-color: transparent;
