@@ -15,16 +15,6 @@ $(document).ready(function(){
                 return false;
             }
            
-            apellidos = document.getElementById('apellido');
-            if(apellidos.value==""){ 
-                apellidos.style.border =  '3px solid red';
-            }else{ 
-                apellidoRegex = /^[A-Z ]+$/i;
-                if(!apellidoRegex.test(apellidos.value)){
-                    alert("el apellidos no es valido");
-                    apellidos.focus();
-                }
-            }
             function error2(elemento, mensaje) {
                 document.getElementById("mensajeError").innerHTML = mensaje;
                 elemento.className = "error";
