@@ -238,7 +238,6 @@
             <h4 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
             <img id="img_casillaCaida" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
           </div>
-          
         </div>
       </div>
     </div>
