@@ -1,7 +1,6 @@
 <template>
-
   <div>
-
+    <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
       <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
@@ -11,12 +10,11 @@
         </svg>
         
       </div>
-      
-      
       <!-- Casillas Nº 2-62 -->
-      <div class="casillaNum"
+      <div
+        class="casillaNum"
         :id="'casilla' + (n = n + 1)"
-        v-for="n in 61" 
+        v-for="n in 61"
         :key="n"
       >
 
@@ -42,10 +40,8 @@
                   n !== 56 &&
                   n !== 58 &&
                   n !== 59 && 
-                  arrayMujeres[n-2].imagen !==null
-                ">
-                
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
+                  mujeresC[n-2].imagen !==null">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <svg height="50" width="50" class="casillaCircle" >
                 <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
@@ -54,6 +50,7 @@
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
+                  <!-- <img :src="'../resources/img/fotosMujeres/'+arrayMujeres[n-2].imagen" :alt="'mujer'" style="with:100px; height:100px"/> -->
                   </div>
               </div>
             <!-- pie de la casilla -->
@@ -100,7 +97,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casilla POSADA -->
         <div class="casillaif" v-else-if=" n == 19">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
@@ -110,7 +106,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
@@ -120,7 +115,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
@@ -130,7 +124,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
@@ -140,7 +133,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
@@ -150,7 +142,6 @@
               </svg>
           </div>
         </div>
-
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
@@ -192,6 +183,7 @@
       </svg>
 
     </div>
+
     <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
 
     <!-- Modal dado. -->
@@ -206,8 +198,7 @@
       </div>
     </div>
 
-
-    <!-- Modal orden turnos. -->
+       <!-- Modal orden turnos. -->
     <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -218,7 +209,6 @@
             </button>
           </div>
           <div class="modal-body">
-          
             <p v-text="this.jugadores[this.turnosJugadores[0]].nombre" ></p>
             <p v-text="this.jugadores[this.turnosJugadores[1]].nombre" ></p>
             <p v-text="this.jugadores[this.turnosJugadores[2]].nombre" ></p>
@@ -257,31 +247,36 @@
     </div>
 
     <!-- Modal con info de las mujeres -->
-    <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" data-backdrop="static" data-keyboard="false"  role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">{{this.arrayMujeres[this.numeroMujer].nombre+ ' '+this.arrayMujeres[this.numeroMujer].apellido}}</h5>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-6">
-                <img :src="'img/fotosMujeres/'+this.arrayMujeres[this.numeroMujer].imagen" :alt="'mujer'"/>
-              </div>
-              <div class="col-3">
-                <label for="nacimiento">Nacimiento:</label> <p>{{this.arrayMujeres[this.numeroMujer].fechaNacimiento}}</p>
-              </div>
-              <div class="col-3">
-                <label for="nacimiento">Campo:</label>
-                <p>{{this.arrayCategorias[this.arrayMujeres[this.numeroMujer].id_categoria-1]}}</p>
-              </div>
+      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
             </div>
-            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
-            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-6">
+                  <img :src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" :alt="'mujer'"/>
+                </div>
+          
+                <div class="col-3">
+                  <label for="nacimiento">Nacimiento:</label> <p>{{this.mujeresC[this.numeroMujer].fechaNacimiento}}</p>
+                </div>
+                <div class="col-3">
+                  <label for="nacimiento">Campo:</label>
+                  <p>{{this.arrayCategorias[this.mujeresC[this.numeroMujer].id_categoria-1]}}</p>
+                </div>
+              </div>
+              <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
+              <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
+              
+            </div>
+            
+          
           </div>
         </div>
       </div>
-    </div>
+    
 
     <!-- Modal juego acabado -->
     <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
@@ -306,24 +301,43 @@
       </div>
     </div>
 
-
-
   </div>
 </template>
+
 <script>
-import axios from 'axios';
 export default {
-  data(){
-      return{
-      nombre:"",
-      apellido:"",
+  data() {
+    return {
+      id: "",
+      nombre: "",
+      imagen: "",
+      apellido: "",
+      arrayMujeres: [],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
+      nombreCategoria: "",
+      color: "",
+      arrayAmbitos: [],
+      mujeresC: [],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
+      modoJuego: "",
+      arrayCategorias: [
+        "Historia",
+        "Derecho",
+        "Antropología",
+        "Geografía",
+        "Filosofía",
+        "Psicología",
+        "Economía",
+        "Sociología",
+        "Pedagogía",
+      ],
       loading:false,
-      arrayMujeres:[],
       arrayPreguntas:[],
       arrayOpciones:[],
       numeroMujer:0,
       randPregunta:0,
-      arrayCategorias:["Historia","Derecho","Antropología","Geografía","Filosofía","Psicología","Economía","Sociología","Pedagogía"],
       numeroCasillaCaida:0,
       arrayCasillasModal:{
         oca:{
@@ -405,16 +419,15 @@ export default {
       resultadosOca:[],
     }
   },
-  methods:{
-    //Función para aleatorizar arrays
+  methods: {
+    //cargar casillas aletarorias
     shuffle(a) {
-      console.log("Array aleatorizado");
       var j, x, i;
       for (i = a.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          x = a[i];
-          a[i] = a[j];
-          a[j] = x;
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
       }
       return a;
     },
@@ -424,13 +437,44 @@ export default {
     },
     cargarMujeres(){
       let me = this;
-      let url = 'mujeres';
+      let url = "mujeres";
       axios
         .get(url)
         .then(function (response) {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
-          console.log(me.arrayMujeres);
+          me.modoJuego = localStorage.getItem("modoJuego");
+         
+          //modo categorías
+          //datos filtrados
+          me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresDuplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresTriplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+       
+           //modo juego normal 
+           if (me.modoJuego == 0) {
+            me.mujeresC = me.arrayMujeres;  // vuelve a cargar arrayMujeres
+            // localStorage.removeItem('modoJuego');
+          }
+
+          else if (me.modoJuego == 2 || me.modoJuego == 4 || me.modoJuego == 6){
+            // me.mujeresC = me.arrayMujeres;
+            alert('Pocas mujeres no se puede jugar'); 
+            window.location = '/laravel/ocaG2/public/';
+          }
+
+          else{
+                 //duplica, triplica o carga los datos del array general dependiendo del tamaño del array filtrado mujeresC
+              if (me.mujeresC.length>=31) {
+              me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+              }
+              else if (me.mujeresC.length>=25) {
+                me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+                me.mujeresC = me.mujeresC.concat(me.mujeresTriplicado);
+              } 
+
+          }
+
         })
         .catch(function (error) {
           console.log(error);
@@ -451,11 +495,11 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-
     },
+    /* FUNCIÓN TEMPORAL. BORRAR CUANDO NO SEA NECESARIA. */
     darInfo(n){
       console.log("Numero casilla "+n);
-      console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
+      console.log(this.mujeresC[n-2].nombre+ " "+this.mujeresC[n-2].apellido+" "+this.mujeresC[n-2].imagen);
       this.numeroMujer=n-2;
       $('#modalInfo').modal('show');
     },
@@ -464,16 +508,15 @@ export default {
       botonTirar.disabled = true;
       var dado=Math.floor(Math.random() * 6)+1;
       console.log("Tiro el dado. Ha salido "+dado);
-      //Se envia la imagen al modal.
+      //Se envia la imagen al modal
       var imgsrc = "img/otros/dados/dado"+dado+".svg";
       var texto= "¡Has sacado un "+dado+"!"
       $('#img_dado').attr('src',imgsrc);
-      //Se abre el modal con la imagen del dado.
+      
       $('#modalDado').modal('show');
-      //Cierre automatico del modal en 3 segundos.
-      //Cuando el modal se cierra, se mueve la ficha.
       var me=this;
-      setTimeout(function(){$('#modalDado').modal('hide'); me.moverFicha(dado);  }, 3000); 
+      setTimeout(function(){$('#modalDado').modal('hide'); me.moverFicha(dado);  }, 3000);
+      
     },
     cambiarTurno(){
       var botonTirar=document.querySelector(".tirar");
@@ -486,7 +529,7 @@ export default {
         
       }else{
         this.turno=this.turno+1;
-        console.log("AHORAAA EL turnooo es "+this.turno);
+        console.log("AHORA EL turnooo es "+this.turno);
         this.comprobarTurnoPerdido();
         
       }
@@ -496,9 +539,8 @@ export default {
       botonTirar.disabled = false;
       this.turno=this.turno-1;
       if(this.turno==-1){
-        this.turno=this.numeroJugadores-1;
+        this.turno=this.numeroJugadores;
       }
-      console.log("Turno deeee "+this.turno);
 
     },
     /* Comprueba si el siguiente jugador tiene turnos perdidos (debido a las casillas posada y carcel) 
@@ -854,16 +896,6 @@ export default {
       setTimeout(function(){me.cambiarTurno();  }, 4500); 
     
     },
-    opcionNacimiento(){
-      var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
-      this.shuffle(this.arrayOpciones);
-      if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
-      this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
-      this.arrayOpciones[0]=="?" || this.arrayOpciones[1]=="?" || this.arrayOpciones[2]=="?"){
-        this.opcionNacimiento();
-      }
-    },
     opcionGeografica(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
       this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
@@ -1019,12 +1051,12 @@ export default {
 
   },
   mounted(){
-    console.log('Component mounted.');
-        
+    console.log('Component mounted.');  
     /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
     this.shuffle(this.turnosJugadores);
     setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);  
   }
 
 }
+  
 </script>
