@@ -148,7 +148,7 @@ div.contenedor {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    height: 86.5px;
+    height: 87px;
 }
 /* .pregunta{
     background-color: cadetblue;
@@ -156,7 +156,8 @@ div.contenedor {
 } */
 .casilla{
  
-    border: 0.3px solid black;
+    border: 0.2px solid black;
+    
 }
 .casillaif{
     height: 87px;
@@ -175,7 +176,7 @@ div.contenedor {
 .casillaNum{
     width: 151.5px;
     height: 84px;
-
+    /* margin-left: -1px; */
 }
 
 /* Bordes exteriores */
@@ -361,14 +362,16 @@ z-index: 1;
 background-color: grey;
 z-index: 1;
 }
-#casilla63{grid-column-start: c63;
-  grid-column-end: c63;
-  grid-row-start: c63;
-  grid-row-end: c60;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  z-index: 0;
+#casilla63{
+    /* margin-left: -1.5px; */
+    grid-column-start: c63;
+    grid-column-end: c63;
+    grid-row-start: c63;
+    grid-row-end: c60;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    z-index: 0;
  
 }
 #casilla63 .numCasilla{
