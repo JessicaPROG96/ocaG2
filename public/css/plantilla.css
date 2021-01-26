@@ -72,6 +72,12 @@ nav a:hover
     width: 900px;
 }
 
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
 
 /* formulario */
 form{

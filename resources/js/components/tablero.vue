@@ -3,18 +3,12 @@
     <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
-      <div
-        class="casilla p-2"
-        id="casillaInicio"
-        :style="{
-          backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)',
-        }"
-      >
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'1'"></p>
-          </div>
-        </div>
+      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
+        <svg height="50" width="50" class="casillaCircle" >
+          <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="'1'" ></text>
+        </svg>
+        
       </div>
       <!-- Casillas Nº 2-62 -->
       <div
@@ -49,9 +43,10 @@
                   mujeresC[n-2].imagen !==null">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg> 
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
@@ -86,93 +81,87 @@
         n == 59 
         ">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="12" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casillas PUENTE -->
         <div class="casillaif" v-else-if=" n == 6 || n == 12">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla POSADA -->
-        <div class="casillaif" v-else-if="n == 19">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/posada2.png)',
-            }"
-          >
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
-            </div>
+        <div class="casillaif" v-else-if=" n == 19">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
-            </div>
-            <!-- pie de la casilla -->
-            <!-- <div class="casillaFooter" >
-                          <p
-                            class="m-0"
-                            :id="'nombreMujer'"
-                            v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                          ></p>  
-                        </div> -->
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2"  fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
-          <!-- casilla final -->
-      <div
-        class="casilla p-2"
-        id="casilla63"
-        :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }"
-      >
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'63'"></p>
-          </div>
-        </div>
+
+
+      </div>
+
+      <!-- casilla final -->
+      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(img/otros/desayuno.jpg)' }">
+        <svg height="100" width="100" class="casillaCircleFinal" >
+          <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1" dy=".3em" class="numCasilla" v-text="'63'" ></text>
+        </svg>
+        
         <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
@@ -199,15 +188,12 @@
 
     <!-- Modal dado. -->
     <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" data-keyboard="false" aria-labelledby="modalDado" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
-          </div>
           <div class="modal-body">
-            <img id="img_dado"/>
+            <h3 class="modal-title modalTitulo" id="exampleModalLongTitle">¡Dado lanzado!</h3>
+            <img id="img_dado" />
           </div>
-          
         </div>
       </div>
     </div>
@@ -238,16 +224,10 @@
     <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          </div>
           <div class="modal-body">
-            
-            <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
-            <p v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></p>
-            
+            <h4 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
+            <img id="img_casillaCaida" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
           </div>
-          
         </div>
       </div>
     </div>
@@ -256,13 +236,11 @@
     <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
-          </div>
-          <div class="modal-body">
-            <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
-            <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
-            <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
+          <h3 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
+          <div class="modal-body modalTitulo">
+            <button id="btn1" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
+            <button id="btn2" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
+            <button id="btn3" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
           </div>
         </div>
       </div>
@@ -367,7 +345,7 @@ export default {
           img:"img/otros/goose.png"
         },
         puente:{
-          texto:"De puente a puente porque me lleva la corriente",
+          texto:"¡De puente a puente porque me lleva la corriente!",
           img:"img/otros/puente.png"
         },
         posada:{
