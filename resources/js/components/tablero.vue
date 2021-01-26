@@ -3,18 +3,12 @@
     <!-- tablero -->
     <div id="tablero">
       <!-- casilla inicio -->
-      <div
-        class="casilla p-2"
-        id="casillaInicio"
-        :style="{
-          backgroundImage: 'url(../resources/img/otros/desayuno2.jpg)',
-        }"
-      >
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'1'"></p>
-          </div>
-        </div>
+      <div class="casilla p-2" id="casillaInicio" :style="{ backgroundImage: 'url(img/otros/desayuno2.jpg)' }">
+        <svg height="50" width="50" class="casillaCircle" >
+          <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="'1'" ></text>
+        </svg>
+        
       </div>
       <!-- Casillas Nº 2-62 -->
       <div
@@ -49,9 +43,10 @@
                   mujeresC[n-2].imagen !==null">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"  v-on:click="darInfo(n)" data-toggle="modal" :data-target="'#modalInfo'+n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg> 
             <!-- cuerpo de la casilla -->
               <div class="casillaBody">
                 <div class="area" :id="'area' + n">
@@ -86,98 +81,92 @@
         n == 59 
         ">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/goose.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="12" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
 
         <!-- Casillas PUENTE -->
         <div class="casillaif" v-else-if=" n == 6 || n == 12">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/puente.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla POSADA -->
-        <div class="casillaif" v-else-if="n == 19">
-          <div
-            class="casilla casillaJuego px-2 py-2 text-center"
-            :style="{
-              backgroundImage: 'url(../resources/img/otros/posada2.png)',
-            }"
-          >
-            <div class="casillaHead">
-              <p class="numCasilla" v-text="n"></p>
-            </div>
+        <div class="casillaif" v-else-if=" n == 19">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/posada2.png)' }">
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla POZO -->
         <div class="casillaif" v-else-if=" n == 31">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/pozo.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla LABERINTO -->
         <div class="casillaif" v-else-if=" n == 42">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/laberinto.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla CÁRCEL -->
         <div class="casillaif" v-else-if=" n == 56">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/carcel.jpg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casillas DADO -->
         <div class="casillaif" v-else-if=" n == 26 || n == 53">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/dadosFondo.png)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
         <!-- Casilla CALAVERA -->
         <div class="casillaif" v-else-if=" n == 58">
           <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/otros/muerte.svg)' }">
-              <div class="casillaHead">
-                <p class="numCasilla" v-text="n"></p>
-              </div>
-            </div>
-            <!-- pie de la casilla -->
-            <!-- <div class="casillaFooter" >
-                          <p
-                            class="m-0"
-                            :id="'nombreMujer'"
-                            v-text="arrayMujeres[n-2].nombre+' '+arrayMujeres[n-2].apellido "
-                          ></p>  
-                        </div> -->
+              <svg height="50" width="50" class="casillaCircle" >
+                <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2"  fill="white" > </circle>
+                <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1px" dy=".3em" class="numCasilla" v-text="n" ></text>
+              </svg>
           </div>
         </div>
-          <!-- casilla final -->
-      <div
-        class="casilla p-2"
-        id="casilla63"
-        :style="{ backgroundImage: 'url(../resources/img/otros/desayuno.jpg)' }"
-      >
-        <div class="row">
-          <div class="col-sm-8 casillaHead">
-            <p class="numCasilla" v-text="'63'"></p>
-          </div>
-        </div>
-        <div class="row align-items-center justify-center-around h-100">
+
+
+      </div>
+
+      <!-- casilla final -->
+      <div class="casilla  p-2" id="casilla63" :style="{ backgroundImage: 'url(img/otros/desayuno.jpg)' }">
+        <svg height="100" width="100" class="casillaCircleFinal" >
+          <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="white" > </circle>
+          <text x="50%" y="50%" text-anchor="middle" stroke="black" stroke-width="1" dy=".3em" class="numCasilla" v-text="'63'" ></text>
+        </svg>
+        
+        <!-- <div class="row align-items-center justify-center-around h-100">
           <div class="col-sm-12 casillaBody">
             <div class="area" id="area63"></div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <svg height="50" width="50" class="jugador1">
@@ -199,34 +188,31 @@
 
     <!-- Modal dado. -->
     <div class="modal fade modalDado" id="modalDado" data-backdrop="static" tabindex="-1" role="dialog" data-keyboard="false" aria-labelledby="modalDado" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Dado lanzado!</h5>
-          </div>
           <div class="modal-body">
-            <img id="img_dado"/>
+            <h3 class="modal-title modalTitulo" id="exampleModalLongTitle">¡Dado lanzado!</h3>
+            <img id="img_dado" />
           </div>
-          
         </div>
       </div>
     </div>
 
-       <!-- Modal orden turnos. -->
+    <!-- Modal orden turnos. -->
     <div class="modal fade modalTurnos" id="modalTurnos" tabindex="-1" role="dialog" aria-labelledby="modalTurno" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Orden de los turnos</h5>
+            <h4 class="modal-title modalTitulo" id="exampleModalLongTitle">Orden de los jugadores</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <p v-text="this.jugadores[this.turnosJugadores[0]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[1]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[2]].nombre" ></p>
-            <p v-text="this.jugadores[this.turnosJugadores[3]].nombre" ></p>
+          <div class="modal-body modalTitulo">
+            <p v-text="'1º '+this.jugadores[this.turnosJugadores[0]].nombre" ></p>
+            <p v-text="'2º '+this.jugadores[this.turnosJugadores[1]].nombre" ></p>
+            <p v-if="numeroJugadores>=3" v-text="'3º '+this.jugadores[this.turnosJugadores[2]].nombre" ></p>
+            <p v-if="numeroJugadores==4" v-text="'4º '+this.jugadores[this.turnosJugadores[3]].nombre" ></p>
           </div>
           
         </div>
@@ -238,16 +224,10 @@
     <div class="modal fade modalCasillaCaida" id="modalCasillaCaida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalCasillaCaida" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          </div>
           <div class="modal-body">
-            
-            <img :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
-            <p v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></p>
-            
+            <h4 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].texto"></h4>
+            <img id="img_casillaCaida" :src="this.arrayCasillasModal[this.tipoCasillas[numeroCasillaCaida]].img" alt="casilla"> 
           </div>
-          
         </div>
       </div>
     </div>
@@ -256,27 +236,22 @@
     <div class="modal fade modalPregunta" id="modalPregunta" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalPregunta" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
-          </div>
-          <div class="modal-body">
-            <button id="btn1" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
-            <button id="btn2" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
-            <button id="btn3" class="btn btn-primary" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
+          <h3 class="modal-title modalTitulo" id="exampleModalLongTitle" v-text="this.arrayPreguntas[this.randPregunta].pregunta"></h3>
+          <div class="modal-body modalTitulo">
+            <button id="btn1" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[0], 1 )">{{this.arrayOpciones[0]}}</button>
+            <button id="btn2" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[1], 2)">{{this.arrayOpciones[1]}}</button>
+            <button id="btn3" class="btn btn-primary modalPreguntaBoton" v-on:click="corregirPregunta(arrayOpciones[2], 3)">{{this.arrayOpciones[2]}}</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal con info de las mujeres -->
-      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true">
+      <div class="modal fade modalInfoC" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfo" data-keyboard="false" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
             <div class="modal-body">
               <div class="row">
@@ -293,11 +268,11 @@
                 </div>
               </div>
               <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
-
+              <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
               
             </div>
-            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
-            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
+            
+          
           </div>
         </div>
       </div>
@@ -307,20 +282,23 @@
     <div class="modal fade modalJuegoAcabado" id="modalJuegoAcabado" v-if="!loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalJuegoAcabado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle"> ¡Juego finalizado!</h3>
-          </div>
           <div class="modal-body">
-            <h2>Resultados</h2>
-            <p v-text="this.resultadosOca[0].puntuacion+' - '+this.resultadosOca[0].nombre"></p>
-            <p v-text="this.resultadosOca[1].puntuacion+' - '+this.resultadosOca[1].nombre"></p>
+            <h2 class="modal-title modalTitulo" id="exampleModalLongTitle">¡Juego finalizado!</h2>
+            <h4 class="modalResultados">Resultados</h4>
+            <div class="modalTitulo">
+              
+              <p id="resultado1" v-text="this.resultadosOca[0].puntuacion+' puntos - '+this.resultadosOca[0].nombre"></p>
+              <p id="resultado2" v-text="this.resultadosOca[1].puntuacion+' puntos - '+this.resultadosOca[1].nombre"></p>
+              <p id="resultado3" v-if="numeroJugadores>=3" v-text="this.resultadosOca[2].puntuacion+' puntos - '+this.resultadosOca[2].nombre"></p>
+              <p id="resultado4" v-if="numeroJugadores==4" v-text="this.resultadosOca[3].puntuacion+' puntos - '+this.resultadosOca[3].nombre"></p>
+            </div>
             
-            <p v-text="this.resultadosOca[2].puntuacion+' - '+this.resultadosOca[2].nombre"></p>
-            <p v-text="this.resultadosOca[3].puntuacion+' - '+this.resultadosOca[3].nombre"></p>
-
-            <button class="btn btn-primary" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
-            <button class="btn btn-primary" v-on:click="finalRedireccionar(1)">Inicio</button>
-            <button class="btn btn-primary" v-on:click="finalRedireccionar(2)">Clasificación</button>
+            <div class="modalTitulo">
+              <button class="btn btn-primary modalPreguntaBoton" v-on:click="finalRedireccionar(0)">Volver a jugar</button>
+              <button class="btn btn-primary modalPreguntaBoton" v-on:click="finalRedireccionar(1)">Inicio</button>
+              <button class="btn btn-primary modalPreguntaBoton" v-on:click="finalRedireccionar(2)">Clasificación</button>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -370,7 +348,7 @@ export default {
           img:"img/otros/goose.png"
         },
         puente:{
-          texto:"De puente a puente porque me lleva la corriente",
+          texto:"¡De puente a puente porque me lleva la corriente!",
           img:"img/otros/puente.png"
         },
         posada:{
@@ -402,7 +380,7 @@ export default {
           img:"img"
         },
       },
-      turnosJugadores:["jugador1", "jugador2", "jugador3", "jugador4"],
+      turnosJugadores:["jugador1", "jugador2"],
       tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
       turno:0,
       numeroJugadores:4,
@@ -537,10 +515,10 @@ export default {
       var imgsrc = "img/otros/dados/dado"+dado+".svg";
       var texto= "¡Has sacado un "+dado+"!"
       $('#img_dado').attr('src',imgsrc);
-      this.moverFicha(dado);
-      $('#modalDado').modal('show');
       
-      setTimeout(function(){$('#modalDado').modal('hide');  }, 3000);
+      $('#modalDado').modal('show');
+      var me=this;
+      setTimeout(function(){$('#modalDado').modal('hide'); me.moverFicha(dado);  }, 3000);
       
     },
     cambiarTurno(){
@@ -687,136 +665,216 @@ export default {
       /* Comprueba si cae en las casillas oca, pozo, dados, posada, puente, carcel, laberinto o calavera */
       switch(this.jugadores[this.turnosJugadores[this.turno]].posicion){
         case 5: 
+        var me=this;
+        this.numeroCasillaCaida=0;
+        setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+        setTimeout(function(){
+          $('#modalCasillaCaida').modal('hide'); 
           gridJugador.style["grid-area"] = "c9";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=9;
-          this.volverATirar();
-          this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          me.jugadores[me.turnosJugadores[me.turno]].posicion=9;
+          console.log("posicion del jugadorrrr "+me.jugadores[me.turnosJugadores[me.turno]].posicion);
+          me.volverATirar();
+          
+        }, 3500);
+          break;
+        case 6: 
+          /* PUENTE */
+          var me=this;
+          this.numeroCasillaCaida=1;
+          setTimeout(function(){$('#modalCasillaCaida').modal('show');}, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');
+            gridJugador.style["grid-area"] = "c12";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=12;            
+          }, 3500);
           break;
         case 9: 
-          gridJugador.style["grid-area"] = "c14";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=14;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c14";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=14;
+            me.volverATirar();
+            }, 3500);
           break;
         case 12: 
           /* PUENTE */
-          gridJugador.style["grid-area"] = "c6";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=6;
+          var me=this;
           this.numeroCasillaCaida=1;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');
+            gridJugador.style["grid-area"] = "c6";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=6; 
+             }, 3500);
           break;
         case 14: 
-          gridJugador.style["grid-area"] = "c18";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=18;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c18";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=18;
+            me.volverATirar();
+            }, 3500);
           break;
         case 18: 
-          gridJugador.style["grid-area"] = "c23";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=23;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);   
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c23";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=23;
+            me.volverATirar();
+            }, 3500);
           break;
         case 19: 
           /* POSADA */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=1;
+          var me=this;
           this.numeroCasillaCaida=2;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){ 
+            $('#modalCasillaCaida').modal('hide');  
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=1;
+            }, 3500);
           break;
         case 23: 
-          gridJugador.style["grid-area"] = "c32";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=32;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c32";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=32;
+            me.volverATirar();
+          }, 3500);
           break;
         case 26: 
           /* DADOS */
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=5;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            me.volverATirar();
+            }, 3500);
           break;
         case 31: 
           /* POZO */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=4;
-          this.jugadores[this.turnosJugadores[this.turno]].pozo=true;
-          if(this.jugadores[this.turnosJugadores[0]].posicion<31){
-            this.posJugador1=this.jugadores[this.turnosJugadores[0]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[1]].posicion<31){
-            this.posJugador2=this.jugadores[this.turnosJugadores[1]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[2]].posicion<31){
-            this.posJugador3=this.jugadores[this.turnosJugadores[2]].posicion;
-          }
-          if(this.jugadores[this.turnosJugadores[3]].posicion<31){
-            this.posJugador4=this.jugadores[this.turnosJugadores[3]].posicion;
-          }
+          var me=this;
           this.numeroCasillaCaida=4;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=4;
+            me.jugadores[me.turnosJugadores[me.turno]].pozo=true;
+            if(me.jugadores[me.turnosJugadores[0]].posicion<31){
+              me.posJugador1=me.jugadores[me.turnosJugadores[0]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[1]].posicion<31){
+              me.posJugador2=me.jugadores[me.turnosJugadores[1]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[2]].posicion<31){
+              me.posJugador3=me.jugadores[me.turnosJugadores[2]].posicion;
+            }
+            if(me.jugadores[me.turnosJugadores[3]].posicion<31){
+              me.posJugador4=me.jugadores[me.turnosJugadores[3]].posicion;
+            }
+          }, 3500);
           break;
         case 32: 
-          gridJugador.style["grid-area"] = "c41";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=41;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500); 
+          setTimeout(function(){ 
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c41";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=41;
+            me.volverATirar();
+          }, 3500);
           break;
         case 41: 
-          gridJugador.style["grid-area"] = "c45";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=45;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c45";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=45;
+            me.volverATirar();
+            }, 3500);
           break;
         case 42: 
           /* LABERINTO */
-          gridJugador.style["grid-area"] = "c30";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=30;
+          var me=this;
           this.numeroCasillaCaida=6;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c30";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=30;
+            }, 3500);
           break;
         case 45: 
-          gridJugador.style["grid-area"] = "c50";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=50;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide'); 
+            gridJugador.style["grid-area"] = "c50";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=50;
+            me.volverATirar();
+          }, 3500);
           break;
         case 50: 
-          gridJugador.style["grid-area"] = "c54";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=54;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c54";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=54;
+            me.volverATirar();
+            }, 3500);
           break;
         case 53: 
           /* DADOS */
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=5;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+            me.volverATirar();
+            }, 3500);
           break;
         case 54: 
-          gridJugador.style["grid-area"] = "c59";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=59;
-          this.volverATirar();
+          var me=this;
           this.numeroCasillaCaida=0;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            gridJugador.style["grid-area"] = "c59";
+            me.jugadores[me.turnosJugadores[me.turno]].posicion=59;
+            me.volverATirar();
+            }, 3500);
           break;
         case 56: 
           /* CARCEL */
-          this.jugadores[this.turnosJugadores[this.turno]].turnosPerdidos=2;
+          var me=this;
           this.numeroCasillaCaida=3;
-          setTimeout(function(){$('#modalDado').modal('hide'); $('#modalCasillaCaida').modal('show');  }, 2000);
+          setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+          setTimeout(function(){
+            $('#modalCasillaCaida').modal('hide');  
+            me.jugadores[me.turnosJugadores[me.turno]].turnosPerdidos=2;
+            }, 3500);
           break;
         case 58: 
           /* CALAVERA */
-          gridJugador.style["grid-area"] = "c1";
-          this.jugadores[this.turnosJugadores[this.turno]].posicion=1;
+          var me=this;
           this.numeroCasillaCaida=7;
           setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
           setTimeout(function(){
@@ -837,7 +895,9 @@ export default {
           break;
       }
       /* Finaliza el turno y pasa al siguiente jugador */
-      this.cambiarTurno();
+      var me=this;
+      setTimeout(function(){me.cambiarTurno();  }, 4500); 
+    
     },
     opcionGeografica(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
@@ -984,10 +1044,17 @@ export default {
   },
   created(){
     console.log('Component created.');
+    if(this.numeroJugadores>=3){
+      this.turnosJugadores=["jugador1", "jugador2", "jugador3"];
+      if(this.numeroJugadores==4){
+        this.turnosJugadores=["jugador1", "jugador2", "jugador3", "jugador4"];
+      }
+    }
     //Para que no salgan errores de render
     for(var i=0; i<this.numeroJugadores;i++){
         this.resultadosOca.push(this.jugadores[this.turnosJugadores[i]]);
     }
+
     this.loading = true;
     this.cargarPreguntas();
     this.cargarMujeres();
@@ -997,7 +1064,8 @@ export default {
     console.log('Component mounted.');  
     /* Damos aleatoriamente el orden de los jugadores y se muestra en un modal */
     this.shuffle(this.turnosJugadores);
-    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);  
+    setTimeout(function(){$('#modalTurnos').modal('show');  }, 1500);
+  
   }
 
 }

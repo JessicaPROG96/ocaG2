@@ -109,6 +109,8 @@ div.contenedor {
     background-color: crimson;
 } 
 
+
+/* Tablero de la oca */
 .tableroVue{
     margin-top: 50px;
 }
@@ -148,7 +150,7 @@ div.contenedor {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    height: 86.5px;
+    height: 87px;
 }
 /* .pregunta{
     background-color: cadetblue;
@@ -156,7 +158,8 @@ div.contenedor {
 } */
 .casilla{
  
-    border: 0.3px solid black;
+    border: 0.2px solid black;
+    
 }
 .casillaif{
     height: 87px;
@@ -175,7 +178,7 @@ div.contenedor {
 .casillaNum{
     width: 151.5px;
     height: 84px;
-
+    /* margin-left: -1px; */
 }
 
 /* Bordes exteriores */
@@ -212,11 +215,17 @@ div.contenedor {
     margin-top: auto;
 }
 .casillaJuego .casillaHead{
-    background-color: rgba(255, 255, 255, 0.329);
-    text-align: left;
+    background-color: rgba(255, 255, 255, 0.753);
+    text-align: center;
+    border: 1px solid black;
     width: 20px;
     height: 20px;
 }
+.casillaCircle{
+    margin-left: -15px;
+    margin-top: -10px;
+}
+
 #casilla2{grid-area: c2; 
 background-color: grey;}
 #casilla3{grid-area: c3;
@@ -355,19 +364,28 @@ z-index: 1;
 background-color: grey;
 z-index: 1;
 }
-#casilla63{grid-column-start: c63;
-  grid-column-end: c63;
-  grid-row-start: c63;
-  grid-row-end: c60;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  z-index: 0;
+/* Casilla final */
+#casilla63{
+    /* margin-left: -1.5px; */
+    grid-column-start: c63;
+    grid-column-end: c63;
+    grid-row-start: c63;
+    grid-row-end: c60;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    z-index: 0;
  
 }
 #casilla63 .numCasilla{
 font-size: 60px;
 color: white;
+}
+
+.numCasilla{
+font-size: 12px;
+color: white;
+
 }
 .modal-dialog{
     z-index: 21;
@@ -380,6 +398,7 @@ color: white;
     height: 200px;
 }
 
+/* Fichas jugadores */
 .jugador1{
     grid-area: c1;
     z-index: 2;
@@ -408,6 +427,8 @@ color: white;
 #botonAvatar{
     margin-left:10px;
 }
+
+/* Modal tirar dado */
 #img_dado{
     width: 200px;
     height: 200px;
@@ -420,3 +441,45 @@ color: white;
 #nombre{
     background-color: #d0ddad;
 }
+/* Modal casilla oca, puente, posada... */
+#img_casillaCaida{
+    margin-top: 10px;
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Centrar los titulos de los modales */
+.modalTitulo{
+    text-align: center;
+}
+/*  Modal pregunta */
+.modalPreguntaBoton{
+    min-width: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modalResultados{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+/* Modal juego finalizado */
+/* #resultado1{
+    font-size: 25px;
+}
+#resultado2{
+    font-size: 15px;
+}
+#resultado3{
+    font-size: 10px;
+}
+#resultado4{
+    font-size: 5px;
+}
+ */
