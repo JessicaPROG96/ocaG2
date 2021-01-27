@@ -406,7 +406,7 @@ color: white;
 .jugador2{
     grid-area: c1;
     z-index: 2;
-    margin-top: 36px;
+    margin-top: 32px;
     margin-left: 30px;
 }
 .jugador3{
@@ -418,7 +418,7 @@ color: white;
 .jugador4{
     grid-area: c1;
     z-index: 2;
-    margin-top: 36px;
+    margin-top: 32px;
     margin-left: 70px;
 }
 /* boton elegir avatar */
