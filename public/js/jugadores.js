@@ -70,7 +70,7 @@ $(document).ready(function(){
                 }
             }
             var elemento = document.getElementById('descripcion'); 
-            nombreRegex = /^[^A-Za-z0-9_]+$/i;
+            nombreRegex = /^[a-zA-Z0-9]+$/i;
             
 
         }

@@ -9,7 +9,7 @@
     @csrf 
     <div class="form-group cajas">
         <input type="text" name="nombre"  class="form-control box" id="nombre"  placeholder="Nombre" required>
-        <p  class="box"  id="mensajeError"></p>
+        <p id="mensajeError"></p>
         <input type="text" name="apellido" class="form-control box"  id="apellido" placeholder="Apellido" required>
         <p  class="box"  id="mensajeErrorA"></p>
         <div class="form-group row">
