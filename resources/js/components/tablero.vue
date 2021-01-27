@@ -45,7 +45,7 @@
                   arrayMujeres[n-2].imagen !==null
                 ">
                 
-          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+arrayMujeres[n-2].imagen+ ')' }">
+          <div class="casilla casillaJuego px-2 py-2 text-center" :style="{ backgroundImage: 'url(img/fotosMujeres/'+mujeresC[n-2].imagen+ ')' }">
             <!-- encabezado de la casilla -->
               <svg height="50" width="50" class="casillaCircle" >
                 <circle cx="25" cy="25" r="11" stroke="black" stroke-width="2" fill="white" > </circle>
@@ -260,23 +260,23 @@
       <div class="modal-dialog modal-dialog-centered" :id="this.numeroMujer"  role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">{{this.arrayMujeres[this.numeroMujer].nombre+ ' '+this.arrayMujeres[this.numeroMujer].apellido}}</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
           </div>
           <div class="modal-body">
             <div class="row">
               <div class="col-6">
-                <img :src="'img/fotosMujeres/'+this.arrayMujeres[this.numeroMujer].imagen" :alt="'mujer'"/>
+                <img :src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" :alt="'mujer'"/>
               </div>
               <div class="col-3">
-                <label for="nacimiento">Nacimiento:</label> <p>{{this.arrayMujeres[this.numeroMujer].fechaNacimiento}}</p>
+                <label for="nacimiento">Nacimiento:</label> <p>{{this.mujeresC[this.numeroMujer].fechaNacimiento}}</p>
               </div>
               <div class="col-3">
                 <label for="nacimiento">Campo:</label>
-                <p>{{this.arrayCategorias[this.arrayMujeres[this.numeroMujer].id_categoria-1]}}</p>
+                <p>{{this.arrayCategorias[this.mujeresC[this.numeroMujer].id_categoria-1]}}</p>
               </div>
             </div>
-            <label for="descripcion">Zona:</label><p>{{this.arrayMujeres[this.numeroMujer].zonaGeografica}}</p>
-            <label for="descripcion">Descripción:</label><p>{{this.arrayMujeres[this.numeroMujer].descripcion}}</p>
+            <label for="descripcion">Zona:</label><p>{{this.mujeresC[this.numeroMujer].zonaGeografica}}</p>
+            <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
           </div>
         </div>
       </div>
@@ -327,6 +327,7 @@ export default {
       nombreCategoria: "",
       color: "",
       arrayAmbitos: [],
+      mujeresC: [],
       modoJuego: "",
       arrayPreguntas:[],
       arrayOpciones:[],
@@ -495,7 +496,7 @@ export default {
     },
     darInfo(n){
       console.log("Numero casilla "+n);
-      console.log(this.arrayMujeres[n-2].nombre+ " "+this.arrayMujeres[n-2].apellido+" "+this.arrayMujeres[n-2].imagen);
+      console.log(this.mujeresC[n-2].nombre+ " "+this.mujeresC[n-2].apellido+" "+this.mujeresC[n-2].imagen);
       this.numeroMujer=n-2;
       $('#modalInfo').modal('show');
     },
@@ -896,7 +897,7 @@ export default {
     },
     opcionNacimiento(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
+      this.arrayOpciones=[this.mujeresC[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]]
       this.shuffle(this.arrayOpciones);
       if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
       this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
@@ -906,7 +907,7 @@ export default {
     },
     opcionGeografica(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.arrayOpciones=[this.mujeresC[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
       this.shuffle(this.arrayOpciones);
       if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
       this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
@@ -918,7 +919,7 @@ export default {
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
       var respuestaRandom1=this.arrayCategorias[Math.floor(Math.random() * 9)];
       var respuestaRandom2=this.arrayCategorias[Math.floor(Math.random() * 9)];
-      this.arrayOpciones=[this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuesta]-1], respuestaRandom1, respuestaRandom2];
+      this.arrayOpciones=[this.arrayCategorias[this.mujeresC[this.numeroMujer][repuesta]-1], respuestaRandom1, respuestaRandom2];
       this.shuffle(this.arrayOpciones);
       if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
       this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
@@ -928,7 +929,7 @@ export default {
     },
     opcionApellido(){
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      this.arrayOpciones=[this.arrayMujeres[this.numeroMujer][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta], this.arrayMujeres[Math.floor(Math.random() * 200)][repuesta]];
+      this.arrayOpciones=[this.mujeresC[this.numeroMujer][repuesta], this.mujeresC[Math.floor(Math.random() * 200)][repuesta], this.mujeresC[Math.floor(Math.random() * 200)][repuesta]];
       this.shuffle(this.arrayOpciones);
       if(this.arrayOpciones[0]==this.arrayOpciones[1] || this.arrayOpciones[0]==this.arrayOpciones[2] || this.arrayOpciones[1]==this.arrayOpciones[2] ||
       this.arrayOpciones[0]==null || this.arrayOpciones[1]==null || this.arrayOpciones[2]==null ||
@@ -939,12 +940,12 @@ export default {
     pregunta(){
       this.randPregunta=Math.floor(Math.random() * 4);
       var repuesta= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      console.log(this.arrayMujeres[this.numeroMujer][repuesta]); 
-      console.log(this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]));
-      var respuestaCorrecta=this.arrayMujeres[this.numeroMujer][repuesta];
-      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuesta]);
+      console.log(this.mujeresC[this.numeroMujer][repuesta]); 
+      console.log(this.getKeyByValue(this.mujeresC[this.numeroMujer],this.mujeresC[this.numeroMujer][repuesta]));
+      var respuestaCorrecta=this.mujeresC[this.numeroMujer][repuesta];
+      var respuestaCampo=this.getKeyByValue(this.mujeresC[this.numeroMujer],this.mujeresC[this.numeroMujer][repuesta]);
       
-      if(this.arrayMujeres[this.numeroMujer][repuesta]!=null){
+      if(this.mujeresC[this.numeroMujer][repuesta]!=null){
         if(respuestaCampo=="fechaNacimiento"){
           this.opcionNacimiento();  
         }
@@ -965,14 +966,14 @@ export default {
     },
     corregirPregunta(respuesta, btn){
       var repuestaBD= this.arrayPreguntas[this.randPregunta].tipoRespuesta;
-      var respuestaCampo=this.getKeyByValue(this.arrayMujeres[this.numeroMujer],this.arrayMujeres[this.numeroMujer][repuestaBD]);
+      var respuestaCampo=this.getKeyByValue(this.mujeresC[this.numeroMujer],this.mujeresC[this.numeroMujer][repuestaBD]);
       console.log("Respuesta "+respuesta);
       console.log(btn);
-      console.log("Respuesta correctar = "+this.arrayMujeres[this.numeroMujer][repuestaBD]);
+      console.log("Respuesta correctar = "+this.mujeresC[this.numeroMujer][repuestaBD]);
 
       if(respuestaCampo!="id_categoria"){
 
-        if(respuesta==this.arrayMujeres[this.numeroMujer][repuestaBD]){
+        if(respuesta==this.mujeresC[this.numeroMujer][repuestaBD]){
           console.log("Respuesta correcta");
           //BOTON  VERDE
           var boton=document.querySelector("#btn"+btn);
@@ -1001,8 +1002,8 @@ export default {
       else if(respuestaCampo=="id_categoria"){
 
         console.log("parte 1 "+respuesta);
-        console.log("parte 2 "+this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]]);
-        if(respuesta == this.arrayCategorias[this.arrayMujeres[this.numeroMujer][repuestaBD]-1]){
+        console.log("parte 2 "+this.arrayCategorias[this.mujeresC[this.numeroMujer][repuestaBD]]);
+        if(respuesta == this.arrayCategorias[this.mujeresC[this.numeroMujer][repuestaBD]-1]){
           console.log("Respuesta correcta");
           //BOTON DE COLOR VERDE
           var boton=document.querySelector("#btn"+btn);
