@@ -315,11 +315,19 @@
 import axios from 'axios';
 export default {
   data(){
-      return{
+    return{
+      id: "",
       nombre:"",
+      imagen: "",
       apellido:"",
       loading:false,
       arrayMujeres:[],
+      mujeresDuplicado:[],
+      mujeresTriplicado:[],
+      nombreCategoria: "",
+      color: "",
+      arrayAmbitos: [],
+      modoJuego: "",
       arrayPreguntas:[],
       arrayOpciones:[],
       numeroMujer:0,
@@ -425,13 +433,44 @@ export default {
     },
     cargarMujeres(){
       let me = this;
-      let url = 'mujeres';
+      let url = "mujeres";
       axios
         .get(url)
         .then(function (response) {
           me.arrayMujeres = response.data;
           me.shuffle(me.arrayMujeres);
-          console.log(me.arrayMujeres);
+          me.modoJuego = localStorage.getItem("modoJuego");
+         
+          //modo categorías
+          //datos filtrados
+          me.mujeresC = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresDuplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+          me.mujeresTriplicado = me.arrayMujeres.filter((mujer) => mujer.id_categoria == me.modoJuego);
+       
+          //modo juego normal 
+          if (me.modoJuego == 0) {
+            me.mujeresC = me.arrayMujeres;  // vuelve a cargar arrayMujeres
+            // localStorage.removeItem('modoJuego');
+          }
+
+          else if (me.modoJuego == 2 || me.modoJuego == 4 || me.modoJuego == 6){
+            // me.mujeresC = me.arrayMujeres;
+            alert('Pocas mujeres no se puede jugar'); 
+            window.location = '/laravel/ocaG2/public/';
+          }
+
+          else{
+            //duplica, triplica o carga los datos del array general dependiendo del tamaño del array filtrado mujeresC
+            if (me.mujeresC.length>=31) {
+              me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+            }
+            else if (me.mujeresC.length>=25) {
+              me.mujeresC = me.mujeresC.concat(me.mujeresDuplicado);
+              me.mujeresC = me.mujeresC.concat(me.mujeresTriplicado);
+            } 
+
+          }
+
         })
         .catch(function (error) {
           console.log(error);
