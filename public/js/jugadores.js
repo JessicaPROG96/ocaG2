@@ -1,26 +1,6 @@
 
 $(document).ready(function(){
-    var enviar = document.getElementById("submit");
-        enviar.addEventListener('click', validar, true);
-        function validar() {
-            var elemento = document.getElementById('nombre'); 
-            if (!elemento.checkValidity()) {
-                if (elemento.validity.valueMissing) {
-                    error2(elemento, "Debe introducir un nombre")
-                }
-                if (elemento.validity.patternMismatch) {
-                    error2(elemento, "El nombre debe tener entre 2 y 15 caracteres");
-                }
-                //error(elemento);
-                return false;
-            }
-           
-            function error2(elemento, mensaje) {
-                document.getElementById("mensajeError").innerHTML = mensaje;
-                elemento.className = "error";
-                elemento.focus();
-            }
-        }
+    
 
     $("#botonEmpezar").on( "click", function(){
         $(".formularioDivInicioJugadores").show();
@@ -58,7 +38,56 @@ $(document).ready(function(){
         // });
 
    
+    var enviar = document.getElementById("submit");
+        enviar.addEventListener('click', validar, true);
+
+        //validar nombre 
+        function validar() {
+            var elemento = document.getElementById('nombre'); 
+            if(elemento.value==""){
+                elemento.style.border =  '3px solid red';
+                error(elemento, "Debe introducir un nombre");
+            }
+            else{
+                nombreRegex = /^[a-zA-Z]+$/i;
+                if(!nombreRegex.test(elemento.value)){
+                    error(elemento, "El nombre no acepta números ni caracteres especiales");
+                    elemento.style.border =  '3px solid red';
+                    // elemento.focus();
+                }
+            }
+            var elemento = document.getElementById('apellido'); 
+            if(elemento.value==""){
+                elemento.style.border =  '3px solid red';
+                error2(elemento, "Debe introducir un dato");
+            }
+            else{
+                nombreRegex = /^[a-zA-Z]+$/i;
+                if(!nombreRegex.test(elemento.value)){
+                    error2(elemento, "El apellido no acepta números ni caracteres especiales");
+                    elemento.style.border =  '3px solid red';
+                    // elemento.focus();
+                }
+            }
+            var elemento = document.getElementById('descripcion'); 
+            nombreRegex = /^[^A-Za-z0-9_]+$/i;
             
+
+        }
+
+        function error(elemento, mensaje) {
+            document.getElementById("mensajeError").innerHTML = mensaje;
+            elemento.style.border =  '3px solid red';
+            // elemento.className = "error";
+            // elemento.focus();
+        }
+
+        function error2(elemento, mensaje) {
+            document.getElementById("mensajeErrorA").innerHTML = mensaje;
+            // elemento.className = "error";
+            elemento.style.border =  '3px solid red';
+            // elemento.focus();
+        }        
 });
 
 

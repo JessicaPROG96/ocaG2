@@ -8,10 +8,10 @@
 <form enctype="multipart/form-data" method="POST" action="{{url('crearMujer')}}" id="formInsertMujer">
     @csrf 
     <div class="form-group cajas">
-        <input type="text" name="nombre"  class="form-control box" id="nombre"  placeholder="Nombre">
-        <p id="mensajeError"></p>
+        <input type="text" name="nombre"  class="form-control box" id="nombre"  placeholder="Nombre" required>
+        <p  class="box"  id="mensajeError"></p>
         <input type="text" name="apellido" class="form-control box"  id="apellido" placeholder="Apellido" required>
-
+        <p  class="box"  id="mensajeErrorA"></p>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Nacimiento</label>
             <div class="col-sm-10">
@@ -36,9 +36,9 @@
         <input type="text" name="enlace"  class="form-control box"  placeholder="Enlace">
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Descripción</label><span>(required, at least 3 characters)</span>
+            <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
-            <textarea name="descripcion" class="form-control box" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            <textarea name="descripcion" class="form-control box" id="descripcion" rows="3" required></textarea>
             </div>
          </div>
          <input type="text" name="zonaGeografica" class="form-control box"  placeholder="Zona Geográfica" required>
