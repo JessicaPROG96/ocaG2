@@ -212,7 +212,7 @@ function ajaxMujer() {
             console.log(arrayMujer[0]['fechaNacimiento']);
             localStorage.setItem("fechaUpd"+arrayMujer[0]['id'],arrayMujer[0]['fechaNacimiento']);                         // Fecha de nacimiento
             localStorage.setItem("zonaUpd"+arrayMujer[0]['id'],arrayMujer[0]["zonaGeografica"]);                           // Zona
-            localStorage.setItem("descUpd"+arrayMujer[0]['id'],arrayMujer[0]["descripcion"]);       
+            localStorage.setItem("descUpd"+arrayMujer[0]['id'],arrayMujer[0]["descripcion"]);                              // Descripcion
 
         }
 
