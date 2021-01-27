@@ -109,7 +109,6 @@ div.contenedor {
     background-color: crimson;
 } 
 
-
 /* Tablero de la oca */
 .tableroVue{
     margin-top: 50px;
@@ -159,7 +158,6 @@ div.contenedor {
 .casilla{
  
     border: 0.2px solid black;
-    
 }
 .casillaif{
     height: 87px;
@@ -366,7 +364,6 @@ z-index: 1;
 }
 /* Casilla final */
 #casilla63{
-    /* margin-left: -1.5px; */
     grid-column-start: c63;
     grid-column-end: c63;
     grid-row-start: c63;
@@ -375,6 +372,7 @@ z-index: 1;
     background-size: 100% 100%;
     background-position: center;
     z-index: 0;
+    /* margin-left: -1.5px; */
  
 }
 #casilla63 .numCasilla{
@@ -435,7 +433,6 @@ color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  
 }
 /* Modal casilla oca, puente, posada... */
 #img_casillaCaida{
@@ -445,7 +442,6 @@ color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 /* Centrar los titulos de los modales */
