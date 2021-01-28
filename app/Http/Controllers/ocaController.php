@@ -71,8 +71,6 @@ class ocaController extends Controller{
         foreach($param  as $val){
             DB::table('mujeres')->where('id', [$val])->delete();
         }
-        // DB::table('mujeres')->where('id', [$id])->delete();
-
     }
 
     //añadir una mujer a la base de datos

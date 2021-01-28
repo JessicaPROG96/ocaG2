@@ -19,7 +19,7 @@
     @php
     // Si el usuario ha iniciado sesión sale el boton para eliminar
     if(isset(Auth::user()->name)){
-        echo '<button type="button" class="btn btn-borrar btn-danger">Delete</button>';
+        echo '<button type="button" class="btn btn-borrar btn-danger">Delete 🗑</button>';
     }
 @endphp 
     
@@ -145,14 +145,7 @@
             
               
                 <div class="mujer">
-                  @php
-                      // Si el usuario ha iniciado sesión sale el boton guardar
-                      if(isset(Auth::user()->name))
-                      {
-                        echo '<label for="check">Borrar</label>'; 
-                          echo '<input type="checkbox" name="check" value="'.$a['id'].'" id="deleteCheckbox" style="position: absolute;">';
-                      }
-                  @endphp 
+                  
                   
                   
                     {{-- Ruta de la imagen --}}
@@ -172,7 +165,17 @@
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="id">{{$a['id']}}</h4>
                     {{-- Categoria --}}
-                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
+                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>
+                    @php
+                    // Si el usuario ha iniciado sesión sale el boton guardar
+                    if(isset(Auth::user()->name))
+                    {
+                      echo '<div class="divBorrar">';
+                      echo '<label class="labelBorrar" for="check">Borrar</label>'; 
+                        echo '<input class="inputBorrar" type="checkbox" name="check" value="'.$a['id'].'" id="deleteCheckbox" style="position: absolute;">';
+                      echo '</div>';
+                      }
+                @endphp    
                 </div>
 
               

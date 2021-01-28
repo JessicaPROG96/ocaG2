@@ -100,6 +100,9 @@ function ModalMujer() {
         $("#myModal").modal("show");                        // Mostrar el modal
 
     });
+    $('.divBorrar').click(function(event){
+        event.stopPropagation();
+    });
       
 
 }
@@ -169,7 +172,6 @@ function modoAdmin() {
             console.log($('.text').css("background-color"));
             $('.text').css( "border", "0.5px solid rgb(52 58 64 / 25%)");
             $('.text').css ("background-color", "rgb(29 28 28 / 14%)");
-            // $('.text').css( "border-radius", "2px");
         });
 
         $(".btn-guardar").click(function(event) {
@@ -177,6 +179,10 @@ function modoAdmin() {
             $('.text').css("background-color", "inherit");
             $('.text').css( "border", "none");
         });
+
+        // Tarjeta de la mujer
+        $('.mujer').css("height","340px");
+        
     }
 }
 
@@ -224,23 +230,30 @@ function borrarMujer() {
     $("input:checkbox[name=check]:checked").each(function(){
         arraynuevo.push($(this).val());
     });
-    console.log(arraynuevo);
+    if (arraynuevo.length==0) 
+    {
+        alert("No has seleccionado ninguna mujer");
+    }else
+    {
+        console.log(arraynuevo);
 
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-        url: 'ajaxb',
-        method: 'get',
-        data: { tuArrJson: arraynuevo},
-        error: function(xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        },
-        success:function(response){
-            console.log("me apetece morir");
-            location.reload();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: 'ajaxb',
+            method: 'get',
+            data: { tuArrJson: arraynuevo},
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            },
+            success:function(response){
+                console.log("me apetece morir");
+                location.reload();
 
-        }
+            }
 
-        });
+            });
+    }
+
 }
