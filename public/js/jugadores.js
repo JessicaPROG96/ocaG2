@@ -31,19 +31,21 @@ $(document).ready(function(){
        
 // validar formulario 
 document.getElementById("submit").addEventListener('click', validar, false);
-function validar() {
+function validar(event) {
     //validar nombre
     var elemento = document.getElementById('nombre'); 
     if(elemento.value==""){
         elemento.style.border =  '3px solid red';
-        error(elemento, "Debe introducir un nombre");        
+        error(elemento, "Debe introducir un nombre");    
+        event.preventDefault();    
     }
     else{
         nombreRegex = /^[a-zA-Z]+$/i;
         if(!nombreRegex.test(elemento.value)){
             error(elemento, "El nombre no acepta números ni caracteres especiales");
-            alert("el nombre no es valido");
+            // alert("el nombre no es valido");
             elemento.style.border =  '3px solid red';
+            event.preventDefault();
         }
     }
     //validar el apellido 
@@ -73,6 +75,7 @@ function validar() {
             alert("el nombre no es valido");
         }
     }
+    
 }
     function error(elemento, mensaje) {
             document.getElementById("mensajeError").innerHTML = mensaje;
