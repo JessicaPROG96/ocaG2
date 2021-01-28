@@ -476,3 +476,20 @@ color: white;
     font-size: 5px;
 }
  */
+/* video como fondo */
+.content video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  /* .content{
+    background-color: #e2ab3f;
+} */
+/* titulo clasificacion */
+#tituloClas{
+    color: white;
+}
