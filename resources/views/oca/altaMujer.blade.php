@@ -6,7 +6,7 @@
 @section('content')
 
 <form enctype="multipart/form-data" method="POST" action="{{url('crearMujer')}}" id="formInsertMujer">
-    @csrf 
+    @csrf {{-- seguridad --}}
     <div class="form-group cajas">
         <input type="text" name="nombre"  class="form-control box" id="nombre"  placeholder="Nombre" required>
         <p id="mensajeError"></p>
