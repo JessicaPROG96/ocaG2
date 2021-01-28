@@ -1,3 +1,13 @@
+.btn-borrar
+{
+    position: fixed;
+    /* width: 190px; */
+    margin-left: 1em;
+    margin-top: 10%;
+}
+
+
+
 .galeria
 {
     color: white;

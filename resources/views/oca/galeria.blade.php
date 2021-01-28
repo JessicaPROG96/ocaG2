@@ -16,7 +16,13 @@
 
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
-
+    @php
+    // Si el usuario ha iniciado sesión sale el boton para eliminar
+    if(isset(Auth::user()->name)){
+        echo '<button type="button" class="btn btn-borrar btn-danger">Delete</button>';
+    }
+@endphp 
+    
 <!-- Barra de busqueda -->
 <div class="col-md-10 md-form mb-4 ml-auto">
     <input class="form-control col-md-7 d-inline" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
@@ -94,7 +100,7 @@
               </div>
               <div class="modal-footer col-10 mx-auto">
                 {{-- Link a la wiki --}}
-                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
+                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" target="blank" href="">Saber mas 🔗</a></button>
               </div>
             </div>
           </div>
@@ -139,6 +145,16 @@
             
               
                 <div class="mujer">
+                  @php
+                      // Si el usuario ha iniciado sesión sale el boton guardar
+                      if(isset(Auth::user()->name))
+                      {
+                        echo '<label for="check">Borrar</label>'; 
+                          echo '<input type="checkbox" name="check" value="'.$a['id'].'" id="deleteCheckbox" style="position: absolute;">';
+                      }
+                  @endphp 
+                  
+                  
                     {{-- Ruta de la imagen --}}
                     <img class="imagen" src="img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
                     {{-- Nombre --}}

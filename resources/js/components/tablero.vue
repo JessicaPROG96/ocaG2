@@ -263,7 +263,37 @@
             <h5 class="modal-title" id="exampleModalLongTitle">{{this.mujeresC[this.numeroMujer].nombre+ ' '+this.mujeresC[this.numeroMujer].apellido}}</h5>
           </div>
           <div class="modal-body">
+
+            <div class="container-fluid">
             <div class="row">
+              <div class="col-md-6">
+               
+                <img class="imagen-modal" src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" alt="">
+              </div>
+              <div class="col-md-5 m-auto">
+                
+                <label>Fecha: </label>
+                <p class="fecha-modal text">{{this.mujeresC[this.numeroMujer].fechaNacimiento}}</p>
+                
+                <label>Zona: </label>
+                <p class="zona-modal text">{{this.mujeresC[this.numeroMujer].zonaGeografica}}</p>
+
+                <label>Ambito: </label>
+                <p class="ambito-modal text">{{this.arrayCategorias[this.mujeresC[this.numeroMujer].id_categoria-1]}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                Descripción: <br>
+                <p class="desc-modal text px-2">{{this.mujeresC[this.numeroMujer].descripcion}}</p>
+              </div>
+              <div class="modal-footer col-10 mx-auto">
+                
+                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
+              </div>
+            </div>
+          </div>
+            <!-- <div class="row">
               <div class="col-6">
                 <img :src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" :alt="'mujer'"/>
               </div>
@@ -276,7 +306,7 @@
               </div>
             </div>
             <label for="descripcion">Zona:</label><p>{{this.mujeresC[this.numeroMujer].zonaGeografica}}</p>
-            <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p>
+            <label for="descripcion">Descripción:</label><p>{{this.mujeresC[this.numeroMujer].descripcion}}</p> -->
           </div>
         </div>
       </div>

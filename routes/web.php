@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('ajax', [ocaController::class , 'ajax']);
+Route::get('ajaxb', [ocaController::class , 'ajaxBorrar']);
+
 
 // Route::get('ajax',['as' => 'ajax', 'uses' => 'ocaController@ajax']);
 

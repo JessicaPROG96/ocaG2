@@ -1,0 +1,56 @@
+/* Modal y todo su contenido */
+
+.modal-header
+{
+    border-bottom: none!important;
+}
+
+.modal-title
+{
+    text-align: center;
+    
+}
+.modal-content
+{
+    background-color: rgba(255, 255, 255, 0.753) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px)!important;
+    
+}
+
+.fecha-modal, .zona-modal , .ambito-modal
+{
+    color: black;
+    text-align: right;
+    display: inline-block;
+}
+.desc-modal
+{
+    text-align: justify;
+    color: black;
+}
+.imagen-modal
+{
+    display: inline-block;
+    margin-right: 3em;
+    width: 320px;
+    height: 300px;
+    margin-left: 0.7em;
+    margin-bottom: 3em;
+    border-radius: 3px;
+    border: 0.2px solid rgba(0, 0, 0, 0.445);
+}
+
+.modal-footer
+{
+    border: none!important;
+}
+/* Los inputs que estan dento del modal */
+.text
+{
+    background-color: transparent;
+    border: none;
+    display: inline-block!important;
+    border-radius: 5px!important;
+    text-align: left;
+}

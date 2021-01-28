@@ -8,6 +8,7 @@ $(document).ready(function(){
     $("#searchbar").on("input",buscar);
     modoAdmin();
     $('.btn-guardar').click(ajaxMujer);
+    $('.btn-borrar').click(borrarMujer);
 });
 
 function seleccionarCategoria() {
@@ -49,24 +50,26 @@ function seleccionarCategoria() {
 
 // Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function ModalMujer() {
-    $('.mujer').click(function() {
+    
+
+    $('.mujer').on("click", function() {
 
         id = $(this).find('.id').text();                    // Cogemos el id
 
         if (localStorage.getItem("fechaUpd"+id)==null) {
-            fecha = $(this).find('.fecha').text();            // Cogemos la fecha
+            fecha = $(this).find('.fecha').text();          // Cogemos la fecha
         } else {
             fecha = localStorage.getItem("fechaUpd"+id);
         }
 
         if (localStorage.getItem("zonaUpd"+id)==null) {
-            zona = $(this).find('.zona').text();              // Cogemos la desc
+            zona = $(this).find('.zona').text();            // Cogemos la desc
         } else {
             zona = localStorage.getItem("zonaUpd"+id);
         }
 
         if (localStorage.getItem("descUpd"+id)==null) {
-            descr = $(this).find('.descripcion').text();              // Cogemos la zona
+            descr = $(this).find('.descripcion').text();    // Cogemos la zona
         } else {
             descr = localStorage.getItem("descUpd"+id);
         }
@@ -75,20 +78,16 @@ function ModalMujer() {
         apellido = $(this).find('.apellido').text();        // Cogemos el apellido
         categoria = $(this).find('.categoria').text();      // Cogemos la categoria
         imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen
-        //fecha = $(this).find('.fecha').text();              // Cogemos la fecha
-        //zona = $(this).find('.zona').text();                // Cogemos la zona
-        enlace = $(this).find('.enlace').text();            // Cogemos el enlace
-        //descr = $(this).find('.descripcion').text();        // Cogemos la descripción
-        // id = $(this).find('.id').text();                    // Cogemos el id
 
-        localStorage.setItem("idMujer", id);
+        enlace = $(this).find('.enlace').text();            // Cogemos el enlace
+
+
+        localStorage.setItem("idMujer", id);                // Guardamos el id para cogerlo en otra funcion
 
         if (enlace.substr(0, enlace.indexOf(" "))!= "") {
             $('.enlace-btn').attr("href", enlace.substr(0, enlace.indexOf(" ")));
-            console.log("1");
         }else{
             $('.enlace-btn').attr("href", enlace);
-            console.log("2");
         }
         //
         // Modal
@@ -101,6 +100,7 @@ function ModalMujer() {
         $("#myModal").modal("show");                        // Mostrar el modal
 
     });
+      
 
 }
 
@@ -213,6 +213,32 @@ function ajaxMujer() {
             localStorage.setItem("fechaUpd"+arrayMujer[0]['id'],arrayMujer[0]['fechaNacimiento']);                         // Fecha de nacimiento
             localStorage.setItem("zonaUpd"+arrayMujer[0]['id'],arrayMujer[0]["zonaGeografica"]);                           // Zona
             localStorage.setItem("descUpd"+arrayMujer[0]['id'],arrayMujer[0]["descripcion"]);                              // Descripcion
+
+        }
+
+        });
+}
+
+function borrarMujer() {
+    arraynuevo=[];
+    $("input:checkbox[name=check]:checked").each(function(){
+        arraynuevo.push($(this).val());
+    });
+    console.log(arraynuevo);
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+        url: 'ajaxb',
+        method: 'get',
+        data: { tuArrJson: arraynuevo},
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        },
+        success:function(response){
+            console.log("me apetece morir");
+            location.reload();
 
         }
 
