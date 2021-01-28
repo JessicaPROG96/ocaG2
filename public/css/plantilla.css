@@ -80,20 +80,29 @@ nav a:hover
     border-top: 0 none;
 }
 
-/* formulario */
+/* formulario para insertar una mujer */
 form{
     color: white;
-    background-color: teal;
-    width: 50%;
-    margin-top: 4%;
-    margin-left: 30%;
+    /* background-color: teal; */
+    width: 60%;
+    margin-top: 2%;
+    margin-left:20%;
 }
 .cajas{
     padding: 4%;
     padding-top: 1%;
-    background-color: tomato;
+    /* background-color: rgb(112, 7, 182); */
+    background-image: url("../img/otros/3289.jpg");
+    border-radius: 40px 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .box{
     /* background-color: violet; */
-    margin-top:  10px;
+    margin-top:  20px;
 }
+/* mensaje de error  */
+#mensajeError, #mensajeErrorA, #mensajeErrorZ{
+color: red;
+margin-top:2%;
+}
+

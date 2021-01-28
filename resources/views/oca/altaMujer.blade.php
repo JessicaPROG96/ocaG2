@@ -15,25 +15,25 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Nacimiento</label>
             <div class="col-sm-10">
-            <input type="text" name="fechaNacimiento" class="form-control box" required>
+            <input type="text" name="fechaNacimiento" id="fNacimiento" class="form-control box" required>
             </div>
          </div>
         
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha Fallecimiento</label>
             <div class="col-sm-10">
-            <input type="text" name="fechaFallecimiento"  class="form-control box">
+            <input type="text" name="fechaFallecimiento"  class="form-control box is-valid">
             </div>
          </div>
 
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10">
-                <input type="file" name="imagen" class="form-control-file">
+                <input type="file" name="imagen" class="form-control-file" accept="image/png,image/jpeg">
             </div>
          </div>
 
-        <input type="text" name="enlace"  class="form-control box"  placeholder="Enlace">
+        <input type="text" name="enlace"  class="form-control box is-valid"  placeholder="Enlace">
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
@@ -41,8 +41,8 @@
             <textarea name="descripcion" class="form-control box" id="descripcion" rows="3" required></textarea>
             </div>
          </div>
-         <input type="text" name="zonaGeografica" class="form-control box"  placeholder="Zona Geográfica" required>
-
+         <input type="text" name="zonaGeografica" class="form-control box" id="zona" placeholder="Zona Geográfica" required>
+         <p  class="box"  id="mensajeErrorZ"></p>
          <div class="form-group row">
             <label class="col-sm-2 col-form-label">Categoría</label>
             <div class="col-sm-10">
@@ -53,16 +53,12 @@
                 </select>
             </div>
          </div>
-
-        <div class="form-row box">
-            <div class="col-2">
-                <button type="reset" class="btn btn-primary">Borrar</button>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-primary">Volver</button>
-            </div>
+        {{-- botones  --}}
+        <div class="btn-group" role="group">
+            <div class="col"><button class="btn btn-success" type="submit" id="submit">Enviar</button> </div>
+            <div class="col"><button type="reset" class="btn btn-success">Limpiar</button></div>
+            <div class="col"><button type="button" class="btn btn-success">Volver</button></div>
         </div>
-  <button class="btn btn-primary box" type="submit" id="submit">Enviar</button>    
     </div>
     <p id="mensajeError"></p>
 </form>
