@@ -36,9 +36,14 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('/clasificacion')}}">Clasificación</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/alta')}}">Añadir Mujer</a>
-        </li>
+        @php
+            // Si el usuario ha iniciado sesión sale el boton guardar
+            if(isset(Auth::user()->name)){
+              echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="'.url('/alta').'">Añadir Mujer</a>';
+              echo '</li>';
+            }
+        @endphp 
       </ul>
  
       <ul class="navbar-nav ml-auto">

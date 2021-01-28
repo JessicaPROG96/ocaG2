@@ -101,8 +101,9 @@ form{
     margin-top:  20px;
 }
 /* mensaje de error  */
-#mensajeError, #mensajeErrorA, #mensajeErrorZ{
+#mensajeError, #mensajeErrorA, #mensajeErrorZ, #mensajeErrorFN, #mensajeErrorDes{
 color: red;
 margin-top:2%;
+/* display: none; */
 }
 
