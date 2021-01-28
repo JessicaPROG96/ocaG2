@@ -50,6 +50,20 @@ class ocaController extends Controller{
         // return view('oca.altaMujer');
     }
 
+    public function ajax(Request $request)
+    {
+        $fecha = $request->fecha;
+        $zona = $request->zona;
+        $desc = $request->desc;
+        $id = $request->id;
+        
+        DB::update('update mujeres set fechaNacimiento = ?, zonaGeografica = ?, descripcion = ? where id = ?',[$fecha, $zona, $desc, $id]);
+        $arrayMujer = DB::table('mujeres')->where('id',[$id])->get();
+        return $arrayMujer;
+  
+        // return response()->json(['success'=>'Data is successfully added']);
+    }
+
     //añadir una mujer a la base de datos
     public function crearMujer(Request $request){
   
