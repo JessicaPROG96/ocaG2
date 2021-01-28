@@ -66,7 +66,6 @@ class ocaController extends Controller{
 
     public function ajaxBorrar(Request $request)
     {
-
         $param =$request['tuArrJson'];
 
         foreach($param  as $val){
