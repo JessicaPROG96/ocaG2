@@ -1,19 +1,19 @@
 <template>
 
-    <div class="container container-clasi">
+    <div class="container container-clasi mx-10">
         <div class="row">
-            <div class="mx-auto mt-5 col-md-6">
+            <div class="mx-auto mt-5 col-12">
                 <h2 id="tituloClas">Clasificación</h2>
                 
-                <table class="table text-center table-dark"><!--Creamos una tabla que mostrará todas las tareas-->
+                <table class="table text-center table-dark table-hover" id="tabla"><!--Creamos una tabla que mostrará todas las tareas-->
                     <thead>
-                        <tr>
+                        <tr class="encabezado">
                             <th scope="col">Nombre</th>
                             <th scope="col">Puntuación</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="cl in arrayClasif" :key="cl.id"> <!--Recorremos el array y cargamos nuestra tabla-->
+                        <tr v-for="cl in arrayClasif" :key="cl.id" class="filasTabla" > <!--Recorremos el array y cargamos nuestra tabla-->
                             <td v-text="cl.nombre"></td>
                             <td v-text="cl.puntos"></td> 
                         </tr>

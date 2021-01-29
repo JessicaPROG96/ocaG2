@@ -489,7 +489,19 @@ color: white;
   /* .content{
     background-color: #e2ab3f;
 } */
+
+/* configuración para la tabla de clasificación  */
+
 /* titulo clasificacion */
 #tituloClas{
     color: white;
+    text-align: center;
+}
+
+.encabezado{
+background-color: #db10b95d;
+/* background-color: aqua; */
+}
+.filasTabla{
+    width:40%; 
 }

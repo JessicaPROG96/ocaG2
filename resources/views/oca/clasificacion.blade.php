@@ -7,4 +7,5 @@
 <clasificacion></clasificacion>
 <video src="../public/img/otros/fondoVideo.mp4" autoplay loop playsinline muted></video>
 </div>
+
 @stop
