@@ -7,19 +7,19 @@
       <div id="cuboJugadores" class="col-1">
         <div id="cuboJugador1" class="cuboJugador">
           <p v-text="this.jugadores['jugador1'].nombre"></p>
-          <p v-text="'Puntuacion: '+this.jugadores['jugador1'].puntuacion"></p>
+          <p v-text="'Puntuación: '+this.jugadores['jugador1'].puntuacion"></p>
         </div>
         <div id="cuboJugador2" class="cuboJugador">
           <p v-text="this.jugadores['jugador2'].nombre"></p>
-          <p v-text="'Puntuacion: '+this.jugadores['jugador2'].puntuacion"></p>
+          <p v-text="'Puntuación: '+this.jugadores['jugador2'].puntuacion"></p>
         </div>
         <div id="cuboJugador3" class="cuboJugador" v-if="numeroJugadores>=3">
           <p v-text="this.jugadores['jugador3'].nombre"></p>
-          <p v-text="'Puntuacion: '+this.jugadores['jugador3'].puntuacion"></p>
+          <p v-text="'Puntuación: '+this.jugadores['jugador3'].puntuacion"></p>
         </div>
         <div id="cuboJugador4" class="cuboJugador" v-if="numeroJugadores==4">
           <p v-text="this.jugadores['jugador4'].nombre"></p>
-          <p v-text="'Puntuacion: '+this.jugadores['jugador4'].puntuacion"></p>
+          <p v-text="'Puntuación: '+this.jugadores['jugador4'].puntuacion"></p>
         </div>
       </div>
 
@@ -526,6 +526,8 @@ export default {
       $('#modalInfo').modal('show');
     },
     tirarDado(){
+      var audioDado = new Audio('audio/tirarDado.mp3');
+      audioDado.play();
       var botonTirar=document.querySelector(".tirar");
       botonTirar.disabled = true;
       var dado=Math.floor(Math.random() * 6)+1;
@@ -688,7 +690,10 @@ export default {
         case 5: 
         var me=this;
         this.numeroCasillaCaida=0;
-        setTimeout(function(){$('#modalCasillaCaida').modal('show'); }, 500);
+        setTimeout(function(){$('#modalCasillaCaida').modal('show');
+        var audioOca = new Audio('audio/goose.mp3');
+        audioOca.play();
+       }, 500);
         setTimeout(function(){
           $('#modalCasillaCaida').modal('hide'); 
           gridJugador.style["grid-area"] = "c9";
