@@ -1,29 +1,627 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+#contenedorTablero {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#secCategoria {
+  width: 300px;
+  float: inline-block;
+}
+
+.casillaBody {
+  background-color: crimson;
+}
+
+/* Tablero de la oca */
+
+.tableroVue {
+  margin-top: 50px;
+}
+
+#tablero {
+  background-color: #e15766;
+  border: solid #C4EAF2 5px;
+  border-radius: 35px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-areas: "c25 c24 c23 c22 c21 c20 c19 c18 c17 " "c26 c53 c52 c51 c50 c49 c48 c47 c16 " "c27 c54 c63 c63 c63 c63 c63 c46 c15 " "c28 c55 c63 c63 c63 c63 c63 c45 c14 " "c29 c56 c63 c63 c63 c63 c63 c44 c13 " "c30 c57 c63 c63 c63 c63 c63 c43 c12 " "c31 c58 c63 c63 c63 c63 c63 c42 c11 " "c32 c59 c60 c61 c62 .   .   c41 c10 " "c33 c34 c35 c36 c37 c38 c39 c40 c9  " "c1  c1  c2  c3  c4  c5  c6  c7  c8  ";
+  grid-auto-flow: dense;
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
+  /* min-height: 100vh; */
+  overflow: hidden;
+  padding: 1em;
+  margin-bottom: 2%;
+  width: 1400px;
+  height: 900px;
+  /* margin: 0 auto; */
+}
+
+#casillaInicio {
+  grid-area: c1;
+  border-radius: 0px 0px 0px 27px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  height: 87px;
+}
+
+/* .pregunta{
+    background-color: cadetblue;
+    height: 100px;
+} */
+
+.casilla {
+  border: 0.2px solid black;
+}
+
+.casillaif {
+  height: 87px;
+  width: 152px;
+}
+
+.casillaJuego {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* background-size: contain; */
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.casillaNum {
+  width: 151.5px;
+  height: 84px;
+  /* margin-left: -1px; */
+}
+
+/* Bordes exteriores */
+
+#casilla25 .casillaJuego {
+  border-radius: 27px 0px 0px 0px;
+}
+
+#casilla17 .casillaJuego {
+  border-radius: 0px 27px 0px 0px;
+}
+
+#casilla8 .casillaJuego {
+  border-radius: 0px 0px 27px 0px;
+}
+
+/* Border interiores */
+
+#casilla47 .casillaJuego {
+  border-radius: 0px 40px 0px 0px;
+}
+
+#casilla53 .casillaJuego {
+  border-radius: 40px 0px 0px 0px;
+}
+
+#casilla59 .casillaJuego,
+#casilla33 .casillaJuego {
+  border-radius: 0px 0px 0px 40px;
+}
+
+#casilla40 .casillaJuego {
+  border-radius: 0px 0px 40px 0px;
+}
+
+.casillaJuego img {
+  height: 0;
+  max-width: 100%;
+}
+
+.casillaFooter {
+  background-color: rgba(255, 255, 255, 0.329);
+  margin-top: auto;
+}
+
+.casillaJuego .casillaHead {
+  background-color: rgba(255, 255, 255, 0.753);
+  text-align: center;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+}
+
+.casillaCircle {
+  margin-left: -15px;
+  margin-top: -10px;
+}
+
+#casilla2 {
+  grid-area: c2;
+  background-color: grey;
+}
+
+#casilla3 {
+  grid-area: c3;
+  background-color: blueviolet;
+}
+
+#casilla4 {
+  grid-area: c4;
+  background-color: grey;
+}
+
+#casilla5 {
+  grid-area: c5;
+  background-color: #530adb;
+}
+
+#casilla6 {
+  grid-area: c6;
+  background-color: grey;
+}
+
+#casilla7 {
+  grid-area: c7;
+  background-color: blueviolet;
+}
+
+#casilla8 {
+  grid-area: c8;
+  background-color: grey;
+  border-radius: 0px 0px 27px 0px;
+}
+
+#casilla9 {
+  grid-area: c9;
+  background-color: #530adb;
+}
+
+#casilla10 {
+  grid-area: c10;
+  background-color: grey;
+}
+
+#casilla11 {
+  grid-area: c11;
+  background-color: blueviolet;
+}
+
+#casilla12 {
+  grid-area: c12;
+  background-color: grey;
+}
+
+#casilla13 {
+  grid-area: c13;
+  background-color: blueviolet;
+}
+
+#casilla14 {
+  grid-area: c14;
+  background-color: #530adb;
+}
+
+#casilla15 {
+  grid-area: c15;
+  background-color: blueviolet;
+}
+
+#casilla16 {
+  grid-area: c16;
+  background-color: grey;
+}
+
+#casilla17 {
+  grid-area: c17;
+  background-color: blueviolet;
+  border-radius: 0px 27px 0px 0px;
+}
+
+#casilla18 {
+  grid-area: c18;
+  background-color: #530adb;
+}
+
+#casilla19 {
+  grid-area: c19;
+  background-color: blueviolet;
+}
+
+#casilla20 {
+  grid-area: c20;
+  background-color: grey;
+}
+
+#casilla21 {
+  grid-area: c21;
+  background-color: blueviolet;
+}
+
+#casilla22 {
+  grid-area: c22;
+  background-color: grey;
+}
+
+#casilla23 {
+  grid-area: c23;
+  background-color: #530adb;
+}
+
+#casilla24 {
+  grid-area: c24;
+  background-color: grey;
+}
+
+#casilla25 {
+  grid-area: c25;
+  background-color: blueviolet;
+  border-radius: 27px 0px 0px 0px;
+}
+
+#casilla26 {
+  grid-area: c26;
+  background-color: grey;
+}
+
+#casilla27 {
+  grid-area: c27;
+  background-color: #530adb;
+}
+
+#casilla28 {
+  grid-area: c28;
+  background-color: grey;
+}
+
+#casilla29 {
+  grid-area: c29;
+  background-color: blueviolet;
+}
+
+#casilla30 {
+  grid-area: c30;
+  background-color: grey;
+}
+
+#casilla31 {
+  grid-area: c31;
+  background-color: blueviolet;
+}
+
+#casilla32 {
+  grid-area: c32;
+  background-color: #530adb;
+}
+
+#casilla33 {
+  grid-area: c33;
+  background-color: #e15766;
+}
+
+#casilla34 {
+  grid-area: c34;
+  background-color: grey;
+}
+
+#casilla35 {
+  grid-area: c35;
+  z-index: 1;
+  background-color: blueviolet;
+}
+
+#casilla36 {
+  grid-area: c36;
+  z-index: 1;
+  background-color: #530adb;
+}
+
+#casilla37 {
+  grid-area: c37;
+  z-index: 1;
+  background-color: blueviolet;
+}
+
+#casilla38 {
+  grid-area: c38;
+  z-index: 1;
+  background-color: grey;
+}
+
+#casilla39 {
+  grid-area: c39;
+  z-index: 1;
+  background-color: blueviolet;
+}
+
+#casilla40 {
+  grid-area: c40;
+  background-color: #e15766;
+}
+
+#casilla41 {
+  grid-area: c41;
+  background-color: #530adb;
+}
+
+#casilla42 {
+  grid-area: c42;
+  background-color: blueviolet;
+}
+
+#casilla43 {
+  grid-area: c43;
+  background-color: grey;
+}
+
+#casilla44 {
+  grid-area: c44;
+  background-color: blueviolet;
+}
+
+#casilla45 {
+  grid-area: c45;
+  background-color: #530adb;
+}
+
+#casilla46 {
+  grid-area: c46;
+  background-color: blueviolet;
+}
+
+#casilla47 {
+  grid-area: c47;
+  background-color: #e15766;
+}
+
+#casilla48 {
+  grid-area: c48;
+  background-color: blueviolet;
+}
+
+#casilla49 {
+  grid-area: c49;
+  background-color: grey;
+}
+
+#casilla50 {
+  grid-area: c50;
+  background-color: #530adb;
+}
+
+#casilla51 {
+  grid-area: c51;
+  background-color: grey;
+}
+
+#casilla52 {
+  grid-area: c52;
+  background-color: blueviolet;
+}
+
+#casilla53 {
+  grid-area: c53;
+  background-color: #e15766;
+}
+
+#casilla54 {
+  grid-area: c54;
+  background-color: #530adb;
+}
+
+#casilla55 {
+  grid-area: c55;
+  background-color: grey;
+}
+
+#casilla56 {
+  grid-area: c56;
+  background-color: #cab9da;
+}
+
+#casilla57 {
+  grid-area: c57;
+  background-color: blueviolet;
+}
+
+#casilla58 {
+  grid-area: c58;
+  background-color: grey;
+}
+
+#casilla59 {
+  grid-area: c59;
+  background-color: #e15766;
+}
+
+#casilla60 {
+  grid-area: c60;
+  background-color: grey;
+  z-index: 1;
+}
+
+#casilla61 {
+  grid-area: c61;
+  background-color: blueviolet;
+  z-index: 1;
+}
+
+#casilla62 {
+  grid-area: c62;
+  background-color: grey;
+  z-index: 1;
+}
+
+/* Casilla final */
+
+#casilla63 {
+  grid-column-start: c63;
+  grid-column-end: c63;
+  grid-row-start: c63;
+  grid-row-end: c60;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  z-index: 0;
+  /* margin-left: -1.5px; */
+}
+
+#casilla63 .numCasilla {
+  font-size: 60px;
+  color: white;
+}
+
+.numCasilla {
+  font-size: 12px;
+  color: white;
+}
+
+.modal-dialog {
+  z-index: 21;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.modalInfoC img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Fichas jugadores */
+
+.jugador1 {
+  grid-area: c1;
+  z-index: 2;
+  margin-left: 30px;
+  margin-top: -3px;
+}
+
+.jugador2 {
+  grid-area: c1;
+  z-index: 2;
+  margin-top: 32px;
+  margin-left: 30px;
+}
+
+.jugador3 {
+  grid-area: c1;
+  z-index: 2;
+  margin-top: -3px;
+  margin-left: 70px;
+}
+
+.jugador4 {
+  grid-area: c1;
+  z-index: 2;
+  margin-top: 32px;
+  margin-left: 70px;
+}
+
+/* boton elegir avatar */
+
+#botonAvatar {
+  margin-left: 10px;
+}
+
+/* Modal tirar dado */
+
+#img_dado {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Modal casilla oca, puente, posada... */
+
+#img_casillaCaida {
+  margin-top: 10px;
+  width: 400px;
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Centrar los titulos de los modales */
+
+.modalTitulo {
+  text-align: center;
+}
+
+/*  Modal pregunta */
+
+.modalPreguntaBoton {
+  min-width: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.modalResultados {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+
+/* Modal juego finalizado */
+
+/* #resultado1{
+    font-size: 25px;
+}
+#resultado2{
+    font-size: 15px;
+}
+#resultado3{
+    font-size: 10px;
+}
+#resultado4{
+    font-size: 5px;
+}
+ */
+
 #cuboJugadores {
   text-align: center;
   width: 50%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cuboJugador {
+  border-radius: 7%;
+  padding-top: 15px;
+  background-color: rgba(253, 251, 251, 0.185);
+  font-weight: bold;
 }
 
 #cuboJugador1 {
-  background-color: red;
-  border-radius: 5%;
+  /* background-color: rgba(255, 0, 0, 0.473); */
+  border: red solid 5px;
 }
 
 #cuboJugador2 {
-  background-color: yellow;
-  border-radius: 5%;
+  border: yellow solid 5px;
+  margin-top: 20px;
 }
 
 #cuboJugador3 {
-  background-color: blue;
-  border-radius: 5%;
+  border: blue solid 5px;
+  margin-top: 20px;
 }
 
 #cuboJugador4 {
-  background-color: green;
-  border-radius: 5%;
+  border: green solid 5px;
+  margin-top: 20px;
+}
+
+#btnTirar {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /*!
