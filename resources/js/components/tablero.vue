@@ -268,18 +268,19 @@
             <div class="row">
               <div class="col-md-6">
                
-                <img class="imagen-modal" src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" alt="">
+                <img class="imagen-modal" :src="'img/fotosMujeres/'+this.mujeresC[this.numeroMujer].imagen" alt="">
               </div>
               <div class="col-md-5 m-auto">
                 
                 <label>Fecha: </label>
                 <p class="fecha-modal text">{{this.mujeresC[this.numeroMujer].fechaNacimiento}}</p>
-                
+                <br>
                 <label>Zona: </label>
                 <p class="zona-modal text">{{this.mujeresC[this.numeroMujer].zonaGeografica}}</p>
-
+                <br>
                 <label>Ambito: </label>
                 <p class="ambito-modal text">{{this.arrayCategorias[this.mujeresC[this.numeroMujer].id_categoria-1]}}</p>
+                <br>
               </div>
             </div>
             <div class="row">
@@ -287,10 +288,7 @@
                 Descripción: <br>
                 <p class="desc-modal text px-2">{{this.mujeresC[this.numeroMujer].descripcion}}</p>
               </div>
-              <div class="modal-footer col-10 mx-auto">
-                
-                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
-              </div>
+             
             </div>
           </div>
             <!-- <div class="row">
