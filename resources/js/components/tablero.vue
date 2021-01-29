@@ -2,22 +2,22 @@
 
   <div id="contenedorTablero">
 
-    <div class="row">
+    <div class="row m-0 contenedorRow">
 
       <div id="cuboJugadores" class="col-1">
-        <div id="cuboJugador1">
+        <div id="cuboJugador1" class="cuboJugador">
           <p v-text="this.jugadores['jugador1'].nombre"></p>
           <p v-text="'Puntuacion: '+this.jugadores['jugador1'].puntuacion"></p>
         </div>
-        <div id="cuboJugador2">
+        <div id="cuboJugador2" class="cuboJugador">
           <p v-text="this.jugadores['jugador2'].nombre"></p>
           <p v-text="'Puntuacion: '+this.jugadores['jugador2'].puntuacion"></p>
         </div>
-        <div id="cuboJugador3" v-if="numeroJugadores>=3">
+        <div id="cuboJugador3" class="cuboJugador" v-if="numeroJugadores>=3">
           <p v-text="this.jugadores['jugador3'].nombre"></p>
           <p v-text="'Puntuacion: '+this.jugadores['jugador3'].puntuacion"></p>
         </div>
-        <div id="cuboJugador4" v-if="numeroJugadores==4">
+        <div id="cuboJugador4" class="cuboJugador" v-if="numeroJugadores==4">
           <p v-text="this.jugadores['jugador4'].nombre"></p>
           <p v-text="'Puntuacion: '+this.jugadores['jugador4'].puntuacion"></p>
         </div>
@@ -215,7 +215,7 @@
       </div>
 
       <div id="btnTirar" class="col-1">
-        <button class="tirar" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+        <button class="tirar btn btn-success" v-text="'Tirar'"  v-on:click="tirarDado"></button>
       </div>
     </div>
 
