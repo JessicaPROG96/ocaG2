@@ -1,7 +1,9 @@
 // Este script es para la pagina de la galeria de las mujeres
 // ----------------------------------------------------------|
 // Cuando cargue la pagina, que ejecute las funciones
-$(document).ready(function(){
+$(document).ready(function()
+{
+    $('.divBorrar').hide();
     fondosCategorias();
     ModalMujer();
     seleccionarCategoria();
@@ -9,6 +11,7 @@ $(document).ready(function(){
     modoAdmin();
     $('.btn-guardar').click(ajaxMujer);
     $('.btn-borrar').click(borrarMujer);
+    
 });
 
 function seleccionarCategoria() {
@@ -182,6 +185,7 @@ function modoAdmin() {
 
         // Tarjeta de la mujer
         $('.mujer').css("height","340px");
+        $('.divBorrar').fadeIn('fast');
         
     }
 }
@@ -191,7 +195,7 @@ function ajaxMujer() {
     fecha = $(".fecha-modal").val();                        // Fecha de nacimiento
     zona = $(".zona-modal").val();                          // Zona
     // $(".ambito-modal").val(categoria);                   // Ambito/Categoria
-    desc = $(".desc-modal").val();                           // Descripción
+    desc = $(".desc-modal").val();                          // Descripción
     id = localStorage.getItem("idMujer");
     console.log(id);
 
