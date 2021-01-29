@@ -20,6 +20,7 @@
     // Si el usuario ha iniciado sesión sale el boton para eliminar
     if(isset(Auth::user()->name)){
         echo '<button type="button" class="btn btn-borrar btn-danger">Delete 🗑</button>';
+        echo '<button type="button" style="position: fixed" class="btn btn-light"><a href="#top">Volver ↑</a></button>';
     }
 @endphp 
     

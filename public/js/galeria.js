@@ -3,14 +3,23 @@
 // Cuando cargue la pagina, que ejecute las funciones
 $(document).ready(function()
 {
-    $('.divBorrar').hide();
+    
+    // Cargamos los fondos de las categorias
     fondosCategorias();
+    // Cargamos la funcion para que aparezca el modal de la mujer
     ModalMujer();
+    // Cargamos la funcion para cargar las categorias y filtrar
     seleccionarCategoria();
+    // Cuando escribes en la barra de busqueda se ejecuta la funcion buscar
     $("#searchbar").on("input",buscar);
+    // Cargamos la funcion para cargar los botones cuando estamos logueados
     modoAdmin();
+    // Al darle click en el boton guardar se ejecuta la funcion ajaxMUjer
     $('.btn-guardar').click(ajaxMujer);
+    // Al darle click al boton de borrar se ejecuta la funcion borrarMujer
     $('.btn-borrar').click(borrarMujer);
+    // Cargamos la funcion para volver a la parte de arriba de la pagina de manera smooth
+    smoothScroll();
     
 });
 
@@ -25,9 +34,9 @@ function seleccionarCategoria() {
             for (i = 0; i < div.length; i++)
             {
                     div[i].style.display="block";
-                    document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-                    div[i].style.marginRight="16.5px";
-                    div[i].style.marginLeft="16.5px";
+                    // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+                    // div[i].style.marginRight="16.5px";
+                    // div[i].style.marginLeft="16.5px";
             }
         }else{
             for (i = 0; i < div.length; i++)
@@ -37,9 +46,9 @@ function seleccionarCategoria() {
                 if (cat[i].innerHTML.includes(categoriaSeleccionada))
                 {
                     div[i].style.display="block";
-                    document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-                    div[i].style.marginRight="16.5px";
-                    div[i].style.marginLeft="16.5px";
+                    // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+                    // div[i].style.marginRight="16.5px";
+                    // div[i].style.marginLeft="16.5px";
                 }
                 // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
                 else
@@ -123,9 +132,9 @@ function buscar() {
         if (nom[i].innerHTML.toUpperCase().includes(input.toUpperCase()) || ape[i].innerHTML.toUpperCase().includes(input.toUpperCase()))
         {
             div[i].style.display="block";
-            document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-            div[i].style.marginRight="16.5px";
-            div[i].style.marginLeft="16.5px";
+            // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+            // div[i].style.marginRight="16.5px";
+            // div[i].style.marginLeft="16.5px";
         }
         // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
         else
@@ -260,4 +269,11 @@ function borrarMujer() {
             });
     }
 
+}
+
+function smoothScroll() {
+    $("a[href='#top']").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
 }
