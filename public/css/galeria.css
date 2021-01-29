@@ -72,40 +72,22 @@
 
 
 /* Modal y todo su contenido */
-
-.modal-header
-{
-    border-bottom: none!important;
-}
-
-.modal-title
-{
-    text-align: center;
-    
-}
 .modal-content
 {
-    background-color: rgba(255, 255, 255, 0.753) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px)!important;
-    
+    background-color: rgb(233, 233, 233) !important;
 }
 
-.fecha-modal, .zona-modal , .ambito-modal
+.fecha-modal, .zona-modal
 {
-    color: black;
-    text-align: right;
-    display: inline-block;
+    text-align: left;
+    display: block;
 }
 .desc-modal
 {
     text-align: justify;
-    color: black;
 }
 .imagen-modal
 {
-    display: inline-block;
-    margin-right: 3em;
     width: 320px;
     height: 300px;
     margin-left: 0.7em;
@@ -113,50 +95,8 @@
     border-radius: 3px;
     border: 0.2px solid rgba(0, 0, 0, 0.445);
 }
-
-.modal-footer
-{
-    border: none!important;
-}
-/* Los inputs que estan dento del modal */
-.text
-{
-    background-color: transparent;
-    border: none;
-    display: inline-block!important;
-    border-radius: 5px!important;
-    text-align: left;
-}
-
-.enlace-btn
-{
-    text-decoration: none;
-    color: black;
-}
-.enlace-btn:hover
-{
-    color: white;
-    text-decoration: none;
-}
-textarea
-{
-    background-color: transparent;
-    border: none;
-    resize: none!important;
-    text-align: justify!important;
-    width: 100%;
-}
-label
-{
-    display: inline-block!important;
-    text-align: right;
-    width: 20%;
-}
-/* Final del modal */
- 
 /* Solo en galeria se debe corregir un error que hace que el fondo de la web se oscurezca por algun motivo que desconocemos */
 body
 {
     background-attachment: fixed;
-    color: black;
 }

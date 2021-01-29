@@ -1,6 +1,6 @@
-
 /* inicio */
-.divInicio{
+.divInicio
+{
     /* background-color: rgba(0, 0, 0, 0.788); */
     background-color:rgba(255, 255, 255, 0.671);
     margin: auto;
@@ -23,6 +23,7 @@
     box-shadow: 13px 15px 11px #000000ad;
     margin-bottom: 50px;
 }
+
 .botonDivInicio, .botonDivInicioJugadores
 {
     color: rgb(0, 0, 0);
@@ -76,44 +77,56 @@
     padding-left: 2em;
     text-align: center;
 }
-
-.textoDivInicio *
-{
-    color: rgb(0, 0, 0);
-    display: inline-block;
-    padding: 1em;
-}
-.textoDivInicio p
-{
-    letter-spacing: 0.07em;
-    padding-left: 2em;
-    text-align: center;
-}
-
+/* #tablero{
+    background-color: aqua;
+} */
 div.contenedor {
     background-color: rgba(9, 189, 48, 0.5);
     min-height: 100vh;
     overflow: hidden;
-    /* width: 100%; */
+    width: 100%;
 }
-
-/* seleccion de categoria */
-/* #selecCategoria{
-    color: #C4EAF2;
-} */
-#secCategoria{
-    width: 300px;
-    float: inline-block;
-}
- .casillaBody{
+.casillaBody{
     background-color: crimson;
 } 
 
-/* Tablero de la oca */
-.tableroVue{
-    margin-top: 50px;
+/* MODAL AVATAR */
+
+#contenedor-mensaje, #contenedor-mensaje-victoria,  #contenedor-mensaje-derrota{
+    position: fixed; 
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    background: #000000ad;
+} 
+#mensaje, #mensaje-victoria,#mensaje-derrota{
+    min-height: 400px; 
+    top: 20%; 
+    position: relative; 
+    max-width: 600px; 
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 20px;
+    background-color: darkgrey; 
+}
+.ocultar-mensaje{display: none;}  
+
+#contenedor-mensaje{
+    background-color:rgba(29, 29, 29, 0.842);
+    color: white;
 }
 
+/*Seleccionar Jugadores*/
+#caja1, #caja2, #caja3, #caja4{
+    display: none;
+}
+
+
+/* TABLERO OCA */
 #tablero{
     background-color: #e15766;
     border:solid #C4EAF2 5px;
@@ -135,12 +148,11 @@ div.contenedor {
     grid-auto-flow: dense;
     grid-auto-columns: auto;
     grid-auto-rows: auto;
-    /* min-height: 100vh; */
+    min-height: 100vh;
     overflow: hidden;
     padding: 1em;
     margin-bottom: 2%;
-    width: 1400px;
-    height: 900px;
+    width: 1565px;
     margin: 0 auto;
 }
 #casillaInicio{
@@ -149,7 +161,6 @@ div.contenedor {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    height: 87px;
 }
 /* .pregunta{
     background-color: cadetblue;
@@ -157,11 +168,11 @@ div.contenedor {
 } */
 .casilla{
  
-    border: 0.2px solid black;
+    border: 1px solid black;
 }
 .casillaif{
-    height: 87px;
-    width: 152px;
+    height: 100px;
+    width: 100%;
 }
 .casillaJuego{
     height: 100%;
@@ -174,9 +185,9 @@ div.contenedor {
     flex-direction: column;
 }
 .casillaNum{
-    width: 151.5px;
-    height: 84px;
-    /* margin-left: -1px; */
+    width: 170px;
+    height: 100px;
+
 }
 
 /* Bordes exteriores */
@@ -213,17 +224,11 @@ div.contenedor {
     margin-top: auto;
 }
 .casillaJuego .casillaHead{
-    background-color: rgba(255, 255, 255, 0.753);
-    text-align: center;
-    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.329);
+    text-align: left;
     width: 20px;
     height: 20px;
 }
-.casillaCircle{
-    margin-left: -15px;
-    margin-top: -10px;
-}
-
 #casilla2{grid-area: c2; 
 background-color: grey;}
 #casilla3{grid-area: c3;
@@ -362,28 +367,19 @@ z-index: 1;
 background-color: grey;
 z-index: 1;
 }
-/* Casilla final */
-#casilla63{
-    grid-column-start: c63;
-    grid-column-end: c63;
-    grid-row-start: c63;
-    grid-row-end: c60;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-    z-index: 0;
-    /* margin-left: -1.5px; */
+#casilla63{grid-column-start: c63;
+  grid-column-end: c63;
+  grid-row-start: c63;
+  grid-row-end: c60;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  z-index: 0;
  
 }
 #casilla63 .numCasilla{
 font-size: 60px;
 color: white;
-}
-
-.numCasilla{
-font-size: 12px;
-color: white;
-
 }
 .modal-dialog{
     z-index: 21;
@@ -396,82 +392,49 @@ color: white;
     height: 200px;
 }
 
-/* Fichas jugadores */
 .jugador1{
     grid-area: c1;
     z-index: 2;
-    margin-left: 30px;
-    margin-top: -3px;
+    margin-left: 50px;
 }
 .jugador2{
     grid-area: c1;
     z-index: 2;
-    margin-top: 32px;
-    margin-left: 30px;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 .jugador3{
     grid-area: c1;
     z-index: 2;
-    margin-top: -3px;
-    margin-left: 70px;
+    margin-left: 80px;
 }
 .jugador4{
     grid-area: c1;
     z-index: 2;
-    margin-top: 32px;
-    margin-left: 70px;
+    margin-top: 40px;
+    margin-left: 80px;
 }
-/* boton elegir avatar */
-#botonAvatar{
-    margin-left:10px;
-}
-
-/* Modal tirar dado */
 #img_dado{
     width: 200px;
     height: 200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-/* Modal casilla oca, puente, posada... */
-#img_casillaCaida{
-    margin-top: 10px;
-    width: 400px;
-    height: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 
-/* Centrar los titulos de los modales */
-.modalTitulo{
-    text-align: center;
+/* Cuando se imprime el tablero */
+#fichasImprimir{
+    display: none;
 }
-/*  Modal pregunta */
-.modalPreguntaBoton{
-    min-width: 80px;
-    margin-left: 10px;
-    margin-right: 10px;
+@media print{
+    .jugador1, .jugador2, .jugador3, .jugador4, .tirar, .btnImprimir {
+        display: none;
+    }
+    #fichasImprimir{
+        display: block;
+    }
+    footer{
+        display: none !important;
+    }
 }
-
-.modalResultados{
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-left: 30px;
-}
-
-/* Modal juego finalizado */
-/* #resultado1{
-    font-size: 25px;
-}
-#resultado2{
-    font-size: 15px;
-}
-#resultado3{
-    font-size: 10px;
-}
-#resultado4{
-    font-size: 5px;
-}
- */
