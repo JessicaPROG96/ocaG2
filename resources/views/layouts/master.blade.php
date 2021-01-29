@@ -10,6 +10,7 @@
    <!-- estilos -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/plantilla.css')}}" type="text/css">
+  <link rel="icon" type="image/png" href="img/otros/oca.png">
   <title>Oca</title>
 
 </head>
@@ -40,7 +41,6 @@
           <a class="nav-link" href="{{url('/alta')}}">Añadir Mujer</a>
         </li>
       </ul>
- 
       <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
         @guest
