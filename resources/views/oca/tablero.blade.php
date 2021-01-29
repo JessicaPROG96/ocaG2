@@ -27,6 +27,7 @@
             v-for="persona in personas" 
             :src="persona.picture.thumbnail" 
             :alt="persona.name.first">
+        
 </main>
 <!-- Para imprimir el tablero -->
 <button onclick="window.print()" class="btnImprimir">Imprimir</button>
