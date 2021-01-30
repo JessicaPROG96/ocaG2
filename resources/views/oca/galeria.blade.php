@@ -16,11 +16,13 @@
 
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
+
+
+    <button type="button" class="btn btn-volver btn-light"><a href="#top">Volver ↑</a></button>
     @php
     // Si el usuario ha iniciado sesión sale el boton para eliminar
     if(isset(Auth::user()->name)){
         echo '<button type="button" class="btn btn-borrar btn-danger">Delete 🗑</button>';
-        echo '<button type="button" style="position: fixed" class="btn btn-light"><a href="#top">Volver ↑</a></button>';
     }
 @endphp 
     
@@ -84,14 +86,14 @@
               </div>
               <div class="col-md-5 m-auto">
                 {{-- Fecha --}}
-                <label>Fecha: </label>
+                <label class="label">Fecha: </label>
                 <input disabled tabindex="-1" class="fecha-modal text"></input>
                 {{-- Zona --}}
-                <label>Zona: </label>
+                <label class="label">Zona: </label>
                 <input disabled class="zona-modal text"></input>
 
-                <label>Ambito: </label>
-                <input disabled class="ambito-modal text"></input>
+                <label class="label">Ambito: </label>
+                <input disabled class="ambito-modal text-ambito"></input>
               </div>
             </div>
             <div class="row">

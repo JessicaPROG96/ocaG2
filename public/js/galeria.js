@@ -272,6 +272,16 @@ function borrarMujer() {
 }
 
 function smoothScroll() {
+    $('.btn-volver').hide();
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > 800) {
+          $('.btn-volver').fadeIn();
+        } else {
+          $('.btn-volver').fadeOut();
+        }
+      });
+
     $("a[href='#top']").click(function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;

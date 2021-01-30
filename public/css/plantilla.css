@@ -82,11 +82,24 @@ nav a:hover
 
 /* formulario */
 form{
-    color: white;
+    /* color: white;
     background-color: teal;
     width: 50%;
     margin-top: 4%;
+    margin-left: 30%; */
+}
+.formAlta
+{
+    color: white;
+    /* background-color: teal; */
+    width: 50%;
+    margin-top: 4%;
     margin-left: 30%;
+}
+.formLogin
+{
+    color: black;
+    /* background-color: teal; */
 }
 .cajas{
     padding: 4%;
