@@ -64,6 +64,15 @@ class ocaController extends Controller{
         // return response()->json(['success'=>'Data is successfully added']);
     }
 
+    public function ajaxBorrar(Request $request)
+    {
+        $param =$request['tuArrJson'];
+
+        foreach($param  as $val){
+            DB::table('mujeres')->where('id', [$val])->delete();
+        }
+    }
+
     //añadir una mujer a la base de datos
     public function crearMujer(Request $request){
        

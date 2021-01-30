@@ -17,6 +17,15 @@
 <!-- El titulo de la galeria -->
     <h1 class="galeria">Galeria</h1>
 
+
+    <button type="button" class="btn btn-volver btn-light"><a href="#top">Volver ↑</a></button>
+    @php
+    // Si el usuario ha iniciado sesión sale el boton para eliminar
+    if(isset(Auth::user()->name)){
+        echo '<button type="button" class="btn btn-borrar btn-danger">Delete 🗑</button>';
+    }
+@endphp 
+    
 <!-- Barra de busqueda -->
 <div class="col-md-10 md-form mb-4 ml-auto">
     <input class="form-control col-md-7 d-inline" id="searchbar" type="text" placeholder="Buscar en nuestra galeria" aria-label="Search">
@@ -77,14 +86,14 @@
               </div>
               <div class="col-md-5 m-auto">
                 {{-- Fecha --}}
-                <label>Fecha: </label>
+                <label class="label">Fecha: </label>
                 <input disabled tabindex="-1" class="fecha-modal text"></input>
                 {{-- Zona --}}
-                <label>Zona: </label>
+                <label class="label">Zona: </label>
                 <input disabled class="zona-modal text"></input>
 
-                <label>Ambito: </label>
-                <input disabled class="ambito-modal text"></input>
+                <label class="label">Ambito: </label>
+                <input disabled class="ambito-modal text-ambito"></input>
               </div>
             </div>
             <div class="row">
@@ -94,7 +103,7 @@
               </div>
               <div class="modal-footer col-10 mx-auto">
                 {{-- Link a la wiki --}}
-                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" href="">Saber mas 🔗</a></button>
+                <button type="button" class="btn btn-outline-dark mx-auto"><a class="enlace-btn" target="blank" href="">Saber mas 🔗</a></button>
               </div>
             </div>
           </div>
@@ -139,6 +148,9 @@
             
               
                 <div class="mujer">
+                  
+                  
+                  
                     {{-- Ruta de la imagen --}}
                     <img class="imagen" src="img/fotosMujeres/{{$a['imagen']}}" style="height:200px"/>
                     {{-- Nombre --}}
@@ -156,7 +168,17 @@
                     {{-- Descripción --}}
                     <h4 style="display:none;" class="id">{{$a['id']}}</h4>
                     {{-- Categoria --}}
-                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>                  
+                    <h5 class="Categoria" style="background:{{$a->categorias->color}}">{{$a->categorias->nombreCategoria}}</h5>
+                    @php
+                    // Si el usuario ha iniciado sesión sale el boton guardar
+                    if(isset(Auth::user()->name))
+                    {
+                      echo '<div class="divBorrar">';
+                      echo '<label class="labelBorrar" for="check">Borrar</label>'; 
+                        echo '<input class="inputBorrar" type="checkbox" name="check" value="'.$a['id'].'" id="deleteCheckbox" style="position: absolute;">';
+                      echo '</div>';
+                      }
+                @endphp    
                 </div>
 
               

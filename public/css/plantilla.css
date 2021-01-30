@@ -82,16 +82,49 @@ nav a:hover
 
 /* formulario */
 form{
-    color: white;
+    /* color: white;
     background-color: teal;
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 30%; */
+}
+.formAlta
+{
+    color: white;
+    /* background-color: teal; */
     width: 50%;
     margin-top: 4%;
     margin-left: 30%;
 }
+
+.formLogin
+{
+    color: black;
+    /* background-color: teal; */
+}
 .cajas{
     padding: 4%;
     padding-top: 1%;
-    background-color: tomato;
+    background-color: rgb(44 38 47 / 86%);
+    color: white;
+    border-radius: 5px;
+}
+.inputAlta
+{
+    /* background-color: transparent; */
+    background-color: rgb(29 28 28 / 14%);
+    /* border: none; */
+    border-radius: 5px!important;
+    /* text-align: left; */
+    border: 0.5px solid rgba(129, 129, 129, 0.699);
+
+}
+
+.labelAlta
+{
+    letter-spacing: 0.07em;
+    /* text-transform: uppercase;
+    font-size: 10px; */
 }
 .box{
     /* background-color: violet; */

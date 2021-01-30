@@ -31,7 +31,7 @@
 }
 
 .botonDivInicio button{
-    margin-top: 4em;
+    /* margin-top: 4em; */
     padding-left: 0.5em;
     padding-right: 0.5em;
     padding-top: 0.3em;
@@ -89,6 +89,13 @@
     padding-left: 2em;
     text-align: center;
 }
+
+#secCategoria{
+    width: 300px;
+    float: inline-block;
+}
+
+/*------------- EMPIEZA EL TABLERO ------------*/
 
 div.contenedor {
     background-color: rgba(9, 189, 48, 0.5);
