@@ -1,7 +1,12 @@
+<link rel="stylesheet" href="{{ asset('css/inicio.css') }} " type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 @extends('layouts.master')
+
 @section('content')
 
-<form enctype="multipart/form-data" class="pt-4" method="GET" action="{{url('crearMujer')}}">
+<form enctype="multipart/form-data" class="pt-4" method="POST" action="{{url('crearMujer')}}">
     @csrf 
     <div class="form-group cajas col-4 mx-auto pt-auto">
 
@@ -85,7 +90,20 @@
         </div>
  
     </div>
+    <p id="mensajeError"></p>
 </form>
 
     
 @endsection
+<script>
+    // function enviar() { 
+    //    console.log("entra correctamente"); 
+    // }
+//     function myFunction() {
+//   alert("Bienvenido");
+// }
+
+   
+</script>
+
+<script src="js/jugadores.js"></script>

@@ -14,7 +14,7 @@
           <th scope="col">Foto</th>
         </tr>
       </thead>
-      <!-- Recorremos el array y cargamos nuestra tabla -->
+      <!-- Recorremos el array y cargamos nuestra tabla co datos -->
       <tr v-for="mujer in mujeresCategoria" :key="mujer.id"> 
             <td v-text="mujer.id"></td>
             <td v-text="mujer.nombre"></td>

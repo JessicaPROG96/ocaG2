@@ -37,9 +37,14 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('/clasificacion')}}">Clasificación</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/alta')}}">Añadir Mujer</a>
-        </li>
+        @php
+            // Si el usuario ha iniciado sesión sale el boton guardar
+            if(isset(Auth::user()->name)){
+              echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="'.url('/alta').'">Añadir Mujer</a>';
+              echo '</li>';
+            }
+        @endphp 
       </ul>
  
       <ul class="navbar-nav ml-auto">
@@ -171,7 +176,7 @@
   <!-- Jquery -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js"></script>
+  {{-- <script src="js/bootstrap.min.js"></script> --}}
 </body>
   
   <script src="{{ asset('js/tablero.js') }}"></script>

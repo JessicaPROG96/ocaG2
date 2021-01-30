@@ -80,14 +80,14 @@ nav a:hover
     border-top: 0 none;
 }
 
-/* formulario */
-form{
+/* formulario para insertar una mujer */
+/* form{
     /* color: white;
     background-color: teal;
     width: 50%;
     margin-top: 4%;
-    margin-left: 30%; */
-}
+    margin-left: 30%; 
+} */
 .formAlta
 {
     color: white;
@@ -128,5 +128,13 @@ form{
 }
 .box{
     /* background-color: violet; */
-    margin-top:  10px;
+    margin-top:  20px;
 }
+/* mensaje de error  */
+#mensajeError, #mensajeErrorA, #mensajeErrorZ, #mensajeErrorFN, #mensajeErrorDes{
+color: red;
+margin-top:2%;
+/* display: none; */
+}
+
+

@@ -75,23 +75,26 @@ class ocaController extends Controller{
 
     //añadir una mujer a la base de datos
     public function crearMujer(Request $request){
-       
-    $data = $request->all();
-        //coger imagen 
-      if($request->hasfile('imagen')){
-            $image =$request->file('imagen');
-            $nombre = $image->getClientOriginalName(); 
+  
+        $data = $request->all();
+        if($request->hasfile('imagen')){
             
-            $path = $request->imagen->storeAs($image, $nombre); 
-            $data['imagen']=$path;
+              $image =$request->file('imagen');
+              var_dump($image);
+              $nombre = $image->getClientOriginalName(); 
+              $image->move('img/fotosMujeres', $nombre);
+            echo "\n\n\n";
+              var_dump($image);
+              $data["imagen"]=$nombre;
 
-            // $path=Storage::disk('public')->put($nombre, $image);
-            // $data['imagen']=$path;
+            //   $path = $request->imagen->storeAs($image, $nombre); 
+            //   $data['imagen']=$path;
+            //   $path=Storage::disk('public')->put($nombre, $image);
+         
+        }
+        // print_r ($data);
+        Mujer::create($data);
 
-        // $image->move(public_path().'/img/', $image, $nombre);
-       
-      }
-    Mujer::create($data); 
-    return redirect()->route('galeria')->with('success', 'Mujer agregada correctamente');
+        return redirect()->route('galeria')->with('success', 'Mujer agregada correctamente', $data);
     }
 }

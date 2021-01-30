@@ -40,7 +40,7 @@ Route::get('categorias', [TableroController::class, 'categorias']);
 //formualrio para dar de alta a una mujer
 Route::get('alta', [ocaController::class, 'altaMujer']);
 //guardar los datos en la BDD
-Route::get('crearMujer', [ocaController::class, 'crearMujer']);
+Route::post('crearMujer', [ocaController::class, 'crearMujer']);
 //Rutas para gestionar datos
 
 //ruta para cargar los datos de clasificacion

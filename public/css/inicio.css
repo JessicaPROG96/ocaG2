@@ -109,4 +109,82 @@ div.contenedor {
     color: #C4EAF2;
 } */
 
+/* Modal tirar dado */
+#img_dado{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+/* Modal casilla oca, puente, posada... */
+#img_casillaCaida{
+    margin-top: 10px;
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Centrar los titulos de los modales */
+.modalTitulo{
+    text-align: center;
+}
+/*  Modal pregunta */
+.modalPreguntaBoton{
+    min-width: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modalResultados{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+/* Modal juego finalizado */
+/* #resultado1{
+    font-size: 25px;
+}
+#resultado2{
+    font-size: 15px;
+}
+#resultado3{
+    font-size: 10px;
+}
+#resultado4{
+    font-size: 5px;
+}
+ */
+/* video como fondo */
+.content video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  /* .content{
+    background-color: #e2ab3f;
+} */
+
+/* configuración para la tabla de clasificación  */
+
+/* titulo clasificacion */
+#tituloClas{
+    color: white;
+    text-align: center;
+}
+
+.encabezado{
+background-color: #db10b95d;
+/* background-color: aqua; */
+}
+.filasTabla{
+    width:40%; 
+}
