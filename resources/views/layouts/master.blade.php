@@ -10,6 +10,7 @@
    <!-- estilos -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/plantilla.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/modal.css')}}" type="text/css">
   <title>Oca</title>
 
 </head>
@@ -99,7 +100,7 @@
           <div class="d-flex flex-column text-center">
 
             <!-- Formulario -->
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" class="formLogin" action="{{ route('login') }}">
               @csrf
               <div class="form-group row">
                 <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Correo') }}</label>

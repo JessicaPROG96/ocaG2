@@ -3,12 +3,12 @@
 
 @section('content')
 {{-- mensaje inicial --}}
-<div class="col-md-3 divInicio">
-    <div class="col-md-2 botonDivInicio">
+<div class="col-md-6 divInicio">
+    <div class="col-2 my-auto botonDivInicio">
         <button id="botonEmpezar">Empezar </button>
     </div>
     {{-- descripción --}}
-    <div class="col-md-10 textoDivInicio">
+    <div class="col-10 my-auto textoDivInicio">
         <p class="lead ">Con el objetivo de visibilizar a las mujeres de las ciencias sociales en este sitio web podrás conocerlas
             a través del clasico juego de la Oca. "Mientras juegas aprendes"
         </p>
