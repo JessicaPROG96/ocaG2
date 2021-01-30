@@ -35,31 +35,26 @@ footer {
     color: white;
     text-align: center;
 }
-footer p
-{
+footer p{
     margin-top: 1em;
     margin-bottom: 0.3em;
 }
 
-.jessica *
-{
+.jessica *{
     font-size: 20px!important;
     /* text-transform: uppercase; */
     letter-spacing: 0.06em;
 }
 
-nav
-{
+nav{
     background-color: rgba(29, 29, 29, 0.842);
     /* background-color: var(--color3); */
 }
-nav *
-{
+nav *{
     color: white;
 }
 
-nav a:hover
-{
+nav a:hover{
     color:var(--color4);
 }
 
@@ -80,25 +75,15 @@ nav a:hover
     border-top: 0 none;
 }
 
-/* formulario para insertar una mujer */
-/* form{
-    /* color: white;
-    background-color: teal;
-    width: 50%;
-    margin-top: 4%;
-    margin-left: 30%; 
-} */
-.formAlta
-{
+.formAlta{
     color: white;
     /* background-color: teal; */
     width: 50%;
     margin-top: 4%;
-    margin-left: 30%;
+    margin-left:30%;
 }
 
-.formLogin
-{
+.formLogin{
     color: black;
     /* background-color: teal; */
 }
@@ -109,8 +94,7 @@ nav a:hover
     color: white;
     border-radius: 5px;
 }
-.inputAlta
-{
+.inputAlta{
     /* background-color: transparent; */
     background-color: rgb(29 28 28 / 14%);
     /* border: none; */
@@ -119,19 +103,17 @@ nav a:hover
     border: 0.5px solid rgba(129, 129, 129, 0.699);
 
 }
-
-.labelAlta
-{
+.labelAlta{
     letter-spacing: 0.07em;
     /* text-transform: uppercase;
     font-size: 10px; */
 }
 .box{
-    /* background-color: violet; */
-    margin-top:  20px;
+    margin-top:10px;
+    margin-left:5%;
 }
 /* mensaje de error  */
-#mensajeError, #mensajeErrorA, #mensajeErrorZ, #mensajeErrorFN, #mensajeErrorDes{
+#mensajeError, #mensajeErrorA, #mensajeErrorFN, #mensajeErrorDes,#mensajeErrorZ{
 color: red;
 margin-top:2%;
 /* display: none; */
