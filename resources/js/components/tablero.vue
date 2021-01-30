@@ -191,7 +191,7 @@
 
       <!-- Botón para tirar el dado -->
       <div id="btnTirar" class="col-1">
-        <button class="tirar btn btn-success" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+        <button class="tirar btn btn-success" v-text="'Lanzar dado'"  v-on:click="tirarDado"></button>
       </div>
     </div>
 
