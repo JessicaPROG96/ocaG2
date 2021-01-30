@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form enctype="multipart/form-data" class="pt-4" method="GET" action="{{url('crearMujer')}}">
+<form enctype="multipart/form-data" class="pt-4" method="POST" action="{{url('crearMujer')}}">
     @csrf 
     <div class="form-group cajas col-4 mx-auto pt-auto">
 
