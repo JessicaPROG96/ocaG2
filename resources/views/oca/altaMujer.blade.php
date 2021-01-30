@@ -14,13 +14,15 @@
             {{-- Nombre --}}
             <label class="labelAlta col-sm-4 col-form-label">Nombre:</label>
             <div class="col-sm-12">
-                <input type="text" name="nombre" class=" inputAlta form-control box"  placeholder="Nombre">
+                <input type="text" name="nombre" class="inputAlta form-control box"  id="nombre" placeholder="Nombre">
+                <p id="mensajeError"></p>
             </div>
-
+            
             {{-- Apellido --}}
             <label class="labelAlta col-sm-4 col-form-label">Apellidos:</label>
             <div class="col-sm-12">
-                <input type="text" name="apellido" class=" inputAlta form-control box"  placeholder="Apellido">
+                <input type="text" name="apellido" class=" inputAlta form-control box"  id="apellido" placeholder="Apellido">
+                <p  class="box"  id="mensajeErrorA"></p>
             </div>
 
          </div>
@@ -29,7 +31,8 @@
         <div class="form-group row">
             <label class="labelAlta col-sm-12 col-form-label">Fecha Nacimiento:</label>
             <div class="col-sm-12">
-                <input type="text" placeholder="Fecha Nacemiento" name="fechaNacimiento" class="inputAlta form-control box">
+                <input type="text" placeholder="Fecha Nacemiento" name="fechaNacimiento" class="inputAlta form-control box" id="fNacimiento" required>
+                <p  class="box"  id="mensajeErrorFN"></p>
             </div>
          </div>
         {{-- Fecha morir --}}
@@ -43,7 +46,7 @@
          <div class="form-group row">
             <label class="labelAlta col-sm-2 col-form-label">Imagen: </label>
             <div class="col-sm-12">
-                <input type="file" name="imagen" class="inputAlta form-control-file" accept=".jpg, .png, .gif, .jpeg">
+                <input type="file" name="imagen" class="inputAlta form-control-file is-valid" accept=".jpg, .png, .gif, .jpeg">
             </div>
          </div>
 
@@ -57,14 +60,16 @@
         <div class="form-group row">
             <label class="labelAlta col-3 my-auto col-form-label">Descripción:</label>
             <div class="col-9">
-            <textarea name="descripcion" class="form-control inputAlta box" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+            <textarea name="descripcion" class="form-control inputAlta box" id="descripcion" rows="3" required></textarea>
+            <p class="box" id="mensajeErrorDes"></p>
+        </div>
          </div>
 
          <div class="form-group row">
             <label class="labelAlta col-3 my-auto col-form-label">Zona:</label>
             <div class="col-sm-12">
-                <input type="text" name="zonaGeografica" class="form-control inputAlta box"  placeholder="Zona Geográfica">
+                <input type="text" name="zonaGeografica" class="form-control inputAlta" id="zona"  placeholder="Zona Geográfica" required>
+                <p  class="box"  id="mensajeErrorZ"></p>
             </div>
         </div>
 
@@ -81,12 +86,12 @@
 
         <div class="form-row pt-5 box">
             <div class="col-2">
-                <button type="reset" class="btn btn-outline-light">Borrar</button>
+                <button type="reset" class="btn btn-outline-light box">Limpiar</button>
             </div>
-            <div class="col">
+            {{-- <div class="col">
             <button type="button" class="btn btn-outline-light">Volver</button>
-            </div>
-            <button class="btn col-3 btn-outline-light box" type="submit">Enviar</button>
+            </div> --}}
+            <button class="btn col-3 btn-outline-light box" type="submit" id="submit">Enviar</button>
         </div>
  
     </div>
@@ -95,6 +100,7 @@
 
     
 @endsection
+<script src="js/jugadores.js"></script>
 <script>
     // function enviar() { 
     //    console.log("entra correctamente"); 
@@ -106,4 +112,3 @@
    
 </script>
 
-<script src="js/jugadores.js"></script>
