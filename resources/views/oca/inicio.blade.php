@@ -22,7 +22,7 @@
     </div>
 
     <div class="col-md-6 divInicioJugadores" >
-        <div class="col-md-16 formularioDivInicioJugadores" id="divJugadores" onchange="mostrarJugadores()">
+        <div class="col-md-16 formularioDivInicioJugadores" id="divJugadores" onchange="mostrarJugadores();">
                 
                         <div><select class="selectjugadores" id="jugadores">
                                 <option hidden>SELECCIONAR NUMERO DE JUGADORES</option> 
@@ -51,13 +51,13 @@
                         <input class="cajatexto" type="text" name="P4" id="nombreJ4" size="25" placeholder="Nombre J4">
                         <button class="btn btn-warning" id="btnAvatar">ELEGIR AVATAR</button>
                     </div>
-                    <br>
+                    <!-- <br>
                     <select class="dificultad">
                         <option hidden>DIFICULTAD</option> 
                         <option>Con Ayuda</option> 
                         <option>Sin Ayuda</option>
                     </select>
-                    <br>
+                    <br> -->
                     <div class="col-md-2 botonDivInicioJugadores">
                         <input type="submit" value="JUGAR" id="botonJugar">
                     </div>

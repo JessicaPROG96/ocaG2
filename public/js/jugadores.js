@@ -1,4 +1,4 @@
-
+ 
 /* MOSTRAR VENTANA JUGADORES */
 $(document).ready(function(){
     $("#botonEmpezar").on( "click", function(){
@@ -92,3 +92,4 @@ function validarFormulario(evento){
     }
     this.submit();
 }
+
