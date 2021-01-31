@@ -1,5 +1,8 @@
-<link rel="stylesheet" href="<?php echo asset('css/inicio.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/inicio.css') ?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/modal.css') ?>" type="text/css">
+
 @extends('layouts.master')
+{{-- fgjgfk --}}
 @section('content')
 <h1 style="color:white">Apartado de Juego</h1>
 <div class="nombreJug">

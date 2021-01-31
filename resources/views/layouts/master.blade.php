@@ -10,7 +10,7 @@
    <!-- estilos -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/plantilla.css')}}" type="text/css">
-  <link rel="icon" type="image/png" href="img/otros/oca.png">
+  <link rel="stylesheet" href="{{ asset('css/modal.css')}}" type="text/css">
   <title>Oca</title>
 
 </head>
@@ -37,9 +37,14 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('/clasificacion')}}">Clasificación</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/alta')}}">Añadir Mujer</a>
-        </li>
+        @php
+            // Si el usuario ha iniciado sesión sale el boton guardar
+            if(isset(Auth::user()->name)){
+              echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="'.url('/alta').'">Añadir Mujer</a>';
+              echo '</li>';
+            }
+        @endphp 
       </ul>
       <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
@@ -94,7 +99,7 @@
           <div class="d-flex flex-column text-center">
 
             <!-- Formulario -->
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" class="formLogin" action="{{ route('login') }}">
               @csrf
               <div class="form-group row">
                 <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Correo') }}</label>
@@ -170,7 +175,7 @@
   <!-- Jquery -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <!-- <script src="js/bootstrap.min.js"></script> -->
+  {{-- <script src="js/bootstrap.min.js"></script> --}}
 </body>
   
   <script src="{{ asset('js/tablero.js') }}"></script>

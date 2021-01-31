@@ -1,13 +1,26 @@
 // Este script es para la pagina de la galeria de las mujeres
 // ----------------------------------------------------------|
 // Cuando cargue la pagina, que ejecute las funciones
-$(document).ready(function(){
+$(document).ready(function()
+{
+    
+    // Cargamos los fondos de las categorias
     fondosCategorias();
+    // Cargamos la funcion para que aparezca el modal de la mujer
     ModalMujer();
+    // Cargamos la funcion para cargar las categorias y filtrar
     seleccionarCategoria();
+    // Cuando escribes en la barra de busqueda se ejecuta la funcion buscar
     $("#searchbar").on("input",buscar);
+    // Cargamos la funcion para cargar los botones cuando estamos logueados
     modoAdmin();
+    // Al darle click en el boton guardar se ejecuta la funcion ajaxMUjer
     $('.btn-guardar').click(ajaxMujer);
+    // Al darle click al boton de borrar se ejecuta la funcion borrarMujer
+    $('.btn-borrar').click(borrarMujer);
+    // Cargamos la funcion para volver a la parte de arriba de la pagina de manera smooth
+    smoothScroll();
+    
 });
 
 function seleccionarCategoria() {
@@ -21,9 +34,9 @@ function seleccionarCategoria() {
             for (i = 0; i < div.length; i++)
             {
                     div[i].style.display="block";
-                    document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-                    div[i].style.marginRight="16.5px";
-                    div[i].style.marginLeft="16.5px";
+                    // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+                    // div[i].style.marginRight="16.5px";
+                    // div[i].style.marginLeft="16.5px";
             }
         }else{
             for (i = 0; i < div.length; i++)
@@ -33,9 +46,9 @@ function seleccionarCategoria() {
                 if (cat[i].innerHTML.includes(categoriaSeleccionada))
                 {
                     div[i].style.display="block";
-                    document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-                    div[i].style.marginRight="16.5px";
-                    div[i].style.marginLeft="16.5px";
+                    // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+                    // div[i].style.marginRight="16.5px";
+                    // div[i].style.marginLeft="16.5px";
                 }
                 // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
                 else
@@ -49,24 +62,26 @@ function seleccionarCategoria() {
 
 // Funcion para saber en que mujer estas clickando y que salga el modal --> (Work in progress)
 function ModalMujer() {
-    $('.mujer').click(function() {
+    
+
+    $('.mujer').on("click", function() {
 
         id = $(this).find('.id').text();                    // Cogemos el id
 
         if (localStorage.getItem("fechaUpd"+id)==null) {
-            fecha = $(this).find('.fecha').text();            // Cogemos la fecha
+            fecha = $(this).find('.fecha').text();          // Cogemos la fecha
         } else {
             fecha = localStorage.getItem("fechaUpd"+id);
         }
 
         if (localStorage.getItem("zonaUpd"+id)==null) {
-            zona = $(this).find('.zona').text();              // Cogemos la desc
+            zona = $(this).find('.zona').text();            // Cogemos la desc
         } else {
             zona = localStorage.getItem("zonaUpd"+id);
         }
 
         if (localStorage.getItem("descUpd"+id)==null) {
-            descr = $(this).find('.descripcion').text();              // Cogemos la zona
+            descr = $(this).find('.descripcion').text();    // Cogemos la zona
         } else {
             descr = localStorage.getItem("descUpd"+id);
         }
@@ -75,20 +90,16 @@ function ModalMujer() {
         apellido = $(this).find('.apellido').text();        // Cogemos el apellido
         categoria = $(this).find('.categoria').text();      // Cogemos la categoria
         imagen = $(this).find('.imagen').attr('src');       // Cogemos la ruta de la imagen
-        //fecha = $(this).find('.fecha').text();              // Cogemos la fecha
-        //zona = $(this).find('.zona').text();                // Cogemos la zona
-        enlace = $(this).find('.enlace').text();            // Cogemos el enlace
-        //descr = $(this).find('.descripcion').text();        // Cogemos la descripción
-        // id = $(this).find('.id').text();                    // Cogemos el id
 
-        localStorage.setItem("idMujer", id);
+        enlace = $(this).find('.enlace').text();            // Cogemos el enlace
+
+
+        localStorage.setItem("idMujer", id);                // Guardamos el id para cogerlo en otra funcion
 
         if (enlace.substr(0, enlace.indexOf(" "))!= "") {
             $('.enlace-btn').attr("href", enlace.substr(0, enlace.indexOf(" ")));
-            console.log("1");
         }else{
             $('.enlace-btn').attr("href", enlace);
-            console.log("2");
         }
         //
         // Modal
@@ -101,6 +112,10 @@ function ModalMujer() {
         $("#myModal").modal("show");                        // Mostrar el modal
 
     });
+    $('.divBorrar').click(function(event){
+        event.stopPropagation();
+    });
+      
 
 }
 
@@ -117,9 +132,9 @@ function buscar() {
         if (nom[i].innerHTML.toUpperCase().includes(input.toUpperCase()) || ape[i].innerHTML.toUpperCase().includes(input.toUpperCase()))
         {
             div[i].style.display="block";
-            document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
-            div[i].style.marginRight="16.5px";
-            div[i].style.marginLeft="16.5px";
+            // document.getElementsByClassName('espacio')[0].style.justifyContent="inherit";
+            // div[i].style.marginRight="16.5px";
+            // div[i].style.marginLeft="16.5px";
         }
         // Si no tiene el string que tiene la barra de busqueda, lo ocultamos...
         else
@@ -169,7 +184,6 @@ function modoAdmin() {
             console.log($('.text').css("background-color"));
             $('.text').css( "border", "0.5px solid rgb(52 58 64 / 25%)");
             $('.text').css ("background-color", "rgb(29 28 28 / 14%)");
-            // $('.text').css( "border-radius", "2px");
         });
 
         $(".btn-guardar").click(function(event) {
@@ -177,6 +191,11 @@ function modoAdmin() {
             $('.text').css("background-color", "inherit");
             $('.text').css( "border", "none");
         });
+
+        // Tarjeta de la mujer
+        $('.mujer').css("height","340px");
+        $('.divBorrar').fadeIn('fast');
+        
     }
 }
 
@@ -185,7 +204,7 @@ function ajaxMujer() {
     fecha = $(".fecha-modal").val();                        // Fecha de nacimiento
     zona = $(".zona-modal").val();                          // Zona
     // $(".ambito-modal").val(categoria);                   // Ambito/Categoria
-    desc = $(".desc-modal").val();                           // Descripción
+    desc = $(".desc-modal").val();                          // Descripción
     id = localStorage.getItem("idMujer");
     console.log(id);
 
@@ -217,4 +236,54 @@ function ajaxMujer() {
         }
 
         });
+}
+
+function borrarMujer() {
+    arraynuevo=[];
+    $("input:checkbox[name=check]:checked").each(function(){
+        arraynuevo.push($(this).val());
+    });
+    if (arraynuevo.length==0) 
+    {
+        alert("No has seleccionado ninguna mujer");
+    }else
+    {
+        console.log(arraynuevo);
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: 'ajaxb',
+            method: 'get',
+            data: { tuArrJson: arraynuevo},
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            },
+            success:function(response){
+                console.log("me apetece morir");
+                location.reload();
+
+            }
+
+            });
+    }
+
+}
+
+function smoothScroll() {
+    $('.btn-volver').hide();
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > 800) {
+          $('.btn-volver').fadeIn();
+        } else {
+          $('.btn-volver').fadeOut();
+        }
+      });
+
+    $("a[href='#top']").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
 }
