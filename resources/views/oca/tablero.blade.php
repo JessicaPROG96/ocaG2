@@ -24,7 +24,7 @@
 
 <main>
         <img 
-            v-for="persona in personas" 
+            v-for="persona in personas"
             :src="persona.picture.thumbnail" 
             :alt="persona.name.first">
         
