@@ -95,6 +95,11 @@
     float: inline-block;
 }
 
+/*Seleccionar Jugadores*/
+#caja1, #caja2, #caja3, #caja4{
+    display: none;
+}
+
 /*------------- EMPIEZA EL TABLERO ------------*/
 
 div.contenedor {

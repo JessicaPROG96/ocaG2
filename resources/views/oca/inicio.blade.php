@@ -19,40 +19,39 @@
     <div class="col-md-16 formularioDivInicioJugadores" id="divJugadores">
         {{-- Jugadores --}}
         <div>
-            <select class="selectjugadores"> 
+            <select class="selectjugadores" id="jugadores"> 
                 <option hidden>SELECCIONAR NUMERO DE JUGADORES</option> 
-                <option>1 Jugador</option> 
-                <option>2 Jugadores</option>
-                <option>3 Jugadores</option> 
-                <option>4 Jugadores</option>
+                <option value="2jug">2 Jugadores</option>
+                <option value="3jug">3 Jugadores</option> 
+                <option value="4jug">4 Jugadores</option>
             </select>
         </div>
-        <div class="row">
-            <input class="col-sm-7 cajatexto" type="text" name="P1" size="25" placeholder="Nombre Jugador 1">
-            <button class="col-sm-3" id="botonAvatar">ELEGIR AVATAR</button>
+        <div class="row" id="caja1">
+            <input class="col-sm-7 cajatexto" type="text" name="P1" id="nombreJ1" size="25" placeholder="Nombre Jugador 1">
+            
         </div>
-        <div class="row">
-            <input class="col-sm-7 cajatexto" type="text" name="P2" size="25" placeholder="Nombre Jugador 2">
-            <button class="col-sm-3" id="botonAvatar">ELEGIR AVATAR</button>
+        <div class="row" id="caja2">
+            <input class="col-sm-7 cajatexto" type="text" name="P2" id="nombreJ2" size="25" placeholder="Nombre Jugador 2">
+            
          </div>
-        <div class="row">
-            <input class="col-sm-7 cajatexto" type="text" name="P3" size="25" placeholder="Nombre Jugador 3">
-            <button class="col-sm-3" id="botonAvatar">ELEGIR AVATAR</button>
+        <div class="row" id="caja3">
+            <input class="col-sm-7 cajatexto" type="text" name="P3" id="nombreJ3" size="25" placeholder="Nombre Jugador 3">
+            
         </div>
-        <div class="row">
-            <input class="col-sm-7 cajatexto" type="text" name="P4" size="25" placeholder="Nombre Jugador 4">
-            <button class="col-sm-3" id="botonAvatar">ELEGIR AVATAR</button>
+        <div class="row" id="caja4">
+            <input class="col-sm-7 cajatexto" type="text" name="P4" id="nombreJ4" size="25" placeholder="Nombre Jugador 4">
+           
         </div>
         {{-- opciones de juego --}}
         <div class="row">
             {{-- dificultad --}}
-            <div class="col-6">
+            <!-- <div class="col-6">
                 <select class="dificultad">
                     <option hidden>DIFICULTAD</option> 
                     <option>Con Ayuda</option> 
                     <option>Sin Ayuda</option>
                 </select>
-            </div>
+            </div> -->
              <!-- Elegir el modo juego -->
             <div class="col-6">
                 <div class="form-group" ijuegoSeleccionadod="juego">
@@ -70,7 +69,7 @@
         </div>
         {{-- boton jugar --}}
         <div class="col-md-2 botonDivInicioJugadores">
-            <button id="botonJugar" ><a href="{{url('juego')}}" >Jugar</a></button>
+            <button id="botonJugar" >Jugar</a></button>
         </div>
     </div> 
 </div>
