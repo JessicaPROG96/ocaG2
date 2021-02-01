@@ -16,10 +16,10 @@
 </div>
 {{-- Opciones de partida --}}
 <div class="col-md-6 divInicioJugadores" >
-    <div class="col-md-16 formularioDivInicioJugadores" id="divJugadores">
+    <div class="formularioDivInicioJugadores" id="divJugadores">
         {{-- Jugadores --}}
         <div col-12>
-            <select class="mx-auto col-12 tremendo selectjugadores" id="jugadores"> 
+            <select class="mx-auto tremendo selectjugadores" id="jugadores"> 
                 <option hidden>SELECCIONAR NUMERO DE JUGADORES</option> 
                 <option value="2jug">2 Jugadores</option>
                 <option value="3jug">3 Jugadores</option> 
@@ -57,8 +57,8 @@
                 </select>
             </div> -->
              <!-- Elegir el modo juego -->
-            <div class="col-6 mx-auto">
-                <div class="form-group" ijuegoSeleccionadod="juego">
+            <div class="mx-auto">
+                <div class="form-group mx-auto" ijuegoSeleccionadod="juego">
                     <select class="dificultad tremendo" id="modoJuego">
                         <option hidden value="0">Por defecto</option>
                         {{-- <option value="0"></option>  --}}
@@ -67,7 +67,7 @@
                         @endforeach
                     </select>
                     <input type="hidden" name="juegoSeleccionado" value=""/>
-                    <p id="juegoSeleccionado"></p>
+                    {{-- <p id="juegoSeleccionado"></p> --}}
                 </div>
             </div>
         </div>
