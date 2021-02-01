@@ -483,7 +483,7 @@ export default {
           else if (me.modoJuego == 2 || me.modoJuego == 4 || me.modoJuego == 6){
             // me.mujeresC = me.arrayMujeres;
             alert('Pocas mujeres, no se puede jugar'); 
-            window.location = '/laravel/ocaG2/public/';
+            window.location.replace("/ocaG2/public/");
           }
 
           else{
