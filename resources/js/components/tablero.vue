@@ -191,7 +191,7 @@
 
       <!-- Botón para tirar el dado -->
       <div id="btnTirar" class="col-1">
-        <button class="tirar btn btn-success" v-text="'Tirar'"  v-on:click="tirarDado"></button>
+        <button class="tirar btn btn-success" v-text="'Lanzar dado'"  v-on:click="tirarDado"></button>
       </div>
     </div>
 
@@ -402,7 +402,7 @@ export default {
       turnosJugadores:["jugador1", "jugador2"],
       tipoCasillas:["oca", "puente", "posada", "carcel", "pozo", "dados", "laberinto", "calavera", "final"],
       turno:0,
-      numeroJugadores:4,
+      numeroJugadores:localStorage.numeroJugadores,
       jugadoresEnFinal:0,
       posJugador1:1,
       posJugador2:1,
@@ -412,28 +412,28 @@ export default {
         jugador1:{
           posicion:1,
           puntuacion:0,
-          nombre:"nombre1",
+          nombre:localStorage.nombreJ1,
           turnosPerdidos:0,
           pozo:false
         },
         jugador2:{
           posicion:1,
           puntuacion:0,
-          nombre:"nombre2",
+          nombre:localStorage.nombreJ2,
           turnosPerdidos:0,
           pozo:true
         },
         jugador3:{
           posicion:1,
           puntuacion:0,
-          nombre:"nombre3",
+          nombre:localStorage.nombreJ3,
           turnosPerdidos:0,
           pozo:false
         },
         jugador4:{
           posicion:1,
           puntuacion:0,
-          nombre:"nombre4",
+          nombre:localStorage.nombreJ4,
           turnosPerdidos:0,
           pozo:false
         },
@@ -1107,7 +1107,7 @@ export default {
     }
   },
   created(){
-    /* console.log('Component created.'); */
+    /* console.log(localStorage); */
     //Gestiona el numero de jugadores
      if(this.numeroJugadores>=3){
       this.turnosJugadores=["jugador1", "jugador2", "jugador3"];
