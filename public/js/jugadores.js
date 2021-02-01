@@ -1,7 +1,5 @@
 
 $(document).ready(function(){
-    
-
     $("#botonEmpezar").on( "click", function(){
         $(".formularioDivInicioJugadores").show();
         $(".divInicio").hide();
@@ -10,17 +8,6 @@ $(document).ready(function(){
     $("#modoJuego").on("change", function(){
         $("#juegoSeleccionado").text(this.value); //cambia el texto de la p con la opción seleccionada
         $("input[name=juegoSeleccionado]").val(this.value); //coge el valor seleccionado
-        // var localStore = $("input[name=juegoSeleccionado]").val();
-        // localStorage.setItem("modoJuego", localStore);
-
-        // var recoger = localStorage.getItem("modoJuego");
-
-        // if(recoger === "Normal"){
-        //     alert("pase adelante");
-        // }
-        // else{
-        //     alert("no puede pasar");
-        // }
     });
    
     $("#botonJugar").on("click",function(){
@@ -139,67 +126,64 @@ $(document).ready(function(){
             msm.style.display = 'none';  
         }
 
-        //validar el apellido 
-        var elemento = document.getElementById('apellido'); 
-        if(elemento.value==""){
-            elemento.style.border =  '3px solid red';
-            error1(elemento, "Debe introducir un apellido");
-            event.preventDefault();
-        }
-        else if(!nombreRegex.test(elemento.value)){
-            error1(elemento, "El apellido no acepta números ni caracteres especiales");
-            elemento.style.border =  '3px solid red';
-            event.preventDefault();
-        } else {
-            elemento.style.border =  '3px solid green';
-            msm = document.getElementById("mensajeErrorA");
-            msm.style.display = 'none';  
-        }
-
-        //validar fecha de nacimiento, no debe estar vacía
-        var elemento = document.getElementById('fNacimiento'); 
-        if(elemento.value==""){
-            elemento.style.border = '3px solid red';
-            fechaN(elemento, "Debe introducir una fecha de nacimiento");
-            event.preventDefault();
-        }
-        else{
-            elemento.style.border =  '3px solid green';
-            msm = document.getElementById("mensajeErrorFN");
-            msm.style.display = 'none';  
-        }   
-        //validar la descripción, no debe estar vacía
-        var elemento = document.getElementById('descripcion'); 
-        if(elemento.value==""){
-            elemento.style.border =  '3px solid red';
-            des(elemento, "Debe introducir una descripción");
-            event.preventDefault();
-        }
-        else {
-            // alert("Los datos son correctos");
-            elemento.style.border =  '3px solid green';
-            msm = document.getElementById("mensajeErrorDes");
-            msm.style.display = 'none';  
-        }
-
-
-        //validar zona geográfica 
-        var elemento = document.getElementById('zona');
-        if(elemento.value==""){
-            elemento.style.border =  '3px solid red';
-            error3(elemento, "Debe introducir una zona");
-            event.preventDefault();
-        }
-        else{
-            nombreRegex = /^[a-zA-Z]+$/i;
-            if(!nombreRegex.test(elemento.value)){
-                error3(elemento, "La zona no acepta números ni caracteres especiales");
-                elemento.style.border =  '3px solid red';
-                alert("el nombre no es valido");
-            }
-        }
-    
+    //validar el apellido 
+    var elemento = document.getElementById('apellido'); 
+    if(elemento.value==""){
+        elemento.style.border =  '3px solid red';
+        error1(elemento, "Debe introducir un apellido");
+        event.preventDefault();
     }
+    else if(!nombreRegex.test(elemento.value)){
+        error1(elemento, "El apellido no acepta números ni caracteres especiales");
+        elemento.style.border =  '3px solid red';
+        event.preventDefault();
+    } else {
+        elemento.style.border =  '3px solid green';
+        msm = document.getElementById("mensajeErrorA");
+        msm.style.display = 'none';  
+    }
+    //validar fecha de nacimiento, no debe estar vacía
+    var elemento = document.getElementById('fNacimiento'); 
+    if(elemento.value==""){
+        elemento.style.border = '3px solid red';
+        fechaN(elemento, "Debe introducir una fecha de nacimiento");
+        event.preventDefault();
+    }
+    else{
+        elemento.style.border =  '3px solid green';
+        msm = document.getElementById("mensajeErrorFN");
+        msm.style.display = 'none';  
+    }   
+    //validar la descripción, no debe estar vacía
+    var elemento = document.getElementById('descripcion'); 
+    if(elemento.value==""){
+        elemento.style.border =  '3px solid red';
+        des(elemento, "Debe introducir una descripción");
+        event.preventDefault();
+    }
+    else {
+        elemento.style.border =  '3px solid green';
+        msm = document.getElementById("mensajeErrorDes");
+        msm.style.display = 'none';  
+    }
+    //validar zona geográfica 
+    var elemento = document.getElementById('zona');
+    if(elemento.value==""){
+        elemento.style.border =  '3px solid red';
+        error3(elemento, "Debe introducir una zona");
+        event.preventDefault();
+    }
+    else if(!nombreRegex.test(elemento.value)){
+            error3(elemento, "La zona no acepta números ni caracteres especiales");
+            elemento.style.border =  '3px solid red';
+            event.preventDefault();
+        }
+    else {
+        elemento.style.border =  '3px solid green';
+        msm = document.getElementById("mensajeErrorZ");
+        msm.style.display = 'none';  
+    }
+}
     function error(elemento, mensaje) {  // mensaje error nombre
             document.getElementById("mensajeError").innerHTML = mensaje;
             elemento.style.border =  '3px solid red';
@@ -221,10 +205,6 @@ $(document).ready(function(){
         elemento.style.border =  '3px solid red';
     } 
    
-     
-    
-
-
 });
 
 
