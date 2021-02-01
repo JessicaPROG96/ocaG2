@@ -86,20 +86,20 @@ $(document).ready(function(){
             document.getElementById("caja3").style.display = "none";
             document.getElementById("caja4").style.display = "none";
         } else*/ if(getSelectValue=="2jug"){
-            document.getElementById("caja1").style.display = "inline-block";
-            document.getElementById("caja2").style.display = "inline-block";
+            document.getElementById("caja1").style.display = "block";
+            document.getElementById("caja2").style.display = "block";
             document.getElementById("caja3").style.display = "none";
             document.getElementById("caja4").style.display = "none";
         }else if(getSelectValue=="3jug"){
-            document.getElementById("caja1").style.display = "inline-block";
-            document.getElementById("caja2").style.display = "inline-block";
-            document.getElementById("caja3").style.display = "inline-block";
+            document.getElementById("caja1").style.display = "block";
+            document.getElementById("caja2").style.display = "block";
+            document.getElementById("caja3").style.display = "block";
             document.getElementById("caja4").style.display = "none";
         }else if(getSelectValue=="4jug"){
-            document.getElementById("caja1").style.display = "inline-block";
-            document.getElementById("caja2").style.display = "inline-block";
-            document.getElementById("caja3").style.display = "inline-block";
-            document.getElementById("caja4").style.display = "inline-block";
+            document.getElementById("caja1").style.display = "block";
+            document.getElementById("caja2").style.display = "block";
+            document.getElementById("caja3").style.display = "block";
+            document.getElementById("caja4").style.display = "block";
         }
     });
     

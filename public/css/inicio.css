@@ -193,3 +193,11 @@ background-color: #db10b95d;
 .filasTabla{
     width:40%; 
 }
+
+.tremendo
+{
+    background-color: rgba(53, 53, 53, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom: 1px solid white;
+}
