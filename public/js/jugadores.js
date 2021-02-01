@@ -20,7 +20,7 @@ $(document).ready(function(){
         var jugador2 = document.getElementById('nombreJ2').value;
         var jugador3 = document.getElementById('nombreJ3').value;
         var jugador4 = document.getElementById('nombreJ4').value;
-        jugadores=document.getElementById("jugadores").selectedIndex+1;
+        jugadores=document.getElementById("jugadores").selectedIndex;
 
     
         if(jugadores==0){
@@ -42,7 +42,7 @@ $(document).ready(function(){
                     window.location.replace("juego");
                 }
             } */
-            /* else  */if(jugadores==2){
+            /* else  */if(jugadores==1){
                 localStorage.numeroJugadores= 2;
                 if(jugador1.length==0 && jugador2.length==0){
                     window.alert('No se pueden dejar campos vacios');
@@ -51,7 +51,7 @@ $(document).ready(function(){
                     window.location.replace("juego");
                 }
             }
-            else if(jugadores==3){
+            else if(jugadores==2){
                 localStorage.numeroJugadores= 3;
                 if(jugador1.length==0 || jugador2.length==0 || jugador3.lemgth==0){
                     window.alert('No se pueden dejar campos vacios');
@@ -60,7 +60,7 @@ $(document).ready(function(){
                     window.location.replace("juego");
                 }
             }
-            else if(jugadores==4){
+            else if(jugadores==3){
                 localStorage.numeroJugadores= 4;
                 if(jugador1.length==0 || jugador2.length==0 || jugador3.lemgth==0 || jugador4.length==0){
                     window.alert('No se pueden dejar campos vacios');
