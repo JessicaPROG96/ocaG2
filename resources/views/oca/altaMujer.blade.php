@@ -46,7 +46,7 @@
          <div class="form-group row">
             <label class="labelAlta col-sm-2 col-form-label">Imagen: </label>
             <div class="col-sm-12">
-                <input type="file" name="imagen" class="inputAlta form-control-file is-valid" accept=".jpg, .png, .gif, .jpeg">
+                <input type="file" name="imagen" class="inputAlta form-control-file is-valid box" accept=".jpg, .png, .gif, .jpeg">
             </div>
          </div>
 
@@ -68,7 +68,7 @@
          <div class="form-group row">
             <label class="labelAlta col-3 my-auto col-form-label">Zona:</label>
             <div class="col-sm-12">
-                <input type="text" name="zonaGeografica" class="form-control inputAlta" id="zona"  placeholder="Zona Geográfica" required>
+                <input type="text" name="zonaGeografica" class="form-control inputAlta box" id="zona"  placeholder="Zona Geográfica" required>
                 <p  class="box"  id="mensajeErrorZ"></p>
             </div>
         </div>
