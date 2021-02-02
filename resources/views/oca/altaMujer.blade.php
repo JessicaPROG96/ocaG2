@@ -18,7 +18,7 @@
                 <p id="mensajeError"></p>
             </div>
             
-            {{-- Apellido --}}
+            {{-- Apellido de una mujer--}}
             <label class="labelAlta col-sm-4 col-form-label">Apellidos:</label>
             <div class="col-sm-12">
                 <input type="text" name="apellido" class=" inputAlta form-control box"  id="apellido" placeholder="Apellido">
