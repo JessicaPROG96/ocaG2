@@ -20,14 +20,16 @@
   <!-- menu -->
   <nav class="navbar">
     <a class="navbar-brand" id="homePage" href="{{url('/')}}">
-      <img src="https://images.vexels.com/media/users/3/156767/isolated/preview/229408895847d8dabf22167e049c88b7-icono-plano-de-la-taza-de-caf--caliente-by-vexels.png" width="30" height="30" alt="">
+      <img src="https://lh3.googleusercontent.com/proxy/C2QW8oRRulINy3xuoD5-yr465OUuH_j8mqGvUuRWv85isWEhv0jmcCGzbPc5xmKXUseZXJJTPDR20GnWJALJBwyLvqTNOEk6SWV_JUz0mCYx6cgOzWbkY5SCL5yw0AK86S5RdrA" width="30" height="30" alt="">
       Desayunos Feministas
     </a>
   </nav>
   <nav class="navbar navbar-expand-lg jessica">
     <!-- <a class="navbar-brand" href="#">Navbar w/ text</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+      </svg>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
