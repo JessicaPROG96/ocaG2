@@ -95,6 +95,11 @@
     float: inline-block;
 }
 
+/*Seleccionar Jugadores*/
+#caja1, #caja2, #caja3, #caja4{
+    display: none;
+}
+
 /*------------- EMPIEZA EL TABLERO ------------*/
 
 div.contenedor {
@@ -188,3 +193,12 @@ background-color: #db10b95d;
 .filasTabla{
     width:40%; 
 }
+
+.tremendo
+{
+    background-color: rgba(53, 53, 53, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+    border: 1px solid white;
+}
+
